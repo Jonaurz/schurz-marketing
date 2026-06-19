@@ -156,7 +156,7 @@ export const industryPages: IndustryPage[] = [
     metaTitle: "Webdesign für Reinigungsfirmen",
     metaDescription:
       "Webdesign für Reinigungsfirmen: Leistungen, Einsatzgebiete und Angebotsanfragen klar darstellen. Aus Neustadt, deutschlandweit persönlich.",
-    h1: "Webdesign für Reinigungsfirmen mit einfachen Anfragewegen.",
+    h1: "Webdesign für Reinigungsfirmen.",
     hero:
       "Privatkunden, Hausverwaltungen und Unternehmen möchten schnell wissen, welche Reinigungsleistungen Sie anbieten, wo Sie arbeiten und wie sie ein Angebot erhalten. Eine klare Website bündelt genau diese Informationen und vermittelt Zuverlässigkeit. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit.",
     problemTitle: "Bei Reinigungsleistungen entscheiden Klarheit und Vertrauen.",
