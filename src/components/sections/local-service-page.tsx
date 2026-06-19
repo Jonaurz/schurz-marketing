@@ -8,6 +8,8 @@ import { Reveal } from "@/components/ui/reveal";
 import { Accordion } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
+import { FaqJsonLd } from "@/components/seo/faq-jsonld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, MapPin, Search, Users } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 import type { LocalSeoPage } from "@/lib/local-seo";
@@ -43,6 +45,14 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Start", path: "/" },
+          { name: service.label, path: service.overviewHref },
+          { name: `${service.shortLabel} ${city.name}`, path: page.href },
+        ]}
+      />
+      <FaqJsonLd items={service.faq} />
 
       <section className="border-b border-ink/10 pt-16 lg:pt-[4.5rem]">
         <Container>
@@ -233,6 +243,13 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
                   {" "}
                   <Link href={page.relatedHref} className="font-semibold text-ink underline underline-offset-4 hover:text-accent">
                     {page.relatedLabel}
+                  </Link>
+                </p>
+                <p>
+                  Für Handwerksbetriebe:
+                  {" "}
+                  <Link href="/handwerker" className="font-semibold text-ink underline underline-offset-4 hover:text-accent">
+                    Webdesign für Handwerker
                   </Link>
                 </p>
               </div>

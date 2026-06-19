@@ -1,5 +1,13 @@
 export type LocalServiceId = "webdesign" | "social-media";
-export type CitySlug = "neustadt-in-sachsen" | "dresden" | "chemnitz";
+export type CitySlug =
+  | "neustadt-in-sachsen"
+  | "dresden"
+  | "chemnitz"
+  | "pirna"
+  | "sebnitz"
+  | "bautzen"
+  | "leipzig"
+  | "meissen";
 
 export type LocalCity = {
   slug: CitySlug;
@@ -79,6 +87,61 @@ export const localCities: LocalCity[] = [
     localNeed:
       "Für Unternehmen in Chemnitz lohnt sich ein Auftritt, der Kompetenz sachlich zeigt und Anfragen aus der Region einfacher macht.",
   },
+  {
+    slug: "pirna",
+    name: "Pirna",
+    region: "Sächsische Schweiz und Elbland",
+    area: "Pirna, Heidenau, Königstein, Bad Schandau, Sebnitz und Dresden",
+    nearby: ["Heidenau", "Königstein", "Bad Schandau", "Dohna", "Sebnitz"],
+    localContext:
+      "Pirna ist das Tor zur Sächsischen Schweiz. Handwerksbetriebe, Dienstleister und lokale Anbieter konkurrieren hier um Kunden aus der Stadt und den umliegenden Orten.",
+    localNeed:
+      "Wer in Pirna und der Sächsischen Schweiz gefunden werden will, braucht einen Auftritt, der Leistungen, Einsatzgebiet und Kontaktwege sofort klar macht.",
+  },
+  {
+    slug: "sebnitz",
+    name: "Sebnitz",
+    region: "Sächsische Schweiz",
+    area: "Sebnitz, Neustadt in Sachsen, Stolpen, Hohnstein, Bad Schandau und Sohland",
+    nearby: ["Neustadt in Sachsen", "Stolpen", "Hohnstein", "Bad Schandau", "Sohland"],
+    localContext:
+      "Sebnitz liegt mitten in der Sächsischen Schweiz, nahe der tschechischen Grenze. Viele Betriebe leben hier von regionaler Nähe, Tourismus und Stammkunden aus den umliegenden Orten.",
+    localNeed:
+      "Eine klare Website hilft, über Sebnitz hinaus in der ganzen Sächsischen Schweiz gefunden zu werden und neue Anfragen zu gewinnen.",
+  },
+  {
+    slug: "bautzen",
+    name: "Bautzen",
+    region: "Oberlausitz",
+    area: "Bautzen, Bischofswerda, Kamenz, Hoyerswerda, Görlitz und Löbau",
+    nearby: ["Bischofswerda", "Kamenz", "Hoyerswerda", "Görlitz", "Löbau"],
+    localContext:
+      "Bautzen ist das Zentrum der Oberlausitz, mit Handwerk, Mittelstand und vielen regionalen Dienstleistern zwischen Dresden und Görlitz.",
+    localNeed:
+      "Für Betriebe in der Oberlausitz lohnt sich ein Auftritt, der die eigene Region klar bedient und Anfragen aus Bautzen und dem Umland einfacher macht.",
+  },
+  {
+    slug: "leipzig",
+    name: "Leipzig",
+    region: "Leipzig und Umgebung",
+    area: "Leipzig, Markkleeberg, Schkeuditz, Taucha, Markranstädt und Borna",
+    nearby: ["Markkleeberg", "Schkeuditz", "Taucha", "Markranstädt", "Borna"],
+    localContext:
+      "Leipzig ist ein schnell wachsender Markt mit starkem Wettbewerb, vielen jungen Unternehmen und Kunden, die online genau vergleichen.",
+    localNeed:
+      "Wer in Leipzig auffallen will, braucht einen Auftritt, der klar positioniert, schnell verstanden wird und Anfragen gezielt einsammelt.",
+  },
+  {
+    slug: "meissen",
+    name: "Meißen",
+    region: "Meißen und Elbland",
+    area: "Meißen, Radebeul, Coswig, Riesa, Großenhain und Nossen",
+    nearby: ["Radebeul", "Coswig", "Riesa", "Großenhain", "Nossen"],
+    localContext:
+      "Meißen und das Elbland sind geprägt von Tradition, Tourismus, Handwerk und kleinen Betrieben mit treuer Stammkundschaft.",
+    localNeed:
+      "Eine klare Website hilft, neben Stammkunden auch neue Anfragen aus Meißen und dem Elbland zu gewinnen.",
+  },
 ];
 
 export const localServices: LocalService[] = [
@@ -100,10 +163,10 @@ export const localServices: LocalService[] = [
     pain:
       "Viele Unternehmen leisten starke Arbeit, wirken online aber kleiner, unklarer oder austauschbarer als sie wirklich sind. Das kostet Sichtbarkeit, Vertrauen und Anfragen.",
     localBenefit:
-      "Mit lokal ausgerichteter Struktur, klaren Inhalten und sauberer technischer Basis entsteht ein Auftritt, den Google bei Suchanfragen in Ihrer Region besser einordnen kann.",
+      "Mit lokal ausgerichteter Struktur, klaren Inhalten und sauberer Technik entsteht ein Auftritt, den Google bei Suchanfragen in Ihrer Region besser einordnen kann.",
     features: [
       {
-        title: "Strategischer Aufbau",
+        title: "Klarer Aufbau",
         text: "Struktur, Navigation und Inhalte werden auf Ihre Zielgruppe ausgerichtet, damit Besucher schnell verstehen, warum Sie die richtige Wahl sind.",
       },
       {
@@ -111,7 +174,7 @@ export const localServices: LocalService[] = [
         text: "Ein ruhiger, professioneller Look, der zu Ihrem Anspruch passt und auf Smartphone, Tablet und Desktop sauber funktioniert.",
       },
       {
-        title: "Lokale Suchmaschinenbasis",
+        title: "Lokale SEO-Grundlage",
         text: "Seitentitel, Meta-Daten, interne Verlinkung und Inhalte werden so aufgebaut, dass Google Ihre regionale Relevanz besser versteht.",
       },
       {
