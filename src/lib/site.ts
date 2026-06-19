@@ -10,7 +10,23 @@ export const site = {
   /** Spätere Live-Domain. */
   domain: "schurz-marketing.de",
   url: "https://schurz-marketing.de",
-  tagline: "Webdesign & Social Media, die aus Besuchern Kunden machen",
+  tagline: "Webdesign & Social Media für regionale Unternehmen in Sachsen",
+
+  /** Schwerpunktregion. */
+  region: "Sachsen",
+  /** Wichtigste Orte im Einsatzgebiet (für Texte und Schema). */
+  serviceArea: [
+    "Dresden",
+    "Sebnitz",
+    "Pirna",
+    "Neustadt in Sachsen",
+    "Sächsische Schweiz",
+    "Bautzen",
+    "Oberlausitz",
+    "Meißen",
+    "Chemnitz",
+    "Leipzig",
+  ],
 
   /** Kontaktdaten. Leere optionale Felder werden im Frontend ausgeblendet. */
   contact: {
@@ -18,7 +34,7 @@ export const site = {
     phone: "0152 0426 3490",
     phoneHref: "+4915204263490", // klickbares tel:
     whatsapp: "", // z. B. "4915123456789" für https://wa.me/...
-    city: "Deutschlandweit",
+    city: "Sachsen",
   },
 
   /** Optionale Social-Media-Profile (leer lassen, wenn nicht vorhanden). */
@@ -34,6 +50,7 @@ export const navItems = [
   { label: "Start", href: "/" },
   { label: "Webdesign", href: "/webdesign" },
   { label: "Social Media", href: "/social-media" },
+  { label: "Handwerker", href: "/handwerker" },
   { label: "Über mich", href: "/ueber-mich" },
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
@@ -45,7 +62,7 @@ export const services = [
     href: "/webdesign",
     title: "Webdesign",
     short:
-      "Websites, die hochwertig aussehen und gezielt verkaufen. Strategisch aufgebaut, schnell, DSGVO-konform und barrierefrei.",
+      "Websites, die Ihre Leistungen klar zeigen und es Kunden leicht machen, eine Anfrage zu stellen. Schnell, gut auffindbar, DSGVO-konform und barrierefrei.",
   },
   {
     id: "social-media",

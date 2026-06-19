@@ -12,13 +12,14 @@ export function HomeHero() {
           <div className="lg:col-span-6">
             <Reveal immediate>
               <h1 className="text-balance text-4xl leading-[1.04] sm:text-5xl lg:text-[3.6rem]">
-                Webdesign und Social Media, die verkaufen.
+                Webdesign und Social Media für regionale Unternehmen in Sachsen.
               </h1>
             </Reveal>
             <Reveal immediate delay={0.08}>
-              <p className="mt-6 max-w-[46ch] text-pretty text-lg leading-relaxed text-ink/70">
-                Websites und Social-Media-Auftritte für Unternehmen, die
-                Vertrauen aufbauen und messbar Anfragen bringen.
+              <p className="mt-6 max-w-[52ch] text-pretty text-lg leading-relaxed text-ink/70">
+                Professionelle Websites, Landingpages und Social Media für
+                Dienstleister, Handwerksbetriebe und lokale Unternehmen, die online
+                klarer auftreten und mehr Anfragen aus ihrer Region bekommen wollen.
               </p>
             </Reveal>
             <Reveal immediate delay={0.16}>

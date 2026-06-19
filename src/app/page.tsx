@@ -10,6 +10,7 @@ import { StatCounter } from "@/components/ui/stat-counter";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
 import { HomeHero } from "@/components/sections/home-hero";
+import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { cn } from "@/lib/cn";
 import { getPublicContent } from "@/lib/content";
 import { ArrowRight, Check } from "@/components/ui/icons";
@@ -19,14 +20,32 @@ import { ArrowRight, Check } from "@/components/ui/icons";
 export const revalidate = 60;
 
 const industries = [
+  "Handwerk & Bau",
+  "Garten- & Landschaftsbau",
+  "Zaunbau",
+  "Maler & Elektriker",
   "Dienstleister",
   "Praxen & Gesundheit",
   "Kanzleien & Beratung",
-  "Gastronomie & Hotellerie",
-  "Immobilien",
-  "Handwerk & Bau",
+  "Lokale Unternehmen",
   "Coaches & Kreative",
-  "Online-Shops",
+];
+
+const trades = [
+  "Handwerksbetriebe",
+  "Garten- und Landschaftsbau",
+  "Zaunbauer",
+  "Bauunternehmen",
+  "Maler",
+  "Elektriker",
+  "Fliesenleger",
+];
+
+const otherAudiences = [
+  "Dienstleister",
+  "Praxen & Gesundheit",
+  "Kanzleien & Beratung",
+  "Coaches & Berater",
   "Lokale Unternehmen",
 ];
 
@@ -62,9 +81,9 @@ const serviceBlocks = [
     href: "/webdesign",
     image: "/images/schurz-marketing-webdesign.png",
     imageAlt: "Website-Projekt von Schurz Marketing auf Laptop und Smartphone",
-    text: "Websites, die hochwertig aussehen und gezielt verkaufen. Jede Seite folgt einer klaren Verkaufslogik: Vertrauen aufbauen, überzeugen, zur Anfrage führen.",
+    text: "Websites, die Ihre Leistungen klar zeigen und es Kunden leicht machen, eine Anfrage zu stellen. Aufgebaut so, dass Besucher schnell sehen, was Sie anbieten, wo Sie arbeiten und wie sie Sie erreichen.",
     points: [
-      "Strategie und Verkaufslogik statt reiner Optik",
+      "Klare Struktur statt reiner Optik",
       "Technisch sauber, schnell, gut auffindbar",
       "DSGVO-konform und barrierefrei",
       "Auf Anfragen ausgelegt, nicht auf Effekte",
@@ -91,7 +110,7 @@ const pillars = [
     text: "Sie haben einen festen Ansprechpartner. Ohne Agentur-Pingpong und ohne wechselnde Zuständigkeiten.",
   },
   {
-    title: "Strategisch statt nur hübsch",
+    title: "Klar statt nur hübsch",
     text: "Jede Entscheidung folgt einem Ziel: mehr Vertrauen, mehr Sichtbarkeit, mehr passende Anfragen.",
   },
   {
@@ -99,8 +118,8 @@ const pillars = [
     text: "Datenschutz und Barrierefreiheit werden von Anfang an mitgedacht, statt kurz vor Launch ergänzt.",
   },
   {
-    title: "Hochwertig im Detail",
-    text: "Klares Design, saubere Technik, durchdachte Texte. Wertigkeit, die man sieht und spürt.",
+    title: "Regional gedacht",
+    text: "Inhalte und Struktur sind so aufgebaut, dass Kunden aus Ihrer Region schnell erkennen, was Sie anbieten.",
   },
 ];
 
@@ -150,7 +169,7 @@ const faqs = [
   },
   {
     q: "Für welche Branchen arbeiten Sie?",
-    a: "Branchenoffen: von Dienstleistern über Praxen, Kanzleien und Gastronomie bis zu Handwerk und Industrie. Entscheidend ist nicht die Branche, sondern der Anspruch an einen hochwertigen Auftritt.",
+    a: "Schwerpunkt sind Handwerk, Bau, Garten- und Landschaftsbau und regionale Dienstleister in Sachsen. Genauso arbeite ich für Praxen, Kanzleien, Berater und lokale Unternehmen. Entscheidend ist, dass Ihre Website klar zeigt, was Sie anbieten und wie Kunden Sie erreichen.",
   },
 ];
 
@@ -159,6 +178,7 @@ export default async function Home() {
 
   return (
     <>
+      <FaqJsonLd items={faqs} />
       <HomeHero />
 
       {/* Branchen-Laufband */}
@@ -166,8 +186,68 @@ export default async function Home() {
         <Marquee items={industries} />
       </div>
 
+      {/* Für wen wir arbeiten */}
+      <Section aria-label="Für wen wir arbeiten" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            eyebrow="Branchen"
+            title="Für wen wir arbeiten."
+            intro="Schwerpunkt Handwerk, Bau und regionale Dienstleister in Sachsen. Genauso zu Hause bei Praxen, Kanzleien und lokalen Unternehmen, die online klarer auftreten wollen."
+          />
+          <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <Reveal className="lg:col-span-7">
+              <div className="border-t-2 border-ink pt-5">
+                <h3 className="text-lg font-semibold">Handwerk, Bau und Außenanlagen</h3>
+                <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-ink/70">
+                  Hier liegt der Schwerpunkt. Projektbilder, Leistungen, Einsatzgebiet
+                  und ein einfaches Anfrageformular spielen zusammen, damit Kunden
+                  schnell sehen, was Sie machen und wo Sie arbeiten.
+                </p>
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {trades.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-ink/80">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/handwerker"
+                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink underline underline-offset-8 transition-colors hover:text-accent"
+                >
+                  Mehr zu Webseiten für Handwerker
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={0.06} className="lg:col-span-5">
+              <div className="border-t-2 border-ink/30 pt-5">
+                <h3 className="text-lg font-semibold">Dienstleister und lokale Betriebe</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">
+                  Auch abseits vom Handwerk: Wenn Vertrauen, klare Angebote und eine
+                  einfache Kontaktaufnahme zählen, ist eine gute Website genauso wichtig.
+                </p>
+                <ul className="mt-6 grid gap-3">
+                  {otherAudiences.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-ink/80">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+          <p className="mt-10 max-w-[78ch] text-pretty text-sm leading-relaxed text-ink/70">
+            Im Einsatz für Unternehmen in Dresden, Sebnitz, Pirna, Neustadt in Sachsen,
+            der Sächsischen Schweiz, Bautzen, der Oberlausitz, Meißen, Chemnitz, Leipzig
+            und ganz Sachsen.
+          </p>
+        </Container>
+      </Section>
+
       {/* Kennzahlen */}
-      <Section spacing="tight" aria-label="Kennzahlen">
+      <Section spacing="tight" aria-label="Kennzahlen" className="border-t border-ink/10">
         <Container>
           <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
             {stats.map((stat) => (
@@ -274,7 +354,7 @@ export default async function Home() {
               <SectionHeading
                 size="compact"
                 title="Ein Partner, der Wirkung über Effekte stellt."
-                intro="Nicht lauter als andere. Klarer, hochwertiger und verbindlicher."
+                intro="Nicht lauter als andere. Klarer, verbindlicher und nah an Ihrer Region."
               />
             </div>
             <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:col-span-8">
