@@ -59,10 +59,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
           <Reveal immediate>
             <div className="grid gap-10 py-14 sm:py-16 lg:grid-cols-12 lg:items-center lg:py-20">
               <div className="lg:col-span-7">
-                <p className="text-xs font-semibold uppercase tracking-label text-accent">
-                  {service.shortLabel} in {city.name}
-                </p>
-                <h1 className="mt-4 text-balance text-4xl leading-[1.04] sm:text-5xl lg:text-6xl">
+                <h1 className="text-balance text-4xl leading-[1.04] sm:text-5xl lg:text-6xl">
                   {page.h1}
                 </h1>
                 <p className="mt-6 max-w-[62ch] text-pretty text-lg leading-relaxed text-ink/70">
@@ -133,7 +130,6 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
       <Section aria-label="Leistungsumfang" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Leistungsumfang"
             title={`${service.label} mit klarem regionalem Fokus.`}
             intro={`Für Unternehmen in ${city.name} und Umgebung entsteht kein austauschbarer Auftritt, sondern ein sauber aufgebautes System für mehr Sichtbarkeit und mehr passende Anfragen.`}
           />
@@ -212,7 +208,6 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Ablauf"
             title={`So entsteht ${service.titleWord} für ${city.name}.`}
           />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">

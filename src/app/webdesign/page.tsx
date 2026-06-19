@@ -198,7 +198,6 @@ export default function WebdesignPage() {
       <Section aria-label="Leistungsumfang Webdesign" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Leistungsumfang"
             title="Mehr als eine schöne Website."
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
@@ -219,7 +218,6 @@ export default function WebdesignPage() {
             <div className="lg:col-span-6">
               <SectionHeading
                 size="compact"
-                eyebrow="Schwerpunkt"
                 title="Besonders stark für Handwerk, Bau und regionale Dienstleister."
                 intro="Für Handwerksbetriebe zählen Projektbilder, Leistungen, Einsatzgebiet und ein einfaches Anfrageformular. Bei Praxen, Kanzleien und Beratern stehen Vertrauen, klare Angebote und eine einfache Kontaktaufnahme im Vordergrund."
               />
@@ -292,7 +290,6 @@ export default function WebdesignPage() {
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Ablauf"
             title="Ein klarer Weg. Ohne böse Überraschungen."
           />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">

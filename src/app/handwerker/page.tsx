@@ -168,7 +168,6 @@ export default function HandwerkerPage() {
       />
 
       <PageHero
-        eyebrow="Für Handwerk, Bau & regionale Dienstleister"
         title="Webdesign für Handwerker, Bau und regionale Dienstleister in Sachsen."
         subtitle="Webseiten, die Ihre Leistungen klar zeigen, Vertrauen schaffen und mehr Anfragen aus Ihrer Region bringen. WordPress, lokale SEO, Google-Unternehmensprofil und Wartung aus einer Hand."
       >
@@ -210,7 +209,6 @@ export default function HandwerkerPage() {
       <Section aria-label="Gewerke" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Gewerke"
             title="Eigene Seiten für Ihr Gewerk."
             intro="Gerade dort, wo Projektbilder, Leistungen und das Einsatzgebiet zusammenspielen, bringt eine klare Website schnell mehr Anfragen. Für diese Gewerke gibt es eigene Seiten:"
           />
@@ -241,7 +239,6 @@ export default function HandwerkerPage() {
       <Section aria-label="Leistungen für Handwerker" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Leistungen"
             title="Alles für den Auftritt, in einer Hand."
             intro="Jede Leistung lässt sich einzeln oder kombiniert nutzen. Was sinnvoll ist, hängt von Ihrem Betrieb und Ihren Zielen ab."
           />
@@ -289,31 +286,31 @@ export default function HandwerkerPage() {
       <Section aria-label="Einsatzgebiet" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Region"
             title="Im Einsatz in ganz Sachsen."
             intro="Für viele Orte gibt es eigene Seiten mit regionalem Bezug. Von dort sehen Kunden direkt, dass Sie in ihrer Nähe arbeiten."
           />
-          <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {localCities.map((city) => (
-              <li key={city.slug}>
-                <Link
-                  href={`/webdesign/${city.slug}`}
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-ink/80 transition-colors hover:text-accent"
-                >
+              <Link
+                key={city.slug}
+                href={`/webdesign/${city.slug}`}
+                className="group flex items-center justify-between gap-3 bg-paper p-5 transition-colors hover:bg-white"
+              >
+                <span className="flex items-center gap-2 text-sm font-medium text-ink">
                   <MapPin className="h-4 w-4 shrink-0 text-accent" />
-                  Webdesign {city.name}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </Link>
-              </li>
+                  {city.name}
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+              </Link>
             ))}
-          </ul>
+          </div>
         </Container>
       </Section>
 
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading eyebrow="Ablauf" title="So entsteht Ihre Handwerker-Website." />
+          <SectionHeading title="So entsteht Ihre Handwerker-Website." />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no}>

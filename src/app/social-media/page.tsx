@@ -187,7 +187,6 @@ export default function SocialMediaPage() {
       <Section aria-label="Leistungen Social Media" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Leistungsbausteine"
             title="Alles, was Ihr Social Media braucht. In einer Hand."
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2">
@@ -227,7 +226,6 @@ export default function SocialMediaPage() {
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Ablauf"
             title="Von der Idee zur laufenden Betreuung."
           />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">

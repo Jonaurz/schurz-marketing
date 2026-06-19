@@ -183,7 +183,6 @@ export default async function Home() {
       <Section aria-label="Für wen wir arbeiten" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Branchen"
             title="Für wen wir arbeiten."
             intro="Schurz Marketing arbeitet deutschlandweit für unterschiedliche Unternehmen und Dienstleister. Entscheidend ist nicht die Branche, sondern ein Auftritt, der Ihre Leistung klar zeigt und Anfragen bringt."
           />
@@ -287,7 +286,6 @@ export default async function Home() {
       <Section id="leistungen" aria-label="Leistungen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Leistungen"
             title="Zwei Leistungen. Ein Ziel: dass Sie online überzeugen."
           />
           <div className="mt-14 space-y-20">
@@ -368,7 +366,6 @@ export default async function Home() {
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Ablauf"
             title="In vier Schritten zum Auftritt, der wirkt."
           />
           <ol className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">

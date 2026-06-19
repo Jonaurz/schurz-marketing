@@ -140,7 +140,6 @@ export default function SachsenPage() {
       />
 
       <PageHero
-        eyebrow="Regional in Sachsen"
         title="Webdesign für regionale Unternehmen in Sachsen."
         subtitle="Schurz Marketing arbeitet deutschlandweit, mit einem klaren Schwerpunkt in Sachsen. Für Unternehmen, Dienstleister und Betriebe, die in ihrer Region besser gefunden werden und mehr Anfragen bekommen wollen."
       >
@@ -177,7 +176,6 @@ export default function SachsenPage() {
       <Section aria-label="Für wen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Für wen"
             title="Für Unternehmen und Dienstleister aus der Region."
             intro="Nicht nur eine Branche. Entscheidend ist, dass Ihre Kunden aus der Umgebung kommen und Sie online klar finden sollen."
           />
@@ -212,24 +210,24 @@ export default function SachsenPage() {
       <Section aria-label="Orte und Regionen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Orte"
             title="Eigene Seiten für Ihre Region."
             intro="Von Dresden über die Sächsische Schweiz bis Leipzig. Jede Seite erklärt, für wen Schurz Marketing dort relevant ist."
           />
-          <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {localCities.map((city) => (
-              <li key={city.slug}>
-                <Link
-                  href={`/webdesign/${city.slug}`}
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-ink/80 transition-colors hover:text-accent"
-                >
+              <Link
+                key={city.slug}
+                href={`/webdesign/${city.slug}`}
+                className="group flex items-center justify-between gap-3 bg-paper p-5 transition-colors hover:bg-white"
+              >
+                <span className="flex items-center gap-2 text-sm font-medium text-ink">
                   <MapPin className="h-4 w-4 shrink-0 text-accent" />
-                  Webdesign {city.name}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </Link>
-              </li>
+                  {city.name}
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+              </Link>
             ))}
-          </ul>
+          </div>
           <p className="mt-8 max-w-[70ch] text-sm leading-relaxed text-ink/70">
             Sie suchen eine Seite speziell für Ihr Gewerk? Den Überblick finden Sie unter{" "}
             <Link href="/handwerker" className="font-semibold text-ink underline underline-offset-4 hover:text-accent">
@@ -243,7 +241,7 @@ export default function SachsenPage() {
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading eyebrow="Ablauf" title="So entsteht Ihr regionaler Auftritt." />
+          <SectionHeading title="So entsteht Ihr regionaler Auftritt." />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no}>

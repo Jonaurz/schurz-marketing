@@ -75,7 +75,7 @@ export function TradePage({ trade }: { trade: Trade }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
 
-      <PageHero eyebrow={trade.eyebrow} title={trade.h1} subtitle={trade.promise}>
+      <PageHero title={trade.h1} subtitle={trade.promise}>
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
         </Button>
@@ -101,7 +101,6 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Leistungen darstellen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Leistungen"
             title="Diese Leistungen lassen sich klar darstellen."
             intro="Jede Leistung bekommt ihren Platz, damit Kunden schnell finden, was sie suchen."
           />
@@ -139,31 +138,31 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Einsatzgebiet" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            eyebrow="Region"
             title="Regional gefunden werden in ganz Sachsen."
             intro="Für viele Orte gibt es eigene Seiten mit regionalem Bezug. So sehen Kunden direkt, dass Sie in ihrer Nähe arbeiten."
           />
-          <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {localCities.map((city) => (
-              <li key={city.slug}>
-                <Link
-                  href={`/webdesign/${city.slug}`}
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-ink/80 transition-colors hover:text-accent"
-                >
+              <Link
+                key={city.slug}
+                href={`/webdesign/${city.slug}`}
+                className="group flex items-center justify-between gap-3 bg-paper p-5 transition-colors hover:bg-white"
+              >
+                <span className="flex items-center gap-2 text-sm font-medium text-ink">
                   <MapPin className="h-4 w-4 shrink-0 text-accent" />
-                  Webdesign {city.name}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </Link>
-              </li>
+                  {city.name}
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+              </Link>
             ))}
-          </ul>
+          </div>
         </Container>
       </Section>
 
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading eyebrow="Ablauf" title="So entsteht Ihre Website." />
+          <SectionHeading title="So entsteht Ihre Website." />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no}>
