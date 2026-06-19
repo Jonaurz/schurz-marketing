@@ -8,15 +8,13 @@ import { Accordion } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
+import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
-import { ProofSection } from "@/components/sections/references-section";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 import { localCities } from "@/lib/local-seo";
 
-/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
-   zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
 export const revalidate = 60;
 
 export const metadata: Metadata = {
@@ -156,26 +154,46 @@ export default function SachsenPage() {
         </Button>
       </PageHero>
 
-      {/* Einstieg */}
+      {/* Problem */}
       <Section aria-label="Warum regionale Sichtbarkeit zählt">
         <Container>
           <div className="max-w-3xl">
-            <SectionHeading title="Online gefunden werden, wo Ihre Kunden suchen." />
+            <SectionHeading title="Ihre Kunden suchen in der Region. Finden sie Sie?" />
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">
-                Viele Unternehmen leben von Kunden aus der Umgebung. Wer regional gefunden
-                werden will, braucht einen Auftritt, der klar zeigt, was angeboten wird,
-                wo gearbeitet wird und wie man Kontakt aufnimmt.
+                Viele Unternehmen leben von Kunden aus der Umgebung. Diese Kunden suchen
+                heute zuerst online und vergleichen, bevor sie sich melden. Wer dort
+                nicht auftaucht oder einen unklaren Auftritt hat, wird übersehen.
               </p>
               <p className="text-pretty">
-                Für die wichtigsten Orte in Sachsen gibt es eigene Seiten mit echtem
-                lokalem Bezug, statt einer langen Liste mit Ortsnamen. So passt jede Seite
-                zu den Menschen, die sie erreichen soll.
+                Damit das nicht passiert, braucht es einen Auftritt, der klar zeigt, was
+                Sie anbieten, wo Sie arbeiten und wie man Sie erreicht. Für die
+                wichtigsten Orte in Sachsen gibt es dafür eigene Seiten mit echtem
+                lokalem Bezug, statt einer langen Liste mit Ortsnamen.
               </p>
             </div>
           </div>
         </Container>
       </Section>
+
+      {/* Nutzen / Lösung */}
+      <Section aria-label="Regionaler Nutzen" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-8 md:grid-cols-3">
+            {localBenefits.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.06}>
+                <div className="border-t-2 border-ink pt-5">
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{item.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
 
       {/* Für wen */}
       <Section aria-label="Für wen" className="border-t border-ink/10">
@@ -192,22 +210,6 @@ export default function SachsenPage() {
               </li>
             ))}
           </ul>
-        </Container>
-      </Section>
-
-      {/* Nutzen */}
-      <Section aria-label="Regionaler Nutzen" className="border-t border-ink/10">
-        <Container>
-          <div className="grid gap-8 md:grid-cols-3">
-            {localBenefits.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.06}>
-                <div className="border-t-2 border-ink pt-5">
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{item.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </Container>
       </Section>
 
@@ -242,9 +244,6 @@ export default function SachsenPage() {
           </p>
         </Container>
       </Section>
-
-      {/* Beweis: Referenzen + Kundenstimmen */}
-      <ProofSection />
 
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">

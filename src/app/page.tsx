@@ -15,8 +15,8 @@ import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { cn } from "@/lib/cn";
 import { ArrowRight, Check } from "@/components/ui/icons";
 
-/* Inhalte (Referenzen/Kundenstimmen) werden bis zu 60 s zwischengespeichert,
-   statt jede Anfrage neu zu rendern. */
+/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden zur
+   Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
 export const revalidate = 60;
 
 const industries = [
@@ -55,16 +55,16 @@ const problems = [
     text: "Der erste Eindruck entscheidet in Sekunden. Wirkt der Auftritt billig, wird unbewusst auch die Leistung dahinter abgewertet.",
   },
   {
-    title: "Niemand findet Sie",
-    text: "Wer nach Ihrem Angebot sucht, landet bei der Konkurrenz. Jeder Tag ohne Sichtbarkeit ist verschenkter Umsatz.",
+    title: "Sie tauchen bei Google kaum auf",
+    text: "Wer nach Ihrem Angebot sucht, landet bei der Konkurrenz. Jeder Tag ohne Sichtbarkeit kostet Anfragen, die woanders landen.",
   },
   {
     title: "Social Media bleibt liegen",
-    text: "Für Instagram, LinkedIn und Co. fehlt die Zeit. Währenddessen bauen sichtbarere Wettbewerber Vertrauen bei Ihrer Zielgruppe auf.",
+    text: "Für Instagram, Facebook und Co. fehlt die Zeit. Währenddessen bauen sichtbarere Wettbewerber Vertrauen bei Ihren Kunden auf.",
   },
   {
-    title: "Besucher springen ab",
-    text: "Es kommen Klicks, aber keine Anfragen. Ohne klare Führung zur Kontaktaufnahme bleibt Interesse folgenlos.",
+    title: "Es kommen Klicks, aber keine Anfragen",
+    text: "Besucher sind da, springen aber wieder ab. Ohne klare Führung zur Kontaktaufnahme passiert mit dem Interesse nichts.",
   },
 ];
 
@@ -172,13 +172,117 @@ export default function Home() {
       <FaqJsonLd items={faqs} />
       <HomeHero />
 
+      {/* Problem: dem Besucher klar machen, was ihm online entgeht */}
+      <Section aria-label="Ausgangslage" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            title="Die meisten Kunden schauen Sie sich erst online an."
+            intro="Wer heute eine Leistung sucht, vergleicht zuerst im Internet. Wirkt Ihre Website veraltet, unübersichtlich oder ist sie auf dem Handy schwer zu bedienen, entscheiden sich viele für den nächsten Anbieter. Das Ärgerliche ist: Sie merken es nicht einmal, weil diese Anfragen nie bei Ihnen ankommen."
+          />
+          <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            {problems.map((problem, i) => (
+              <Reveal key={problem.title} delay={i * 0.05}>
+                <article className="border-t-2 border-ink pt-5">
+                  <h3 className="text-lg font-semibold">{problem.title}</h3>
+                  <p className="mt-2 max-w-[50ch] text-sm leading-relaxed text-ink/70">
+                    {problem.text}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.1}>
+            <p className="mt-12 max-w-[60ch] text-pretty text-lg text-ink/80">
+              Daran lässt sich etwas ändern, ohne großen Aufwand für Sie. Mit einer
+              Website, die Ihre Arbeit zeigt und Besucher Schritt für Schritt zur
+              Anfrage führt.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Lösung: Leistungen */}
+      <Section id="leistungen" aria-label="Leistungen" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            title="Womit ich Ihnen helfe."
+            intro="Zwei Leistungen, einzeln oder zusammen, mit dem gleichen Ziel: dass aus Besuchern Anfragen werden."
+          />
+          <div className="mt-14 space-y-20">
+            {serviceBlocks.map((service, i) => {
+              const isFirst = i === 0;
+              return (
+                <Reveal key={service.title} delay={0.05}>
+                  <article className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+                    <div className={cn("lg:col-span-6", !isFirst && "lg:order-2")}>
+                      <figure className="relative">
+                        <Image
+                          src={service.image}
+                          alt={service.imageAlt}
+                          width={1448}
+                          height={1086}
+                          sizes="(min-width: 1024px) 36rem, 100vw"
+                          className="h-auto w-full"
+                        />
+                      </figure>
+                    </div>
+                    <div className={cn("lg:col-span-6", !isFirst && "lg:order-1")}>
+                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                        {service.title}
+                      </h3>
+                      <p className="mt-4 max-w-[52ch] text-pretty leading-relaxed text-ink/70">
+                        {service.text}
+                      </p>
+                      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                        {service.points.map((point) => (
+                          <li key={point} className="flex items-start gap-3 text-sm text-ink/80">
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        href={service.href}
+                        className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink underline underline-offset-8 transition-colors hover:text-accent"
+                      >
+                        Mehr zu {service.title}
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
+
+      {/* Kennzahlen */}
+      <Section spacing="tight" aria-label="Kennzahlen" className="border-t border-ink/10">
+        <Container>
+          <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col border-l border-ink/15 pl-5">
+                <dt className="order-2 mt-2 text-sm leading-snug text-ink/70">{stat.label}</dt>
+                <dd className="order-1 text-4xl font-bold tracking-tight sm:text-5xl">
+                  <StatCounter value={stat.value} suffix={stat.suffix} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </Section>
+
       {/* Branchen-Laufband */}
-      <div className="border-b border-ink/10 py-5">
+      <div className="border-y border-ink/10 py-5">
         <Marquee items={industries} />
       </div>
 
       {/* Für wen wir arbeiten */}
-      <Section aria-label="Für wen wir arbeiten" className="border-t border-ink/10">
+      <Section aria-label="Für wen wir arbeiten">
         <Container>
           <SectionHeading
             title="Für wen wir arbeiten."
@@ -236,106 +340,6 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Kennzahlen */}
-      <Section spacing="tight" aria-label="Kennzahlen" className="border-t border-ink/10">
-        <Container>
-          <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col border-l border-ink/15 pl-5">
-                <dt className="order-2 mt-2 text-sm leading-snug text-ink/70">{stat.label}</dt>
-                <dd className="order-1 text-4xl font-bold tracking-tight sm:text-5xl">
-                  <StatCounter value={stat.value} suffix={stat.suffix} />
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Container>
-      </Section>
-
-      {/* Problem */}
-      <Section aria-label="Ausgangslage" className="border-t border-ink/10">
-        <Container>
-          <SectionHeading
-            title="Ihre Arbeit ist gut. Online sieht das nur niemand."
-            intro="Kunden entscheiden in wenigen Sekunden, ob sie Ihnen zutrauen, was sie suchen. Wirkt der Auftritt veraltet oder unklar, sind sie weg, bevor Sie überhaupt von ihnen erfahren."
-          />
-          <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
-            {problems.map((problem, i) => (
-              <Reveal key={problem.title} delay={i * 0.05}>
-                <article className="border-t-2 border-ink pt-5">
-                  <h3 className="text-lg font-semibold">{problem.title}</h3>
-                  <p className="mt-2 max-w-[50ch] text-sm leading-relaxed text-ink/70">
-                    {problem.text}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.1}>
-            <p className="mt-12 max-w-[60ch] text-pretty text-lg text-ink/80">
-              Das Gute daran: All das lässt sich lösen. Mit einem Auftritt, der
-              so professionell ist wie Ihre Arbeit.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* Lösung: Leistungen */}
-      <Section id="leistungen" aria-label="Leistungen" className="border-t border-ink/10">
-        <Container>
-          <SectionHeading title="Zwei Leistungen. Ein Ziel: dass Sie online überzeugen." />
-          <div className="mt-14 space-y-20">
-            {serviceBlocks.map((service, i) => {
-              const isFirst = i === 0;
-              return (
-                <Reveal key={service.title} delay={0.05}>
-                  <article className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-                    <div className={cn("lg:col-span-6", !isFirst && "lg:order-2")}>
-                      <figure className="relative">
-                        <Image
-                          src={service.image}
-                          alt={service.imageAlt}
-                          width={1448}
-                          height={1086}
-                          sizes="(min-width: 1024px) 36rem, 100vw"
-                          className="h-auto w-full"
-                        />
-                      </figure>
-                    </div>
-                    <div className={cn("lg:col-span-6", !isFirst && "lg:order-1")}>
-                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                        {service.title}
-                      </h3>
-                      <p className="mt-4 max-w-[52ch] text-pretty leading-relaxed text-ink/70">
-                        {service.text}
-                      </p>
-                      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                        {service.points.map((point) => (
-                          <li key={point} className="flex items-start gap-3 text-sm text-ink/80">
-                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                      <Link
-                        href={service.href}
-                        className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink underline underline-offset-8 transition-colors hover:text-accent"
-                      >
-                        Mehr zu {service.title}
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </article>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Beweis: Referenzen + Kundenstimmen */}
-      <ProofSection />
-
       {/* Warum Schurz Marketing */}
       <Section aria-label="Warum Schurz Marketing" className="border-t border-ink/10">
         <Container>
@@ -343,8 +347,8 @@ export default function Home() {
             <div className="lg:col-span-4">
               <SectionHeading
                 size="compact"
-                title="Ein Partner, der Wirkung über Effekte stellt."
-                intro="Nicht lauter als andere. Klarer, hochwertiger und verbindlicher."
+                title="Was die Zusammenarbeit ausmacht."
+                intro="Kein Agentur-Pingpong und keine leeren Versprechen. Sie wissen von Anfang an, mit wem Sie arbeiten und woran Sie sind."
               />
             </div>
             <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:col-span-8">
@@ -364,7 +368,7 @@ export default function Home() {
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading title="In vier Schritten zum Auftritt, der wirkt." />
+          <SectionHeading title="So läuft die Zusammenarbeit ab." />
           <ol className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no} className="bg-paper p-6 sm:p-7">
@@ -397,7 +401,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Über mich (am Ende, kurz vor dem Abschluss) */}
+      {/* Über mich (ganz am Ende, kurz vor dem Abschluss) */}
       <Section aria-label="Über mich" className="border-t border-ink/10">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">

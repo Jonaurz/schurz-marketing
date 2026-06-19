@@ -17,8 +17,6 @@ import { site } from "@/lib/site";
 import { localCities } from "@/lib/local-seo";
 import { trades } from "@/lib/trades";
 
-/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
-   zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
 export const revalidate = 60;
 
 export const metadata: Metadata = {
@@ -185,32 +183,59 @@ export default function HandwerkerPage() {
       </PageHero>
 
       {/* Problem */}
-      <Section aria-label="Warum eine gute Website für Handwerker zählt">
+      <Section aria-label="Ausgangslage">
         <Container>
           <div className="max-w-3xl">
-            <SectionHeading title="Gute Arbeit reicht nicht, wenn sie online niemand sieht." />
+            <SectionHeading title="Was passiert, wenn die Empfehlungen weniger werden?" />
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">
-                Viele Handwerksbetriebe haben volle Auftragsbücher über Empfehlung,
-                aber online kaum etwas. Sobald Empfehlungen wegfallen oder ein neuer
-                Bereich wachsen soll, fehlt der Ort, an dem Kunden sehen, was Sie
-                können und wie sie Sie erreichen.
+                Viele Handwerksbetriebe sind über Empfehlungen gut ausgelastet und haben
+                online kaum etwas. Das funktioniert, solange die Mundpropaganda läuft.
+                Sobald aber ein neuer Bereich wachsen soll oder Aufträge ausbleiben,
+                fehlt der Ort, an dem neue Kunden sehen, was Sie können.
               </p>
               <p className="text-pretty">
-                Eine gute Website muss nicht kompliziert sein. Sie muss erklären,
-                Vertrauen schaffen und Anfragen ermöglichen. Leistungen, Referenzen,
-                Einsatzgebiet und Kontakt sollten auf den ersten Blick verständlich sein.
+                Wer heute einen Betrieb sucht, schaut zuerst online und vergleicht. Ist
+                dort nichts oder nur eine veraltete Seite zu finden, landet die Anfrage
+                beim nächsten, der sauber auftritt.
               </p>
               <p className="text-pretty">
-                Genau darauf ist diese Arbeit ausgelegt: Webseiten für Handwerk, Bau und
-                regionale Dienstleister, die in Sachsen besser gefunden werden.
+                Eine gute Website muss dafür nicht kompliziert sein. Sie muss erklären,
+                was Sie machen, Vertrauen schaffen und es leicht machen, Sie zu
+                erreichen. Leistungen, Projekte, Einsatzgebiet und Kontakt gehören auf
+                den ersten Blick verständlich dargestellt.
               </p>
             </div>
           </div>
         </Container>
       </Section>
 
-      {/* Gewerke */}
+      {/* Lösung: Leistungen */}
+      <Section aria-label="Leistungen für Handwerker" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            title="Alles für den Auftritt, in einer Hand."
+            intro="Jede Leistung lässt sich einzeln oder kombiniert nutzen. Was sinnvoll ist, hängt von Ihrem Betrieb und Ihren Zielen ab."
+          />
+          <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            {leistungen.map((item, i) => (
+              <Reveal key={item.title} delay={(i % 2) * 0.05}>
+                <article className="border-t-2 border-ink pt-5">
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-ink/70">
+                    {item.text}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
+
+      {/* Gewerke (für wen) */}
       <Section aria-label="Gewerke" className="border-t border-ink/10">
         <Container>
           <SectionHeading
@@ -239,31 +264,6 @@ export default function HandwerkerPage() {
           </p>
         </Container>
       </Section>
-
-      {/* Lösung: Leistungen */}
-      <Section aria-label="Leistungen für Handwerker" className="border-t border-ink/10">
-        <Container>
-          <SectionHeading
-            title="Alles für den Auftritt, in einer Hand."
-            intro="Jede Leistung lässt sich einzeln oder kombiniert nutzen. Was sinnvoll ist, hängt von Ihrem Betrieb und Ihren Zielen ab."
-          />
-          <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
-            {leistungen.map((item, i) => (
-              <Reveal key={item.title} delay={(i % 2) * 0.05}>
-                <article className="border-t-2 border-ink pt-5">
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-ink/70">
-                    {item.text}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Beweis: Referenzen + Kundenstimmen */}
-      <ProofSection />
 
       {/* Nutzen */}
       <Section aria-label="Nutzen für Handwerker" className="border-t border-ink/10">
