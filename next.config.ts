@@ -27,6 +27,35 @@ const noIndexLegalRoutes = [
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/webdesign-handwerker",
+        destination: "/handwerker",
+        permanent: true,
+      },
+      {
+        source: "/webdesign-bauunternehmen",
+        destination: "/handwerker/bauunternehmen",
+        permanent: true,
+      },
+      {
+        source: "/webdesign-maler",
+        destination: "/handwerker/maler",
+        permanent: true,
+      },
+      {
+        source: "/webdesign-dachdecker",
+        destination: "/handwerker/dachdecker",
+        permanent: true,
+      },
+      {
+        source: "/webdesign-sanitaer-shk",
+        destination: "/handwerker/sanitaer-shk",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

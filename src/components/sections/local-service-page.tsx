@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 import type { LocalSeoPage } from "@/lib/local-seo";
 
 export function LocalServicePage({ page }: { page: LocalSeoPage }) {
@@ -43,10 +43,9 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
 
   return (
     <>
-      <Script
-        id={`${service.id}-${city.slug}-jsonld`}
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <BreadcrumbJsonLd
         items={[

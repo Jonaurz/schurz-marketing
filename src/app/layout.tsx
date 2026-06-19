@@ -6,19 +6,20 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CookieBanner } from "@/components/cookie-banner";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 
 const logoSvgUrl = `${site.url}/logo.svg`;
 const logoPngUrl = `${site.url}/images/schurz-marketing-logo.png`;
 
 const metaDescription =
-  "Webdesign und Social-Media-Betreuung für Unternehmen, Dienstleister und lokale Betriebe. Klare, DSGVO-konforme und barrierefreie Websites, die Vertrauen schaffen und Anfragen bringen.";
+  "Webdesign und Social Media aus Neustadt in Sachsen für Unternehmen, Dienstleister und Handwerk. Persönliche Zusammenarbeit in ganz Deutschland.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}. ${site.tagline}`,
-    template: `%s · ${site.name}`,
+    default: "Schurz Marketing | Webdesign & Social Media",
+    template: `%s | ${site.name}`,
   },
   description: metaDescription,
   applicationName: site.name,
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: site.url,
     siteName: site.name,
-    title: `${site.name}. ${site.tagline}`,
+    title: "Schurz Marketing | Webdesign & Social Media",
     description: metaDescription,
     images: [
       {
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name}. ${site.tagline}`,
+    title: "Schurz Marketing | Webdesign & Social Media",
     description: metaDescription,
     images: ["/images/schurz-marketing-webdesign.png"],
   },
@@ -97,6 +98,12 @@ const jsonLd = {
   founder: { "@type": "Person", "@id": `${site.url}/#founder`, name: site.founder },
   email: site.contact.email,
   telephone: site.contact.phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.location.city,
+    addressRegion: site.location.region,
+    addressCountry: site.location.countryCode,
+  },
   areaServed: { "@type": "Country", name: "Deutschland" },
   knowsAbout: [
     "Webdesign",
@@ -177,15 +184,15 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: animationPolyfill }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(webSiteJsonLd) }}
         />
         {/* Inhalte nie per JS verstecken: ohne JS sind Reveal-Elemente sichtbar. */}
         <noscript>

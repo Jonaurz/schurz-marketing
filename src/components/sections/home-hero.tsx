@@ -12,14 +12,14 @@ export function HomeHero() {
           <div className="lg:col-span-6">
             <Reveal immediate>
               <h1 className="text-balance text-4xl leading-[1.04] sm:text-5xl lg:text-[3.6rem]">
-                Webdesign und Social Media für Unternehmen und Dienstleister.
+                Webdesign und Social Media, die Leistungen verständlich machen.
               </h1>
             </Reveal>
             <Reveal immediate delay={0.08}>
               <p className="mt-6 max-w-[52ch] text-pretty text-lg leading-relaxed text-ink/70">
-                Professionelle Websites, Landingpages und Social Media für
-                Unternehmen, Dienstleister, Praxen, lokale Betriebe und Handwerk.
-                Deutschlandweit, persönlich und aus einer Hand.
+                Moderne Websites und Social-Media-Auftritte für Unternehmen,
+                Dienstleister, Selbstständige und Handwerksbetriebe. Persönlich aus
+                Neustadt in Sachsen, deutschlandweit und mit einem festen Ansprechpartner.
               </p>
             </Reveal>
             <Reveal immediate delay={0.16}>

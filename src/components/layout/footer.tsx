@@ -14,6 +14,13 @@ const legalItems = [
   { label: "Barrierefreiheit", href: "/barrierefreiheit" },
 ];
 
+const industryItems = [
+  { label: "Webdesign für Handwerker", href: "/handwerker" },
+  { label: "Webdesign für Bauunternehmen", href: "/handwerker/bauunternehmen" },
+  { label: "Webdesign für Dienstleister", href: "/webdesign-dienstleister" },
+  { label: "Webdesign für Reinigungsfirmen", href: "/webdesign-reinigungsfirmen" },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -26,7 +33,7 @@ export function Footer() {
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink/70">
               Webdesign und Social Media für Unternehmen, Dienstleister und
-              lokale Betriebe. Persönlich und aus einer Hand.
+              Handwerk. Aus Neustadt in Sachsen, deutschlandweit und persönlich.
             </p>
           </div>
 
@@ -107,6 +114,24 @@ export function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="mt-14 border-t border-ink/10 pt-8">
+          <h2 className="text-xs font-semibold uppercase tracking-label text-ink/70">
+            Webdesign für Branchen
+          </h2>
+          <ul className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+            {industryItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-sm text-ink/75 transition-colors hover:text-ink"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-14 border-t border-ink/10 pt-8">

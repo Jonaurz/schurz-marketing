@@ -1,3 +1,5 @@
+import { serializeJsonLd } from "@/lib/json-ld";
+
 /**
  * FAQPage-JSON-LD aus einer Frage/Antwort-Liste (gleiche Struktur wie die
  * sichtbaren FAQ-Akkordeons). Als Server-Komponente direkt in eine Seite
@@ -19,7 +21,7 @@ export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
     />
   );
 }

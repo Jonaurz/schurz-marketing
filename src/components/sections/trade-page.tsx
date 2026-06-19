@@ -12,8 +12,9 @@ import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { ProofSection } from "@/components/sections/references-section";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { localCities } from "@/lib/local-seo";
-import type { Trade } from "@/lib/trades";
+import { trades, type Trade } from "@/lib/trades";
 
 const steps = [
   {
@@ -23,22 +24,53 @@ const steps = [
   },
   {
     no: "2",
-    title: "Struktur planen",
-    text: "Aus Ihren Leistungen, Projekten und Orten entsteht eine klare Seitenstruktur mit den richtigen Suchbegriffen.",
+    title: "Ziele klären",
+    text: "Zielgruppen, gewünschte Projekte und wichtige Kontaktwege werden gemeinsam priorisiert.",
   },
   {
     no: "3",
-    title: "Umsetzen",
-    text: "Design, Technik und Texte entstehen aus einer Hand und werden auf allen Geräten sauber getestet.",
+    title: "Struktur und Inhalte",
+    text: "Aus Leistungen, Projekten und Einsatzgebieten entsteht eine klare Seitenstruktur mit verständlichen Texten.",
   },
   {
     no: "4",
-    title: "Online und Pflege",
-    text: "Nach Freigabe geht die Seite live. Auf Wunsch übernehme ich Pflege, lokale SEO und das Google-Profil.",
+    title: "Design und Umsetzung",
+    text: "Die Website wird gestaltet, technisch gebaut, mobil optimiert und auf wichtigen Geräten geprüft.",
+  },
+  {
+    no: "5",
+    title: "Korrekturen",
+    text: "In abgestimmten Runden werden Texte, Bilder und Details gemeinsam verfeinert.",
+  },
+  {
+    no: "6",
+    title: "Veröffentlichung",
+    text: "Nach Freigabe geht die Seite live. Auf Wunsch bleiben Pflege und Weiterentwicklung in einer Hand.",
   },
 ];
 
 export function TradePage({ trade }: { trade: Trade }) {
+  const faqItems = [
+    ...trade.faq,
+    {
+      q: `Was kostet eine Website für ${trade.audience}?`,
+      a: "Der Preis richtet sich nach Seitenumfang, Funktionen und vorhandenem Material. Nach einem unverbindlichen Erstgespräch erhalten Sie einen transparenten Projektumfang.",
+    },
+    {
+      q: "Wie lange dauert die Umsetzung?",
+      a: "Je nach Umfang dauert ein Website-Projekt meist einige Wochen. Inhalte, Korrekturen und Veröffentlichung werden zu Beginn realistisch geplant.",
+    },
+    {
+      q: "Kann eine bestehende Website überarbeitet werden?",
+      a: "Ja. Zuerst wird geprüft, welche Inhalte und technischen Grundlagen erhalten bleiben können. Danach folgt ein gezielter Relaunch oder ein Neuaufbau.",
+    },
+    {
+      q: "Ist die Zusammenarbeit deutschlandweit möglich?",
+      a: "Ja. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet per Telefon, E-Mail, Video-Call und digitaler Abstimmung mit Betrieben in ganz Deutschland.",
+    },
+  ];
+  const relatedTrades = trades.filter((item) => item.slug !== trade.slug).slice(0, 3);
+
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -53,10 +85,7 @@ export function TradePage({ trade }: { trade: Trade }) {
       email: site.contact.email,
       telephone: site.contact.phone,
     },
-    areaServed: site.serviceArea.map((area) => ({
-      "@type": "AdministrativeArea",
-      name: area,
-    })),
+    areaServed: { "@type": "Country", name: "Deutschland" },
     url: `${site.url}/handwerker/${trade.slug}`,
     description: trade.metaDescription,
   };
@@ -70,13 +99,16 @@ export function TradePage({ trade }: { trade: Trade }) {
           { name: trade.name, path: `/handwerker/${trade.slug}` },
         ]}
       />
-      <FaqJsonLd items={trade.faq} />
+      <FaqJsonLd items={faqItems} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
       />
 
-      <PageHero title={trade.h1} subtitle={trade.promise}>
+      <PageHero
+        title={trade.h1}
+        subtitle={`${trade.promise} Persönlich aus Neustadt in Sachsen und deutschlandweit umgesetzt.`}
+      >
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
         </Button>
@@ -93,6 +125,11 @@ export function TradePage({ trade }: { trade: Trade }) {
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">{trade.intro}</p>
               <p className="text-pretty">{trade.pain}</p>
+              <p className="text-pretty">
+                Der Auftritt wird so geplant, dass Leistungen, Vertrauen und
+                Kontaktaufnahme zusammenpassen. Dazu gehören eine saubere mobile
+                Darstellung, verständliche Texte und eine klare SEO-Grundlage.
+              </p>
             </div>
           </div>
         </Container>
@@ -142,8 +179,8 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Einsatzgebiet" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Regional gefunden werden in ganz Sachsen."
-            intro="Für viele Orte gibt es eigene Seiten mit regionalem Bezug. So sehen Kunden direkt, dass Sie in ihrer Nähe arbeiten."
+            title="Vom Standort in Sachsen aus deutschlandweit."
+            intro="Für Orte rund um Neustadt in Sachsen gibt es eigene Seiten mit regionalem Bezug. Projekte und digitale Abstimmungen sind darüber hinaus in ganz Deutschland möglich."
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {localCities.map((city) => (
@@ -167,7 +204,7 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
           <SectionHeading title="So entsteht Ihre Website." />
-          <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {steps.map((step) => (
               <li key={step.no}>
                 <span aria-hidden="true" className="text-sm font-semibold text-accent">
@@ -181,12 +218,86 @@ export function TradePage({ trade }: { trade: Trade }) {
         </Container>
       </Section>
 
+      <Section aria-label="Deutschlandweite Zusammenarbeit" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                size="compact"
+                title="Deutschlandweit, aber persönlich."
+                intro="Der Standort in Neustadt in Sachsen ist der bodenständige Ausgangspunkt. Die Zusammenarbeit ist nicht auf die Region begrenzt."
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <p className="text-pretty text-lg leading-relaxed text-ink/80">
+                Abstimmungen laufen per Telefon, E-Mail, Video-Call und klaren
+                digitalen Zwischenständen. Sie sprechen direkt mit Jonas Schurz und
+                haben einen festen Ansprechpartner für Struktur, Texte, Design,
+                Umsetzung und optionale Pflege.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-4">
+                <Button href="/ueber-mich" variant="secondary" withArrow>
+                  Ansprechpartner kennenlernen
+                </Button>
+                <Button href="/social-media" variant="secondary">
+                  Social Media ergänzen
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section aria-label="Verwandte Gewerke" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            title="Weitere Branchen und Leistungen."
+            intro="Verwandte Seiten zeigen, wie sich Inhalte und Anfragewege an andere Betriebe anpassen lassen."
+          />
+          <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 md:grid-cols-3">
+            {relatedTrades.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/handwerker/${item.slug}`}
+                className="group bg-paper p-6 transition-colors hover:bg-white sm:p-7"
+              >
+                <h3 className="flex items-center justify-between gap-3 text-base font-semibold">
+                  {item.name}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{item.cardText}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <Link
+              href="/webdesign"
+              className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
+            >
+              Webdesign im Überblick
+            </Link>
+            <Link
+              href="/webdesign-dienstleister"
+              className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
+            >
+              Webdesign für Dienstleister
+            </Link>
+            <Link
+              href="/webdesign-reinigungsfirmen"
+              className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
+            >
+              Webdesign für Reinigungsfirmen
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
       {/* FAQ */}
       <Section aria-label={`Häufige Fragen zu Webseiten für ${trade.audience}`} className="border-t border-ink/10">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <SectionHeading size="compact" title={`Fragen zu Webseiten für ${trade.name}.`} />
+              <SectionHeading size="compact" title={`Fragen zu Webdesign für ${trade.name}.`} />
               <div className="mt-8 text-sm text-ink/70">
                 <p>
                   Zurück zur Übersicht:
@@ -198,7 +309,7 @@ export function TradePage({ trade }: { trade: Trade }) {
               </div>
             </div>
             <div className="lg:col-span-8">
-              <Accordion items={trade.faq} />
+              <Accordion items={faqItems} />
             </div>
           </div>
         </Container>
@@ -206,7 +317,7 @@ export function TradePage({ trade }: { trade: Trade }) {
 
       <CtaBand
         title={`Website für ${trade.audience} planen?`}
-        subtitle="Im kostenlosen Erstgespräch schauen wir auf Ihre aktuelle Sichtbarkeit und klären, wie eine klare Website mehr Anfragen aus Ihrer Region bringt."
+        subtitle="Im unverbindlichen Erstgespräch schauen wir auf Ihre aktuelle Sichtbarkeit und klären, wie eine klare Website mehr passende Anfragen bringt."
       />
     </>
   );

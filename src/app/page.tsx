@@ -42,6 +42,29 @@ const audiences = [
   "Lokale Unternehmen",
 ];
 
+const industryLinks = [
+  {
+    title: "Webdesign für Handwerker",
+    href: "/handwerker",
+    text: "Leistungen, Projektbilder, Einsatzgebiet und schnelle Kontaktwege klar darstellen.",
+  },
+  {
+    title: "Webdesign für Bauunternehmen",
+    href: "/handwerker/bauunternehmen",
+    text: "Leistungsbereiche, Referenzprojekte und größere Projektanfragen seriös aufbereiten.",
+  },
+  {
+    title: "Webdesign für Dienstleister",
+    href: "/webdesign-dienstleister",
+    text: "Positionierung, Expertise und Angebote verständlich machen und zur Anfrage führen.",
+  },
+  {
+    title: "Webdesign für Reinigungsfirmen",
+    href: "/webdesign-reinigungsfirmen",
+    text: "Reinigungsarten, Einsatzgebiete und Angebotsanfragen übersichtlich verbinden.",
+  },
+];
+
 const stats = [
   { value: 10, suffix: "", label: "Jahre Erfahrung im Online-Marketing" },
   { value: 100, suffix: " %", label: "DSGVO-konform und barrierefrei" },
@@ -162,7 +185,7 @@ const faqs = [
   },
   {
     q: "Für welche Branchen arbeiten Sie?",
-    a: "Wir arbeiten deutschlandweit für viele Branchen, von Dienstleistern über Praxen, Kanzleien und Gastronomie bis zu Handwerk und Bau. Für Handwerksbetriebe und für regionale Unternehmen in Sachsen gibt es zusätzlich eigene Seiten mit passenden Inhalten.",
+    a: "Schurz Marketing arbeitet deutschlandweit für Unternehmen, Dienstleister, Selbstständige, Handwerksbetriebe, Bauunternehmen und Reinigungsfirmen. Für mehrere Zielgruppen gibt es eigene Seiten mit passenden Inhalten.",
   },
 ];
 
@@ -285,8 +308,8 @@ export default function Home() {
       <Section aria-label="Für wen wir arbeiten">
         <Container>
           <SectionHeading
-            title="Für wen wir arbeiten."
-            intro="Schurz Marketing arbeitet deutschlandweit für unterschiedliche Unternehmen und Dienstleister. Entscheidend ist nicht die Branche, sondern ein Auftritt, der Ihre Leistung klar zeigt und Anfragen bringt."
+            title="Webdesign für verschiedene Branchen."
+            intro="Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit. Die Grundidee bleibt gleich, die Inhalte werden aber auf typische Fragen, Leistungen und Anfragewege Ihrer Branche zugeschnitten."
           />
           <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {audiences.map((item) => (
@@ -299,44 +322,34 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            <Reveal>
-              <Link
-                href="/handwerker"
-                className="group block h-full border border-ink/10 p-6 transition-colors hover:border-ink sm:p-7"
-              >
-                <p className="text-xs font-semibold uppercase tracking-label text-accent">
-                  Schwerpunktthema
-                </p>
-                <h3 className="mt-3 flex items-center justify-between gap-2 text-lg font-semibold">
-                  Webseiten für Handwerker und Bau
-                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                  Eigene Seiten für Handwerk, Gewerke und Bauunternehmen, mit Projektbildern,
-                  Leistungen und Einsatzgebiet.
-                </p>
-              </Link>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <Link
-                href="/sachsen"
-                className="group block h-full border border-ink/10 p-6 transition-colors hover:border-ink sm:p-7"
-              >
-                <p className="text-xs font-semibold uppercase tracking-label text-accent">
-                  Regional
-                </p>
-                <h3 className="mt-3 flex items-center justify-between gap-2 text-lg font-semibold">
-                  Regionale Unternehmen in Sachsen
-                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                  Für Betriebe in Dresden, Pirna, Leipzig, Chemnitz und der ganzen Region
-                  gibt es eigene Seiten mit lokalem Bezug.
-                </p>
-              </Link>
-            </Reveal>
+          <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2">
+            {industryLinks.map((item, index) => (
+              <Reveal key={item.href} delay={(index % 2) * 0.05}>
+                <Link
+                  href={item.href}
+                  className="group block h-full bg-paper p-6 transition-colors hover:bg-white sm:p-7"
+                >
+                  <h3 className="flex items-center justify-between gap-2 text-lg font-semibold">
+                    {item.title}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">
+                    {item.text}
+                  </p>
+                </Link>
+              </Reveal>
+            ))}
           </div>
+          <p className="mt-8 max-w-[70ch] text-sm leading-relaxed text-ink/70">
+            Rund um den Standort gibt es zusätzlich{" "}
+            <Link
+              href="/sachsen"
+              className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
+            >
+              regionale Webdesign-Seiten für Sachsen
+            </Link>
+            . Die Zusammenarbeit ist nicht auf die Region begrenzt.
+          </p>
         </Container>
       </Section>
 
@@ -419,7 +432,7 @@ export default function Home() {
             <div className="lg:col-span-7 lg:col-start-6">
               <SectionHeading
                 title="Hinter Schurz Marketing steht ein Mensch, kein Callcenter."
-                intro="Jonas Schurz arbeitet seit 10 Jahren im Online-Marketing. Sie arbeiten direkt mit dem Menschen zusammen, der Strategie, Website und Social Media im Blick behält."
+                intro="Jonas Schurz arbeitet seit 10 Jahren im Online-Marketing. Von Neustadt in Sachsen aus begleitet er Unternehmen deutschlandweit und bleibt Ihr direkter Ansprechpartner für Strategie, Website und Social Media."
               />
               <p className="mt-4 max-w-[60ch] text-pretty leading-relaxed text-ink/70">
                 Verlässlich, ehrlich und auf Augenhöhe. Kein Fachjargon, keine

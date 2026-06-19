@@ -13,6 +13,7 @@ import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { localCities } from "@/lib/local-seo";
 
 export const revalidate = 60;
@@ -139,7 +140,7 @@ export default function SachsenPage() {
       <FaqJsonLd items={faqs} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
       />
 
       <PageHero

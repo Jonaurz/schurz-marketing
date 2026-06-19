@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { ProofSection } from "@/components/sections/references-section";
-import { Check } from "@/components/ui/icons";
+import { ArrowRight, Check } from "@/components/ui/icons";
 
 /* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
    zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
@@ -19,7 +20,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Webdesign",
   description:
-    "Hochwertige Websites für Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen, die nicht nur gut aussehen, sondern Anfragen bringen: schnell, auffindbar, DSGVO-konform und barrierefrei.",
+    "Webdesign aus Neustadt in Sachsen für Unternehmen, Dienstleister und Handwerk. Moderne, klare Websites und persönliche Zusammenarbeit deutschlandweit.",
   alternates: { canonical: "/webdesign" },
   openGraph: {
     title: "Webdesign · Schurz Marketing",
@@ -71,6 +72,29 @@ const handwerkLeistungen = [
   "Website-Wartung und technische Pflege",
   "Landingpages für einzelne Angebote",
   "Verständliche Texte für Ihre Leistungen",
+];
+
+const industryLinks = [
+  {
+    href: "/handwerker",
+    title: "Webdesign für Handwerker",
+    text: "Klare Leistungen, Projektbilder, Einsatzgebiet und schnelle Kontaktmöglichkeiten.",
+  },
+  {
+    href: "/handwerker/bauunternehmen",
+    title: "Webdesign für Bauunternehmen",
+    text: "Leistungsbereiche, Projektarten, Referenzen und seriöse Projektanfragen.",
+  },
+  {
+    href: "/webdesign-dienstleister",
+    title: "Webdesign für Dienstleister",
+    text: "Positionierung, Expertise, Angebotsstruktur und ein verständlicher Anfrageprozess.",
+  },
+  {
+    href: "/webdesign-reinigungsfirmen",
+    title: "Webdesign für Reinigungsfirmen",
+    text: "Reinigungsarten, Einsatzgebiete und schnelle Angebotsanfragen übersichtlich verbinden.",
+  },
 ];
 
 const looksGood = [
@@ -143,7 +167,7 @@ export default function WebdesignPage() {
       <FaqJsonLd items={faqs} />
       <PageHero
         title="Websites, die Ihre Leistung zeigen. Und Anfragen bringen."
-        subtitle="Ihr Auftritt zeigt die Qualität Ihrer Arbeit und arbeitet zuverlässig: schnell, auffindbar, DSGVO-konform und barrierefrei."
+        subtitle="Ihr Auftritt zeigt die Qualität Ihrer Arbeit und arbeitet zuverlässig: schnell, auffindbar, DSGVO-konform und barrierefrei. Persönlich aus Neustadt in Sachsen, deutschlandweit umgesetzt."
       >
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
@@ -245,6 +269,30 @@ export default function WebdesignPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section aria-label="Webdesign für verschiedene Branchen" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            title="Webdesign für verschiedene Branchen."
+            intro="Die technische Grundlage ist ähnlich. Inhalte, Belege und Kontaktwege werden jedoch auf die Fragen Ihrer Kunden und die Abläufe Ihrer Branche zugeschnitten."
+          />
+          <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2">
+            {industryLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group bg-paper p-6 transition-colors hover:bg-white sm:p-7"
+              >
+                <h3 className="flex items-center justify-between gap-3 text-lg font-semibold">
+                  {item.title}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{item.text}</p>
+              </Link>
+            ))}
           </div>
         </Container>
       </Section>

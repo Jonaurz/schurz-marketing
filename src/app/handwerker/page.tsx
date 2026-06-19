@@ -14,6 +14,7 @@ import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { localCities } from "@/lib/local-seo";
 import { trades } from "@/lib/trades";
 
@@ -22,12 +23,12 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Webdesign für Handwerker",
   description:
-    "Webseiten für Handwerker, Bau, Garten- und Landschaftsbau und regionale Dienstleister in Sachsen. WordPress, lokale SEO, Google-Unternehmensprofil und Website-Wartung aus einer Hand.",
+    "Webdesign für Handwerker: klare Leistungen, Projektbilder und einfache Kontaktwege. Persönlich aus Neustadt in Sachsen, deutschlandweit.",
   alternates: { canonical: "/handwerker" },
   openGraph: {
     title: "Webdesign für Handwerker · Schurz Marketing",
     description:
-      "Webseiten für Handwerk, Bau und regionale Dienstleister in Sachsen. Klar aufgebaut, gut auffindbar und auf Anfragen ausgelegt.",
+      "Webseiten für Handwerksbetriebe, klar aufgebaut, gut auffindbar und auf Anfragen ausgelegt. Deutschlandweit mit persönlichem Ansprechpartner.",
     url: "/handwerker",
     images: [
       {
@@ -42,44 +43,73 @@ export const metadata: Metadata = {
 
 const leistungen = [
   {
-    title: "Webseiten-Erstellung",
-    text: "Eine klare Website, die Ihre Leistungen, Projektbilder und Ihr Einsatzgebiet zeigt. Für Betriebe, die online mehr Anfragen wollen.",
+    title: "Website-Konzept und Struktur",
+    text: "Leistungen, Zielgruppen, Einsatzgebiet und Kontaktwege werden geordnet, bevor Design und Technik umgesetzt werden.",
   },
   {
-    title: "WordPress-Webseiten",
-    text: "Pflegbare Websites, die Sie später selbst anpassen können. Für Betriebe, die unabhängig bleiben möchten.",
+    title: "Modernes, mobiles Webdesign",
+    text: "Der Auftritt wirkt auf Smartphone, Tablet und Desktop professionell und macht wichtige Informationen schnell erreichbar.",
   },
   {
-    title: "Landingpages",
-    text: "Einzelne Seiten für ein konkretes Angebot oder eine Region. Sinnvoll für gezielte Aktionen und Anzeigen.",
+    title: "Texte und klare Leistungsseiten",
+    text: "Fachliche Leistungen werden so beschrieben, dass Kunden sie verstehen und Suchmaschinen die Themen sauber einordnen können.",
   },
   {
-    title: "Lokale SEO",
-    text: "Damit Google versteht, welche Leistung Sie in welcher Region anbieten. Für mehr Sichtbarkeit bei Suchen wie „Zaunbauer Pirna“.",
+    title: "Lokale und überregionale SEO",
+    text: "Seitentitel, Metadaten, interne Links und Einsatzgebiete schaffen eine saubere Grundlage für passende Suchanfragen.",
   },
   {
-    title: "Google-Unternehmensprofil",
-    text: "Einrichtung und Optimierung Ihres Profils bei Google. Für mehr Sichtbarkeit in der lokalen Suche und auf der Karte.",
+    title: "Kontakt und Angebotsanfragen",
+    text: "Telefon, Formular und optionale Rückrufwege werden so eingebunden, dass Kunden ohne Umwege anfragen können.",
   },
   {
-    title: "Website-Wartung",
-    text: "Updates, Sicherung und kleine Änderungen im laufenden Betrieb. Für Betriebe, die sich nicht selbst kümmern wollen.",
+    title: "Vertrauenselemente",
+    text: "Echte Projektbilder, Arbeitsweise, Qualifikationen und vorhandene Referenzen werden glaubwürdig in den Aufbau integriert.",
   },
   {
-    title: "Texte für Handwerker",
-    text: "Verständliche Texte für Leistungen, Referenzen und Projektseiten. Ohne Fachjargon, nah an Ihren Kunden.",
+    title: "Social Media als Ergänzung",
+    text: "Auf Wunsch werden Website und Social-Media-Auftritt aufeinander abgestimmt, damit Projekte mehrfach sichtbar werden.",
   },
   {
-    title: "Anfrageformulare",
-    text: "Formulare, die genau die Infos abfragen, die Sie für ein Angebot brauchen. Für weniger Rückfragen.",
+    title: "Pflege und Weiterentwicklung",
+    text: "Neue Leistungen, Projekte und Einsatzorte können ergänzt werden. Die technische Pflege kann dauerhaft übernommen werden.",
   },
 ];
 
+const typicalContents = [
+  "Leistungen und Spezialisierungen",
+  "Einsatzgebiet und erreichbare Orte",
+  "Projektbeispiele mit echten Bildern",
+  "Telefonnummer und Kontaktformular",
+  "Ablauf vom Erstkontakt bis zum Auftrag",
+  "Antworten auf häufige Kundenfragen",
+  "Team, Qualifikationen und Arbeitsweise",
+  "Google-Unternehmensprofil und lokale Signale",
+];
+
 const benefits = [
-  "Mehr Anfragen für Dacharbeiten, Pflasterarbeiten, Zaunbau, Gartenbau, Elektro- oder Malerarbeiten aus Ihrer Region.",
-  "Besser gefunden werden, wenn Kunden nach „Dachdecker Dresden“, „Zaunbauer Pirna“ oder „Gartenbau Sächsische Schweiz“ suchen.",
+  "Passende Anfragen für Dacharbeiten, Pflasterarbeiten, Zaunbau, Gartenbau, Elektro- oder Malerarbeiten.",
+  "Besser eingeordnet werden, wenn Kunden nach einem konkreten Gewerk und einem Ort oder Einsatzgebiet suchen.",
   "Projektbilder und Leistungen so zeigen, dass Interessenten schneller Vertrauen fassen.",
   "Kontaktaufnahme per Telefon, Formular oder WhatsApp so einfach wie möglich machen.",
+];
+
+const relatedIndustryLinks = [
+  {
+    href: "/handwerker/bauunternehmen",
+    title: "Webdesign für Bauunternehmen",
+    text: "Leistungsbereiche, Referenzprojekte und größere Projektanfragen seriös darstellen.",
+  },
+  {
+    href: "/webdesign-reinigungsfirmen",
+    title: "Webdesign für Reinigungsfirmen",
+    text: "Leistungsarten, Einsatzgebiete und schnelle Angebotsanfragen verbinden.",
+  },
+  {
+    href: "/webdesign-dienstleister",
+    title: "Webdesign für Dienstleister",
+    text: "Positionierung, Expertise und klare Angebotsstrukturen für beratende Leistungen.",
+  },
 ];
 
 const steps = [
@@ -108,11 +138,11 @@ const steps = [
 const faqs = [
   {
     q: "Bauen Sie Webseiten speziell für Handwerker?",
-    a: "Ja. Schwerpunkt sind Webseiten für Handwerk, Bau, Garten- und Landschaftsbau und regionale Dienstleister in Sachsen. Die Seiten sind so aufgebaut, dass Kunden schnell Ihre Leistungen, Projekte und Ihr Einsatzgebiet sehen.",
+    a: "Ja. Die Seiten sind so aufgebaut, dass Kunden Leistungen, Projekte, Einsatzgebiet und Kontaktwege schnell verstehen. Inhalte und Anfrageformulare werden an das jeweilige Gewerk angepasst.",
   },
   {
-    q: "Arbeiten Sie mit WordPress?",
-    a: "Ja, wenn es passt. WordPress hat den Vorteil, dass Sie Inhalte später selbst anpassen können. Welche Lösung für Ihren Betrieb sinnvoll ist, klären wir vorab.",
+    q: "Kann ich die Website später selbst pflegen?",
+    a: "Ja. Auf Wunsch erhalten Sie eine pflegbare Lösung und eine Einweisung. Alternativ übernimmt Schurz Marketing Änderungen, Updates und technische Pflege.",
   },
   {
     q: "Was kostet eine Website für meinen Betrieb?",
@@ -120,15 +150,19 @@ const faqs = [
   },
   {
     q: "Kümmern Sie sich auch um Google und die lokale Sichtbarkeit?",
-    a: "Ja. Dazu gehören lokale SEO und auf Wunsch die Einrichtung oder Optimierung Ihres Google-Unternehmensprofils, damit Sie bei Suchen aus Ihrer Region besser gefunden werden.",
+    a: "Ja. Eine saubere SEO-Grundlage gehört zur Umsetzung. Dazu zählen klare Leistungsseiten, Metadaten, interne Links und auf Wunsch die Einbindung oder Optimierung des Google-Unternehmensprofils.",
   },
   {
     q: "Ich habe wenig Zeit. Wie aufwendig ist das für mich?",
     a: "So wenig wie möglich. Von Ihnen kommen Infos, Bilder und Freigaben. Aufbau, Technik und Texte übernehme ich.",
   },
   {
-    q: "Für welche Orte arbeiten Sie?",
-    a: "Vor allem für Betriebe in Dresden, der Sächsischen Schweiz, Pirna, Sebnitz, Neustadt in Sachsen, Bautzen, der Oberlausitz, Meißen, Chemnitz, Leipzig und ganz Sachsen.",
+    q: "Können Sie eine bestehende Handwerker-Website überarbeiten?",
+    a: "Ja. Zuerst wird geprüft, welche Inhalte und technischen Grundlagen weiterverwendet werden können. Danach folgt entweder ein gezielter Relaunch oder ein sauberer Neuaufbau.",
+  },
+  {
+    q: "Arbeiten Sie deutschlandweit?",
+    a: "Ja. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet per Telefon, E-Mail, Video-Call und digitaler Abstimmung mit Handwerksbetrieben in ganz Deutschland.",
   },
 ];
 
@@ -146,13 +180,10 @@ const serviceJsonLd = {
     email: site.contact.email,
     telephone: site.contact.phone,
   },
-  areaServed: site.serviceArea.map((area) => ({
-    "@type": "AdministrativeArea",
-    name: area,
-  })),
+  areaServed: { "@type": "Country", name: "Deutschland" },
   url: `${site.url}/handwerker`,
   description:
-    "Webseiten für Handwerk, Bau und regionale Dienstleister in Sachsen, inklusive WordPress, lokaler SEO, Google-Unternehmensprofil und Website-Wartung.",
+    "Webdesign für Handwerksbetriebe in Deutschland, mit klaren Leistungen, Projektbildern, SEO-Grundlage und einfachen Kontaktwegen.",
 };
 
 export default function HandwerkerPage() {
@@ -167,18 +198,18 @@ export default function HandwerkerPage() {
       <FaqJsonLd items={faqs} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
       />
 
       <PageHero
-        title="Webdesign für Handwerker, Bau und regionale Dienstleister in Sachsen."
-        subtitle="Webseiten, die Ihre Leistungen klar zeigen, Vertrauen schaffen und mehr Anfragen aus Ihrer Region bringen. WordPress, lokale SEO, Google-Unternehmensprofil und Wartung aus einer Hand."
+        title="Webdesign für Handwerker, das Vertrauen schafft."
+        subtitle="Klare Leistungen, echte Projektbilder, gute mobile Bedienung und einfache Kontaktwege. Persönlich aus Neustadt in Sachsen und deutschlandweit umgesetzt."
       >
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
         </Button>
-        <Button href="/kontakt" size="lg" variant="secondary">
-          Kostenlose Website-Einschätzung
+        <Button href="/webdesign" size="lg" variant="secondary">
+          Webdesign-Leistung ansehen
         </Button>
       </PageHero>
 
@@ -205,6 +236,30 @@ export default function HandwerkerPage() {
                 erreichen. Leistungen, Projekte, Einsatzgebiet und Kontakt gehören auf
                 den ersten Blick verständlich dargestellt.
               </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section aria-label="Typische Inhalte einer Handwerker-Website" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                size="compact"
+                title="Was auf einer guten Handwerker-Website nicht fehlen sollte."
+                intro="Der genaue Aufbau hängt vom Gewerk ab. Diese Inhalte sorgen meist dafür, dass Kunden Angebot und Betrieb schnell einschätzen können."
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {typicalContents.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-ink/80">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Container>
@@ -294,8 +349,8 @@ export default function HandwerkerPage() {
       <Section aria-label="Einsatzgebiet" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Im Einsatz in ganz Sachsen."
-            intro="Für viele Orte gibt es eigene Seiten mit regionalem Bezug. Von dort sehen Kunden direkt, dass Sie in ihrer Nähe arbeiten."
+            title="Deutschlandweit, aber persönlich."
+            intro="Die Zusammenarbeit funktioniert per Telefon, E-Mail, Video-Call und digitaler Abstimmung. Sitz und persönlicher Ausgangspunkt ist Neustadt in Sachsen. Für Orte in Sachsen gibt es zusätzlich regionale Seiten."
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {localCities.map((city) => (
@@ -312,6 +367,40 @@ export default function HandwerkerPage() {
               </Link>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      <Section aria-label="Verwandte Zielgruppen" className="border-t border-ink/10">
+        <Container>
+          <SectionHeading
+            title="Verwandte Branchen und Leistungen."
+            intro="Weitere Zielgruppenseiten vertiefen typische Inhalte und Anfragewege."
+          />
+          <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 md:grid-cols-3">
+            {relatedIndustryLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group bg-paper p-6 transition-colors hover:bg-white sm:p-7"
+              >
+                <h3 className="flex items-center justify-between gap-3 text-base font-semibold">
+                  {item.title}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{item.text}</p>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-7 text-sm leading-relaxed text-ink/70">
+            Ergänzend möglich:{" "}
+            <Link
+              href="/social-media"
+              className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
+            >
+              Social-Media-Betreuung
+            </Link>{" "}
+            für Projekte, Einblicke und laufende Sichtbarkeit.
+          </p>
         </Container>
       </Section>
 
@@ -365,7 +454,7 @@ export default function HandwerkerPage() {
             <div className="lg:col-span-7 lg:col-start-6">
               <SectionHeading
                 title="Ein fester Ansprechpartner statt anonymer Agentur."
-                intro="Sie sprechen direkt mit Jonas Schurz. Kurze Wege, klare Absprachen und ehrliche Einschätzung, was sich für Ihren Betrieb wirklich lohnt."
+                intro="Sie sprechen direkt mit Jonas Schurz in Neustadt in Sachsen. Kurze digitale Wege, klare Absprachen und eine ehrliche Einschätzung, was sich für Ihren Betrieb wirklich lohnt."
               />
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink/75">
                 {site.contact.phoneHref ? (

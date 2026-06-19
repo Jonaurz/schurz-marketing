@@ -10,9 +10,16 @@ export const site = {
   /** Spätere Live-Domain. */
   domain: "schurz-marketing.de",
   url: "https://schurz-marketing.de",
-  tagline: "Webdesign & Social Media für Unternehmen und Dienstleister",
+  tagline: "Webdesign & Social Media aus Neustadt in Sachsen",
 
-  /** Schwerpunktregion. */
+  /** Unternehmenssitz und Ausgangspunkt der deutschlandweiten Zusammenarbeit. */
+  location: {
+    city: "Neustadt in Sachsen",
+    region: "Sachsen",
+    country: "Deutschland",
+    countryCode: "DE",
+  },
+  /** Schwerpunktregion für bestehende lokale Landingpages. */
   region: "Sachsen",
   /** Wichtigste Orte im Einsatzgebiet (für Texte und Schema). */
   serviceArea: [
@@ -34,7 +41,7 @@ export const site = {
     phone: "0152 0426 3490",
     phoneHref: "+4915204263490", // klickbares tel:
     whatsapp: "", // z. B. "4915123456789" für https://wa.me/...
-    city: "Deutschlandweit",
+    city: "Neustadt in Sachsen · deutschlandweit",
   },
 
   /** Optionale Social-Media-Profile (leer lassen, wenn nicht vorhanden). */

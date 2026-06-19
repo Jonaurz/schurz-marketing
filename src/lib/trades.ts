@@ -4,7 +4,9 @@ export type TradeSlug =
   | "zaunbau"
   | "maler"
   | "elektriker"
-  | "fliesenleger";
+  | "fliesenleger"
+  | "dachdecker"
+  | "sanitaer-shk";
 
 export type Trade = {
   slug: TradeSlug;
@@ -35,10 +37,10 @@ export const trades: Trade[] = [
     name: "Garten- und Landschaftsbau",
     audience: "Garten- und Landschaftsbauer",
     eyebrow: "Webseiten für GaLaBau",
-    metaTitle: "Webseiten für Garten- und Landschaftsbau",
+    metaTitle: "Webdesign für Garten- und Landschaftsbau",
     metaDescription:
-      "Webseiten für Garten- und Landschaftsbauer in Sachsen. Projektgalerie, Leistungen, Einsatzgebiet und Anfrageformular, die zusammen mehr regionale Anfragen bringen.",
-    h1: "Webseiten für Garten- und Landschaftsbau in Sachsen.",
+      "Webdesign für Garten- und Landschaftsbau mit Projektgalerie, Leistungen und Anfrageformular. Aus Neustadt, deutschlandweit persönlich.",
+    h1: "Webdesign für Garten- und Landschaftsbau mit starken Projektbildern.",
     promise:
       "Eine Website, die Pflasterarbeiten, Terrassen, Zäune und Gärten mit echten Projektbildern zeigt und Anfragen aus Ihrer Region einfacher macht.",
     intro:
@@ -89,10 +91,10 @@ export const trades: Trade[] = [
     name: "Bauunternehmen",
     audience: "Bauunternehmen",
     eyebrow: "Webseiten für Bauunternehmen",
-    metaTitle: "Webseiten für Bauunternehmen",
+    metaTitle: "Webdesign für Bauunternehmen",
     metaDescription:
-      "Webseiten für Bauunternehmen in Sachsen. Leistungsbereiche, Referenzprojekte und klare Kontaktwege für Hochbau, Tiefbau, Sanierung und Außenanlagen.",
-    h1: "Webseiten für Bauunternehmen in Sachsen.",
+      "Webdesign für Bauunternehmen: Leistungsbereiche, Referenzprojekte und klare Projektanfragen. Aus Neustadt in Sachsen, deutschlandweit.",
+    h1: "Webdesign für Bauunternehmen, das Erfahrung sichtbar macht.",
     promise:
       "Eine Website, die Ihre Leistungsbereiche sauber trennt, Referenzprojekte seriös zeigt und sowohl Kunden als auch Fachkräfte anspricht.",
     intro:
@@ -143,10 +145,10 @@ export const trades: Trade[] = [
     name: "Zaunbau",
     audience: "Zaunbauer",
     eyebrow: "Webseiten für Zaunbauer",
-    metaTitle: "Webseiten für Zaunbauer",
+    metaTitle: "Webdesign für Zaunbauer",
     metaDescription:
-      "Webseiten für Zaunbauer in Sachsen. Galerie nach Zaunart, Materialübersicht und ein Anfrageformular mit Maßangaben für mehr passende Anfragen.",
-    h1: "Webseiten für Zaunbauer in Sachsen.",
+      "Webdesign für Zaunbauer mit Galerie nach Zaunart, Materialübersicht und Anfrageformular. Persönlich aus Neustadt, deutschlandweit.",
+    h1: "Webdesign für Zaunbauer, das Material und Ergebnisse sichtbar macht.",
     promise:
       "Eine Website, die Ihre Zäune nach Art und Material zeigt und Kunden ein Anfrageformular bietet, das gleich die wichtigsten Angaben abfragt.",
     intro:
@@ -197,10 +199,10 @@ export const trades: Trade[] = [
     name: "Maler",
     audience: "Maler und Stuckateure",
     eyebrow: "Webseiten für Malerbetriebe",
-    metaTitle: "Webseiten für Malerbetriebe",
+    metaTitle: "Webdesign für Malerbetriebe",
     metaDescription:
-      "Webseiten für Maler und Stuckateure in Sachsen. Vorher-Nachher-Bilder, klare Leistungen für innen und außen und ein einfacher Anfrageweg.",
-    h1: "Webseiten für Malerbetriebe in Sachsen.",
+      "Webdesign für Malerbetriebe mit Vorher-Nachher-Bildern, klaren Leistungen und einfachem Anfrageweg. Aus Neustadt, deutschlandweit.",
+    h1: "Webdesign für Malerbetriebe, das Ergebnisse sichtbar macht.",
     promise:
       "Eine Website, die Ihre Arbeit mit Vorher-Nachher-Bildern zeigt und Leistungen für innen und außen klar trennt.",
     intro:
@@ -251,10 +253,10 @@ export const trades: Trade[] = [
     name: "Elektriker",
     audience: "Elektrobetriebe",
     eyebrow: "Webseiten für Elektriker",
-    metaTitle: "Webseiten für Elektriker",
+    metaTitle: "Webdesign für Elektriker",
     metaDescription:
-      "Webseiten für Elektrobetriebe in Sachsen. Leistungen, Notdienst und Photovoltaik klar dargestellt, mit schnellen Kontaktwegen für mehr Anfragen.",
-    h1: "Webseiten für Elektrobetriebe in Sachsen.",
+      "Webdesign für Elektriker mit klaren Leistungen, Photovoltaik, Wartung und schnellen Kontaktwegen. Aus Neustadt, deutschlandweit.",
+    h1: "Webdesign für Elektriker mit klaren Leistungen und Kontaktwegen.",
     promise:
       "Eine Website, die Ihre Leistungen, Erreichbarkeit und Themen wie Photovoltaik klar zeigt und Kunden schnell zum Kontakt führt.",
     intro:
@@ -305,10 +307,10 @@ export const trades: Trade[] = [
     name: "Fliesenleger",
     audience: "Fliesenlegerbetriebe",
     eyebrow: "Webseiten für Fliesenleger",
-    metaTitle: "Webseiten für Fliesenleger",
+    metaTitle: "Webdesign für Fliesenleger",
     metaDescription:
-      "Webseiten für Fliesenleger in Sachsen. Projektgalerie nach Raum, Materialberatung und ein einfacher Anfrageweg für mehr regionale Aufträge.",
-    h1: "Webseiten für Fliesenleger in Sachsen.",
+      "Webdesign für Fliesenleger mit Projektgalerie nach Raum, Materialberatung und einfachem Anfrageweg. Aus Neustadt, deutschlandweit.",
+    h1: "Webdesign für Fliesenleger, das Räume und Materialien wirken lässt.",
     promise:
       "Eine Website, die Ihre Fliesenarbeiten nach Raum zeigt und Kunden mit Materialberatung und einfachem Kontakt überzeugt.",
     intro:
@@ -353,6 +355,114 @@ export const trades: Trade[] = [
     ],
     cardText:
       "Bad, Boden und Terrasse mit Galerie nach Raum und Materialberatung.",
+  },
+  {
+    slug: "dachdecker",
+    name: "Dachdecker",
+    audience: "Dachdeckerbetriebe",
+    eyebrow: "Webdesign für Dachdecker",
+    metaTitle: "Webdesign für Dachdecker",
+    metaDescription:
+      "Webdesign für Dachdecker mit Sanierung, Reparatur, Projektbildern und schnellen Kontaktwegen. Aus Neustadt, deutschlandweit persönlich.",
+    h1: "Webdesign für Dachdecker, das Vertrauen schon vor dem Termin aufbaut.",
+    promise:
+      "Eine Website, die Dachsanierung, Reparaturen und weitere Leistungen verständlich trennt, echte Arbeiten zeigt und dringende Anfragen schnell zum richtigen Kontakt führt.",
+    intro:
+      "Bei Arbeiten am Dach geht es um hohe Investitionen, Sicherheit und eine verlässliche Einschätzung. Kunden möchten sehen, welche Dächer und Leistungen Sie abdecken, wie Sie arbeiten und in welchem Gebiet Sie erreichbar sind.",
+    pain:
+      "Wenn Sanierung, Reparatur und mögliche Soforthilfe online nicht klar getrennt sind, entstehen unpassende Anfragen oder Interessenten suchen direkt weiter.",
+    services: [
+      "Dachsanierung und Neueindeckung",
+      "Dachreparaturen",
+      "Flachdach und Abdichtung",
+      "Dachfenster",
+      "Dachentwässerung",
+      "Wartung und Prüfung",
+    ],
+    goodSite: [
+      {
+        title: "Leistungen nach Anlass",
+        text: "Sanierung, Reparatur, Wartung und optionale dringende Hilfe werden klar getrennt, damit Kunden schnell richtig anfragen.",
+      },
+      {
+        title: "Projektbilder mit Einordnung",
+        text: "Bilder zeigen Dachart, Ausgangslage und Ergebnis, ohne sensible Kundendaten oder erfundene Projektdetails.",
+      },
+      {
+        title: "Einsatzgebiet und Erreichbarkeit",
+        text: "Orte, Kontaktzeiten und Telefonnummer stehen sichtbar. Das schafft Sicherheit bei dringenden Anliegen.",
+      },
+    ],
+    faq: [
+      {
+        q: "Sollte ein Dachdecker-Notdienst auf die Website?",
+        a: "Nur wenn Sie diesen wirklich anbieten. Dann sollten Erreichbarkeit, Zeiten und Einsatzgebiet klar genannt werden, damit keine falschen Erwartungen entstehen.",
+      },
+      {
+        q: "Welche Projektbilder sind für Dachdecker sinnvoll?",
+        a: "Gut funktionieren Übersichten, Details und Vorher-Nachher-Aufnahmen von Sanierungen, Abdichtungen und Dachfenstern. Schon wenige sauber beschriebene Beispiele helfen.",
+      },
+      {
+        q: "Kann die Website verschiedene Einsatzgebiete abdecken?",
+        a: "Ja. Orte und Regionen werden sinnvoll gebündelt. Wichtig sind echte Einsatzgebiete und eigenständige Inhalte statt vieler nahezu gleicher Ortsseiten.",
+      },
+    ],
+    cardText:
+      "Sanierung, Reparatur, Dachfenster und Wartung mit Projektbildern und schnellen Kontaktwegen.",
+  },
+  {
+    slug: "sanitaer-shk",
+    name: "Sanitär und SHK",
+    audience: "Sanitär- und SHK-Betriebe",
+    eyebrow: "Webdesign für Sanitär und SHK",
+    metaTitle: "Webdesign für Sanitär- und SHK-Betriebe",
+    metaDescription:
+      "Webdesign für Sanitär und SHK mit Bad, Heizung, Wartung und klaren Kontaktwegen. Persönlich aus Neustadt, deutschlandweit.",
+    h1: "Webdesign für Sanitär- und SHK-Betriebe mit klaren Kontaktwegen.",
+    promise:
+      "Eine Website, die Bad, Heizung, Wartung und weitere Leistungen sauber trennt, hochwertige Projekte zeigt und Kunden schnell zur passenden Anfrage führt.",
+    intro:
+      "Sanitär- und SHK-Betriebe verbinden planbare Projekte mit dringenden Servicefällen. Eine gute Website muss beides verständlich abbilden, ohne dass Badmodernisierung, Heizungsbau und Wartung in einem langen Leistungstext verschwinden.",
+    pain:
+      "Wenn Kunden nicht erkennen, ob es um Bad, Heizung, Wartung oder einen akuten Fall geht, landen Anfragen beim falschen Ansprechpartner oder bleiben ganz aus.",
+    services: [
+      "Badplanung und Badsanierung",
+      "Heizungsmodernisierung",
+      "Wärmepumpen und erneuerbare Systeme",
+      "Wartung und Kundendienst",
+      "Sanitärinstallation",
+      "Optionaler Störungs- oder Notdienst",
+    ],
+    goodSite: [
+      {
+        title: "Bad und Heizung getrennt",
+        text: "Planbare Projekte bekommen andere Inhalte und Kontaktwege als Wartung oder dringende Störungen.",
+      },
+      {
+        title: "Projektablauf verständlich",
+        text: "Von Beratung und Planung bis zur Umsetzung sehen Kunden, wie ein Bad- oder Heizungsprojekt abläuft.",
+      },
+      {
+        title: "Schneller Servicekontakt",
+        text: "Telefon, Formular und benötigte Angaben sind gut sichtbar, damit der Betrieb Fälle schneller einordnen kann.",
+      },
+    ],
+    faq: [
+      {
+        q: "Sollten Bad und Heizung eigene Seiten bekommen?",
+        a: "Meist ja. Die Suchintention, Fragen und Projektabläufe unterscheiden sich deutlich. Eigene Leistungsseiten schaffen mehr Klarheit.",
+      },
+      {
+        q: "Wie wird ein Notdienst dargestellt?",
+        a: "Nur wenn er tatsächlich angeboten wird. Dann werden Zeiten, Gebiet und Kontakt klar genannt, ohne eine Verfügbarkeit zu versprechen, die der Betrieb nicht leisten kann.",
+      },
+      {
+        q: "Kann die Website auch bei Wartungsanfragen helfen?",
+        a: "Ja. Ein passendes Formular kann Gerät, Anliegen, Standort und Erreichbarkeit abfragen. Das erleichtert die erste Einordnung.",
+      },
+    ],
+    cardText:
+      "Bad, Heizung, Wartung und optionaler Störungsdienst mit klar getrennten Anfragewegen.",
   },
 ];
 
