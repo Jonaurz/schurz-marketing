@@ -11,12 +11,14 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
-import { Check, MapPin, Search, Users } from "@/components/ui/icons";
+import { Check, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 import type { LocalSeoPage } from "@/lib/local-seo";
 
 export function LocalServicePage({ page }: { page: LocalSeoPage }) {
   const { service, city } = page;
+  const faqItems = [...service.faq, ...city.localFaq];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -53,7 +55,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
           { name: `${service.shortLabel} ${city.name}`, path: page.href },
         ]}
       />
-      <FaqJsonLd items={service.faq} />
+      <FaqJsonLd items={faqItems} />
 
       {/* Hero */}
       <section className="border-b border-ink/10 pt-16 lg:pt-[4.5rem]">
@@ -114,7 +116,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                   <div>
                     <h2 className="text-sm font-semibold uppercase tracking-label text-ink/70">
-                      Region
+                      Einsatzgebiet
                     </h2>
                     <p className="mt-3 text-pretty text-sm leading-relaxed text-ink/75">
                       {city.area}
@@ -127,11 +129,33 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </Section>
 
+      {/* Vor Ort: stadtspezifisch */}
+      <Section aria-label={`Vor Ort in ${city.name}`} className="border-t border-ink/10">
+        <Container>
+          <div className="max-w-3xl">
+            <SectionHeading title={`Vor Ort in ${city.name}.`} />
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-ink/80">
+              {city.scene}
+            </p>
+          </div>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {city.highlights.map((highlight, i) => (
+              <Reveal key={highlight.title} delay={i * 0.06}>
+                <div className="border-t-2 border-ink pt-5">
+                  <h3 className="text-lg font-bold">{highlight.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{highlight.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* Lösung: Leistungsumfang */}
       <Section aria-label="Leistungsumfang" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title={`${service.label} mit klarem regionalem Fokus.`}
+            title={`${service.label} mit klarem Fokus auf ${city.name}.`}
             intro={`${service.intro} ${service.localBenefit}`}
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -172,44 +196,6 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
 
       {/* Beweis: Referenzen + Kundenstimmen */}
       <ProofSection />
-
-      {/* Lokale Ausrichtung */}
-      <Section aria-label="Lokale Ausrichtung" className="border-t border-ink/10">
-        <Container>
-          <div className="grid gap-8 md:grid-cols-3">
-            <Reveal>
-              <div className="border-t-2 border-ink pt-5">
-                <Search className="h-6 w-6 text-accent" />
-                <h2 className="mt-5 text-xl font-bold">Suchanfragen verstehen</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  Inhalte werden so formuliert, dass Leistung, Ort und Nutzen eindeutig
-                  zusammengehören.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <div className="border-t-2 border-ink pt-5">
-                <Users className="h-6 w-6 text-accent" />
-                <h2 className="mt-5 text-xl font-bold">Vertrauen aufbauen</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  Kunden sehen schnell, was Sie anbieten, für wen Sie arbeiten und wie
-                  der nächste Schritt aussieht.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="border-t-2 border-ink pt-5">
-                <MapPin className="h-6 w-6 text-accent" />
-                <h2 className="mt-5 text-xl font-bold">Region sichtbar machen</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  Relevante Orte wie {city.nearby.slice(0, 3).join(", ")} werden
-                  natürlich eingeordnet, ohne die Seite mit Ortsnamen zu überladen.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
 
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
@@ -256,7 +242,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
               </div>
             </div>
             <div className="lg:col-span-8">
-              <Accordion items={service.faq} />
+              <Accordion items={faqItems} />
             </div>
           </div>
         </Container>
