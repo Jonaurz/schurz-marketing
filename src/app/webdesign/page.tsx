@@ -8,17 +8,18 @@ import { Accordion } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBand } from "@/components/sections/cta-band";
+import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { Check } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "Webdesign",
   description:
-    "Hochwertige Websites für Unternehmen, Selbstständige und Marken, die nicht nur gut aussehen, sondern verkaufen: schnell, auffindbar, DSGVO-konform und barrierefrei.",
+    "Hochwertige Websites für Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen, die nicht nur gut aussehen, sondern Anfragen bringen: schnell, auffindbar, DSGVO-konform und barrierefrei.",
   alternates: { canonical: "/webdesign" },
   openGraph: {
     title: "Webdesign · Schurz Marketing",
     description:
-      "Websites, die hochwertig aussehen und gezielt verkaufen. DSGVO-konform und barrierefrei.",
+      "Websites, die Ihre Leistungen klar zeigen und Anfragen bringen. DSGVO-konform und barrierefrei.",
     url: "/webdesign",
     images: [
       {
@@ -56,6 +57,15 @@ const features = [
     title: "Pflegbar und erweiterbar",
     text: "Inhalte lassen sich anpassen, der Auftritt wächst mit Ihrem Unternehmen mit.",
   },
+];
+
+const handwerkLeistungen = [
+  "WordPress-Webseiten zum selbst pflegen",
+  "Lokale SEO für Ihre Region",
+  "Google-Unternehmensprofil einrichten",
+  "Website-Wartung und technische Pflege",
+  "Landingpages für einzelne Angebote",
+  "Verständliche Texte für Ihre Leistungen",
 ];
 
 const looksGood = [
@@ -125,8 +135,9 @@ const faqs = [
 export default function WebdesignPage() {
   return (
     <>
+      <FaqJsonLd items={faqs} />
       <PageHero
-        title="Websites, die hochwertig aussehen. Und gezielt verkaufen."
+        title="Websites, die Ihre Leistung zeigen. Und Anfragen bringen."
         subtitle="Ihr Auftritt zeigt die Qualität Ihrer Arbeit und arbeitet zuverlässig: schnell, auffindbar, DSGVO-konform und barrierefrei."
       >
         <Button href="/kontakt" size="lg" withArrow>
@@ -197,6 +208,40 @@ export default function WebdesignPage() {
                 <p className="mt-2 text-sm leading-relaxed text-ink/70">{feature.text}</p>
               </div>
             ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Schwerpunkt Handwerk */}
+      <Section aria-label="Schwerpunkt Handwerk und regionale Betriebe" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-6">
+              <SectionHeading
+                size="compact"
+                eyebrow="Schwerpunkt"
+                title="Besonders stark für Handwerk, Bau und regionale Dienstleister."
+                intro="Für Handwerksbetriebe zählen Projektbilder, Leistungen, Einsatzgebiet und ein einfaches Anfrageformular. Bei Praxen, Kanzleien und Beratern stehen Vertrauen, klare Angebote und eine einfache Kontaktaufnahme im Vordergrund."
+              />
+              <div className="mt-8">
+                <Button href="/handwerker" variant="secondary" withArrow>
+                  Webdesign für Handwerker ansehen
+                </Button>
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <p className="text-sm font-semibold uppercase tracking-label text-ink/70">
+                Das gehört oft dazu
+              </p>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {handwerkLeistungen.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-ink/80">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Container>
       </Section>
