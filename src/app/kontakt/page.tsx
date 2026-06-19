@@ -34,7 +34,7 @@ export default function KontaktPage() {
   return (
     <>
       <PageHero
-        title="Reden wir über Ihren Auftritt."
+        title="Erzählen Sie mir von Ihrem Projekt."
         subtitle="Ob Webdesign, Social Media oder beides: Die Anfrage fragt nur ab, was für den nächsten Schritt nötig ist. Nach dem Absenden bestätigen Sie Ihre E-Mail-Adresse per Link."
       />
 

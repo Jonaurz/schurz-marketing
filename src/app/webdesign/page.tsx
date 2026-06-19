@@ -115,7 +115,7 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch und Ziele",
-    text: "Wir klären, was Ihre Website leisten soll. Ohne Fachjargon und ohne Verpflichtung.",
+    text: "Ich kläre mit Ihnen, was Ihre Website leisten soll. Ohne Fachjargon und ohne Verpflichtung.",
   },
   {
     no: "2",
@@ -141,7 +141,7 @@ const faqs = [
   },
   {
     q: "Was kostet eine professionelle Website?",
-    a: "Das hängt von Umfang und Zielen ab. Ein professioneller Auftritt ist sinnvoll ab dem mittleren vierstelligen Bereich. Den genauen Rahmen klären wir transparent im kostenlosen Erstgespräch.",
+    a: "Das hängt von Umfang und Zielen ab. Ein professioneller Auftritt ist sinnvoll ab dem mittleren vierstelligen Bereich. Den genauen Rahmen kläre ich transparent im kostenlosen Erstgespräch.",
   },
   {
     q: "Bekomme ich auch Hilfe bei Texten und Inhalten?",
@@ -149,11 +149,11 @@ const faqs = [
   },
   {
     q: "Sind die Websites wirklich DSGVO-konform und barrierefrei?",
-    a: "Ja, beides ist fester Bestandteil und wird von Anfang an eingeplant. Welche Detailpflichten für Ihr Unternehmen gelten, prüfen wir im Projekt.",
+    a: "Ja, beides ist fester Bestandteil und wird von Anfang an eingeplant. Welche Detailpflichten für Ihr Unternehmen gelten, prüfe ich im Projekt.",
   },
   {
     q: "Können Sie meine bestehende Website überarbeiten?",
-    a: "In vielen Fällen ja. Wir prüfen gemeinsam, was sich lohnt: ein gezielter Relaunch oder ein Neuaufbau.",
+    a: "In vielen Fällen ja. Ich prüfe, was sich lohnt: ein gezielter Relaunch oder ein Neuaufbau.",
   },
   {
     q: "Wie lange dauert ein Projekt?",
@@ -380,8 +380,8 @@ export default function WebdesignPage() {
       </Section>
 
       <CtaBand
-        title="Zeigen wir online, was Sie wirklich können."
-        subtitle="Im kostenlosen Erstgespräch schauen wir uns Ihre aktuelle Situation an und klären, wie Ihre Website zum Aushängeschild wird."
+        title="Zeigen Sie online, was Sie wirklich können."
+        subtitle="Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Situation und kläre, wie Ihre Website zum Aushängeschild wird."
       />
     </>
   );

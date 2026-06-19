@@ -105,7 +105,7 @@ const faqs = [
   },
   {
     q: "Wie oft wird veröffentlicht?",
-    a: "Das richtet sich nach Zielen und Kapazität. Wichtiger als möglichst viel ist ein verlässlicher Rhythmus, den wir gemeinsam festlegen.",
+    a: "Das richtet sich nach Zielen und Kapazität. Wichtiger als möglichst viel ist ein verlässlicher Rhythmus, den ich mit Ihnen festlege.",
   },
   {
     q: "Wie viel Aufwand entsteht bei mir?",
@@ -260,8 +260,8 @@ export default function SocialMediaPage() {
       </Section>
 
       <CtaBand
-        title="Lassen Sie uns Ihr Social Media aufbauen."
-        subtitle="Im kostenlosen Erstgespräch klären wir, welche Kanäle und Inhalte für Ihr Unternehmen sinnvoll sind. Ehrlich und ohne Verkaufsdruck."
+        title="Bringen Sie Struktur in Ihr Social Media."
+        subtitle="Im kostenlosen Erstgespräch kläre ich, welche Kanäle und Inhalte für Ihr Unternehmen sinnvoll sind. Ehrlich und ohne Verkaufsdruck."
       />
     </>
   );

@@ -143,7 +143,7 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Wir klären Ihre Ziele, Ihre Zielgruppe und worauf es ankommt. Kostenlos und unverbindlich.",
+    text: "Ich kläre mit Ihnen Ziele, Zielgruppe und worauf es ankommt. Kostenlos und unverbindlich.",
   },
   {
     no: "2",
@@ -165,7 +165,7 @@ const steps = [
 const faqs = [
   {
     q: "Was kostet eine Website oder die Betreuung?",
-    a: "Das hängt von Umfang und Zielen ab. Ein professioneller Auftritt ist eine Investition, sinnvoll ab dem mittleren vierstelligen Bereich. Den genauen Rahmen klären wir im kostenlosen Erstgespräch, transparent und ohne Verpflichtung.",
+    a: "Das hängt von Umfang und Zielen ab. Ein professioneller Auftritt ist eine Investition, sinnvoll ab dem mittleren vierstelligen Bereich. Den genauen Rahmen kläre ich im kostenlosen Erstgespräch, transparent und ohne Verpflichtung.",
   },
   {
     q: "Wie lange dauert ein Projekt?",
@@ -173,11 +173,11 @@ const faqs = [
   },
   {
     q: "Sind die Websites wirklich DSGVO-konform und barrierefrei?",
-    a: "Ja. Datenschutz und Barrierefreiheit sind fester Bestandteil der Umsetzung. Welche gesetzlichen Detailpflichten für Ihr Unternehmen gelten, klären wir im Projekt.",
+    a: "Ja. Datenschutz und Barrierefreiheit sind fester Bestandteil der Umsetzung. Welche gesetzlichen Detailpflichten für Ihr Unternehmen gelten, kläre ich im Projekt.",
   },
   {
     q: "Schon eine Website vorhanden. Lohnt sich ein Relaunch?",
-    a: "Oft ja. Wenn Ihre Seite veraltet ist, kaum Anfragen bringt oder rechtliche Vorgaben nicht erfüllt, holen wir gemeinsam das Beste heraus.",
+    a: "Oft ja. Wenn Ihre Seite veraltet ist, kaum Anfragen bringt oder rechtliche Vorgaben nicht erfüllt, prüfe ich, welche Teile sinnvoll erhalten bleiben können.",
   },
   {
     q: "Übernehmen Sie auch die laufende Social-Media-Betreuung?",
@@ -304,8 +304,8 @@ export default function Home() {
         <Marquee items={industries} />
       </div>
 
-      {/* Für wen wir arbeiten */}
-      <Section aria-label="Für wen wir arbeiten">
+      {/* Für wen ich arbeite */}
+      <Section aria-label="Für wen ich arbeite">
         <Container>
           <SectionHeading
             title="Webdesign für verschiedene Branchen."
@@ -403,7 +403,7 @@ export default function Home() {
             <div className="lg:col-span-4">
               <SectionHeading
                 size="compact"
-                title="Gut zu wissen, bevor wir sprechen."
+                title="Gut zu wissen, bevor Sie anfragen."
                 intro="Wenn Ihre Frage fehlt, stellen Sie sie einfach im Erstgespräch."
               />
             </div>

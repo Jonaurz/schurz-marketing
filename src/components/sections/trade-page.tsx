@@ -16,11 +16,11 @@ import { serializeJsonLd } from "@/lib/json-ld";
 import { localCities } from "@/lib/local-seo";
 import { trades, type Trade } from "@/lib/trades";
 
-const steps = [
+const defaultSteps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Wir klären Leistungen, Einsatzgebiet und welche Anfragen die Website bringen soll. Kostenlos und ohne Fachjargon.",
+    text: "Im Erstgespräch kläre ich Leistungen, Einsatzgebiet und welche Anfragen die Website bringen soll. Direkt und ohne Fachjargon.",
   },
   {
     no: "2",
@@ -50,8 +50,7 @@ const steps = [
 ];
 
 export function TradePage({ trade }: { trade: Trade }) {
-  const faqItems = [
-    ...trade.faq,
+  const defaultFaq = [
     {
       q: `Was kostet eine Website für ${trade.audience}?`,
       a: "Der Preis richtet sich nach Seitenumfang, Funktionen und vorhandenem Material. Nach einem unverbindlichen Erstgespräch erhalten Sie einen transparenten Projektumfang.",
@@ -62,14 +61,20 @@ export function TradePage({ trade }: { trade: Trade }) {
     },
     {
       q: "Kann eine bestehende Website überarbeitet werden?",
-      a: "Ja. Zuerst wird geprüft, welche Inhalte und technischen Grundlagen erhalten bleiben können. Danach folgt ein gezielter Relaunch oder ein Neuaufbau.",
+      a: "Ja. Zuerst prüfe ich, welche Inhalte und technischen Grundlagen erhalten bleiben können. Danach folgt ein gezielter Relaunch oder ein Neuaufbau.",
     },
     {
       q: "Ist die Zusammenarbeit deutschlandweit möglich?",
-      a: "Ja. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet per Telefon, E-Mail, Video-Call und digitaler Abstimmung mit Betrieben in ganz Deutschland.",
+      a: "Ja. Ich arbeite von Neustadt in Sachsen aus per Telefon, E-Mail, Video-Call und digitaler Abstimmung mit Betrieben in ganz Deutschland.",
     },
   ];
-  const relatedTrades = trades.filter((item) => item.slug !== trade.slug).slice(0, 3);
+  const faqItems = [...trade.faq, ...(trade.extraFaq ?? defaultFaq)];
+  const steps = trade.process ?? defaultSteps;
+  const relatedTrades = trade.relatedTradeSlugs
+    ? trade.relatedTradeSlugs
+        .map((slug) => trades.find((item) => item.slug === slug))
+        .filter((item): item is Trade => Boolean(item))
+    : trades.filter((item) => item.slug !== trade.slug).slice(0, 3);
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -107,7 +112,9 @@ export function TradePage({ trade }: { trade: Trade }) {
 
       <PageHero
         title={trade.h1}
-        subtitle={`${trade.promise} Persönlich aus Neustadt in Sachsen und deutschlandweit umgesetzt.`}
+        subtitle={`${trade.promise} ${
+          trade.heroSuffix ?? "Persönlich aus Neustadt in Sachsen und deutschlandweit umgesetzt."
+        }`}
       >
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
@@ -126,9 +133,8 @@ export function TradePage({ trade }: { trade: Trade }) {
               <p className="text-pretty text-lg text-ink/90">{trade.intro}</p>
               <p className="text-pretty">{trade.pain}</p>
               <p className="text-pretty">
-                Der Auftritt wird so geplant, dass Leistungen, Vertrauen und
-                Kontaktaufnahme zusammenpassen. Dazu gehören eine saubere mobile
-                Darstellung, verständliche Texte und eine klare SEO-Grundlage.
+                {trade.detailIntro ??
+                  "Ich plane den Auftritt so, dass Leistungen, Vertrauen und Kontaktaufnahme zusammenpassen. Dazu gehören eine saubere mobile Darstellung, verständliche Texte und eine klare SEO-Grundlage."}
               </p>
             </div>
           </div>
@@ -139,8 +145,11 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Leistungen darstellen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Diese Leistungen lassen sich klar darstellen."
-            intro="Jede Leistung bekommt ihren Platz, damit Kunden schnell finden, was sie suchen."
+            title={trade.serviceSectionTitle ?? "Leistungen verständlich voneinander trennen."}
+            intro={
+              trade.serviceSectionIntro ??
+              "Jede Leistung bekommt ihren Platz, damit Kunden schnell finden, was sie suchen."
+            }
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
             {trade.services.map((service) => (
@@ -157,7 +166,9 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Aufbau einer guten Website" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title={`Was eine gute Website für ${trade.audience} enthält.`}
+            title={
+              trade.goodSiteTitle ?? `Was eine gute Website für ${trade.audience} enthält.`
+            }
           />
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {trade.goodSite.map((item, i) => (
@@ -179,8 +190,11 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Einsatzgebiet" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Vom Standort in Sachsen aus deutschlandweit."
-            intro="Für Orte rund um Neustadt in Sachsen gibt es eigene Seiten mit regionalem Bezug. Projekte und digitale Abstimmungen sind darüber hinaus in ganz Deutschland möglich."
+            title={trade.regionTitle ?? "Regionale Sichtbarkeit dort, wo Ihr Betrieb arbeitet."}
+            intro={
+              trade.regionIntro ??
+              "Für Orte rund um Neustadt in Sachsen gibt es eigene Seiten mit regionalem Bezug. Weitere Einsatzgebiete werden nur dann aufgenommen, wenn sie wirklich zu Ihrem Betrieb passen."
+            }
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {localCities.map((city) => (
@@ -203,7 +217,10 @@ export function TradePage({ trade }: { trade: Trade }) {
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading title="So entsteht Ihre Website." />
+          <SectionHeading
+            title={trade.processTitle ?? "So entsteht Ihre Website."}
+            intro={trade.processIntro}
+          />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {steps.map((step) => (
               <li key={step.no}>
@@ -224,16 +241,17 @@ export function TradePage({ trade }: { trade: Trade }) {
             <div className="lg:col-span-5">
               <SectionHeading
                 size="compact"
-                title="Deutschlandweit, aber persönlich."
-                intro="Der Standort in Neustadt in Sachsen ist der bodenständige Ausgangspunkt. Die Zusammenarbeit ist nicht auf die Region begrenzt."
+                title={trade.remoteTitle ?? "Deutschlandweit, aber persönlich."}
+                intro={
+                  trade.remoteIntro ??
+                  "Der Standort in Neustadt in Sachsen ist der bodenständige Ausgangspunkt. Die Zusammenarbeit ist nicht auf die Region begrenzt."
+                }
               />
             </div>
             <div className="lg:col-span-7">
               <p className="text-pretty text-lg leading-relaxed text-ink/80">
-                Abstimmungen laufen per Telefon, E-Mail, Video-Call und klaren
-                digitalen Zwischenständen. Sie sprechen direkt mit Jonas Schurz und
-                haben einen festen Ansprechpartner für Struktur, Texte, Design,
-                Umsetzung und optionale Pflege.
+                {trade.remoteText ??
+                  "Abstimmungen laufen per Telefon, E-Mail, Video-Call und klaren digitalen Zwischenständen. Sie sprechen direkt mit Jonas Schurz und haben einen festen Ansprechpartner für Struktur, Texte, Design, Umsetzung und optionale Pflege."}
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <Button href="/ueber-mich" variant="secondary" withArrow>
@@ -251,8 +269,11 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Verwandte Gewerke" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Weitere Branchen und Leistungen."
-            intro="Verwandte Seiten zeigen, wie sich Inhalte und Anfragewege an andere Betriebe anpassen lassen."
+            title={trade.relatedTitle ?? "Weitere Branchen und Leistungen."}
+            intro={
+              trade.relatedIntro ??
+              "Verwandte Seiten zeigen, wie sich Inhalte und Anfragewege an andere Betriebe anpassen lassen."
+            }
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 md:grid-cols-3">
             {relatedTrades.map((item) => (
@@ -317,7 +338,10 @@ export function TradePage({ trade }: { trade: Trade }) {
 
       <CtaBand
         title={`Website für ${trade.audience} planen?`}
-        subtitle="Im unverbindlichen Erstgespräch schauen wir auf Ihre aktuelle Sichtbarkeit und klären, wie eine klare Website mehr passende Anfragen bringt."
+        subtitle={
+          trade.ctaSubtitle ??
+          "Im unverbindlichen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr passende Anfragen bringt."
+        }
       />
     </>
   );

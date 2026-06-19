@@ -41,15 +41,15 @@ async function confirmToken(token: string): Promise<ConfirmationState> {
     return {
       title: "Bestätigung erhalten, Versand fehlgeschlagen",
       message:
-        "Die E-Mail konnte serverseitig nicht an Schurz Marketing weitergeleitet werden. Bitte versuchen Sie den Link später erneut oder kontaktieren Sie Schurz Marketing direkt.",
+        "Die E-Mail konnte serverseitig nicht an mich weitergeleitet werden. Bitte versuchen Sie den Link später erneut oder kontaktieren Sie mich direkt.",
       tone: "error",
     };
   }
 
   return {
-    title: "Anfrage bestätigt",
+    title: "Vielen Dank, Ihre Anfrage ist bestätigt.",
     message:
-      "Vielen Dank. Ihre Anfrage wurde bestätigt und an Schurz Marketing weitergeleitet.",
+      "Ihre Anfrage ist bei mir eingegangen. Ich melde mich persönlich bei Ihnen.",
     tone: "success",
   };
 }

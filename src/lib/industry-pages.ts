@@ -9,13 +9,21 @@ export type IndustryPage = {
   problemTitle: string;
   problems: { title: string; text: string }[];
   solutionTitle: string;
+  solutionIntro: string;
   features: { title: string; text: string }[];
   contentTitle: string;
+  contentIntro: string;
   websiteContents: string[];
+  processTitle: string;
+  processIntro: string;
+  process: { no: string; title: string; text: string }[];
+  remoteTitle: string;
   targetGroupsTitle: string;
   targetGroups: string[];
   personalText: string;
   faq: { q: string; a: string }[];
+  relatedTitle: string;
+  relatedIntro: string;
   relatedLinks: { href: string; label: string; text: string }[];
   ctaTitle: string;
   ctaSubtitle: string;
@@ -48,6 +56,8 @@ export const industryPages: IndustryPage[] = [
       },
     ],
     solutionTitle: "Ein Auftritt, der Positionierung und Anfrageweg zusammenführt.",
+    solutionIntro:
+      "Bei Dienstleistungen entsteht Vertrauen über Klarheit. Deshalb beginnt das Projekt nicht mit Farben, sondern mit Zielgruppe, Angebot und dem Grund, warum ein Interessent gerade Sie ansprechen sollte.",
     features: [
       {
         title: "Positionierung und Seitenstruktur",
@@ -75,6 +85,8 @@ export const industryPages: IndustryPage[] = [
       },
     ],
     contentTitle: "Typische Inhalte einer Website für Dienstleister.",
+    contentIntro:
+      "Die Website führt vom Problem des Interessenten über Ihre Arbeitsweise zum passenden Gespräch. Leistungen werden nicht nur aufgezählt, sondern verständlich eingeordnet.",
     websiteContents: [
       "Klare Positionierung und Nutzenversprechen",
       "Leistungsseiten für einzelne Angebote",
@@ -85,6 +97,42 @@ export const industryPages: IndustryPage[] = [
       "Referenzen oder echte Projektbeispiele, wenn vorhanden",
       "Optionale Verknüpfung mit Social Media",
     ],
+    processTitle: "Vom fachlichen Angebot zur klaren Dienstleister-Website.",
+    processIntro:
+      "Im Mittelpunkt stehen Positionierung und Entscheidungsweg. Design und Technik folgen erst, wenn das Angebot verständlich geordnet ist.",
+    process: [
+      {
+        no: "1",
+        title: "Positionierung schärfen",
+        text: "Im Erstgespräch kläre ich, welche Kunden Sie erreichen möchten, welches Problem Sie lösen und wodurch sich Ihre Arbeitsweise unterscheidet.",
+      },
+      {
+        no: "2",
+        title: "Angebote ordnen",
+        text: "Beratung, Pakete, Einzelleistungen und mögliche Einstiegsthemen bekommen eine nachvollziehbare Reihenfolge.",
+      },
+      {
+        no: "3",
+        title: "Vertrauen belegen",
+        text: "Expertise, Vorgehen, Qualifikationen und vorhandene Projektbeispiele werden dort eingebaut, wo Interessenten noch Fragen haben.",
+      },
+      {
+        no: "4",
+        title: "Texte und Design entwickeln",
+        text: "Aus dem fachlichen Input entstehen verständliche Texte und ein Auftritt, der Kompetenz zeigt, ohne steif oder übertrieben zu wirken.",
+      },
+      {
+        no: "5",
+        title: "Anfrageweg festlegen",
+        text: "Erstgespräch, Projektanfrage oder Rückruf werden passend zur Leistung und zum üblichen Vertriebsprozess eingebunden.",
+      },
+      {
+        no: "6",
+        title: "Veröffentlichen und ausbauen",
+        text: "Nach der Prüfung geht die Seite online. Neue Angebote, Fachthemen oder Referenzen lassen sich später gezielt ergänzen.",
+      },
+    ],
+    remoteTitle: "Direkte Beratung, auch ohne Termin vor Ort.",
     targetGroupsTitle: "Für beratende, kreative und spezialisierte Dienstleistungen.",
     targetGroups: [
       "Berater und Agenturen",
@@ -128,6 +176,9 @@ export const industryPages: IndustryPage[] = [
         a: "Ja. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet per Telefon, E-Mail, Video-Call und digitaler Abstimmung deutschlandweit.",
       },
     ],
+    relatedTitle: "Weitere Wege zu einem stimmigen Auftritt.",
+    relatedIntro:
+      "Die allgemeine Webdesign-Leistung und Social Media ergänzen die Positionierung. Branchen mit anderen Anfragewegen sind separat beschrieben.",
     relatedLinks: [
       {
         href: "/webdesign",
@@ -147,7 +198,7 @@ export const industryPages: IndustryPage[] = [
     ],
     ctaTitle: "Über Ihre neue Dienstleister-Website sprechen?",
     ctaSubtitle:
-      "Im unverbindlichen Erstgespräch klären wir Positionierung, Inhalte und den sinnvollsten Umfang für Ihren neuen Auftritt.",
+      "Im unverbindlichen Erstgespräch kläre ich Positionierung, Inhalte und den sinnvollen Umfang für Ihren neuen Auftritt.",
   },
   {
     slug: "webdesign-reinigungsfirmen",
@@ -175,6 +226,8 @@ export const industryPages: IndustryPage[] = [
       },
     ],
     solutionTitle: "Leistungen, Einsatzgebiet und Angebotsanfrage klar verbinden.",
+    solutionIntro:
+      "Bei Reinigungsfirmen zählt weniger eine lange Selbstdarstellung als eine schnelle Einordnung: Welche Objekte werden betreut, welche Leistungen sind möglich und welche Angaben werden für ein Angebot gebraucht?",
     features: [
       {
         title: "Struktur nach Leistungsarten",
@@ -202,6 +255,8 @@ export const industryPages: IndustryPage[] = [
       },
     ],
     contentTitle: "Typische Inhalte einer Website für Reinigungsfirmen.",
+    contentIntro:
+      "Leistungsarten, Objektgrößen und Einsatzorte werden so geordnet, dass private und gewerbliche Interessenten ohne Umwege zur richtigen Anfrage kommen.",
     websiteContents: [
       "Unterhalts- und Büroreinigung",
       "Gebäude- und Treppenhausreinigung",
@@ -212,6 +267,42 @@ export const industryPages: IndustryPage[] = [
       "Qualitätsablauf und feste Ansprechpartner",
       "Telefonnummer und schnelle Kontaktaufnahme",
     ],
+    processTitle: "Von Leistungen und Kapazitäten zur brauchbaren Angebotsanfrage.",
+    processIntro:
+      "Die Website soll im Alltag Zeit sparen. Deshalb orientiert sich der Aufbau an den Angaben, die Sie für eine erste Einschätzung wirklich benötigen.",
+    process: [
+      {
+        no: "1",
+        title: "Leistungen abgrenzen",
+        text: "Ich erfasse, welche Reinigungsarten, Objektarten und Zusatzleistungen tatsächlich angeboten werden und welche Kunden dazu passen.",
+      },
+      {
+        no: "2",
+        title: "Einsatzgebiet festlegen",
+        text: "Orte, Anfahrtsradius und betreubare Regionen werden realistisch beschrieben, damit Anfragen aus passenden Gebieten kommen.",
+      },
+      {
+        no: "3",
+        title: "Angebotsdaten bestimmen",
+        text: "Objektart, Fläche, Rhythmus, gewünschter Start und Besonderheiten fließen in ein branchengerechtes Anfrageformular ein.",
+      },
+      {
+        no: "4",
+        title: "Zuverlässigkeit zeigen",
+        text: "Qualitätsablauf, Ansprechpartner, Reaktionswege und vorhandene Nachweise werden sachlich und nachvollziehbar dargestellt.",
+      },
+      {
+        no: "5",
+        title: "Mobil umsetzen",
+        text: "Die Seite wird für schnelle Nutzung auf dem Smartphone gebaut, weil viele Anfragen direkt aus dem Arbeitsalltag entstehen.",
+      },
+      {
+        no: "6",
+        title: "Starten und aktuell halten",
+        text: "Nach dem Start können neue Einsatzorte, Leistungen und freie Kapazitäten ergänzt werden, ohne die ganze Seite neu aufzubauen.",
+      },
+    ],
+    remoteTitle: "Kurze Abstimmungen für einen klaren Leistungsauftritt.",
     targetGroupsTitle: "Für spezialisierte und breit aufgestellte Reinigungsbetriebe.",
     targetGroups: [
       "Gebäudereinigungen",
@@ -247,7 +338,7 @@ export const industryPages: IndustryPage[] = [
         a: "Ja. Bestehende Inhalte und Technik werden geprüft. Danach wird entschieden, ob eine Überarbeitung genügt oder ein Neuaufbau sinnvoller ist.",
       },
       {
-        q: "Können wir neue Einsatzorte später ergänzen?",
+        q: "Können neue Einsatzorte später ergänzt werden?",
         a: "Ja. Die Seitenstruktur kann so angelegt werden, dass weitere Orte, Leistungen und Objektarten später sauber ergänzt werden können.",
       },
       {
@@ -255,6 +346,9 @@ export const industryPages: IndustryPage[] = [
         a: "Ja. Schurz Marketing arbeitet von Neustadt in Sachsen aus per Telefon, E-Mail, Video-Call und digitaler Abstimmung mit Reinigungsfirmen in ganz Deutschland.",
       },
     ],
+    relatedTitle: "Ergänzende Leistungen für Reinigungsbetriebe.",
+    relatedIntro:
+      "Allgemeines Webdesign, branchenübergreifende Betriebsseiten und laufende Social-Media-Inhalte greifen unterschiedliche Aufgaben auf.",
     relatedLinks: [
       {
         href: "/webdesign",
@@ -274,7 +368,7 @@ export const industryPages: IndustryPage[] = [
     ],
     ctaTitle: "Website-Projekt für Ihre Reinigungsfirma anfragen?",
     ctaSubtitle:
-      "Wir klären unverbindlich, welche Leistungen, Einsatzgebiete und Anfragefelder Ihr neuer Auftritt wirklich braucht.",
+      "Im Erstgespräch kläre ich, welche Leistungen, Einsatzgebiete und Anfragefelder Ihr neuer Auftritt wirklich braucht.",
   },
 ];
 

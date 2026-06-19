@@ -67,7 +67,7 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Wir klären Angebot, Zielgruppe, Region und welche Anfragen die Website bringen soll. Kostenlos und unverbindlich.",
+    text: "Ich kläre mit Ihnen Angebot, Zielgruppe, Region und welche Anfragen die Website bringen soll. Kostenlos und unverbindlich.",
   },
   {
     no: "2",
@@ -280,7 +280,7 @@ export default function SachsenPage() {
 
       <CtaBand
         title="Regional sichtbar werden in Ihrer Stadt?"
-        subtitle="Im kostenlosen Erstgespräch schauen wir auf Ihre aktuelle Sichtbarkeit und klären, wie eine klare Website mehr Anfragen aus Ihrer Region bringt."
+        subtitle="Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr Anfragen aus Ihrer Region bringen kann."
       />
     </>
   );

@@ -127,6 +127,6 @@ export async function submitContactAction(
   return {
     status: "success",
     message:
-      "Bitte bestätigen Sie Ihre Anfrage über den Link, den wir Ihnen gerade per E-Mail gesendet haben. Erst danach wird die Anfrage weitergeleitet.",
+      "Bitte bestätigen Sie Ihre Anfrage über den Link, den ich Ihnen gerade per E-Mail gesendet habe. Erst danach wird die Anfrage an mich weitergeleitet.",
   };
 }

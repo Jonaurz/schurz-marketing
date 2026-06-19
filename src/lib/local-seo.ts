@@ -377,7 +377,7 @@ export const localServices: LocalService[] = [
       {
         no: "1",
         title: "Ziele klären",
-        text: "Wir sprechen über Angebot, Zielgruppe, Region und die Anfragen, die Ihre Website bringen soll.",
+        text: "Ich spreche mit Ihnen über Angebot, Zielgruppe, Region und die Anfragen, die Ihre Website bringen soll.",
       },
       {
         no: "2",
@@ -411,7 +411,7 @@ export const localServices: LocalService[] = [
     ],
     ctaTitle: "Ihre Website soll regional mehr leisten?",
     ctaSubtitle:
-      "Im kostenlosen Erstgespräch schauen wir auf Ihre aktuelle Sichtbarkeit und klären, wie eine professionelle Website mehr passende Anfragen bringt.",
+      "Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine professionelle Website mehr passende Anfragen bringen kann.",
   },
   {
     id: "social-media",
@@ -435,7 +435,7 @@ export const localServices: LocalService[] = [
     features: [
       {
         title: "Strategie und Themen",
-        text: "Wir klären Kanäle, Zielgruppen und Themen, damit Inhalte nicht zufällig entstehen, sondern auf Ihre Ziele einzahlen.",
+        text: "Ich kläre mit Ihnen Kanäle, Zielgruppen und Themen, damit Inhalte nicht zufällig entstehen, sondern auf Ihre Ziele einzahlen.",
       },
       {
         title: "Reels, Videos und Posts",
@@ -461,7 +461,7 @@ export const localServices: LocalService[] = [
       {
         no: "1",
         title: "Ausgangslage verstehen",
-        text: "Wir schauen auf bestehende Kanäle, Ziele, Zielgruppen und den regionalen Wettbewerb.",
+        text: "Ich schaue auf bestehende Kanäle, Ziele, Zielgruppen und den regionalen Wettbewerb.",
       },
       {
         no: "2",
@@ -495,7 +495,7 @@ export const localServices: LocalService[] = [
     ],
     ctaTitle: "Ihr Social Media soll regelmäßig sichtbar werden?",
     ctaSubtitle:
-      "Im kostenlosen Erstgespräch klären wir, welche Kanäle, Inhalte und Abläufe für Ihr Unternehmen sinnvoll sind.",
+      "Im kostenlosen Erstgespräch kläre ich, welche Kanäle, Inhalte und Abläufe für Ihr Unternehmen sinnvoll sind.",
   },
 ];
 

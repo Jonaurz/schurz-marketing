@@ -15,39 +15,6 @@ import type { IndustryPage as IndustryPageData } from "@/lib/industry-pages";
 import { serializeJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 
-const process = [
-  {
-    no: "1",
-    title: "Erstgespräch",
-    text: "Wir klären Zielgruppe, Leistungen, vorhandene Inhalte und was die Website konkret erreichen soll.",
-  },
-  {
-    no: "2",
-    title: "Ziele und Struktur",
-    text: "Angebote, Suchthemen und Kontaktwege werden priorisiert und in eine klare Seitenstruktur übersetzt.",
-  },
-  {
-    no: "3",
-    title: "Inhalte",
-    text: "Texte, Bilder und typische Kundenfragen werden gesammelt, geordnet und verständlich ausgearbeitet.",
-  },
-  {
-    no: "4",
-    title: "Design und Umsetzung",
-    text: "Der Auftritt wird im bestehenden Markenbild gestaltet, technisch umgesetzt und mobil optimiert.",
-  },
-  {
-    no: "5",
-    title: "Korrekturen",
-    text: "Sie erhalten klare Zwischenstände und können Inhalte und Details in abgestimmten Runden korrigieren.",
-  },
-  {
-    no: "6",
-    title: "Veröffentlichung",
-    text: "Nach Prüfung geht die Website live. Pflege und Weiterentwicklung können anschließend übernommen werden.",
-  },
-];
-
 export function IndustryPage({ page }: { page: IndustryPageData }) {
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -118,7 +85,7 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
         <Container>
           <SectionHeading
             title={page.solutionTitle}
-            intro="Der genaue Umfang richtet sich nach Ihrem Angebot, Ihren Zielgruppen und dem Material, das bereits vorhanden ist."
+            intro={page.solutionIntro}
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
             {page.features.map((feature) => (
@@ -138,7 +105,7 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
               <SectionHeading
                 size="compact"
                 title={page.contentTitle}
-                intro="Nicht jeder Punkt braucht eine eigene Seite. Entscheidend ist eine Reihenfolge, die Interessenten schnell zur passenden Information führt."
+                intro={page.contentIntro}
               />
             </div>
             <div className="lg:col-span-7">
@@ -160,11 +127,11 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
       <Section aria-label="Ablauf der Zusammenarbeit" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="So läuft die Zusammenarbeit ab."
-            intro="Sie wissen in jeder Phase, was als Nächstes passiert und welche Rückmeldung gerade gebraucht wird."
+            title={page.processTitle}
+            intro={page.processIntro}
           />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {process.map((step) => (
+            {page.process.map((step) => (
               <li key={step.no}>
                 <span aria-hidden="true" className="text-sm font-semibold text-accent">
                   {step.no}
@@ -183,7 +150,7 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
             <div className="lg:col-span-4">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                <SectionHeading size="compact" title="Deutschlandweit, aber persönlich." />
+                <SectionHeading size="compact" title={page.remoteTitle} />
               </div>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
@@ -219,8 +186,8 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
       <Section aria-label="Verwandte Leistungen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Passende Leistungen und Branchen."
-            intro="Vertiefende Informationen finden Sie auf diesen Seiten."
+            title={page.relatedTitle}
+            intro={page.relatedIntro}
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 md:grid-cols-3">
             {page.relatedLinks.map((item) => (

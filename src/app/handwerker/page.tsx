@@ -116,7 +116,7 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Wir klären Gewerk, Einsatzgebiet und welche Anfragen die Website bringen soll. Kostenlos und ohne Fachjargon.",
+    text: "Ich kläre mit Ihnen Gewerk, Einsatzgebiet und welche Anfragen die Website bringen soll. Kostenlos und ohne Fachjargon.",
   },
   {
     no: "2",
@@ -146,7 +146,7 @@ const faqs = [
   },
   {
     q: "Was kostet eine Website für meinen Betrieb?",
-    a: "Das hängt vom Umfang ab. Den genauen Rahmen klären wir transparent im kostenlosen Erstgespräch, ohne Verpflichtung.",
+    a: "Das hängt vom Umfang ab. Den genauen Rahmen kläre ich transparent im kostenlosen Erstgespräch, ohne Verpflichtung.",
   },
   {
     q: "Kümmern Sie sich auch um Google und die lokale Sichtbarkeit?",
@@ -477,7 +477,7 @@ export default function HandwerkerPage() {
 
       <CtaBand
         title="Webseite für Ihren Handwerksbetrieb planen?"
-        subtitle="Im kostenlosen Erstgespräch schauen wir auf Ihre aktuelle Sichtbarkeit und klären, wie eine klare Website mehr Anfragen aus Ihrer Region bringt."
+        subtitle="Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr passende Anfragen bringen kann."
       />
     </>
   );
