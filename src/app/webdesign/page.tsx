@@ -9,6 +9,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
+import { ProofSection } from "@/components/sections/references-section";
 import { Check } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
@@ -243,6 +244,9 @@ export default function WebdesignPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
 
       {/* Schön UND funktional */}
       <Section aria-label="Design und Funktion" className="border-t border-ink/10">

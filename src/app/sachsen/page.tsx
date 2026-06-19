@@ -10,6 +10,7 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { ProofSection } from "@/components/sections/references-section";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 import { localCities } from "@/lib/local-seo";
@@ -237,6 +238,9 @@ export default function SachsenPage() {
           </p>
         </Container>
       </Section>
+
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
 
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { Accordion } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
+import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, MapPin, Search, Users } from "@/components/ui/icons";
@@ -54,6 +55,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
       />
       <FaqJsonLd items={service.faq} />
 
+      {/* Hero */}
       <section className="border-b border-ink/10 pt-16 lg:pt-[4.5rem]">
         <Container>
           <Reveal immediate>
@@ -92,20 +94,18 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </section>
 
-      <Section aria-label={`Warum ${service.shortLabel} in ${city.name} zählt`}>
+      {/* Problem */}
+      <Section aria-label={`Warum Sichtbarkeit in ${city.name} entscheidet`}>
         <Container>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <SectionHeading
-                title={`Online sichtbar werden, wenn Kunden in ${city.name} suchen.`}
-                intro={city.localContext}
+                title={`Wer Sie in ${city.name} nicht findet, fragt jemand anderen an.`}
+                intro={service.pain}
               />
               <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
-                <p className="text-pretty text-lg text-ink/90">{service.intro}</p>
-                <p className="text-pretty">{service.pain}</p>
-                <p className="text-pretty">
-                  {city.localNeed} {service.localBenefit}
-                </p>
+                <p className="text-pretty text-lg text-ink/90">{city.localContext}</p>
+                <p className="text-pretty">{city.localNeed}</p>
               </div>
             </div>
             <aside className="lg:col-span-4 lg:col-start-9">
@@ -127,11 +127,12 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </Section>
 
+      {/* Lösung: Leistungsumfang */}
       <Section aria-label="Leistungsumfang" className="border-t border-ink/10">
         <Container>
           <SectionHeading
             title={`${service.label} mit klarem regionalem Fokus.`}
-            intro={`Für Unternehmen in ${city.name} und Umgebung entsteht kein austauschbarer Auftritt, sondern ein sauber aufgebautes System für mehr Sichtbarkeit und mehr passende Anfragen.`}
+            intro={`${service.intro} ${service.localBenefit}`}
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {service.features.map((feature) => (
@@ -144,6 +145,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </Section>
 
+      {/* Was enthalten ist */}
       <Section aria-label="Was enthalten ist" className="border-t border-ink/10">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12">
@@ -168,6 +170,10 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </Section>
 
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
+
+      {/* Lokale Ausrichtung */}
       <Section aria-label="Lokale Ausrichtung" className="border-t border-ink/10">
         <Container>
           <div className="grid gap-8 md:grid-cols-3">
@@ -205,11 +211,10 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </Section>
 
+      {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading
-            title={`So entsteht ${service.titleWord} für ${city.name}.`}
-          />
+          <SectionHeading title={`So entsteht ${service.titleWord} für ${city.name}.`} />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {service.process.map((step) => (
               <li key={step.no}>
@@ -224,6 +229,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
         </Container>
       </Section>
 
+      {/* FAQ */}
       <Section aria-label="Häufige Fragen" className="border-t border-ink/10">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12">

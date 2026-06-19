@@ -9,6 +9,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
+import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
@@ -179,7 +180,7 @@ export default function HandwerkerPage() {
         </Button>
       </PageHero>
 
-      {/* Einstieg */}
+      {/* Problem */}
       <Section aria-label="Warum eine gute Website für Handwerker zählt">
         <Container>
           <div className="max-w-3xl">
@@ -235,7 +236,7 @@ export default function HandwerkerPage() {
         </Container>
       </Section>
 
-      {/* Leistungen */}
+      {/* Lösung: Leistungen */}
       <Section aria-label="Leistungen für Handwerker" className="border-t border-ink/10">
         <Container>
           <SectionHeading
@@ -256,6 +257,9 @@ export default function HandwerkerPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
 
       {/* Nutzen */}
       <Section aria-label="Nutzen für Handwerker" className="border-t border-ink/10">
@@ -325,7 +329,21 @@ export default function HandwerkerPage() {
         </Container>
       </Section>
 
-      {/* Ansprechpartner / Vertrauen */}
+      {/* FAQ */}
+      <Section aria-label="Häufige Fragen zu Webseiten für Handwerker" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <SectionHeading size="compact" title="Häufige Fragen von Handwerksbetrieben." />
+            </div>
+            <div className="lg:col-span-8">
+              <Accordion items={faqs} />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Ansprechpartner / Über mich (am Ende) */}
       <Section aria-label="Ansprechpartner" className="border-t border-ink/10">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
@@ -359,20 +377,6 @@ export default function HandwerkerPage() {
                 Referenzen aus Handwerk und Bau werden laufend ergänzt. Gerne zeige ich
                 im Erstgespräch passende Beispiele.
               </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* FAQ */}
-      <Section aria-label="Häufige Fragen zu Webseiten für Handwerker" className="border-t border-ink/10">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <SectionHeading size="compact" title="Häufige Fragen von Handwerksbetrieben." />
-            </div>
-            <div className="lg:col-span-8">
-              <Accordion items={faqs} />
             </div>
           </div>
         </Container>

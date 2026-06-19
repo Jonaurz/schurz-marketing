@@ -10,9 +10,9 @@ import { StatCounter } from "@/components/ui/stat-counter";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
 import { HomeHero } from "@/components/sections/home-hero";
+import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { cn } from "@/lib/cn";
-import { getPublicContent } from "@/lib/content";
 import { ArrowRight, Check } from "@/components/ui/icons";
 
 /* Inhalte (Referenzen/Kundenstimmen) werden bis zu 60 s zwischengespeichert,
@@ -166,9 +166,7 @@ const faqs = [
   },
 ];
 
-export default async function Home() {
-  const { references, testimonials } = await getPublicContent();
-
+export default function Home() {
   return (
     <>
       <FaqJsonLd items={faqs} />
@@ -254,12 +252,12 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* Ausgangslage */}
+      {/* Problem */}
       <Section aria-label="Ausgangslage" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Starke Angebote, die online unter Wert verkauft werden."
-            intro="Die Leistung stimmt, aber der digitale Auftritt zeigt sie nicht. Genau hier gehen jeden Tag Kunden, Umsatz und Vertrauen verloren."
+            title="Ihre Arbeit ist gut. Online sieht das nur niemand."
+            intro="Kunden entscheiden in wenigen Sekunden, ob sie Ihnen zutrauen, was sie suchen. Wirkt der Auftritt veraltet oder unklar, sind sie weg, bevor Sie überhaupt von ihnen erfahren."
           />
           <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             {problems.map((problem, i) => (
@@ -282,12 +280,10 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* Leistungen */}
+      {/* Lösung: Leistungen */}
       <Section id="leistungen" aria-label="Leistungen" className="border-t border-ink/10">
         <Container>
-          <SectionHeading
-            title="Zwei Leistungen. Ein Ziel: dass Sie online überzeugen."
-          />
+          <SectionHeading title="Zwei Leistungen. Ein Ziel: dass Sie online überzeugen." />
           <div className="mt-14 space-y-20">
             {serviceBlocks.map((service, i) => {
               const isFirst = i === 0;
@@ -337,6 +333,9 @@ export default async function Home() {
         </Container>
       </Section>
 
+      {/* Beweis: Referenzen + Kundenstimmen */}
+      <ProofSection />
+
       {/* Warum Schurz Marketing */}
       <Section aria-label="Warum Schurz Marketing" className="border-t border-ink/10">
         <Container>
@@ -365,9 +364,7 @@ export default async function Home() {
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading
-            title="In vier Schritten zum Auftritt, der wirkt."
-          />
+          <SectionHeading title="In vier Schritten zum Auftritt, der wirkt." />
           <ol className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no} className="bg-paper p-6 sm:p-7">
@@ -382,7 +379,25 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* Über mich */}
+      {/* FAQ */}
+      <Section aria-label="Häufige Fragen" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <SectionHeading
+                size="compact"
+                title="Gut zu wissen, bevor wir sprechen."
+                intro="Wenn Ihre Frage fehlt, stellen Sie sie einfach im Erstgespräch."
+              />
+            </div>
+            <div className="lg:col-span-8">
+              <Accordion items={faqs} />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Über mich (am Ende, kurz vor dem Abschluss) */}
       <Section aria-label="Über mich" className="border-t border-ink/10">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
@@ -411,125 +426,6 @@ export default async function Home() {
                   Mehr über mich
                 </Button>
               </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {references.length > 0 ? (
-        <Section id="referenzen" aria-label="Referenzen" className="border-t border-ink/10">
-          <Container>
-            <SectionHeading
-              title="Projekte, die ein Problem gelöst haben."
-              intro="Bei jedem Projekt zählt nicht nur das Ergebnis, sondern die Ausgangslage und der Weg dorthin."
-            />
-            <div className="mt-12 space-y-14">
-              {references.map((reference) => (
-                <Reveal key={reference.id}>
-                  <article className="grid gap-8 border-t border-ink/10 pt-10 lg:grid-cols-12 lg:gap-12">
-                    <div className="lg:col-span-5">
-                      {reference.imageUrl ? (
-                        <figure className="relative aspect-[16/10] overflow-hidden">
-                          <Image
-                            src={reference.imageUrl}
-                            alt={reference.imageAlt || reference.title}
-                            fill
-                            sizes="(min-width: 1024px) 40vw, 100vw"
-                            className="object-cover"
-                          />
-                        </figure>
-                      ) : null}
-                      <p className="mt-3 text-xs font-semibold uppercase tracking-label text-ink/70">
-                        {reference.sector}
-                      </p>
-                    </div>
-                    <div className="lg:col-span-7">
-                      <h3 className="max-w-3xl text-balance text-xl font-bold tracking-tight sm:text-2xl">
-                        {reference.title}
-                      </h3>
-                      <div className="mt-6 grid gap-6 md:grid-cols-3">
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-label text-ink/70">
-                            Ausgangslage
-                          </p>
-                          <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                            {reference.problem}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-label text-ink/70">
-                            Folge
-                          </p>
-                          <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                            {reference.consequence}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-label text-accent">
-                            Lösung
-                          </p>
-                          <p className="mt-2 text-sm leading-relaxed text-ink/80">
-                            {reference.solution}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      ) : null}
-
-      {testimonials.length > 0 ? (
-        <Section aria-label="Kundenstimmen" className="border-t border-ink/10">
-          <Container>
-            <SectionHeading title="Was Kunden über die Zusammenarbeit sagen." />
-            <div className="mt-12 grid gap-10 lg:grid-cols-3">
-              {testimonials.map((testimonial, index) => (
-                <Reveal key={testimonial.id} delay={index * 0.05}>
-                  <figure className="flex h-full flex-col">
-                    <blockquote className="text-pretty text-lg font-semibold leading-snug">
-                      &bdquo;{testimonial.quote}&ldquo;
-                    </blockquote>
-                    {testimonial.result ? (
-                      <p className="mt-4 text-sm leading-relaxed text-ink/70">
-                        {testimonial.result}
-                      </p>
-                    ) : null}
-                    <figcaption className="mt-auto pt-6 text-sm text-ink/70">
-                      {testimonial.author ? (
-                        <span className="font-medium text-ink">{testimonial.author}</span>
-                      ) : null}
-                      {testimonial.role || testimonial.company ? (
-                        <span>
-                          {testimonial.author ? ", " : ""}
-                          {[testimonial.role, testimonial.company].filter(Boolean).join(", ")}
-                        </span>
-                      ) : null}
-                    </figcaption>
-                  </figure>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      ) : null}
-
-      {/* FAQ */}
-      <Section aria-label="Häufige Fragen" className="border-t border-ink/10">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <SectionHeading
-                size="compact"
-                title="Gut zu wissen, bevor wir sprechen."
-                intro="Wenn Ihre Frage fehlt, stellen Sie sie einfach im Erstgespräch."
-              />
-            </div>
-            <div className="lg:col-span-8">
-              <Accordion items={faqs} />
             </div>
           </div>
         </Container>
