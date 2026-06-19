@@ -15,6 +15,10 @@ import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 import { localCities } from "@/lib/local-seo";
 
+/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
+   zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Webdesign für regionale Unternehmen in Sachsen",
   description:

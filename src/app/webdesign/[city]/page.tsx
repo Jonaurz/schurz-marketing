@@ -7,6 +7,10 @@ type PageProps = {
   params: Promise<{ city: string }>;
 };
 
+/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
+   zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return localCities.map((city) => ({ city: city.slug }));
 }

@@ -7,6 +7,10 @@ type PageProps = {
   params: Promise<{ trade: string }>;
 };
 
+/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
+   zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return trades.map((trade) => ({ trade: trade.slug }));
 }

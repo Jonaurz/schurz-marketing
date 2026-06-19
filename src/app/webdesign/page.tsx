@@ -12,6 +12,10 @@ import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { ProofSection } from "@/components/sections/references-section";
 import { Check } from "@/components/ui/icons";
 
+/* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
+   zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Webdesign",
   description:
