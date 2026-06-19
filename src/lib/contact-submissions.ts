@@ -16,9 +16,9 @@ export type ContactSubmission = {
   services: string[];
   currentWebsite: string;
   socialChannels: string;
-  branche: string;
-  location: string;
-  googleProfile: string;
+  branche?: string;
+  location?: string;
+  googleProfile?: string;
   consentText: string;
 };
 
