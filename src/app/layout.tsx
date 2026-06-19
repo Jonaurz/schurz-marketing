@@ -12,7 +12,7 @@ const logoSvgUrl = `${site.url}/logo.svg`;
 const logoPngUrl = `${site.url}/images/schurz-marketing-logo.png`;
 
 const metaDescription =
-  "Webdesign und Social-Media-Betreuung für regionale Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen. Klare, DSGVO-konforme und barrierefreie Websites, die Vertrauen schaffen und Anfragen bringen.";
+  "Webdesign und Social-Media-Betreuung für Unternehmen, Dienstleister und lokale Betriebe. Klare, DSGVO-konforme und barrierefreie Websites, die Vertrauen schaffen und Anfragen bringen.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -55,16 +55,15 @@ export const metadata: Metadata = {
     images: ["/images/schurz-marketing-webdesign.png"],
   },
   keywords: [
-    "Webdesign Sachsen",
-    "Webdesigner Dresden",
+    "Webdesign",
     "Website erstellen lassen",
-    "Webdesign für Handwerker",
-    "Webseite für Handwerker",
+    "Webdesigner",
+    "Social-Media-Betreuung",
+    "Landingpages",
     "lokale SEO",
-    "Google-Unternehmensprofil",
     "Website-Wartung",
     "WordPress-Webseiten",
-    "Social-Media-Betreuung",
+    "Webdesign für Handwerker",
     "Schurz Marketing",
     "Jonas Schurz",
   ],
@@ -93,15 +92,12 @@ const jsonLd = {
   },
   image: [logoPngUrl, logoSvgUrl, `${site.url}/images/schurz-marketing-webdesign.png`],
   description:
-    "Webdesign und Social-Media-Betreuung für regionale Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen. Klar, DSGVO-konform und barrierefrei.",
+    "Webdesign und Social-Media-Betreuung für Unternehmen, Dienstleister und lokale Betriebe. Klar, DSGVO-konform und barrierefrei.",
   slogan: site.tagline,
   founder: { "@type": "Person", "@id": `${site.url}/#founder`, name: site.founder },
   email: site.contact.email,
   telephone: site.contact.phone,
-  areaServed: [
-    { "@type": "AdministrativeArea", name: "Sachsen" },
-    ...site.serviceArea.map((name) => ({ "@type": "AdministrativeArea", name })),
-  ],
+  areaServed: { "@type": "Country", name: "Deutschland" },
   knowsAbout: [
     "Webdesign",
     "Webentwicklung",

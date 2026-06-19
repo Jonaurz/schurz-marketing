@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1, changeFrequency: "monthly" },
     { path: "/webdesign", priority: 0.9, changeFrequency: "monthly" },
     { path: "/handwerker", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/sachsen", priority: 0.8, changeFrequency: "monthly" },
     { path: "/social-media", priority: 0.9, changeFrequency: "monthly" },
     { path: "/ueber-mich", priority: 0.7, changeFrequency: "yearly" },
     { path: "/kontakt", priority: 0.8, changeFrequency: "yearly" },

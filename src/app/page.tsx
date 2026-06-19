@@ -20,32 +20,25 @@ import { ArrowRight, Check } from "@/components/ui/icons";
 export const revalidate = 60;
 
 const industries = [
+  "Dienstleister",
+  "Praxen & Gesundheit",
+  "Kanzleien & Beratung",
   "Handwerk & Bau",
   "Garten- & Landschaftsbau",
-  "Zaunbau",
-  "Maler & Elektriker",
-  "Dienstleister",
-  "Praxen & Gesundheit",
-  "Kanzleien & Beratung",
-  "Lokale Unternehmen",
+  "Gastronomie & Hotellerie",
+  "Immobilien",
   "Coaches & Kreative",
+  "Lokale Unternehmen",
 ];
 
-const trades = [
-  "Handwerksbetriebe",
-  "Garten- und Landschaftsbau",
-  "Zaunbauer",
-  "Bauunternehmen",
-  "Maler",
-  "Elektriker",
-  "Fliesenleger",
-];
-
-const otherAudiences = [
+const audiences = [
   "Dienstleister",
   "Praxen & Gesundheit",
   "Kanzleien & Beratung",
-  "Coaches & Berater",
+  "Coaches & Kreative",
+  "Handwerk & Bau",
+  "Gastronomie & Hotellerie",
+  "Immobilien",
   "Lokale Unternehmen",
 ];
 
@@ -118,8 +111,8 @@ const pillars = [
     text: "Datenschutz und Barrierefreiheit werden von Anfang an mitgedacht, statt kurz vor Launch ergänzt.",
   },
   {
-    title: "Regional gedacht",
-    text: "Inhalte und Struktur sind so aufgebaut, dass Kunden aus Ihrer Region schnell erkennen, was Sie anbieten.",
+    title: "Hochwertig im Detail",
+    text: "Klares Design, saubere Technik, durchdachte Texte. Wertigkeit, die man sieht und spürt.",
   },
 ];
 
@@ -169,7 +162,7 @@ const faqs = [
   },
   {
     q: "Für welche Branchen arbeiten Sie?",
-    a: "Schwerpunkt sind Handwerk, Bau, Garten- und Landschaftsbau und regionale Dienstleister in Sachsen. Genauso arbeite ich für Praxen, Kanzleien, Berater und lokale Unternehmen. Entscheidend ist, dass Ihre Website klar zeigt, was Sie anbieten und wie Kunden Sie erreichen.",
+    a: "Wir arbeiten deutschlandweit für viele Branchen, von Dienstleistern über Praxen, Kanzleien und Gastronomie bis zu Handwerk und Bau. Für Handwerksbetriebe und für regionale Unternehmen in Sachsen gibt es zusätzlich eigene Seiten mit passenden Inhalten.",
   },
 ];
 
@@ -192,57 +185,57 @@ export default async function Home() {
           <SectionHeading
             eyebrow="Branchen"
             title="Für wen wir arbeiten."
-            intro="Schwerpunkt Handwerk, Bau und regionale Dienstleister in Sachsen. Genauso zu Hause bei Praxen, Kanzleien und lokalen Unternehmen, die online klarer auftreten wollen."
+            intro="Schurz Marketing arbeitet deutschlandweit für unterschiedliche Unternehmen und Dienstleister. Entscheidend ist nicht die Branche, sondern ein Auftritt, der Ihre Leistung klar zeigt und Anfragen bringt."
           />
-          <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
-            <Reveal className="lg:col-span-7">
-              <div className="border-t-2 border-ink pt-5">
-                <h3 className="text-lg font-semibold">Handwerk, Bau und Außenanlagen</h3>
-                <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-ink/70">
-                  Hier liegt der Schwerpunkt. Projektbilder, Leistungen, Einsatzgebiet
-                  und ein einfaches Anfrageformular spielen zusammen, damit Kunden
-                  schnell sehen, was Sie machen und wo Sie arbeiten.
+          <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {audiences.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 border-t border-ink/15 pt-4 text-sm text-ink/80"
+              >
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <Reveal>
+              <Link
+                href="/handwerker"
+                className="group block h-full border border-ink/10 p-6 transition-colors hover:border-ink sm:p-7"
+              >
+                <p className="text-xs font-semibold uppercase tracking-label text-accent">
+                  Schwerpunktthema
                 </p>
-                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {trades.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-ink/80">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/handwerker"
-                  className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink underline underline-offset-8 transition-colors hover:text-accent"
-                >
-                  Mehr zu Webseiten für Handwerker
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </Reveal>
-            <Reveal delay={0.06} className="lg:col-span-5">
-              <div className="border-t-2 border-ink/30 pt-5">
-                <h3 className="text-lg font-semibold">Dienstleister und lokale Betriebe</h3>
+                <h3 className="mt-3 flex items-center justify-between gap-2 text-lg font-semibold">
+                  Webseiten für Handwerker und Bau
+                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                  Auch abseits vom Handwerk: Wenn Vertrauen, klare Angebote und eine
-                  einfache Kontaktaufnahme zählen, ist eine gute Website genauso wichtig.
+                  Eigene Seiten für Handwerk, Gewerke und Bauunternehmen, mit Projektbildern,
+                  Leistungen und Einsatzgebiet.
                 </p>
-                <ul className="mt-6 grid gap-3">
-                  {otherAudiences.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-ink/80">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <Link
+                href="/sachsen"
+                className="group block h-full border border-ink/10 p-6 transition-colors hover:border-ink sm:p-7"
+              >
+                <p className="text-xs font-semibold uppercase tracking-label text-accent">
+                  Regional
+                </p>
+                <h3 className="mt-3 flex items-center justify-between gap-2 text-lg font-semibold">
+                  Regionale Unternehmen in Sachsen
+                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">
+                  Für Betriebe in Dresden, Pirna, Leipzig, Chemnitz und der ganzen Region
+                  gibt es eigene Seiten mit lokalem Bezug.
+                </p>
+              </Link>
             </Reveal>
           </div>
-          <p className="mt-10 max-w-[78ch] text-pretty text-sm leading-relaxed text-ink/70">
-            Im Einsatz für Unternehmen in Dresden, Sebnitz, Pirna, Neustadt in Sachsen,
-            der Sächsischen Schweiz, Bautzen, der Oberlausitz, Meißen, Chemnitz, Leipzig
-            und ganz Sachsen.
-          </p>
         </Container>
       </Section>
 
@@ -354,7 +347,7 @@ export default async function Home() {
               <SectionHeading
                 size="compact"
                 title="Ein Partner, der Wirkung über Effekte stellt."
-                intro="Nicht lauter als andere. Klarer, verbindlicher und nah an Ihrer Region."
+                intro="Nicht lauter als andere. Klarer, hochwertiger und verbindlicher."
               />
             </div>
             <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:col-span-8">

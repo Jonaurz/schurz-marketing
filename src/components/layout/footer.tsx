@@ -25,9 +25,8 @@ export function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink/70">
-              Webdesign und Social Media für regionale Unternehmen,
-              Dienstleister und Handwerksbetriebe in Sachsen. Persönlich und aus
-              einer Hand.
+              Webdesign und Social Media für Unternehmen, Dienstleister und
+              lokale Betriebe. Persönlich und aus einer Hand.
             </p>
           </div>
 
