@@ -1,0 +1,16 @@
+import { cn } from "@/lib/cn";
+
+/** Zentrierter Inhaltsrahmen mit konsistenten Seitenrändern. */
+export function Container({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={cn("mx-auto w-full max-w-container px-5 sm:px-8 lg:px-10", className)}>
+      {children}
+    </div>
+  );
+}

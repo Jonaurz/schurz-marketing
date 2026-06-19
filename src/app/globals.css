@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Schurz Marketing - Design-Fundament v4 "Studio"
+  Helles, redaktionelles Agentur-System: Papierweiß, Tinte, ein warmer
+  Akzent. Scharfe Kanten, Hairlines, eine variable Schrift (Archivo).
+*/
+@layer base {
+  :root {
+    --sm-paper: #f5f5f4;
+    --sm-ink: #1c1917;
+    --sm-accent: #8a6a1e; /* abgedunkeltes Markengold, AA-tauglich auf Papier */
+    --sm-brand: #c79a34; /* helles Markengold nur für Marken-/Grafikflächen */
+
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--sm-paper);
+    color: var(--sm-ink);
+    font-family: var(--font-sans), "Archivo", system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headlines: Archivo in breiter Achse, eng gesetzt und selbstbewusst. */
+  h1,
+  h2 {
+    font-weight: 700;
+    font-stretch: 115%;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  h3 {
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--sm-ink);
+    color: var(--sm-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--sm-ink);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Breite Display-Achse für einzelne Elemente außerhalb von h1/h2. */
+  .font-wide {
+    font-stretch: 115%;
+  }
+
+  /* Weiche Ausblendmaske an den Rändern (Laufband). */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+}
+
+@layer components {
+  /* Scroll-Eintritt: nur transform/opacity (GPU-günstig, kein Blur). */
+  .reveal-js {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  .reveal-js.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-js {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Lesbare Typografie für rechtliche Texte (Impressum, Datenschutz). */
+  .legal {
+    @apply leading-relaxed text-ink/75;
+  }
+  .legal h2 {
+    @apply mt-10 text-xl font-bold text-ink;
+  }
+  .legal h3 {
+    @apply mt-6 text-base font-semibold text-ink;
+  }
+  .legal h4 {
+    @apply mt-5 text-sm font-semibold text-ink/90;
+  }
+  .legal p {
+    @apply mt-3;
+  }
+  .legal ul {
+    @apply mt-3 list-disc space-y-1 pl-5;
+  }
+  .legal a {
+    @apply text-accent underline underline-offset-4 hover:text-ink;
+  }
+  .legal strong {
+    @apply font-semibold text-ink;
+  }
+
+  .contact-form .service-field {
+    display: none;
+  }
+
+  .contact-form:has(#service-webseite:checked) .service-field-web,
+  .contact-form:has(#service-social-media:checked) .service-field-social {
+    display: block;
+  }
+
+  .contact-form .service-choice:has(input:checked) {
+    border-color: var(--sm-ink);
+    background: rgba(28, 25, 23, 0.04);
+    color: var(--sm-ink);
+  }
+}

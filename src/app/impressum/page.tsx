@@ -1,0 +1,48 @@
+import type { Metadata } from "next";
+import { Container } from "@/components/ui/container";
+import { Section } from "@/components/ui/section";
+import { PageHero } from "@/components/sections/page-hero";
+
+export const metadata: Metadata = {
+  title: "Impressum",
+  description: "Impressum von Schurz Marketing. Anbieterkennzeichnung gemäß § 5 DDG.",
+  alternates: { canonical: "/impressum" },
+  robots: { index: true, follow: true },
+};
+
+export default function ImpressumPage() {
+  return (
+    <>
+      <PageHero eyebrow="Rechtliches" title="Impressum" />
+
+      <Section spacing="tight" aria-label="Impressum">
+        <Container>
+          <div className="legal mx-auto max-w-3xl">
+            <p>
+              Enrico Sturm
+              <br />
+              Finanz- und Wirtschaftsberatung
+              <br />
+              Wilhelm-Kaulisch-Straße 25
+              <br />
+              01844 Neustadt in Sachsen
+            </p>
+
+            <h2>Kontakt</h2>
+            <p>
+              Telefon: 0152042634
+              <br />
+              E-Mail: <a href="mailto:info@schurz-marketing.de">info@schurz-marketing.de</a>
+            </p>
+
+            <h2>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+            <p>
+              Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
+              einer Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+          </div>
+        </Container>
+      </Section>
+    </>
+  );
+}

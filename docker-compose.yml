@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    image: schurz-marketing-web
+    container_name: schurz-marketing-web
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./data:/app/data
+      - ./public/uploads:/app/public/uploads
+    networks:
+      - crm
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  crm:
+    external: true
+    name: schurz-crm_crm
