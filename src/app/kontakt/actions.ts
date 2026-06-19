@@ -110,7 +110,7 @@ export async function submitContactAction(
 
   try {
     const settings = await readEmailSettings();
-    const origin = settings.baseUrl || (await getRequestOrigin());
+    const origin = (settings.baseUrl || (await getRequestOrigin())).replace(/\/+$/, "");
     const confirmUrl = `${origin}/kontakt/bestaetigen?token=${encodeURIComponent(token)}`;
     await sendContactConfirmationEmail(submission, confirmUrl);
   } catch (error) {
