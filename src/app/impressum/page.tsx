@@ -30,9 +30,9 @@ export default function ImpressumPage() {
 
             <h2>Kontakt</h2>
             <p>
-              Telefon: 0152042634
+              Telefon: 0152 0426 3490
               <br />
-              E-Mail: <a href="mailto:info@schurz-marketing.de">info@schurz-marketing.de</a>
+              E-Mail: <a href="mailto:kontakt@schurz-marketing.de">kontakt@schurz-marketing.de</a>
             </p>
 
             <h2>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>

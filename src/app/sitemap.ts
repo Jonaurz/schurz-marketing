@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { localSeoPages } from "@/lib/local-seo";
+import { trades } from "@/lib/trades";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,13 +14,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/kontakt", priority: 0.8, changeFrequency: "yearly" },
   ];
 
+  const tradeRoutes = trades.map((trade) => ({
+    path: `/handwerker/${trade.slug}`,
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  }));
+
   const localRoutes = localSeoPages.map((page) => ({
     path: page.href,
     priority: 0.75,
     changeFrequency: "monthly" as const,
   }));
 
-  return [...routes, ...localRoutes].map((route) => ({
+  return [...routes, ...tradeRoutes, ...localRoutes].map((route) => ({
     url: `${site.url}${route.path}`,
     lastModified: now,
     changeFrequency: route.changeFrequency,

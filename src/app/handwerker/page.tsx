@@ -14,6 +14,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 import { localCities } from "@/lib/local-seo";
+import { trades } from "@/lib/trades";
 
 export const metadata: Metadata = {
   title: "Webdesign für Handwerker",
@@ -35,41 +36,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
-const trades = [
-  {
-    title: "Garten- und Landschaftsbau",
-    text: "Pflasterarbeiten, Terrassen, Zäune und Naturgärten mit Projektbildern und Einsatzgebiet.",
-  },
-  {
-    title: "Bauunternehmen und Bauhandwerk",
-    text: "Hochbau, Tiefbau, Sanierung und Außenanlagen klar und seriös dargestellt.",
-  },
-  {
-    title: "Zaunbau",
-    text: "Zaunarten, Materialien und Beispielprojekte, die Kunden schnell überzeugen.",
-  },
-  {
-    title: "Dachdecker",
-    text: "Dacharbeiten, Sanierung und Reparatur mit Bildern echter Baustellen.",
-  },
-  {
-    title: "Maler und Stuckateure",
-    text: "Innen, außen und Fassade mit klaren Leistungen und Vorher-Nachher-Bildern.",
-  },
-  {
-    title: "Elektriker",
-    text: "Elektroinstallation, Smart Home und Service mit klaren Kontaktwegen.",
-  },
-  {
-    title: "Fliesenleger",
-    text: "Bad, Boden und Terrasse mit einer Galerie, die Handwerk sichtbar macht.",
-  },
-  {
-    title: "Sanitär, Heizung, Klempner",
-    text: "Service, Notdienst und Modernisierung, die schnell zur Anfrage führen.",
-  },
-];
 
 const leistungen = [
   {
@@ -245,20 +211,27 @@ export default function HandwerkerPage() {
         <Container>
           <SectionHeading
             eyebrow="Gewerke"
-            title="Für welche Betriebe sich eine gute Website besonders lohnt."
-            intro="Gerade dort, wo Projektbilder, Leistungen und das Einsatzgebiet zusammenspielen, bringt eine klare Website schnell mehr Anfragen."
+            title="Eigene Seiten für Ihr Gewerk."
+            intro="Gerade dort, wo Projektbilder, Leistungen und das Einsatzgebiet zusammenspielen, bringt eine klare Website schnell mehr Anfragen. Für diese Gewerke gibt es eigene Seiten:"
           />
-          <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
             {trades.map((trade) => (
-              <article key={trade.title} className="bg-paper p-6 sm:p-7">
-                <h3 className="text-base font-semibold">{trade.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70">{trade.text}</p>
-              </article>
+              <Link
+                key={trade.slug}
+                href={`/handwerker/${trade.slug}`}
+                className="group bg-paper p-6 transition-colors hover:bg-white sm:p-7"
+              >
+                <h3 className="flex items-center justify-between gap-2 text-base font-semibold">
+                  {trade.name}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{trade.cardText}</p>
+              </Link>
             ))}
           </div>
           <p className="mt-8 max-w-[70ch] text-sm leading-relaxed text-ink/70">
-            Ihr Gewerk ist nicht dabei? Kein Problem. Auch für andere Handwerks- und
-            Dienstleistungsbetriebe ist der Aufbau derselbe: klar zeigen, was Sie
+            Ihr Gewerk ist nicht dabei, zum Beispiel Dachdecker, Sanitär, Heizung oder
+            Tischler? Kein Problem. Der Aufbau ist derselbe: klar zeigen, was Sie
             anbieten, wo Sie arbeiten und warum Kunden Ihnen vertrauen können.
           </p>
         </Container>
