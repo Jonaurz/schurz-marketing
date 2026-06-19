@@ -41,6 +41,9 @@
     line-height: 1.02;
     letter-spacing: -0.02em;
   }
+  h2 {
+    overflow-wrap: break-word;
+  }
   h3 {
     font-weight: 600;
     line-height: 1.15;

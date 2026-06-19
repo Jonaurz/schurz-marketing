@@ -27,7 +27,7 @@ export function PageHero({
                 {eyebrow}
               </p>
             )}
-            <h1 className={`text-balance text-4xl leading-[1.04] sm:text-5xl lg:text-6xl ${eyebrow ? "mt-4" : ""}`}>
+            <h1 className={`text-balance text-[2.1875rem] leading-[1.04] sm:text-5xl lg:text-6xl ${eyebrow ? "mt-4" : ""}`}>
               {title}
             </h1>
             {subtitle && (

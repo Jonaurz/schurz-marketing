@@ -13,7 +13,7 @@ import { CtaBand } from "@/components/sections/cta-band";
 export const metadata: Metadata = {
   title: "Social-Media-Betreuung",
   description:
-    "Strategie, Beratung, Social-Media-Videos, Content und laufende Betreuung für Unternehmen, Selbstständige und Marken. Damit Sie sichtbar bleiben, ohne dass es Ihre Zeit kostet.",
+    "Strategie, Videos, Content und laufende Social-Media-Betreuung für Unternehmen und Selbstständige. Persönlich geplant und zuverlässig umgesetzt.",
   alternates: { canonical: "/social-media" },
   openGraph: {
     title: "Social-Media-Betreuung · Schurz Marketing",

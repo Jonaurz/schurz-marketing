@@ -39,6 +39,7 @@ export type LocalService = {
     alt: string;
   };
   promise: string;
+  metaPromise: string;
   intro: string;
   pain: string;
   localBenefit: string;
@@ -342,6 +343,8 @@ export const localServices: LocalService[] = [
     },
     promise:
       "Professionelle Websites, die hochwertig aussehen, schnell laden, Vertrauen schaffen und aus regionalen Besuchern echte Anfragen machen.",
+    metaPromise:
+      "Moderne Websites für klare Leistungen, lokale Sichtbarkeit und einfache Anfragen. Persönlich und direkt.",
     intro:
       "Eine gute Website ist mehr als eine digitale Visitenkarte. Sie erklärt Ihr Angebot, nimmt Einwände vorweg und führt Besucher Schritt für Schritt zur Kontaktaufnahme.",
     pain:
@@ -426,6 +429,8 @@ export const localServices: LocalService[] = [
     },
     promise:
       "Strategie, Content, Videos und laufende Betreuung, damit Ihre Marke in der Region sichtbar bleibt, ohne Ihren Arbeitsalltag zu blockieren.",
+    metaPromise:
+      "Strategie, Content, Videos und laufende Betreuung für regionale Sichtbarkeit und planbare Beiträge.",
     intro:
       "Social Media funktioniert dann, wenn Inhalte regelmäßig erscheinen, zur Marke passen und echte Einblicke geben. Genau da setzt eine klare Betreuung an.",
     pain:
@@ -524,7 +529,7 @@ export function getLocalSeoPage(serviceId: LocalServiceId, citySlug: string): Lo
     city,
     href,
     title: `${service.shortLabel} ${city.name}`,
-    description: `${service.label} in ${city.name}: ${service.promise}`,
+    description: `${service.label} in ${city.name}: ${service.metaPromise}`,
     h1:
       service.id === "webdesign"
         ? `Webdesign in ${city.name}, das Vertrauen schafft und Anfragen bringt.`

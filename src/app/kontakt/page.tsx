@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Kostenloses Erstgespräch anfragen. Webdesign und Social-Media-Betreuung für Unternehmen, Selbstständige und Marken. Unverbindlich, ehrlich und ohne Verkaufsdruck.",
+    "Kostenloses Erstgespräch zu Webdesign und Social-Media-Betreuung anfragen. Persönlich, unverbindlich und ohne Verkaufsdruck.",
   alternates: { canonical: "/kontakt" },
   openGraph: {
     title: "Kontakt · Schurz Marketing",

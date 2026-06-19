@@ -19,9 +19,9 @@ import { localCities } from "@/lib/local-seo";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Webdesign für regionale Unternehmen in Sachsen",
+  title: "Webdesign für Unternehmen in Sachsen",
   description:
-    "Webdesign und Social Media für regionale Unternehmen, Dienstleister und Betriebe in Sachsen. Eigene Seiten für Dresden, Pirna, Sebnitz, Bautzen, Leipzig, Chemnitz, Meißen und mehr.",
+    "Webdesign und Social Media für Unternehmen und Dienstleister in Sachsen. Regional ausgerichtet, persönlich betreut und deutschlandweit umgesetzt.",
   alternates: { canonical: "/sachsen" },
   openGraph: {
     title: "Webdesign für regionale Unternehmen in Sachsen · Schurz Marketing",
