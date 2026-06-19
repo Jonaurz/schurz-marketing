@@ -48,6 +48,9 @@ export async function submitContactAction(
     .filter((value) => serviceValues.has(value));
   const currentWebsite = asText(formData, "currentWebsite");
   const socialChannels = asText(formData, "socialChannels");
+  const branche = asText(formData, "branche");
+  const location = asText(formData, "location");
+  const googleProfile = asText(formData, "googleProfile");
   const consent = formData.get("consent");
   const csrfToken = asText(formData, "_csrf");
 
@@ -99,6 +102,9 @@ export async function submitContactAction(
     services,
     currentWebsite,
     socialChannels,
+    branche,
+    location,
+    googleProfile,
     consentText,
   });
 

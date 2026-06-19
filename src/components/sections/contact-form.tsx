@@ -188,7 +188,55 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
         </div>
       </div>
 
-      <div className="mt-5 flex items-start gap-3">
+      <fieldset className="mt-8 border-t border-ink/10 pt-6">
+        <legend className="mb-1 text-sm font-semibold text-ink">
+          Zu Ihrem Unternehmen <span className="font-normal text-ink/60">(optional)</span>
+        </legend>
+        <p className="mb-4 text-sm leading-relaxed text-ink/75">
+          Hilft, die Anfrage besser einzuschätzen. Alle Felder sind freiwillig.
+        </p>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="branche" className={labelClass}>
+              Branche oder Gewerk
+            </label>
+            <input
+              id="branche"
+              name="branche"
+              type="text"
+              autoComplete="organization-title"
+              className={inputClass}
+              placeholder="z. B. Dachdecker, Garten- und Landschaftsbau, Kanzlei"
+            />
+          </div>
+          <div>
+            <label htmlFor="location" className={labelClass}>
+              Ort oder Region
+            </label>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              autoComplete="address-level2"
+              className={inputClass}
+              placeholder="z. B. Pirna, Dresden, Sächsische Schweiz"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <label htmlFor="googleProfile" className={labelClass}>
+              Google-Unternehmensprofil vorhanden?
+            </label>
+            <select id="googleProfile" name="googleProfile" className={inputClass} defaultValue="">
+              <option value="">Keine Angabe</option>
+              <option value="ja">Ja</option>
+              <option value="nein">Nein</option>
+              <option value="weiss-nicht">Weiß nicht</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <div className="mt-6 flex items-start gap-3">
         <input
           id="consent"
           name="consent"

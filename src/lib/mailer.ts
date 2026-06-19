@@ -144,7 +144,10 @@ export async function sendConfirmedContactEmail(submission: ContactSubmission) {
       `E-Mail: ${submission.email}`,
       `Telefon: ${submission.phone}`,
       `Dienstleistung: ${services}`,
+      submission.branche ? `Branche/Gewerk: ${submission.branche}` : "",
+      submission.location ? `Ort/Region: ${submission.location}` : "",
       submission.currentWebsite ? `Aktuelle Website: ${submission.currentWebsite}` : "",
+      submission.googleProfile ? `Google-Unternehmensprofil: ${submission.googleProfile}` : "",
       submission.socialChannels ? `Social-Media-Kanäle: ${submission.socialChannels}` : "",
       "",
       `Eingegangen: ${submission.createdAt}`,
@@ -160,8 +163,23 @@ export async function sendConfirmedContactEmail(submission: ContactSubmission) {
       <p><strong>Telefon:</strong> ${escapeHtml(submission.phone)}</p>
       <p><strong>Dienstleistung:</strong> ${escapeHtml(services)}</p>
       ${
+        submission.branche
+          ? `<p><strong>Branche/Gewerk:</strong> ${escapeHtml(submission.branche)}</p>`
+          : ""
+      }
+      ${
+        submission.location
+          ? `<p><strong>Ort/Region:</strong> ${escapeHtml(submission.location)}</p>`
+          : ""
+      }
+      ${
         submission.currentWebsite
           ? `<p><strong>Aktuelle Website:</strong> ${escapeHtml(submission.currentWebsite)}</p>`
+          : ""
+      }
+      ${
+        submission.googleProfile
+          ? `<p><strong>Google-Unternehmensprofil:</strong> ${escapeHtml(submission.googleProfile)}</p>`
           : ""
       }
       ${

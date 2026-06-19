@@ -16,6 +16,9 @@ export type ContactSubmission = {
   services: string[];
   currentWebsite: string;
   socialChannels: string;
+  branche: string;
+  location: string;
+  googleProfile: string;
   consentText: string;
 };
 
@@ -25,7 +28,16 @@ type ContactSubmissionStore = {
 
 export type NewContactSubmission = Pick<
   ContactSubmission,
-  "name" | "email" | "phone" | "services" | "currentWebsite" | "socialChannels" | "consentText"
+  | "name"
+  | "email"
+  | "phone"
+  | "services"
+  | "currentWebsite"
+  | "socialChannels"
+  | "branche"
+  | "location"
+  | "googleProfile"
+  | "consentText"
 >;
 
 const tokenLifetimeMs = 1000 * 60 * 60 * 24;
