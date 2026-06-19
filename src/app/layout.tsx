@@ -11,14 +11,16 @@ import { site } from "@/lib/site";
 const logoSvgUrl = `${site.url}/logo.svg`;
 const logoPngUrl = `${site.url}/images/schurz-marketing-logo.png`;
 
+const metaDescription =
+  "Webdesign und Social-Media-Betreuung für regionale Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen. Klare, DSGVO-konforme und barrierefreie Websites, die Vertrauen schaffen und Anfragen bringen.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: `${site.name}. ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
-  description:
-    "Webdesign und Social-Media-Betreuung für Unternehmen, Selbstständige und Marken. Hochwertige, DSGVO-konforme und barrierefreie Auftritte, die Vertrauen schaffen und Anfragen bringen.",
+  description: metaDescription,
   applicationName: site.name,
   authors: [{ name: site.founder }],
   creator: site.founder,
@@ -36,8 +38,7 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     title: `${site.name}. ${site.tagline}`,
-    description:
-      "Hochwertige, DSGVO-konforme und barrierefreie Websites sowie Social-Media-Betreuung für Unternehmen, Selbstständige und Marken.",
+    description: metaDescription,
     images: [
       {
         url: "/images/schurz-marketing-webdesign.png",
@@ -50,19 +51,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${site.name}. ${site.tagline}`,
-    description:
-      "Hochwertige, DSGVO-konforme und barrierefreie Websites sowie Social-Media-Betreuung für Unternehmen, Selbstständige und Marken.",
+    description: metaDescription,
     images: ["/images/schurz-marketing-webdesign.png"],
   },
   keywords: [
-    "Webdesign",
+    "Webdesign Sachsen",
+    "Webdesigner Dresden",
     "Website erstellen lassen",
-    "Webdesigner",
+    "Webdesign für Handwerker",
+    "Webseite für Handwerker",
+    "lokale SEO",
+    "Google-Unternehmensprofil",
+    "Website-Wartung",
+    "WordPress-Webseiten",
     "Social-Media-Betreuung",
-    "Social Media Agentur",
-    "Online-Marketing",
-    "DSGVO-konforme Website",
-    "barrierefreie Website",
     "Schurz Marketing",
     "Jonas Schurz",
   ],
@@ -91,18 +93,38 @@ const jsonLd = {
   },
   image: [logoPngUrl, logoSvgUrl, `${site.url}/images/schurz-marketing-webdesign.png`],
   description:
-    "Webdesign und Social-Media-Betreuung für Unternehmen, Selbstständige und Marken. Hochwertig, DSGVO-konform und barrierefrei.",
+    "Webdesign und Social-Media-Betreuung für regionale Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen. Klar, DSGVO-konform und barrierefrei.",
   slogan: site.tagline,
-  founder: { "@type": "Person", name: site.founder },
+  founder: { "@type": "Person", "@id": `${site.url}/#founder`, name: site.founder },
   email: site.contact.email,
-  areaServed: "DE",
+  telephone: site.contact.phone,
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Sachsen" },
+    ...site.serviceArea.map((name) => ({ "@type": "AdministrativeArea", name })),
+  ],
   knowsAbout: [
     "Webdesign",
     "Webentwicklung",
+    "WordPress-Webseiten",
+    "Landingpages",
+    "Lokale SEO",
+    "Google-Unternehmensprofil",
+    "Website-Wartung",
+    "Webseiten für Handwerker",
     "Social-Media-Marketing",
     "Barrierefreiheit",
     "DSGVO",
   ],
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${site.url}/#founder`,
+  name: site.founder,
+  jobTitle: "Webdesigner und Online-Marketing-Berater",
+  worksFor: { "@id": `${site.url}/#organization` },
+  url: `${site.url}/ueber-mich`,
 };
 
 const webSiteJsonLd = {
@@ -160,6 +182,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <script
           type="application/ld+json"
