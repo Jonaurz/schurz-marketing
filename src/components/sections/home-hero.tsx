@@ -12,20 +12,20 @@ export function HomeHero() {
           <div className="lg:col-span-6">
             <Reveal immediate>
               <h1 className="text-balance text-4xl leading-[1.04] sm:text-5xl lg:text-[3.6rem]">
-                Webdesign und Social Media für Unternehmen, die online besser gefunden werden wollen.
+                Webdesign und Social Media, die Leistungen verständlich machen.
               </h1>
             </Reveal>
             <Reveal immediate delay={0.08}>
               <p className="mt-6 max-w-[52ch] text-pretty text-lg leading-relaxed text-ink/70">
-                Schurz Marketing erstellt klare Webseiten und Social-Media-Inhalte für
-                Unternehmen, Dienstleister, Selbstständige und Handwerksbetriebe in
-                Sachsen und deutschlandweit.
+                Moderne Websites und Social-Media-Auftritte für Unternehmen,
+                Dienstleister, Selbstständige und Handwerksbetriebe. Persönlich aus
+                Neustadt in Sachsen, deutschlandweit und mit einem festen Ansprechpartner.
               </p>
             </Reveal>
             <Reveal immediate delay={0.16}>
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <Button href="/kontakt" size="lg" withArrow>
-                  Kostenloses Erstgespräch anfragen
+                  Erstgespräch anfragen
                 </Button>
                 <Link
                   href="#leistungen"
