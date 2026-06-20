@@ -1,4 +1,4 @@
-import { serializeJsonLd } from "@/lib/json-ld";
+import { JsonLd } from "@/components/seo/json-ld";
 
 /**
  * FAQPage-JSON-LD aus einer Frage/Antwort-Liste (gleiche Struktur wie die
@@ -18,10 +18,5 @@ export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
     })),
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-    />
-  );
+  return <JsonLd data={jsonLd} />;
 }

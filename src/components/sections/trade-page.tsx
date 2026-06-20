@@ -9,10 +9,10 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ProofSection } from "@/components/sections/references-section";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
-import { serializeJsonLd } from "@/lib/json-ld";
 import { localCities } from "@/lib/local-seo";
 import { trades, type Trade } from "@/lib/trades";
 
@@ -53,7 +53,7 @@ export function TradePage({ trade }: { trade: Trade }) {
   const defaultFaq = [
     {
       q: `Was kostet eine Website für ${trade.audience}?`,
-      a: "Der Preis richtet sich nach Seitenumfang, Funktionen und vorhandenem Material. Nach einem unverbindlichen Erstgespräch erhalten Sie einen transparenten Projektumfang.",
+      a: "Der Preis richtet sich nach Seitenumfang, Funktionen und vorhandenem Material. Nach einem unverbindlichen Erstgespräch erhältst du einen transparenten Projektumfang.",
     },
     {
       q: "Wie lange dauert die Umsetzung?",
@@ -105,10 +105,7 @@ export function TradePage({ trade }: { trade: Trade }) {
         ]}
       />
       <FaqJsonLd items={faqItems} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
-      />
+      <JsonLd data={serviceJsonLd} />
 
       <PageHero
         title={trade.h1}
@@ -128,7 +125,7 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label={`Warum eine gute Website für ${trade.audience} zählt`}>
         <Container>
           <div className="max-w-3xl">
-            <SectionHeading title={`Online zeigen, was Sie als ${trade.audience} können.`} />
+            <SectionHeading title={`Online zeigen, was du als ${trade.audience} kannst.`} />
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">{trade.intro}</p>
               <p className="text-pretty">{trade.pain}</p>
@@ -190,10 +187,10 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Einsatzgebiet" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title={trade.regionTitle ?? "Regionale Sichtbarkeit dort, wo Ihr Betrieb arbeitet."}
+            title={trade.regionTitle ?? "Regionale Sichtbarkeit dort, wo dein Betrieb arbeitet."}
             intro={
               trade.regionIntro ??
-              "Für Orte rund um Neustadt in Sachsen gibt es eigene Seiten mit regionalem Bezug. Weitere Einsatzgebiete werden nur dann aufgenommen, wenn sie wirklich zu Ihrem Betrieb passen."
+              "Für Orte rund um Neustadt in Sachsen gibt es eigene Seiten mit regionalem Bezug. Weitere Einsatzgebiete werden nur dann aufgenommen, wenn sie wirklich zu deinem Betrieb passen."
             }
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -218,7 +215,7 @@ export function TradePage({ trade }: { trade: Trade }) {
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title={trade.processTitle ?? "So entsteht Ihre Website."}
+            title={trade.processTitle ?? "So entsteht deine Website."}
             intro={trade.processIntro}
           />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -251,7 +248,7 @@ export function TradePage({ trade }: { trade: Trade }) {
             <div className="lg:col-span-7">
               <p className="text-pretty text-lg leading-relaxed text-ink/80">
                 {trade.remoteText ??
-                  "Abstimmungen laufen per Telefon, E-Mail, Video-Call und klaren digitalen Zwischenständen. Sie sprechen direkt mit Jonas Schurz und haben einen festen Ansprechpartner für Struktur, Texte, Design, Umsetzung und optionale Pflege."}
+                  "Abstimmungen laufen per Telefon, E-Mail, Video-Call und klaren digitalen Zwischenständen. Du sprichst direkt mit Jonas Schurz und haben einen festen Ansprechpartner für Struktur, Texte, Design, Umsetzung und optionale Pflege."}
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <Button href="/ueber-mich" variant="secondary" withArrow>
@@ -340,7 +337,7 @@ export function TradePage({ trade }: { trade: Trade }) {
         title={`Website für ${trade.audience} planen?`}
         subtitle={
           trade.ctaSubtitle ??
-          "Im unverbindlichen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr passende Anfragen bringt."
+          "Im unverbindlichen Erstgespräch schaue ich auf deine aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr passende Anfragen bringt."
         }
       />
     </>

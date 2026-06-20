@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { TradePage } from "@/components/sections/trade-page";
 import { getTrade, trades } from "@/lib/trades";
+import { createPageMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ trade: string }>;
@@ -23,24 +24,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  return {
+  return createPageMetadata({
     title: trade.metaTitle,
     description: trade.metaDescription,
-    alternates: { canonical: `/handwerker/${trade.slug}` },
-    openGraph: {
-      title: `${trade.metaTitle} · Schurz Marketing`,
-      description: trade.metaDescription,
-      url: `/handwerker/${trade.slug}`,
-      images: [
-        {
-          url: "/images/schurz-marketing-webdesign.png",
-          width: 1448,
-          height: 1086,
-          alt: trade.metaTitle,
-        },
-      ],
+    path: `/handwerker/${trade.slug}`,
+    image: {
+      url: "/images/schurz-marketing-webdesign.png",
+      width: 1448,
+      height: 1086,
+      alt: trade.metaTitle,
     },
-  };
+  });
 }
 
 export default async function TradeRoutePage({ params }: PageProps) {

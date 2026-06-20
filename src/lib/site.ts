@@ -2,6 +2,10 @@
  * Zentrale Inhalts- und Kontakt-Konfiguration.
  * Hier kannst du die echten Daten eintragen.
  * Diese Werte werden über die ganze Seite (Header, Footer, Kontakt, SEO) verwendet.
+ *
+ * WICHTIG: Bitte rechtlich korrekte Anbieterangaben prüfen und einsetzen.
+ * Impressum, Datenschutz und AGB nennen aktuell einen anderen Anbieter als
+ * Marke und Ansprechpartner der Website. Diese Angaben nicht ungeprüft angleichen.
  */
 
 export const site = {
@@ -68,14 +72,14 @@ export const services = [
     href: "/webdesign",
     title: "Webdesign",
     short:
-      "Websites, die Ihre Leistungen klar zeigen und es Kunden leicht machen, eine Anfrage zu stellen. Schnell, gut auffindbar, DSGVO-konform und barrierefrei.",
+      "Websites, die deine Leistungen klar zeigen und es Kunden leicht machen, eine Anfrage zu stellen. Schnell, gut auffindbar, DSGVO-konform und barrierefrei.",
   },
   {
     id: "social-media",
     href: "/social-media",
     title: "Social-Media-Betreuung",
     short:
-      "Strategie, Content und laufende Betreuung, damit Ihre Marke sichtbar bleibt, ohne dass es Ihre Zeit kostet.",
+      "Strategie, Content und laufende Betreuung, damit deine Marke sichtbar bleibt, ohne dass es deine Zeit kostet.",
   },
 ] as const;
 

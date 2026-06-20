@@ -10,14 +10,19 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Check, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
-import { serializeJsonLd } from "@/lib/json-ld";
-import type { LocalSeoPage } from "@/lib/local-seo";
+import { localCities, type LocalSeoPage } from "@/lib/local-seo";
 
 export function LocalServicePage({ page }: { page: LocalSeoPage }) {
   const { service, city } = page;
   const faqItems = [...service.faq, ...city.localFaq];
+  const relatedCities = localCities.filter(
+    (candidate) =>
+      candidate.slug !== city.slug &&
+      city.nearby.some((nearbyName) => nearbyName === candidate.name),
+  );
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -43,10 +48,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <BreadcrumbJsonLd
         items={[
           { name: "Start", path: "/" },
@@ -101,7 +103,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <SectionHeading
-                title={`Wer Sie in ${city.name} nicht findet, fragt jemand anderen an.`}
+                title={`Wer dich in ${city.name} nicht findet, fragt jemand anderen an.`}
                 intro={service.pain}
               />
               <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
@@ -175,8 +177,8 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
             <div className="lg:col-span-5">
               <SectionHeading
                 size="compact"
-                title={`Was Sie für ${city.name} bekommen.`}
-                intro="Der Umfang wird auf Ihr Unternehmen abgestimmt. Diese Bausteine bilden die Grundlage."
+                title={`Was du für ${city.name} bekommen.`}
+                intro="Der Umfang wird auf dein Unternehmen abgestimmt. Diese Bausteine bilden die Grundlage."
               />
             </div>
             <div className="lg:col-span-7">
@@ -195,6 +197,35 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
 
       {/* Beweis: Referenzen + Kundenstimmen */}
       <ProofSection />
+
+      {relatedCities.length ? (
+        <Section aria-label={`Weitere Orte rund um ${city.name}`} className="border-t border-ink/10">
+          <Container>
+            <SectionHeading
+              size="compact"
+              title={`Weitere regionale Seiten rund um ${city.name}.`}
+              intro="Diese Orte sind über echte regionale Zusammenhänge verlinkt, nicht über eine beliebige Ortsliste."
+            />
+            <div className="mt-8 flex flex-wrap gap-3">
+              {relatedCities.map((relatedCity) => (
+                <Link
+                  key={relatedCity.slug}
+                  href={`${service.basePath}/${relatedCity.slug}`}
+                  className="border border-ink/15 px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-white"
+                >
+                  {service.shortLabel} {relatedCity.name}
+                </Link>
+              ))}
+              <Link
+                href="/sachsen"
+                className="border border-ink/15 px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-white"
+              >
+                Alle regionalen Seiten
+              </Link>
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
@@ -225,7 +256,7 @@ export function LocalServicePage({ page }: { page: LocalSeoPage }) {
               />
               <div className="mt-8 space-y-3 text-sm text-ink/70">
                 <p>
-                  Passt auch interessant:
+                  Passende Ergänzung:
                   {" "}
                   <Link href={page.relatedHref} className="font-semibold text-ink underline underline-offset-4 hover:text-accent">
                     {page.relatedLabel}

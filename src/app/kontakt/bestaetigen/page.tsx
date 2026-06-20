@@ -26,7 +26,7 @@ async function confirmToken(token: string): Promise<ConfirmationState> {
     return {
       title: "Bestätigungslink ungültig",
       message:
-        "Der Link ist ungültig, bereits verwendet oder abgelaufen. Bitte senden Sie die Anfrage bei Bedarf erneut.",
+        "Der Link ist ungültig, bereits verwendet oder abgelaufen. Bitte sende die Anfrage bei Bedarf erneut.",
       tone: "error",
     };
   }
@@ -41,15 +41,15 @@ async function confirmToken(token: string): Promise<ConfirmationState> {
     return {
       title: "Bestätigung erhalten, Versand fehlgeschlagen",
       message:
-        "Die E-Mail konnte serverseitig nicht an mich weitergeleitet werden. Bitte versuchen Sie den Link später erneut oder kontaktieren Sie mich direkt.",
+        "Die E-Mail konnte serverseitig nicht an mich weitergeleitet werden. Bitte versuche den Link später erneut oder kontaktiere mich direkt.",
       tone: "error",
     };
   }
 
   return {
-    title: "Vielen Dank, Ihre Anfrage ist bestätigt.",
+    title: "Vielen Dank, deine Anfrage ist bestätigt.",
     message:
-      "Ihre Anfrage ist bei mir eingegangen. Ich melde mich persönlich bei Ihnen.",
+      "Deine Anfrage ist bei mir eingegangen. Ich melde mich persönlich bei dir.",
     tone: "success",
   };
 }

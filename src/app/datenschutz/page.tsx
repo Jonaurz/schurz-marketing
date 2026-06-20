@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Datenschutzerklärung von Schurz Marketing. Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.",
   alternates: { canonical: "/datenschutz" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 };
 
 export default function DatenschutzPage() {

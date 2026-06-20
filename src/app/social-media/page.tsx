@@ -9,65 +9,62 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBand } from "@/components/sections/cta-band";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { FaqJsonLd } from "@/components/seo/faq-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createPageMetadata } from "@/lib/seo";
+import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Social-Media-Betreuung",
+export const metadata: Metadata = createPageMetadata({
+  title: "Social Media Betreuung für Unternehmen",
   description:
-    "Strategie, Videos, Content und laufende Social-Media-Betreuung für Unternehmen und Selbstständige. Persönlich geplant und zuverlässig umgesetzt.",
-  alternates: { canonical: "/social-media" },
-  openGraph: {
-    title: "Social-Media-Betreuung · Schurz Marketing",
-    description:
-      "Strategie, Videos, Content und Betreuung. Social Media aus einer Hand für Marken mit Qualitätsanspruch.",
-    url: "/social-media",
-    images: [
-      {
-        url: "/images/schurz-marketing-social-media.png",
-        width: 1448,
-        height: 1086,
-        alt: "Beispiel für einen von Schurz Marketing betreuten Social-Media-Auftritt",
-      },
-    ],
+    "Strategie, Videos, Content und laufende Social-Media-Betreuung für Unternehmen, Dienstleister und Handwerksbetriebe. Persönlich geplant und umgesetzt.",
+  path: "/social-media",
+  image: {
+    url: "/images/schurz-marketing-social-media.png",
+    width: 1448,
+    height: 1086,
+    alt: "Beispiel für einen von Schurz Marketing betreuten Social-Media-Auftritt",
   },
-};
+});
 
 const channels = ["Instagram", "TikTok", "LinkedIn", "Facebook", "YouTube"];
 
 const modules = [
   {
     title: "Strategie und Beratung",
-    text: "Welche Kanäle, welche Inhalte, welche Ziele? Die Strategie wird klar auf Ihr Unternehmen ausgerichtet, statt nach Bauchgefühl zu posten.",
+    text: "Welche Kanäle, welche Inhalte, welche Ziele? Die Strategie wird klar auf dein Unternehmen ausgerichtet, statt nach Bauchgefühl zu posten.",
   },
   {
     title: "Social-Media-Videos",
-    text: "Reels und Kurzvideos, die Aufmerksamkeit verdienen. Nah an Ihrem Unternehmen, ohne gestelltes Werbe-Getue, aber mit Konzept und sauberem Schnitt.",
+    text: "Reels und Kurzvideos, die Aufmerksamkeit verdienen. Nah an deinem Unternehmen, ohne gestelltes Werbe-Getue, aber mit Konzept und sauberem Schnitt.",
   },
   {
     title: "Content und Posts",
-    text: "Grafiken, Beiträge und Texte im einheitlichen Look Ihrer Marke, damit jeder Beitrag sofort als Ihrer erkennbar ist.",
+    text: "Grafiken, Beiträge und Texte im einheitlichen Look deiner Marke, damit jeder Beitrag sofort als deiner erkennbar ist.",
   },
   {
     title: "Posting und Community",
-    text: "Regelmäßiges Posten, Redaktionsplanung und der Umgang mit Kommentaren und Nachrichten. Ihre Kanäle bleiben aktiv und betreut.",
+    text: "Regelmäßiges Posten, Redaktionsplanung und der Umgang mit Kommentaren und Nachrichten. Deine Kanäle bleiben aktiv und betreut.",
   },
 ];
 
 const contentTypes = [
   {
     title: "Einblicke hinter die Kulissen",
-    text: "Wie bei Ihnen gearbeitet wird, schafft Nähe und Vertrauen. Menschen folgen Menschen, nicht anonymen Logos.",
+    text: "Wie bei dir gearbeitet wird, schafft Nähe und Vertrauen. Menschen folgen Menschen, nicht anonymen Logos.",
   },
   {
     title: "Projekte und Ergebnisse",
-    text: "Fertige Arbeiten, Vorher-Nachher und zufriedene Kunden machen Ihre Qualität greifbar.",
+    text: "Fertige Arbeiten, Vorher-Nachher und zufriedene Kunden machen deine Qualität greifbar.",
   },
   {
     title: "Team und Persönlichkeit",
-    text: "Wer hinter der Marke steht und wofür sie steht. Genau das unterscheidet Sie von austauschbaren Wettbewerbern.",
+    text: "Wer hinter der Marke steht und wofür sie steht. Genau das unterscheidet dich von austauschbaren Wettbewerbern.",
   },
   {
     title: "Wissen und Tipps",
-    text: "Fachliche Einordnung positioniert Sie als Experten und bleibt im Kopf.",
+    text: "Fachliche Einordnung positioniert dich als Experten und bleibt im Kopf.",
   },
 ];
 
@@ -75,17 +72,17 @@ const steps = [
   {
     no: "1",
     title: "Analyse und Ziele",
-    text: "Wo stehen Sie, wen wollen Sie erreichen, was soll Social Media bewirken? Eine ehrliche Bestandsaufnahme bildet die Grundlage.",
+    text: "Wo stehst du, wen möchtest du erreichen, was soll Social Media bewirken? Eine ehrliche Bestandsaufnahme bildet die Grundlage.",
   },
   {
     no: "2",
     title: "Strategie und Themenplan",
-    text: "Kanäle, Themen und ein realistischer Plan, abgestimmt auf Ihre Zielgruppe. Sie wissen, was wann erscheint.",
+    text: "Kanäle, Themen und ein realistischer Plan, abgestimmt auf deine Zielgruppe. Du weißt, was wann erscheint.",
   },
   {
     no: "3",
     title: "Produktion",
-    text: "Videos, Grafiken und Texte entstehen hochwertig und einheitlich. Sie geben Einblicke, der Rest wird übernommen.",
+    text: "Videos, Grafiken und Texte entstehen hochwertig und einheitlich. Du gibst Einblicke, der Rest wird übernommen.",
   },
   {
     no: "4",
@@ -97,36 +94,57 @@ const steps = [
 const faqs = [
   {
     q: "Muss jemand selbst vor die Kamera?",
-    a: "Nein, nicht zwingend. Vieles funktioniert auch ohne. Wenn Sie oder Ihr Team vor die Kamera möchten, wird daraus mit Konzept das Beste herausgeholt.",
+    a: "Nein, nicht zwingend. Vieles funktioniert auch ohne. Wenn du oder jemand aus deinem Team vor die Kamera möchte, wird daraus mit Konzept das Beste herausgeholt.",
   },
   {
     q: "Welche Kanäle werden betreut?",
-    a: "Vor allem dort, wo Ihre Zielgruppe ist: etwa Instagram, Facebook, LinkedIn, TikTok oder YouTube. Welche Kanäle wirklich sinnvoll sind, klärt die Strategie.",
+    a: "Vor allem dort, wo deine Zielgruppe ist: etwa Instagram, Facebook, LinkedIn, TikTok oder YouTube. Welche Kanäle wirklich sinnvoll sind, klärt die Strategie.",
   },
   {
     q: "Wie oft wird veröffentlicht?",
-    a: "Das richtet sich nach Zielen und Kapazität. Wichtiger als möglichst viel ist ein verlässlicher Rhythmus, den ich mit Ihnen festlege.",
+    a: "Das richtet sich nach Zielen und Kapazität. Wichtiger als möglichst viel ist ein verlässlicher Rhythmus, den ich mit dir festlege.",
   },
   {
     q: "Wie viel Aufwand entsteht bei mir?",
-    a: "So wenig wie möglich. Strategie, Produktion und Betreuung werden übernommen. Von Ihnen kommen Input, Einblicke und Freigaben.",
+    a: "So wenig wie möglich. Strategie, Produktion und Betreuung werden übernommen. Von dir kommen Input, Einblicke und Freigaben.",
   },
   {
     q: "Sehe ich die Inhalte vor der Veröffentlichung?",
-    a: "Ja. Geplante Inhalte werden Ihnen zur Freigabe vorgelegt. Sie behalten jederzeit die Kontrolle über Ihren Außenauftritt.",
+    a: "Ja. Geplante Inhalte werden dir zur Freigabe vorgelegt. Du behältst jederzeit die Kontrolle über deinen Außenauftritt.",
   },
   {
     q: "Ist auch nur eine Beratung möglich?",
-    a: "Ja. Wenn Sie selbst umsetzen möchten, bekommt Ihr Team strategische Beratung und das nötige Rüstzeug an die Hand.",
+    a: "Ja. Wenn du selbst umsetzen möchtest, bekommt dein Team strategische Beratung und das nötige Rüstzeug an die Hand.",
   },
 ];
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.url}/social-media#service`,
+  name: "Social-Media-Betreuung für Unternehmen",
+  serviceType: "Social-Media-Strategie, Content und laufende Betreuung",
+  provider: { "@id": `${site.url}/#organization` },
+  areaServed: { "@type": "Country", name: site.location.country },
+  url: `${site.url}/social-media`,
+  description:
+    "Strategie, Videos, Content, Redaktionsplanung und laufende Social-Media-Betreuung für Unternehmen, Dienstleister und Handwerksbetriebe.",
+};
 
 export default function SocialMediaPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Start", path: "/" },
+          { name: "Social Media", path: "/social-media" },
+        ]}
+      />
+      <FaqJsonLd items={faqs} />
+      <JsonLd data={serviceJsonLd} />
       <PageHero
-        title="Social Media, das zu Ihnen passt. Ohne Ihre Zeit zu fressen."
-        subtitle="Strategie, Videos, Content und laufende Betreuung aus einer Hand. Ihre Marke bleibt sichtbar und erreicht die richtigen Menschen."
+        title="Social-Media-Betreuung für Unternehmen, die sichtbar bleiben wollen."
+        subtitle="Strategie, Videos, Content und laufende Betreuung aus einer Hand. Deine Marke bleibt sichtbar und erreicht die richtigen Menschen."
       >
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
@@ -159,19 +177,19 @@ export default function SocialMediaPage() {
             <SectionHeading title="Sichtbarkeit passiert nicht nebenbei." />
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">
-                In Ihrem Unternehmen steckt jeden Tag genug guter Stoff für Social
+                In deinem Unternehmen steckt jeden Tag genug guter Stoff für Social
                 Media: Projekte, Menschen, Ergebnisse, Wissen. Was meist fehlt, ist
                 nicht das Material, sondern die Zeit und ein System.
               </p>
               <p className="text-pretty">
                 Deshalb bleibt Social Media in vielen Unternehmen liegen oder passiert
                 nur, wenn gerade Luft ist. Die Folge: Wettbewerber wirken aktiver und
-                moderner, obwohl Ihre Arbeit mindestens genauso stark ist.
+                moderner, obwohl deine Arbeit mindestens genauso stark ist.
               </p>
               <p className="text-pretty">
-                Mit einem klaren Plan und fester Betreuung dreht sich das. Ihre Marke
-                wird sichtbar und erreicht genau die Kunden, die zu Ihnen passen, ohne
-                dass es Ihren Arbeitsalltag belastet.
+                Mit einem klaren Plan und fester Betreuung dreht sich das. Deine Marke
+                wird sichtbar und erreicht genau die Kunden, die zu dir passen, ohne
+                dass es deinen Arbeitsalltag belastet.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 {channels.map((channel) => (
@@ -187,7 +205,7 @@ export default function SocialMediaPage() {
       <Section aria-label="Leistungen Social Media" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Alles, was Ihr Social Media braucht. In einer Hand."
+            title="Alles, was dein Social Media braucht. In einer Hand."
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2">
             {modules.map((module) => (
@@ -206,8 +224,8 @@ export default function SocialMediaPage() {
       <Section aria-label="Welche Inhalte wirken" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Sie haben mehr zu zeigen, als Sie denken."
-            intro="Aus Ihrem Alltag entsteht Content, der echt wirkt und im Gedächtnis bleibt."
+            title="Du hast mehr zu zeigen, als du denkst."
+            intro="Aus deinem Alltag entsteht Content, der echt wirkt und im Gedächtnis bleibt."
           />
           <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {contentTypes.map((type, i) => (
@@ -260,8 +278,8 @@ export default function SocialMediaPage() {
       </Section>
 
       <CtaBand
-        title="Bringen Sie Struktur in Ihr Social Media."
-        subtitle="Im kostenlosen Erstgespräch kläre ich, welche Kanäle und Inhalte für Ihr Unternehmen sinnvoll sind. Ehrlich und ohne Verkaufsdruck."
+        title="Bring Struktur in dein Social Media."
+        subtitle="Im kostenlosen Erstgespräch kläre ich, welche Kanäle und Inhalte für dein Unternehmen sinnvoll sind. Ehrlich und ohne Verkaufsdruck."
       />
     </>
   );

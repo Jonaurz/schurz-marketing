@@ -60,9 +60,9 @@ export const trades: Trade[] = [
       "Webdesign für Garten- und Landschaftsbau mit Projektgalerie, Leistungen und Anfrageformular. Aus Neustadt, deutschlandweit persönlich.",
     h1: "Webdesign für Garten- und Landschaftsbau mit starken Projektbildern.",
     promise:
-      "Eine Website, die Pflasterarbeiten, Terrassen, Zäune und Gärten mit echten Projektbildern zeigt und Anfragen aus Ihrer Region einfacher macht.",
+      "Eine Website, die Pflasterarbeiten, Terrassen, Zäune und Gärten mit echten Projektbildern zeigt und Anfragen aus deiner Region einfacher macht.",
     intro:
-      "Im Garten- und Landschaftsbau entscheidet der erste Eindruck oft über das Bild. Kunden wollen sehen, was Sie schon gebaut haben, bevor sie anfragen. Genau dafür ist eine Website mit Projektgalerie, klaren Leistungen und einem einfachen Anfrageweg da.",
+      "Im Garten- und Landschaftsbau entscheidet der erste Eindruck oft über das Bild. Kunden wollen sehen, was du schon gebaut hast, bevor sie anfragen. Genau dafür ist eine Website mit Projektgalerie, klaren Leistungen und einem einfachen Anfrageweg da.",
     pain:
       "Viele GaLaBau-Betriebe haben starke Projekte, zeigen online aber kaum Bilder. Kunden können die Qualität dann nicht einschätzen und fragen bei der Konkurrenz an.",
     services: [
@@ -80,7 +80,7 @@ export const trades: Trade[] = [
       },
       {
         title: "Klares Einsatzgebiet",
-        text: "Die Orte, in denen Sie arbeiten, stehen sichtbar auf der Seite. Das hilft bei regionalen Suchanfragen.",
+        text: "Die Orte, in denen du arbeitest, stehen sichtbar auf der Seite. Das hilft bei regionalen Suchanfragen.",
       },
       {
         title: "Einfaches Anfrageformular",
@@ -94,11 +94,11 @@ export const trades: Trade[] = [
       },
       {
         q: "Kann ich die Galerie selbst pflegen?",
-        a: "Ja, auf Wunsch wird die Seite so eingerichtet, dass Sie Bilder und Projekte selbst ergänzen können. Alternativ übernehme ich die Pflege.",
+        a: "Ja, auf Wunsch wird die Seite so eingerichtet, dass du Bilder und Projekte selbst ergänzen kannst. Alternativ übernehme ich die Pflege.",
       },
       {
         q: "Hilft die Website bei Suchen wie „Gartenbau Sächsische Schweiz“?",
-        a: "Mit klarer Struktur, regionalen Inhalten und sauberer Technik kann Google Ihre regionale Relevanz besser einordnen. Das ist eine wichtige Grundlage für lokale Sichtbarkeit.",
+        a: "Mit klarer Struktur, regionalen Inhalten und sauberer Technik kann Google deine regionale Relevanz besser einordnen. Das ist eine wichtige Grundlage für lokale Sichtbarkeit.",
       },
     ],
     cardText:
@@ -125,7 +125,7 @@ export const trades: Trade[] = [
       "Die Seite wird deshalb wie eine belastbare Unternehmensvorstellung aufgebaut: mit klaren Leistungsfeldern, nachvollziehbaren Projekttypen, einem seriösen Anfrageweg und auf Wunsch einem eigenen Bereich für Fachkräfte.",
     serviceSectionTitle: "Leistungsfelder und Projektarten eindeutig zuordnen.",
     serviceSectionIntro:
-      "Auftraggeber sollen schnell erkennen, ob Ihr Unternehmen fachlich, regional und von der Projektgröße her zum Vorhaben passt.",
+      "Auftraggeber sollen schnell erkennen, ob dein Unternehmen fachlich, regional und von der Projektgröße her zum Vorhaben passt.",
     goodSiteTitle: "Was Auftraggeber auf einer Bauunternehmen-Website prüfen.",
     processTitle: "So entsteht ein Auftritt für größere Projektentscheidungen.",
     processIntro:
@@ -134,7 +134,7 @@ export const trades: Trade[] = [
       {
         no: "1",
         title: "Projektprofil festlegen",
-        text: "Ich kläre, welche Auftraggeber, Projektarten, Größenordnungen und Regionen für Ihr Unternehmen tatsächlich relevant sind.",
+        text: "Ich kläre, welche Auftraggeber, Projektarten, Größenordnungen und Regionen für dein Unternehmen tatsächlich relevant sind.",
       },
       {
         no: "2",
@@ -164,12 +164,12 @@ export const trades: Trade[] = [
     ],
     regionTitle: "Für Bauprojekte in den tatsächlichen Zielregionen sichtbar werden.",
     regionIntro:
-      "Regionale Seiten sind sinnvoll, wenn Ihr Unternehmen dort regelmäßig Projekte übernimmt. Entscheidend sind echte Leistungsgebiete und passende Projektreferenzen – nicht eine möglichst lange Liste austauschbarer Ortsnamen.",
+      "Regionale Seiten sind sinnvoll, wenn dein Unternehmen dort regelmäßig Projekte übernimmt. Entscheidend sind echte Leistungsgebiete und passende Projektreferenzen, nicht eine möglichst lange Liste austauschbarer Ortsnamen.",
     remoteTitle: "Digitale Abstimmung für ein erklärungsbedürftiges Angebot.",
     remoteIntro:
       "Für die Konzeption muss niemand regelmäßig nach Neustadt in Sachsen kommen. Entscheidend sind belastbare Unterlagen und feste Abstimmungen.",
     remoteText:
-      "Leistungsübersichten, Projektlisten, Bildmaterial und Korrekturen lassen sich strukturiert digital abstimmen. Sie sprechen direkt mit Jonas Schurz. Dadurch bleibt der Weg kurz, auch wenn Ihr Bauunternehmen und Ihre Projekte in anderen Regionen Deutschlands liegen.",
+      "Leistungsübersichten, Projektlisten, Bildmaterial und Korrekturen lassen sich strukturiert digital abstimmen. Du sprichst direkt mit Jonas Schurz. Dadurch bleibt der Weg kurz, auch wenn dein Bauunternehmen und deine Projekte in anderen Regionen Deutschlands liegen.",
     relatedTitle: "Passende Seiten für Bau, Ausbau und Projektkommunikation.",
     relatedIntro:
       "Weitere Gewerke setzen andere Schwerpunkte. Die Webdesign-Übersicht und Social Media ergänzen den Unternehmensauftritt auf übergeordneter Ebene.",
@@ -207,13 +207,13 @@ export const trades: Trade[] = [
       },
       {
         q: "Wie lassen sich Referenzen zeigen, ohne zu viel zu verraten?",
-        a: "Auch ohne sensible Details wirken Projekte stark, wenn Bauart, Region, eigene Leistung und ein sinnvoller Umfang genannt werden. Die Auswahl stimme ich mit Ihnen ab.",
+        a: "Auch ohne sensible Details wirken Projekte stark, wenn Bauart, Region, eigene Leistung und ein sinnvoller Umfang genannt werden. Die Auswahl stimme ich mit dir ab.",
       },
     ],
     extraFaq: [
       {
         q: "Was kostet eine Website für ein Bauunternehmen?",
-        a: "Der Aufwand hängt vor allem von Leistungsbereichen, Referenzaufbereitung, Karrierebereich und Anfragefunktionen ab. Nach Sichtung des Materials erhalten Sie einen klar abgegrenzten Projektumfang.",
+        a: "Der Aufwand hängt vor allem von Leistungsbereichen, Referenzaufbereitung, Karrierebereich und Anfragefunktionen ab. Nach Sichtung des Materials erhältst du einen klar abgegrenzten Projektumfang.",
       },
       {
         q: "Welche Unterlagen werden für die Website gebraucht?",
@@ -229,7 +229,7 @@ export const trades: Trade[] = [
       },
     ],
     ctaSubtitle:
-      "Im Erstgespräch kläre ich, welche Leistungsfelder, Referenzen und Projektangaben Ihre Website für passende Anfragen braucht.",
+      "Im Erstgespräch kläre ich, welche Leistungsfelder, Referenzen und Projektangaben deine Website für passende Anfragen braucht.",
     cardText:
       "Hochbau, Tiefbau, Sanierung und Außenanlagen klar getrennt und seriös dargestellt.",
   },
@@ -243,7 +243,7 @@ export const trades: Trade[] = [
       "Webdesign für Zaunbauer mit Galerie nach Zaunart, Materialübersicht und Anfrageformular. Persönlich aus Neustadt, deutschlandweit.",
     h1: "Webdesign für Zaunbauer, das Material und Ergebnisse sichtbar macht.",
     promise:
-      "Eine Website, die Ihre Zäune nach Art und Material zeigt und Kunden ein Anfrageformular bietet, das gleich die wichtigsten Angaben abfragt.",
+      "Eine Website, die deine Zäune nach Art und Material zeigt und Kunden ein Anfrageformular bietet, das gleich die wichtigsten Angaben abfragt.",
     intro:
       "Zaunbau ist visuell und sehr konkret. Kunden wissen oft schon ungefähr, was sie wollen, brauchen aber Beispiele und eine einfache Möglichkeit, ihr Vorhaben zu beschreiben. Eine klare Website nimmt ihnen genau das ab.",
     pain:
@@ -267,13 +267,13 @@ export const trades: Trade[] = [
       },
       {
         title: "Anfrage mit Maßangaben",
-        text: "Das Formular fragt Länge, Höhe und Ort ab, damit Sie schneller ein passendes Angebot machen können.",
+        text: "Das Formular fragt Länge, Höhe und Ort ab, damit du schneller ein passendes Angebot machen kannst.",
       },
     ],
     faq: [
       {
         q: "Lohnt sich eine eigene Website nur für Zaunbau?",
-        a: "Ja, gerade weil die Suche sehr konkret ist. Wer „Zaunbauer“ plus Ort sucht, soll Sie mit Beispielen und klaren Leistungen finden.",
+        a: "Ja, gerade weil die Suche sehr konkret ist. Wer „Zaunbauer“ plus Ort sucht, soll dich mit Beispielen und klaren Leistungen finden.",
       },
       {
         q: "Können Kunden über die Website direkt anfragen?",
@@ -281,7 +281,7 @@ export const trades: Trade[] = [
       },
       {
         q: "Kann ich neue Zaunarten später ergänzen?",
-        a: "Ja, die Galerie und die Leistungen lassen sich jederzeit erweitern, auf Wunsch auch von Ihnen selbst.",
+        a: "Ja, die Galerie und die Leistungen lassen sich jederzeit erweitern, auf Wunsch auch von dir selbst.",
       },
     ],
     cardText:
@@ -297,18 +297,18 @@ export const trades: Trade[] = [
       "Webdesign für Malerbetriebe mit Vorher-Nachher-Bildern, klaren Leistungen und einfachem Anfrageweg. Aus Neustadt, deutschlandweit.",
     h1: "Webdesign für Malerbetriebe, das Ergebnisse sichtbar macht.",
     promise:
-      "Eine Website, die Ihre Arbeit mit Vorher-Nachher-Bildern zeigt und Leistungen für innen und außen klar trennt.",
+      "Eine Website, die deine Arbeit mit Vorher-Nachher-Bildern zeigt und Leistungen für innen und außen klar trennt.",
     heroSuffix:
       "Projektbilder und Texte stimme ich persönlich aus Neustadt in Sachsen mit Malerbetrieben in ganz Deutschland ab.",
     intro:
-      "Malerarbeiten wirken am stärksten im direkten Vergleich. Vorher-Nachher-Bilder zeigen den Unterschied, den Ihre Arbeit macht. Dazu gehören klare Leistungen und ein Weg, schnell anzufragen.",
+      "Malerarbeiten wirken am stärksten im direkten Vergleich. Vorher-Nachher-Bilder zeigen den Unterschied, den deine Arbeit macht. Dazu gehören klare Leistungen und ein Weg, schnell anzufragen.",
     pain:
       "Malerleistungen sind erklärungsbedürftig, und gerade Vorher-Nachher-Bilder fehlen oft. Dadurch bleibt der Mehrwert unsichtbar.",
     detailIntro:
       "Für Malerbetriebe plane ich die Seite deshalb von den sichtbaren Ergebnissen aus. Räume, Fassaden, Oberflächen und besondere Techniken erhalten jeweils den Kontext, den Kunden für eine Anfrage brauchen.",
     serviceSectionTitle: "Innen, außen und Spezialarbeiten bildlich ordnen.",
     serviceSectionIntro:
-      "Interessenten sollen erkennen, welche Arbeiten Sie übernehmen und welche gestalterische Qualität sie erwarten können.",
+      "Interessenten sollen erkennen, welche Arbeiten du übernimmst und welche gestalterische Qualität sie erwarten können.",
     goodSiteTitle: "Was eine Maler-Website visuell leisten sollte.",
     processTitle: "So wird aus Projektmaterial ein überzeugender Maler-Auftritt.",
     processIntro:
@@ -352,7 +352,7 @@ export const trades: Trade[] = [
     remoteIntro:
       "Für die Website zählt gutes Projektmaterial, nicht die Entfernung zum Büro in Neustadt in Sachsen.",
     remoteText:
-      "Sie senden vorhandene Bilder und Leistungsinformationen digital. Ich strukturiere das Material, bereite Texte vor und stimme Auswahl sowie Korrekturen direkt mit Ihnen ab. So kann ich Malerbetriebe in ganz Deutschland persönlich begleiten.",
+      "Du sendest vorhandene Bilder und Leistungsinformationen digital. Ich strukturiere das Material, bereite Texte vor und stimme Auswahl sowie Korrekturen direkt mit dir ab. So kann ich Malerbetriebe in ganz Deutschland persönlich begleiten.",
     relatedTitle: "Weitere Seiten für Ausbau und sichtbare Projektergebnisse.",
     relatedIntro:
       "Fliesenleger, Gartenbau und andere Gewerke arbeiten ebenfalls stark mit Bildern, brauchen aber jeweils andere Leistungs- und Anfrageinformationen.",
@@ -368,7 +368,7 @@ export const trades: Trade[] = [
     goodSite: [
       {
         title: "Vorher-Nachher-Galerie",
-        text: "Der direkte Vergleich zeigt den Effekt Ihrer Arbeit und schafft schnell Vertrauen.",
+        text: "Der direkte Vergleich zeigt den Effekt deiner Arbeit und schafft schnell Vertrauen.",
       },
       {
         title: "Leistungen innen und außen getrennt",
@@ -390,7 +390,7 @@ export const trades: Trade[] = [
       },
       {
         q: "Bringt eine Website lokal mehr Anfragen?",
-        a: "Mit regionalen Inhalten und sauberer Struktur kann Sie Google bei lokalen Suchen besser einordnen. Das ist die Grundlage für mehr Anfragen aus der Nähe.",
+        a: "Mit regionalen Inhalten und sauberer Struktur kann Google dich bei lokalen Suchen besser einordnen. Das ist die Grundlage für mehr Anfragen aus der Nähe.",
       },
     ],
     extraFaq: [
@@ -412,7 +412,7 @@ export const trades: Trade[] = [
       },
     ],
     ctaSubtitle:
-      "Im Erstgespräch schaue ich auf Leistungen und vorhandene Bilder und kläre, wie Ihre Arbeit online am besten sichtbar wird.",
+      "Im Erstgespräch schaue ich auf Leistungen und vorhandene Bilder und kläre, wie deine Arbeit online am besten sichtbar wird.",
     cardText:
       "Innen, außen und Fassade mit Vorher-Nachher-Bildern und klaren Leistungen.",
   },
@@ -426,9 +426,9 @@ export const trades: Trade[] = [
       "Webdesign für Elektriker mit klaren Leistungen, Photovoltaik, Wartung und schnellen Kontaktwegen. Aus Neustadt, deutschlandweit.",
     h1: "Webdesign für Elektriker mit klaren Leistungen und Kontaktwegen.",
     promise:
-      "Eine Website, die Ihre Leistungen, Erreichbarkeit und Themen wie Photovoltaik klar zeigt und Kunden schnell zum Kontakt führt.",
+      "Eine Website, die deine Leistungen, Erreichbarkeit und Themen wie Photovoltaik klar zeigt und Kunden schnell zum Kontakt führt.",
     intro:
-      "Bei Elektrobetrieben zählt oft Tempo. Kunden suchen eine konkrete Leistung oder schnelle Hilfe. Eine gute Website macht sofort klar, was Sie anbieten, wie schnell Sie erreichbar sind und wie man Sie erreicht.",
+      "Bei Elektrobetrieben zählt oft Tempo. Kunden suchen eine konkrete Leistung oder schnelle Hilfe. Eine gute Website macht sofort klar, was du anbietest, wie schnell du erreichbar bist und wie man dich erreicht.",
     pain:
       "Elektrobetriebe verlieren Anfragen, wenn Leistungen, Notdienst und Erreichbarkeit online nicht sofort sichtbar sind.",
     services: [
@@ -456,7 +456,7 @@ export const trades: Trade[] = [
     faq: [
       {
         q: "Sollte der Notdienst auf der Startseite stehen?",
-        a: "Wenn Sie einen anbieten, ja. Eine sichtbare Erreichbarkeit sorgt dafür, dass dringende Anfragen nicht bei der Konkurrenz landen.",
+        a: "Wenn du einen anbietest, ja. Eine sichtbare Erreichbarkeit sorgt dafür, dass dringende Anfragen nicht bei der Konkurrenz landen.",
       },
       {
         q: "Lohnt sich ein eigener Bereich für Photovoltaik?",
@@ -480,9 +480,9 @@ export const trades: Trade[] = [
       "Webdesign für Fliesenleger mit Projektgalerie nach Raum, Materialberatung und einfachem Anfrageweg. Aus Neustadt, deutschlandweit.",
     h1: "Webdesign für Fliesenleger, das Räume und Materialien wirken lässt.",
     promise:
-      "Eine Website, die Ihre Fliesenarbeiten nach Raum zeigt und Kunden mit Materialberatung und einfachem Kontakt überzeugt.",
+      "Eine Website, die deine Fliesenarbeiten nach Raum zeigt und Kunden mit Materialberatung und einfachem Kontakt überzeugt.",
     intro:
-      "Fliesenarbeiten leben von Bildern. Bad, Boden oder Terrasse, Kunden wollen sehen, wie Ihr Ergebnis aussieht. Eine Website mit klarer Galerie und kurzer Materialberatung macht den Unterschied sichtbar.",
+      "Fliesenarbeiten leben von Bildern. Bad, Boden oder Terrasse, Kunden wollen sehen, wie dein Ergebnis aussieht. Eine Website mit klarer Galerie und kurzer Materialberatung macht den Unterschied sichtbar.",
     pain:
       "Fliesenarbeiten leben von Beispielen. Ohne Galerie wirkt ein Betrieb schnell austauschbar.",
     services: [
@@ -504,7 +504,7 @@ export const trades: Trade[] = [
       },
       {
         title: "Anfrage mit Raumangaben",
-        text: "Das Formular fragt Raum und Fläche ab, damit Sie schneller einschätzen und anbieten können.",
+        text: "Das Formular fragt Raum und Fläche ab, damit du schneller einschätzen und anbieten kannst.",
       },
     ],
     faq: [
@@ -518,7 +518,7 @@ export const trades: Trade[] = [
       },
       {
         q: "Hilft die Website bei lokalen Suchen?",
-        a: "Mit regionalen Inhalten und klarer Struktur kann Google Sie bei Suchen aus Ihrer Region besser einordnen.",
+        a: "Mit regionalen Inhalten und klarer Struktur kann Google dich bei Suchen aus deiner Region besser einordnen.",
       },
     ],
     cardText:
@@ -538,7 +538,7 @@ export const trades: Trade[] = [
     heroSuffix:
       "Leistungen, Erreichbarkeit und Projektmaterial bereite ich aus Neustadt in Sachsen für Dachdeckerbetriebe bundesweit auf.",
     intro:
-      "Bei Arbeiten am Dach geht es um hohe Investitionen, Sicherheit und eine verlässliche Einschätzung. Kunden möchten sehen, welche Dächer und Leistungen Sie abdecken, wie Sie arbeiten und in welchem Gebiet Sie erreichbar sind.",
+      "Bei Arbeiten am Dach geht es um hohe Investitionen, Sicherheit und eine verlässliche Einschätzung. Kunden möchten sehen, welche Dächer und Leistungen du abdeckst, wie du arbeitest und in welchem Gebiet du erreichbar bist.",
     pain:
       "Wenn Sanierung, Reparatur und mögliche Soforthilfe online nicht klar getrennt sind, entstehen unpassende Anfragen oder Interessenten suchen direkt weiter.",
     detailIntro:
@@ -589,7 +589,7 @@ export const trades: Trade[] = [
     remoteIntro:
       "Dachprojekte lassen sich auch über größere Entfernung strukturiert für die Website aufbereiten.",
     remoteText:
-      "Leistungslisten, Einsatzgebiete und freigegebene Projektbilder werden digital abgestimmt. Ich formuliere daraus einen verständlichen Auftritt und bleibe der direkte Ansprechpartner, unabhängig vom Standort Ihres Dachdeckerbetriebs.",
+      "Leistungslisten, Einsatzgebiete und freigegebene Projektbilder werden digital abgestimmt. Ich formuliere daraus einen verständlichen Auftritt und bleibe der direkte Ansprechpartner, unabhängig vom Standort deines Dachdeckerbetriebs.",
     relatedTitle: "Weitere Seiten für Bau, Gebäudehülle und Ausbau.",
     relatedIntro:
       "Bauunternehmen, Maler und SHK-Betriebe haben teilweise ähnliche Kunden, benötigen online aber andere Belege und Anfragewege.",
@@ -619,7 +619,7 @@ export const trades: Trade[] = [
     faq: [
       {
         q: "Sollte ein Dachdecker-Notdienst auf die Website?",
-        a: "Nur wenn Sie diesen wirklich anbieten. Dann sollten Erreichbarkeit, Zeiten und Einsatzgebiet klar genannt werden, damit keine falschen Erwartungen entstehen.",
+        a: "Nur wenn du diesen wirklich anbietest. Dann sollten Erreichbarkeit, Zeiten und Einsatzgebiet klar genannt werden, damit keine falschen Erwartungen entstehen.",
       },
       {
         q: "Welche Projektbilder sind für Dachdecker sinnvoll?",
@@ -633,7 +633,7 @@ export const trades: Trade[] = [
     extraFaq: [
       {
         q: "Was kostet eine Website für einen Dachdeckerbetrieb?",
-        a: "Entscheidend sind Zahl der Leistungsbereiche, Projektgalerie und gewünschte Anfragefunktionen. Nach Sichtung der vorhandenen Inhalte erhalten Sie einen klaren Umfang.",
+        a: "Entscheidend sind Zahl der Leistungsbereiche, Projektgalerie und gewünschte Anfragefunktionen. Nach Sichtung der vorhandenen Inhalte erhältst du einen klaren Umfang.",
       },
       {
         q: "Können Kunden Fotos eines Schadens mitsenden?",
@@ -649,7 +649,7 @@ export const trades: Trade[] = [
       },
     ],
     ctaSubtitle:
-      "Im Erstgespräch kläre ich, wie Sanierung, Reparatur, Wartung und Erreichbarkeit auf Ihrer Website sinnvoll getrennt werden.",
+      "Im Erstgespräch kläre ich, wie Sanierung, Reparatur, Wartung und Erreichbarkeit auf deiner Website sinnvoll getrennt werden.",
     cardText:
       "Sanierung, Reparatur, Dachfenster und Wartung mit Projektbildern und schnellen Kontaktwegen.",
   },
@@ -718,7 +718,7 @@ export const trades: Trade[] = [
     remoteIntro:
       "Auch komplexe SHK-Angebote lassen sich mit festen Unterlagen und direkten Gesprächen deutschlandweit strukturieren.",
     remoteText:
-      "Sie liefern fachliche Informationen, vorhandene Projektbilder und die tatsächlichen Serviceabläufe. Ich überführe das in verständliche Inhalte und stimme jeden Schritt direkt mit Ihnen ab.",
+      "Du lieferst fachliche Informationen, vorhandene Projektbilder und die tatsächlichen Serviceabläufe. Ich überführe das in verständliche Inhalte und stimme jeden Schritt direkt mit dir ab.",
     relatedTitle: "Weitere Seiten für Gebäudetechnik und Ausbau.",
     relatedIntro:
       "Elektriker, Dachdecker und Bauunternehmen sprechen teilweise dieselben Bauherren an, setzen aber andere fachliche Schwerpunkte.",
@@ -773,12 +773,12 @@ export const trades: Trade[] = [
         a: "Ja, sofern Technik und Grundstruktur tragfähig sind. Ich prüfe, ob neue Leistungsseiten und Kontaktwege sauber ergänzt werden können.",
       },
       {
-        q: "Arbeiten Sie mit SHK-Betrieben in ganz Deutschland?",
+        q: "Arbeitest du mit SHK-Betrieben in ganz Deutschland?",
         a: "Ja. Fachliche Unterlagen, Korrekturen und Freigaben lassen sich digital abstimmen. Ansprechpartner bleibt Jonas Schurz.",
       },
     ],
     ctaSubtitle:
-      "Im Erstgespräch kläre ich, wie Bad, Heizung, Wartung und Service auf Ihrer Website verständlich getrennt werden.",
+      "Im Erstgespräch kläre ich, wie Bad, Heizung, Wartung und Service auf deiner Website verständlich getrennt werden.",
     cardText:
       "Bad, Heizung, Wartung und optionaler Störungsdienst mit klar getrennten Anfragewegen.",
   },

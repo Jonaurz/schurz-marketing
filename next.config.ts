@@ -17,7 +17,6 @@ const contentSecurityPolicy = [
 ].join("; ");
 
 const noIndexLegalRoutes = [
-  "/impressum",
   "/datenschutz",
   "/agb",
   "/cookie-richtlinien",
@@ -70,12 +69,31 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "webseite.schurz-marketing.de",
+          },
+        ],
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, noarchive, nosnippet",
+          },
+        ],
+      },
+      {
         source: "/schurz-admin",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
         source: "/schurz-admin/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/kontakt/bestaetigen",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
       },
       ...noIndexLegalRoutes.map((source) => ({
         source,

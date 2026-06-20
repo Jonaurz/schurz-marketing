@@ -1,5 +1,5 @@
 import { site } from "@/lib/site";
-import { serializeJsonLd } from "@/lib/json-ld";
+import { JsonLd } from "@/components/seo/json-ld";
 
 /** BreadcrumbList-JSON-LD. Pfade relativ zur Domain angeben (z. B. "/handwerker"). */
 export function BreadcrumbJsonLd({
@@ -18,10 +18,5 @@ export function BreadcrumbJsonLd({
     })),
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-    />
-  );
+  return <JsonLd data={jsonLd} />;
 }

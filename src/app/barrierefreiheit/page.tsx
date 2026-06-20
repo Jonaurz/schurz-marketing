@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Informationen zur Barrierefreiheit der Website von Schurz Marketing sowie Kontaktmöglichkeit für Feedback.",
   alternates: { canonical: "/barrierefreiheit" },
+  robots: { index: false, follow: true },
 };
 
 export default function AccessibilityPage() {
@@ -46,7 +47,7 @@ export default function AccessibilityPage() {
               Die Website nutzt semantische HTML-Strukturen, Skip-Link, Landmarks,
               sichtbare Formularbeschriftungen, aussagekräftige Alternativtexte,
               ausreichende Kontraste, sichtbare Fokuszustände, Tastaturbedienbarkeit,
-              responsive Darstellung und reduzierte Bewegungsdarstellung für Nutzerinnen
+              mobile Darstellung und reduzierte Bewegungsdarstellung für Nutzerinnen
               und Nutzer, die dies im System eingestellt haben.
             </p>
 

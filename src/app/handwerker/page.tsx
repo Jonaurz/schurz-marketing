@@ -10,36 +10,30 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { ProofSection } from "@/components/sections/references-section";
+import { AnswerBlocks } from "@/components/sections/answer-blocks";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
-import { serializeJsonLd } from "@/lib/json-ld";
+import { createPageMetadata } from "@/lib/seo";
 import { localCities } from "@/lib/local-seo";
 import { trades } from "@/lib/trades";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Webdesign für Handwerker",
   description:
-    "Webdesign für Handwerker: klare Leistungen, Projektbilder und einfache Kontaktwege. Persönlich aus Neustadt in Sachsen, deutschlandweit.",
-  alternates: { canonical: "/handwerker" },
-  openGraph: {
-    title: "Webdesign für Handwerker · Schurz Marketing",
-    description:
-      "Webseiten für Handwerksbetriebe, klar aufgebaut, gut auffindbar und auf Anfragen ausgelegt. Deutschlandweit mit persönlichem Ansprechpartner.",
-    url: "/handwerker",
-    images: [
-      {
-        url: "/images/schurz-marketing-webdesign.png",
-        width: 1448,
-        height: 1086,
-        alt: "Webseite für einen Handwerksbetrieb auf Laptop und Smartphone",
-      },
-    ],
+    "Webseiten für Handwerker, Bauunternehmen und regionale Betriebe. Schurz Marketing sorgt für klare Leistungen, Projektbilder und einfache Kontaktanfragen.",
+  path: "/handwerker",
+  image: {
+    url: "/images/schurz-marketing-webdesign.png",
+    width: 1448,
+    height: 1086,
+    alt: "Webseite für einen Handwerksbetrieb auf Laptop und Smartphone",
   },
-};
+});
 
 const leistungen = [
   {
@@ -94,6 +88,33 @@ const benefits = [
   "Kontaktaufnahme per Telefon, Formular oder WhatsApp so einfach wie möglich machen.",
 ];
 
+const handwerkerAnswers = [
+  {
+    question: "Was gehört auf eine gute Handwerker-Website?",
+    answer:
+      "Wichtig sind verständliche Leistungen, echte Projektbilder, das Einsatzgebiet, ein klarer Ansprechpartner und kurze Wege zu Telefon oder Anfrageformular.",
+  },
+  {
+    question: "Für welche Gewerke erstellt Schurz Marketing Webseiten?",
+    answer:
+      "Der Schwerpunkt liegt auf Handwerksbetrieben aus Bau, Ausbau und Gebäudeservice, zum Beispiel Dachdecker, Maler, Elektriker, SHK-Betriebe, GaLaBau, Zaunbau, Tischler und Metallbau.",
+  },
+  {
+    question: "Kann eine Handwerker-Website auf bestimmte Orte ausgerichtet werden?",
+    answer:
+      "Ja. Leistungen und tatsächliche Einsatzgebiete lassen sich so verbinden, dass Kunden und Suchmaschinen erkennen, in welchen Orten dein Betrieb arbeitet.",
+  },
+];
+
+const typicalErrors = [
+  "Leistungen stehen nur als lange Liste ohne verständliche Erklärung auf der Seite.",
+  "Projektbilder fehlen, sind unscharf oder lassen sich keiner Leistung zuordnen.",
+  "Das Einsatzgebiet bleibt unklar oder wird mit zu vielen Ortsnamen überladen.",
+  "Telefonnummer und Anfrageformular sind auf dem Smartphone schwer erreichbar.",
+  "Veraltete Texte und Bilder passen nicht mehr zum heutigen Betrieb.",
+  "Google, Nutzer und KI-Systeme können Anbieter, Gewerk und Region nicht eindeutig einordnen.",
+];
+
 const relatedIndustryLinks = [
   {
     href: "/handwerker/bauunternehmen",
@@ -116,12 +137,12 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Ich kläre mit Ihnen Gewerk, Einsatzgebiet und welche Anfragen die Website bringen soll. Kostenlos und ohne Fachjargon.",
+    text: "Ich kläre mit dir Gewerk, Einsatzgebiet und welche Anfragen die Website bringen soll. Kostenlos und ohne Fachjargon.",
   },
   {
     no: "2",
     title: "Struktur planen",
-    text: "Aus Ihren Leistungen, Projekten und Orten entsteht eine klare Seitenstruktur mit den richtigen Suchbegriffen.",
+    text: "Aus deinen Leistungen, Projekten und Orten entsteht eine klare Seitenstruktur mit den richtigen Suchbegriffen.",
   },
   {
     no: "3",
@@ -137,31 +158,31 @@ const steps = [
 
 const faqs = [
   {
-    q: "Bauen Sie Webseiten speziell für Handwerker?",
+    q: "Baust du Webseiten speziell für Handwerker?",
     a: "Ja. Die Seiten sind so aufgebaut, dass Kunden Leistungen, Projekte, Einsatzgebiet und Kontaktwege schnell verstehen. Inhalte und Anfrageformulare werden an das jeweilige Gewerk angepasst.",
   },
   {
     q: "Kann ich die Website später selbst pflegen?",
-    a: "Ja. Auf Wunsch erhalten Sie eine pflegbare Lösung und eine Einweisung. Alternativ übernimmt Schurz Marketing Änderungen, Updates und technische Pflege.",
+    a: "Ja. Auf Wunsch erhältst du eine pflegbare Lösung und eine Einweisung. Alternativ übernimmt Schurz Marketing Änderungen, Updates und technische Pflege.",
   },
   {
     q: "Was kostet eine Website für meinen Betrieb?",
     a: "Das hängt vom Umfang ab. Den genauen Rahmen kläre ich transparent im kostenlosen Erstgespräch, ohne Verpflichtung.",
   },
   {
-    q: "Kümmern Sie sich auch um Google und die lokale Sichtbarkeit?",
+    q: "Kümmerst du dich auch um Google und die lokale Sichtbarkeit?",
     a: "Ja. Eine saubere SEO-Grundlage gehört zur Umsetzung. Dazu zählen klare Leistungsseiten, Metadaten, interne Links und auf Wunsch die Einbindung oder Optimierung des Google-Unternehmensprofils.",
   },
   {
     q: "Ich habe wenig Zeit. Wie aufwendig ist das für mich?",
-    a: "So wenig wie möglich. Von Ihnen kommen Infos, Bilder und Freigaben. Aufbau, Technik und Texte übernehme ich.",
+    a: "So wenig wie möglich. Von dir kommen Infos, Bilder und Freigaben. Aufbau, Technik und Texte übernehme ich.",
   },
   {
-    q: "Können Sie eine bestehende Handwerker-Website überarbeiten?",
+    q: "Kannst du eine bestehende Handwerker-Website überarbeiten?",
     a: "Ja. Zuerst wird geprüft, welche Inhalte und technischen Grundlagen weiterverwendet werden können. Danach folgt entweder ein gezielter Relaunch oder ein sauberer Neuaufbau.",
   },
   {
-    q: "Arbeiten Sie deutschlandweit?",
+    q: "Arbeitest du deutschlandweit?",
     a: "Ja. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet per Telefon, E-Mail, Video-Call und digitaler Abstimmung mit Handwerksbetrieben in ganz Deutschland.",
   },
 ];
@@ -196,10 +217,7 @@ export default function HandwerkerPage() {
         ]}
       />
       <FaqJsonLd items={faqs} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
-      />
+      <JsonLd data={serviceJsonLd} />
 
       <PageHero
         title="Webdesign für Handwerker, das Vertrauen schafft."
@@ -212,6 +230,11 @@ export default function HandwerkerPage() {
           Webdesign-Leistung ansehen
         </Button>
       </PageHero>
+      <AnswerBlocks
+        title="Webdesign für Handwerker, kurz erklärt."
+        intro="Eine gute Handwerker-Website zeigt nicht möglichst viel. Sie zeigt genau das, was Kunden vor einer Anfrage wissen müssen."
+        items={handwerkerAnswers}
+      />
 
       {/* Problem */}
       <Section aria-label="Ausgangslage">
@@ -223,7 +246,7 @@ export default function HandwerkerPage() {
                 Viele Handwerksbetriebe sind über Empfehlungen gut ausgelastet und haben
                 online kaum etwas. Das funktioniert, solange die Mundpropaganda läuft.
                 Sobald aber ein neuer Bereich wachsen soll oder Aufträge ausbleiben,
-                fehlt der Ort, an dem neue Kunden sehen, was Sie können.
+                fehlt der Ort, an dem neue Kunden sehen, was du kannst.
               </p>
               <p className="text-pretty">
                 Wer heute einen Betrieb sucht, schaut zuerst online und vergleicht. Ist
@@ -232,7 +255,7 @@ export default function HandwerkerPage() {
               </p>
               <p className="text-pretty">
                 Eine gute Website muss dafür nicht kompliziert sein. Sie muss erklären,
-                was Sie machen, Vertrauen schaffen und es leicht machen, Sie zu
+                was du machst, Vertrauen schaffen und es leicht machen, dich zu
                 erreichen. Leistungen, Projekte, Einsatzgebiet und Kontakt gehören auf
                 den ersten Blick verständlich dargestellt.
               </p>
@@ -265,12 +288,61 @@ export default function HandwerkerPage() {
         </Container>
       </Section>
 
+      <Section aria-label="Typische Fehler alter Handwerker-Webseiten" className="border-t border-ink/10">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                size="compact"
+                title="Typische Fehler alter Handwerker-Webseiten."
+                intro="Viele Seiten sind technisch noch erreichbar, helfen Kunden aber nicht bei der Entscheidung."
+              />
+            </div>
+            <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:col-span-7">
+              {typicalErrors.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-ink/80">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </Section>
+
+      <Section aria-label="Projektgalerie für Handwerker" className="border-t border-ink/10">
+        <Container>
+          <div className="max-w-3xl">
+            <SectionHeading
+              title="Eine gute Projektgalerie beantwortet Fragen, bevor sie gestellt werden."
+              intro="Kunden möchten sehen, ob du ähnliche Arbeiten bereits umgesetzt hast. Deshalb sollten Bilder nach Leistung geordnet und mit kurzen Angaben zu Projektart, Region und eigener Arbeit ergänzt werden."
+            />
+            <p className="mt-6 text-pretty leading-relaxed text-ink/75">
+              Es geht nicht um möglichst viele Bilder. Wenige gute Beispiele mit einer
+              verständlichen Einordnung wirken stärker als eine unkommentierte Galerie.
+              Neue Projekte können später ergänzt und zusätzlich für Social Media genutzt
+              werden.
+            </p>
+            <p className="mt-5 text-sm leading-relaxed text-ink/70">
+              Mehr zur laufenden Sichtbarkeit findest du unter{" "}
+              <Link
+                href="/social-media"
+                className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
+              >
+                Social Media für Unternehmen und Handwerksbetriebe
+              </Link>
+              .
+            </p>
+          </div>
+        </Container>
+      </Section>
+
       {/* Lösung: Leistungen */}
       <Section aria-label="Leistungen für Handwerker" className="border-t border-ink/10">
         <Container>
           <SectionHeading
             title="Alles für den Auftritt, in einer Hand."
-            intro="Jede Leistung lässt sich einzeln oder kombiniert nutzen. Was sinnvoll ist, hängt von Ihrem Betrieb und Ihren Zielen ab."
+            intro="Jede Leistung lässt sich einzeln oder kombiniert nutzen. Was sinnvoll ist, hängt von deinem Betrieb und deinen Zielen ab."
           />
           <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             {leistungen.map((item, i) => (
@@ -294,7 +366,7 @@ export default function HandwerkerPage() {
       <Section aria-label="Gewerke" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Eigene Seiten für Ihr Gewerk."
+            title="Eigene Seiten für dein Gewerk."
             intro="Gerade dort, wo Projektbilder, Leistungen und das Einsatzgebiet zusammenspielen, bringt eine klare Website schnell mehr Anfragen. Für diese Gewerke gibt es eigene Seiten:"
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
@@ -313,9 +385,9 @@ export default function HandwerkerPage() {
             ))}
           </div>
           <p className="mt-8 max-w-[70ch] text-sm leading-relaxed text-ink/70">
-            Ihr Gewerk ist nicht dabei, zum Beispiel Dachdecker, Sanitär, Heizung oder
-            Tischler? Kein Problem. Der Aufbau ist derselbe: klar zeigen, was Sie
-            anbieten, wo Sie arbeiten und warum Kunden Ihnen vertrauen können.
+            Dein Gewerk ist nicht dabei, zum Beispiel Dachdecker, Sanitär, Heizung oder
+            Tischler? Kein Problem. Der Aufbau ist derselbe: klar zeigen, was du
+            anbietest, wo du arbeitest und warum Kunden dir vertrauen können.
           </p>
         </Container>
       </Section>
@@ -327,8 +399,8 @@ export default function HandwerkerPage() {
             <div className="lg:col-span-5">
               <SectionHeading
                 size="compact"
-                title="Was Sie davon haben."
-                intro="Nicht nur ein schöner Auftritt, sondern mehr passende Anfragen aus Ihrer Region."
+                title="Was du davon hast."
+                intro="Nicht nur ein schöner Auftritt, sondern mehr passende Anfragen aus deiner Region."
               />
             </div>
             <div className="lg:col-span-7">
@@ -407,7 +479,7 @@ export default function HandwerkerPage() {
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading title="So entsteht Ihre Handwerker-Website." />
+          <SectionHeading title="So entsteht deine Handwerker-Website." />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no}>
@@ -454,7 +526,7 @@ export default function HandwerkerPage() {
             <div className="lg:col-span-7 lg:col-start-6">
               <SectionHeading
                 title="Ein fester Ansprechpartner statt anonymer Agentur."
-                intro="Sie sprechen direkt mit Jonas Schurz in Neustadt in Sachsen. Kurze digitale Wege, klare Absprachen und eine ehrliche Einschätzung, was sich für Ihren Betrieb wirklich lohnt."
+                intro="Du sprichst direkt mit Jonas Schurz in Neustadt in Sachsen. Kurze digitale Wege, klare Absprachen und eine ehrliche Einschätzung, was sich für deinen Betrieb wirklich lohnt."
               />
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink/75">
                 {site.contact.phoneHref ? (
@@ -476,8 +548,8 @@ export default function HandwerkerPage() {
       </Section>
 
       <CtaBand
-        title="Webseite für Ihren Handwerksbetrieb planen?"
-        subtitle="Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr passende Anfragen bringen kann."
+        title="Webseite für deinen Handwerksbetrieb planen?"
+        subtitle="Im kostenlosen Erstgespräch schaue ich auf deine aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr passende Anfragen bringen kann."
       />
     </>
   );

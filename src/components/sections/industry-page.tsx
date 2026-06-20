@@ -10,9 +10,9 @@ import { PageHero } from "@/components/sections/page-hero";
 import { ProofSection } from "@/components/sections/references-section";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ArrowRight, Check, MapPin } from "@/components/ui/icons";
 import type { IndustryPage as IndustryPageData } from "@/lib/industry-pages";
-import { serializeJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 
 export function IndustryPage({ page }: { page: IndustryPageData }) {
@@ -49,12 +49,7 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
         ]}
       />
       <FaqJsonLd items={page.faq} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeJsonLd(serviceJsonLd),
-        }}
-      />
+      <JsonLd data={serviceJsonLd} />
 
       <PageHero title={page.h1} subtitle={page.hero}>
         <Button href="/kontakt" size="lg" withArrow>
@@ -213,12 +208,12 @@ export function IndustryPage({ page }: { page: IndustryPageData }) {
             <div className="lg:col-span-4">
               <SectionHeading size="compact" title={`Fragen zu Webdesign für ${page.name}.`} />
               <p className="mt-7 text-sm leading-relaxed text-ink/70">
-                Sie möchten ein konkretes Projekt besprechen?{" "}
+                Du möchtest ein konkretes Projekt besprechen?{" "}
                 <Link
                   href="/kontakt"
                   className="font-semibold text-ink underline underline-offset-4 hover:text-accent"
                 >
-                  Schreiben Sie direkt eine Anfrage.
+                  Schreib direkt eine Anfrage.
                 </Link>
               </p>
             </div>

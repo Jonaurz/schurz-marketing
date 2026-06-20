@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
@@ -44,8 +45,19 @@ export async function ProofSection({
                         </figure>
                       ) : null}
                       <p className="mt-3 text-xs font-semibold uppercase tracking-label text-ink/70">
-                        {reference.sector}
+                        {[reference.sector, reference.region].filter(Boolean).join(" · ")}
                       </p>
+                      {reference.mobileImageUrl ? (
+                        <figure className="relative mt-5 aspect-[9/16] max-w-48 overflow-hidden border border-ink/10">
+                          <Image
+                            src={reference.mobileImageUrl}
+                            alt={reference.mobileImageAlt || `${reference.title} in der Mobilansicht`}
+                            fill
+                            sizes="12rem"
+                            className="object-cover"
+                          />
+                        </figure>
+                      ) : null}
                     </div>
                     <div className="lg:col-span-7">
                       <h3 className="max-w-3xl text-balance text-xl font-bold tracking-tight sm:text-2xl">
@@ -77,6 +89,46 @@ export async function ProofSection({
                           </p>
                         </div>
                       </div>
+                      {reference.goal || reference.result || reference.services ? (
+                        <dl className="mt-8 grid gap-5 border-t border-ink/10 pt-6 sm:grid-cols-3">
+                          {reference.goal ? (
+                            <div>
+                              <dt className="text-xs font-semibold uppercase tracking-label text-ink/70">
+                                Ziel
+                              </dt>
+                              <dd className="mt-2 text-sm leading-relaxed text-ink/75">
+                                {reference.goal}
+                              </dd>
+                            </div>
+                          ) : null}
+                          {reference.result ? (
+                            <div>
+                              <dt className="text-xs font-semibold uppercase tracking-label text-ink/70">
+                                Ergebnis
+                              </dt>
+                              <dd className="mt-2 text-sm leading-relaxed text-ink/75">
+                                {reference.result}
+                              </dd>
+                            </div>
+                          ) : null}
+                          {reference.services ? (
+                            <div>
+                              <dt className="text-xs font-semibold uppercase tracking-label text-ink/70">
+                                Leistungen
+                              </dt>
+                              <dd className="mt-2 text-sm leading-relaxed text-ink/75">
+                                {reference.services}
+                              </dd>
+                            </div>
+                          ) : null}
+                        </dl>
+                      ) : null}
+                      <Link
+                        href="/kontakt"
+                        className="mt-8 inline-flex text-sm font-semibold text-ink underline underline-offset-8 transition-colors hover:text-accent"
+                      >
+                        Ähnliche Webseite anfragen
+                      </Link>
                     </div>
                   </article>
                 </Reveal>

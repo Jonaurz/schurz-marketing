@@ -113,6 +113,7 @@ function ReferenceForm({ reference }: { reference?: ReferenceCase }) {
           <Field label="Branche" name="sector" value={reference?.sector} required />
           <Field label="Reihenfolge" name="sortOrder" type="number" value={reference?.sortOrder ?? 99} />
         </div>
+        <Field label="Region" name="region" value={reference?.region} />
         <Field label="Titel" name="title" value={reference?.title} required />
         {reference?.imageUrl ? (
           <div>
@@ -129,6 +130,18 @@ function ReferenceForm({ reference }: { reference?: ReferenceCase }) {
           </div>
         ) : null}
         <Field label="Bildbeschreibung / Alt-Text" name="imageAlt" value={reference?.imageAlt} />
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field
+            label="Optionales Mobilbild (URL)"
+            name="mobileImageUrl"
+            value={reference?.mobileImageUrl}
+          />
+          <Field
+            label="Alt-Text Mobilbild"
+            name="mobileImageAlt"
+            value={reference?.mobileImageAlt}
+          />
+        </div>
         <label className="block">
           <span className={labelClass}>Referenzbild hochladen</span>
           <input
@@ -142,8 +155,15 @@ function ReferenceForm({ reference }: { reference?: ReferenceCase }) {
           </span>
         </label>
         <TextArea label="Ausgangslage" name="problem" value={reference?.problem} />
+        <TextArea label="Ziel" name="goal" value={reference?.goal} />
         <TextArea label="Was das auslöst" name="consequence" value={reference?.consequence} />
-        <TextArea label="Lösung" name="solution" value={reference?.solution} />
+        <TextArea label="Umsetzung" name="solution" value={reference?.solution} />
+        <TextArea label="Ergebnis" name="result" value={reference?.result} />
+        <TextArea
+          label="Leistungen (als kurze Liste oder Fließtext)"
+          name="services"
+          value={reference?.services}
+        />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <PublishToggle checked={reference?.published ?? true} />
           <Button type="submit" withArrow>

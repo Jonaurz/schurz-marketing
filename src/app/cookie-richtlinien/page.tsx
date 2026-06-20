@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Cookie-Richtlinien von Schurz Marketing mit Informationen zu notwendigen Speicherungen, Cookie-Einstellungen und Google Analytics.",
   alternates: { canonical: "/cookie-richtlinien" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 };
 
 export default function CookieRichtlinienPage() {

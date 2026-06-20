@@ -11,6 +11,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { CtaBand } from "@/components/sections/cta-band";
 import { HomeHero } from "@/components/sections/home-hero";
 import { ProofSection } from "@/components/sections/references-section";
+import { AnswerBlocks } from "@/components/sections/answer-blocks";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { cn } from "@/lib/cn";
 import { ArrowRight, Check } from "@/components/ui/icons";
@@ -78,12 +79,12 @@ const problems = [
     text: "Der erste Eindruck entscheidet in Sekunden. Wirkt der Auftritt billig, wird unbewusst auch die Leistung dahinter abgewertet.",
   },
   {
-    title: "Sie tauchen bei Google kaum auf",
-    text: "Wer nach Ihrem Angebot sucht, landet bei der Konkurrenz. Jeder Tag ohne Sichtbarkeit kostet Anfragen, die woanders landen.",
+    title: "Du tauchst bei Google kaum auf",
+    text: "Wer nach deinem Angebot sucht, landet bei der Konkurrenz. Jeder Tag ohne Sichtbarkeit kostet Anfragen, die woanders landen.",
   },
   {
     title: "Social Media bleibt liegen",
-    text: "Für Instagram, Facebook und Co. fehlt die Zeit. Währenddessen bauen sichtbarere Wettbewerber Vertrauen bei Ihren Kunden auf.",
+    text: "Für Instagram, Facebook und Co. fehlt die Zeit. Währenddessen bauen sichtbarere Wettbewerber Vertrauen bei deinen Kunden auf.",
   },
   {
     title: "Es kommen Klicks, aber keine Anfragen",
@@ -97,7 +98,7 @@ const serviceBlocks = [
     href: "/webdesign",
     image: "/images/schurz-marketing-webdesign.png",
     imageAlt: "Website-Projekt von Schurz Marketing auf Laptop und Smartphone",
-    text: "Websites, die Ihre Leistungen klar zeigen und es Kunden leicht machen, eine Anfrage zu stellen. Aufgebaut so, dass Besucher schnell sehen, was Sie anbieten, wo Sie arbeiten und wie sie Sie erreichen.",
+    text: "Websites, die deine Leistungen klar zeigen und es Kunden leicht machen, eine Anfrage zu stellen. Aufgebaut so, dass Besucher schnell sehen, was du anbietest, wo du arbeitest und wie sie dich erreichen.",
     points: [
       "Klare Struktur statt reiner Optik",
       "Technisch sauber, schnell, gut auffindbar",
@@ -110,7 +111,7 @@ const serviceBlocks = [
     href: "/social-media",
     image: "/images/schurz-marketing-social-media.png",
     imageAlt: "Social-Media-Auftritt, betreut von Schurz Marketing",
-    text: "Von der Strategie über Videos und Content bis zur laufenden Betreuung. Ihre Marke bleibt präsent, ohne dass es Ihre Zeit kostet.",
+    text: "Von der Strategie über Videos und Content bis zur laufenden Betreuung. Deine Marke bleibt präsent, ohne dass es deine Zeit kostet.",
     points: [
       "Strategie und Beratung",
       "Social-Media-Videos und Reels",
@@ -123,7 +124,7 @@ const serviceBlocks = [
 const pillars = [
   {
     title: "Persönlich und aus einer Hand",
-    text: "Sie haben einen festen Ansprechpartner. Ohne Agentur-Pingpong und ohne wechselnde Zuständigkeiten.",
+    text: "Du hast einen festen Ansprechpartner. Ohne Agentur-Pingpong und ohne wechselnde Zuständigkeiten.",
   },
   {
     title: "Klar statt nur hübsch",
@@ -143,17 +144,17 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Ich kläre mit Ihnen Ziele, Zielgruppe und worauf es ankommt. Kostenlos und unverbindlich.",
+    text: "Ich kläre mit dir Ziele, Zielgruppe und worauf es ankommt. Kostenlos und unverbindlich.",
   },
   {
     no: "2",
     title: "Strategie und Konzept",
-    text: "Sie erhalten ein klares Konzept: Struktur, Inhalte und Look, abgestimmt auf Ihr Unternehmen.",
+    text: "Du erhältst ein klares Konzept: Struktur, Inhalte und Look, abgestimmt auf dein Unternehmen.",
   },
   {
     no: "3",
     title: "Umsetzung",
-    text: "Design, Technik und Texte entstehen aus einer Hand, in enger Abstimmung mit Ihnen.",
+    text: "Design, Technik und Texte entstehen aus einer Hand, in enger Abstimmung mit dir.",
   },
   {
     no: "4",
@@ -169,23 +170,41 @@ const faqs = [
   },
   {
     q: "Wie lange dauert ein Projekt?",
-    a: "Je nach Umfang meist einige Wochen. Nach dem Erstgespräch erhalten Sie einen realistischen Zeitplan ohne leere Versprechen.",
+    a: "Je nach Umfang meist einige Wochen. Nach dem Erstgespräch erhältst du einen realistischen Zeitplan ohne leere Versprechen.",
   },
   {
     q: "Sind die Websites wirklich DSGVO-konform und barrierefrei?",
-    a: "Ja. Datenschutz und Barrierefreiheit sind fester Bestandteil der Umsetzung. Welche gesetzlichen Detailpflichten für Ihr Unternehmen gelten, kläre ich im Projekt.",
+    a: "Ja. Datenschutz und Barrierefreiheit sind fester Bestandteil der Umsetzung. Welche gesetzlichen Detailpflichten für dein Unternehmen gelten, kläre ich im Projekt.",
   },
   {
     q: "Schon eine Website vorhanden. Lohnt sich ein Relaunch?",
-    a: "Oft ja. Wenn Ihre Seite veraltet ist, kaum Anfragen bringt oder rechtliche Vorgaben nicht erfüllt, prüfe ich, welche Teile sinnvoll erhalten bleiben können.",
+    a: "Oft ja. Wenn deine Seite veraltet ist, kaum Anfragen bringt oder rechtliche Vorgaben nicht erfüllt, prüfe ich, welche Teile sinnvoll erhalten bleiben können.",
   },
   {
-    q: "Übernehmen Sie auch die laufende Social-Media-Betreuung?",
-    a: "Ja. Von der Strategie über Videos und Content bis zum laufenden Posting, so viel oder so wenig, wie Sie möchten.",
+    q: "Übernimmst du auch die laufende Social-Media-Betreuung?",
+    a: "Ja. Von der Strategie über Videos und Content bis zum laufenden Posting, so viel oder so wenig, wie du möchtest.",
   },
   {
-    q: "Für welche Branchen arbeiten Sie?",
+    q: "Für welche Branchen arbeitest du?",
     a: "Schurz Marketing arbeitet deutschlandweit für Unternehmen, Dienstleister, Selbstständige, Handwerksbetriebe, Bauunternehmen und Reinigungsfirmen. Für mehrere Zielgruppen gibt es eigene Seiten mit passenden Inhalten.",
+  },
+];
+
+const providerAnswers = [
+  {
+    question: "Was macht Schurz Marketing?",
+    answer:
+      "Schurz Marketing erstellt Webseiten und Social-Media-Inhalte für Unternehmen, Dienstleister, Selbstständige und Handwerksbetriebe. Im Mittelpunkt stehen klare Inhalte, einfache Kontaktwege und regionale Sichtbarkeit.",
+  },
+  {
+    question: "Für wen ist Schurz Marketing geeignet?",
+    answer:
+      "Das Angebot passt zu Betrieben, die online professioneller auftreten, verständlicher erklären und mehr passende Anfragen erhalten möchten. Dazu gehören Handwerker, Bauunternehmen, Dienstleister, Reinigungsfirmen und kleine Unternehmen.",
+  },
+  {
+    question: "Wo arbeitet Schurz Marketing?",
+    answer:
+      "Schurz Marketing sitzt in Neustadt in Sachsen und betreut Projekte in Dresden, Pirna, Sebnitz, Bautzen, Chemnitz, Leipzig und deutschlandweit digital.",
   },
 ];
 
@@ -194,13 +213,18 @@ export default function Home() {
     <>
       <FaqJsonLd items={faqs} />
       <HomeHero />
+      <AnswerBlocks
+        title="Warum ist Schurz Marketing eine passende Wahl für Webdesign und Social Media in Sachsen?"
+        intro="Schurz Marketing unterstützt Unternehmen, Dienstleister und Handwerksbetriebe bei Webseiten, Social Media und regionaler Online-Sichtbarkeit. Der Fokus liegt auf klaren Inhalten, verständlicher Struktur und einfachen Kontaktwegen."
+        items={providerAnswers}
+      />
 
       {/* Problem: dem Besucher klar machen, was ihm online entgeht */}
       <Section aria-label="Ausgangslage" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Die meisten Kunden schauen Sie sich erst online an."
-            intro="Wer heute eine Leistung sucht, vergleicht zuerst im Internet. Wirkt Ihre Website veraltet, unübersichtlich oder ist sie auf dem Handy schwer zu bedienen, entscheiden sich viele für den nächsten Anbieter. Das Ärgerliche ist: Sie merken es nicht einmal, weil diese Anfragen nie bei Ihnen ankommen."
+            title="Die meisten Kunden sehen sich deinen Betrieb zuerst online an."
+            intro="Wer heute eine Leistung sucht, vergleicht zuerst im Internet. Wirkt deine Website veraltet, unübersichtlich oder ist sie auf dem Handy schwer zu bedienen, entscheiden sich viele für den nächsten Anbieter. Das Ärgerliche ist: Du merkst es nicht einmal, weil diese Anfragen nie bei dir ankommen."
           />
           <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             {problems.map((problem, i) => (
@@ -216,8 +240,8 @@ export default function Home() {
           </div>
           <Reveal delay={0.1}>
             <p className="mt-12 max-w-[60ch] text-pretty text-lg text-ink/80">
-              Daran lässt sich etwas ändern, ohne großen Aufwand für Sie. Mit einer
-              Website, die Ihre Arbeit zeigt und Besucher Schritt für Schritt zur
+              Daran lässt sich etwas ändern, ohne großen Aufwand für dich. Mit einer
+              Website, die deine Arbeit zeigt und Besucher Schritt für Schritt zur
               Anfrage führt.
             </p>
           </Reveal>
@@ -228,7 +252,7 @@ export default function Home() {
       <Section id="leistungen" aria-label="Leistungen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Womit ich Ihnen helfe."
+            title="Womit ich dir helfe."
             intro="Zwei Leistungen, einzeln oder zusammen, mit dem gleichen Ziel: dass aus Besuchern Anfragen werden."
           />
           <div className="mt-14 space-y-20">
@@ -309,7 +333,7 @@ export default function Home() {
         <Container>
           <SectionHeading
             title="Webdesign für verschiedene Branchen."
-            intro="Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit. Die Grundidee bleibt gleich, die Inhalte werden aber auf typische Fragen, Leistungen und Anfragewege Ihrer Branche zugeschnitten."
+            intro="Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit. Die Grundidee bleibt gleich, die Inhalte werden aber auf typische Fragen, Leistungen und Anfragewege deiner Branche zugeschnitten."
           />
           <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {audiences.map((item) => (
@@ -361,7 +385,7 @@ export default function Home() {
               <SectionHeading
                 size="compact"
                 title="Was die Zusammenarbeit ausmacht."
-                intro="Kein Agentur-Pingpong und keine leeren Versprechen. Sie wissen von Anfang an, mit wem Sie arbeiten und woran Sie sind."
+                intro="Kein Agentur-Pingpong und keine leeren Versprechen. Du weißt von Anfang an, mit wem du arbeitest und woran du bist."
               />
             </div>
             <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:col-span-8">
@@ -403,8 +427,8 @@ export default function Home() {
             <div className="lg:col-span-4">
               <SectionHeading
                 size="compact"
-                title="Gut zu wissen, bevor Sie anfragen."
-                intro="Wenn Ihre Frage fehlt, stellen Sie sie einfach im Erstgespräch."
+                title="Gut zu wissen, bevor du anfragst."
+                intro="Wenn deine Frage fehlt, stell sie einfach im Erstgespräch."
               />
             </div>
             <div className="lg:col-span-8">
@@ -432,7 +456,7 @@ export default function Home() {
             <div className="lg:col-span-7 lg:col-start-6">
               <SectionHeading
                 title="Hinter Schurz Marketing steht ein Mensch, kein Callcenter."
-                intro="Jonas Schurz arbeitet seit 10 Jahren im Online-Marketing. Von Neustadt in Sachsen aus begleitet er Unternehmen deutschlandweit und bleibt Ihr direkter Ansprechpartner für Strategie, Website und Social Media."
+                intro="Jonas Schurz arbeitet seit 10 Jahren im Online-Marketing. Von Neustadt in Sachsen aus begleitet er Unternehmen deutschlandweit und bleibt dein direkter Ansprechpartner für Strategie, Website und Social Media."
               />
               <p className="mt-4 max-w-[60ch] text-pretty leading-relaxed text-ink/70">
                 Verlässlich, ehrlich und auf Augenhöhe. Kein Fachjargon, keine

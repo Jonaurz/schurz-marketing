@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { PageHero } from "@/components/sections/page-hero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Impressum",
-  description: "Impressum von Schurz Marketing. Anbieterkennzeichnung gemäß § 5 DDG.",
-  alternates: { canonical: "/impressum" },
+  description:
+    "Impressum von Schurz Marketing mit Anbieterkennzeichnung, Kontaktmöglichkeiten und den gesetzlich erforderlichen Angaben gemäß § 5 DDG.",
+  path: "/impressum",
   robots: { index: true, follow: true },
-};
+});
 
 export default function ImpressumPage() {
   return (

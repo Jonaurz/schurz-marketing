@@ -5,12 +5,18 @@ import path from "node:path";
 export type ReferenceCase = {
   id: string;
   sector: string;
+  region: string;
   title: string;
   problem: string;
+  goal: string;
   consequence: string;
   solution: string;
+  result: string;
+  services: string;
   imageUrl: string;
   imageAlt: string;
+  mobileImageUrl: string;
+  mobileImageAlt: string;
   sortOrder: number;
   published: boolean;
 };
@@ -46,8 +52,14 @@ function normalizeContent(content: Partial<SiteContent> | null | undefined): Sit
     references: Array.isArray(content?.references)
       ? content.references.map((reference) => ({
           ...reference,
+          region: reference.region ?? "",
+          goal: reference.goal ?? "",
+          result: reference.result ?? "",
+          services: reference.services ?? "",
           imageUrl: reference.imageUrl ?? "",
           imageAlt: reference.imageAlt ?? "",
+          mobileImageUrl: reference.mobileImageUrl ?? "",
+          mobileImageAlt: reference.mobileImageAlt ?? "",
         }))
       : [],
     testimonials: Array.isArray(content?.testimonials) ? content.testimonials : [],

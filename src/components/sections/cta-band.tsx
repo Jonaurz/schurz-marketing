@@ -8,8 +8,8 @@ import { Reveal } from "../ui/reveal";
  * der Seite, einmal pro Seite, direkt vor dem Footer.
  */
 export function CtaBand({
-  title = "Sprechen Sie mit mir über Ihren Auftritt.",
-  subtitle = "Im kostenlosen Erstgespräch kläre ich, wo Sie stehen und was sich für Sie lohnt. Unverbindlich und ohne Verkaufsdruck.",
+  title = "Sprich mit mir über deinen Auftritt.",
+  subtitle = "Im kostenlosen Erstgespräch kläre ich, wo du stehst und was sich für dich lohnt. Unverbindlich und ohne Verkaufsdruck.",
 }: {
   eyebrow?: string;
   title?: string;

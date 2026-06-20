@@ -69,7 +69,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
             aria-describedby={fieldErrors.name ? "name-error" : undefined}
             autoComplete="name"
             className={inputClass}
-            placeholder="Ihr Name"
+            placeholder="Dein Name"
           />
           {fieldErrors.name ? (
             <p id="name-error" className="mt-2 text-sm text-red-700">
@@ -170,7 +170,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
             type="url"
             autoComplete="url"
             className={inputClass}
-            placeholder="https://www.ihre-domain.de"
+            placeholder="https://www.deine-domain.de"
           />
         </div>
 
@@ -190,7 +190,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
 
       <fieldset className="mt-8 border-t border-ink/10 pt-6">
         <legend className="mb-1 text-sm font-semibold text-ink">
-          Zu Ihrem Unternehmen <span className="font-normal text-ink/60">(optional)</span>
+          Zu deinem Unternehmen <span className="font-normal text-ink/60">(optional)</span>
         </legend>
         <p className="mb-4 text-sm leading-relaxed text-ink/75">
           Hilft, die Anfrage besser einzuschätzen. Alle Felder sind freiwillig.

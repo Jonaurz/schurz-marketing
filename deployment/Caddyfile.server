@@ -1,0 +1,86 @@
+{
+    auto_https disable_redirects
+}
+
+http://intern.schurz-marketing.de {
+    redir https://intern.schurz-marketing.de{uri} permanent
+}
+
+http://178.104.150.40 {
+    redir https://intern.schurz-marketing.de{uri} permanent
+}
+
+intern.schurz-marketing.de {
+    handle /.well-known/caldav {
+        redir * /dav.php 301
+    }
+
+    handle /.well-known/carddav {
+        redir * /dav.php 301
+    }
+
+    handle /dav.php* {
+        reverse_proxy baikal:80
+    }
+
+    handle {
+        reverse_proxy web:3000
+    }
+
+    encode zstd gzip
+
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}
+
+# Die ehemalige Demo-Subdomain ist deaktiviert. Bekannte URLs sollen
+# schnell aus Suchmaschinen entfernt werden und keine Snippets behalten.
+http://webseite.schurz-marketing.de,
+webseite.schurz-marketing.de {
+    header {
+        X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+        Cache-Control "no-store"
+        X-Content-Type-Options "nosniff"
+        -X-Powered-By
+    }
+
+    @robots path /robots.txt
+    header @robots Content-Type "text/plain; charset=utf-8"
+    respond @robots `User-agent: *
+Disallow: /
+` 200
+
+    respond "Gone" 410
+}
+
+# --- Schurz Marketing Website ---
+http://schurz-marketing.de, http://www.schurz-marketing.de {
+    redir https://schurz-marketing.de{uri} permanent
+}
+
+www.schurz-marketing.de {
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        -X-Powered-By
+    }
+    redir https://schurz-marketing.de{uri} permanent
+}
+
+schurz-marketing.de {
+    encode zstd gzip
+    header {
+        Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com; manifest-src 'self'; worker-src 'self' blob:; upgrade-insecure-requests"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Frame-Options "DENY"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        -X-Powered-By
+    }
+    reverse_proxy schurz-marketing-web:3000
+}

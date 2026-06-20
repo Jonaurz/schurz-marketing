@@ -11,33 +11,20 @@ import { PageHero } from "@/components/sections/page-hero";
 import { ProofSection } from "@/components/sections/references-section";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Check, ArrowRight, MapPin } from "@/components/ui/icons";
 import { site } from "@/lib/site";
-import { serializeJsonLd } from "@/lib/json-ld";
+import { createPageMetadata } from "@/lib/seo";
 import { localCities } from "@/lib/local-seo";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: "Webdesign für Unternehmen in Sachsen",
+export const metadata: Metadata = createPageMetadata({
+  title: "Webdesign & Social Media in Sachsen",
   description:
-    "Webdesign und Social Media für Unternehmen und Dienstleister in Sachsen. Regional ausgerichtet, persönlich betreut und deutschlandweit umgesetzt.",
-  alternates: { canonical: "/sachsen" },
-  openGraph: {
-    title: "Webdesign für regionale Unternehmen in Sachsen · Schurz Marketing",
-    description:
-      "Regional sichtbar werden in Sachsen: Webseiten und Social Media für Unternehmen und Dienstleister, mit eigenen Seiten für die wichtigsten Orte.",
-    url: "/sachsen",
-    images: [
-      {
-        url: "/images/schurz-marketing-webdesign.png",
-        width: 1448,
-        height: 1086,
-        alt: "Von Schurz Marketing gestaltete Website auf Laptop und Smartphone",
-      },
-    ],
-  },
-};
+    "Webdesign und Social Media für Unternehmen, Dienstleister und Handwerksbetriebe in Sachsen. Regional ausgerichtet und persönlich betreut.",
+  path: "/sachsen",
+});
 
 const audiences = [
   "Dienstleister und lokale Betriebe",
@@ -51,15 +38,15 @@ const audiences = [
 const localBenefits = [
   {
     title: "In der Region gefunden werden",
-    text: "Inhalte und Struktur werden so aufgebaut, dass Google Ihre regionale Relevanz besser einordnen kann.",
+    text: "Inhalte und Struktur werden so aufgebaut, dass Google deine regionale Relevanz besser einordnen kann.",
   },
   {
     title: "Vertrauen vor Ort",
-    text: "Kunden aus Ihrer Nähe sehen schnell, was Sie anbieten, für wen Sie arbeiten und wie der nächste Schritt aussieht.",
+    text: "Kunden aus deiner Nähe sehen schnell, was du anbietest, für wen du arbeitest und wie der nächste Schritt aussieht.",
   },
   {
     title: "Klares Einsatzgebiet",
-    text: "Die Orte, in denen Sie tätig sind, werden sinnvoll eingebunden, ohne die Seite mit Ortsnamen zu überladen.",
+    text: "Die Orte, in denen du tätig bist, werden sinnvoll eingebunden, ohne die Seite mit Ortsnamen zu überladen.",
   },
 ];
 
@@ -67,12 +54,12 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch",
-    text: "Ich kläre mit Ihnen Angebot, Zielgruppe, Region und welche Anfragen die Website bringen soll. Kostenlos und unverbindlich.",
+    text: "Ich kläre mit dir Angebot, Zielgruppe, Region und welche Anfragen die Website bringen soll. Kostenlos und unverbindlich.",
   },
   {
     no: "2",
     title: "Struktur planen",
-    text: "Aus Ihren Leistungen und Orten entsteht eine klare Seitenstruktur mit den richtigen Suchbegriffen.",
+    text: "Aus deinen Leistungen und Orten entsteht eine klare Seitenstruktur mit den richtigen Suchbegriffen.",
   },
   {
     no: "3",
@@ -88,7 +75,7 @@ const steps = [
 
 const faqs = [
   {
-    q: "Arbeiten Sie nur in Sachsen?",
+    q: "Arbeitest du nur in Sachsen?",
     a: "Nein. Schurz Marketing arbeitet deutschlandweit. In Sachsen liegt ein regionaler Schwerpunkt mit eigenen Seiten für die wichtigsten Orte, weil regionale Sichtbarkeit hier besonders gefragt ist.",
   },
   {
@@ -97,11 +84,11 @@ const faqs = [
   },
   {
     q: "Hilft das bei Google-Suchen aus meiner Region?",
-    a: "Mit klarer Struktur, regionalen Inhalten und sauberer Technik kann Google Ihre regionale Relevanz besser einordnen. Auf Wunsch kommt das Google-Unternehmensprofil dazu.",
+    a: "Mit klarer Struktur, regionalen Inhalten und sauberer Technik kann Google deine regionale Relevanz besser einordnen. Auf Wunsch kommt das Google-Unternehmensprofil dazu.",
   },
   {
     q: "Gibt es eine Seite speziell für mein Gewerk?",
-    a: "Für Handwerk und Bau gibt es eigene Gewerke-Seiten. Den Überblick finden Sie unter Webdesign für Handwerker.",
+    a: "Für Handwerk und Bau gibt es eigene Gewerke-Seiten. Den Überblick findest du unter Webdesign für Handwerker.",
   },
 ];
 
@@ -138,10 +125,7 @@ export default function SachsenPage() {
         ]}
       />
       <FaqJsonLd items={faqs} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
-      />
+      <JsonLd data={serviceJsonLd} />
 
       <PageHero
         title="Webdesign für regionale Unternehmen in Sachsen."
@@ -159,7 +143,7 @@ export default function SachsenPage() {
       <Section aria-label="Warum regionale Sichtbarkeit zählt">
         <Container>
           <div className="max-w-3xl">
-            <SectionHeading title="Ihre Kunden suchen in der Region. Finden sie Sie?" />
+            <SectionHeading title="Deine Kunden suchen in der Region. Finden sie dich?" />
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">
                 Viele Unternehmen leben von Kunden aus der Umgebung. Diese Kunden suchen
@@ -168,7 +152,7 @@ export default function SachsenPage() {
               </p>
               <p className="text-pretty">
                 Damit das nicht passiert, braucht es einen Auftritt, der klar zeigt, was
-                Sie anbieten, wo Sie arbeiten und wie man Sie erreicht. Für die
+                du anbietest, wo du arbeitest und wie man dich erreicht. Für die
                 wichtigsten Orte in Sachsen gibt es dafür eigene Seiten mit echtem
                 lokalem Bezug, statt einer langen Liste mit Ortsnamen.
               </p>
@@ -201,7 +185,7 @@ export default function SachsenPage() {
         <Container>
           <SectionHeading
             title="Für Unternehmen und Dienstleister aus der Region."
-            intro="Nicht nur eine Branche. Entscheidend ist, dass Ihre Kunden aus der Umgebung kommen und Sie online klar finden sollen."
+            intro="Nicht nur eine Branche. Entscheidend ist, dass deine Kunden aus der Umgebung kommen und dich online klar finden sollen."
           />
           <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {audiences.map((item) => (
@@ -218,7 +202,7 @@ export default function SachsenPage() {
       <Section aria-label="Orte und Regionen" className="border-t border-ink/10">
         <Container>
           <SectionHeading
-            title="Eigene Seiten für Ihre Region."
+            title="Eigene Seiten für deine Region."
             intro="Von Dresden über die Sächsische Schweiz bis Leipzig. Jede Seite erklärt, für wen Schurz Marketing dort relevant ist."
           />
           <div className="mt-10 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -237,7 +221,7 @@ export default function SachsenPage() {
             ))}
           </div>
           <p className="mt-8 max-w-[70ch] text-sm leading-relaxed text-ink/70">
-            Sie suchen eine Seite speziell für Ihr Gewerk? Den Überblick finden Sie unter{" "}
+            Du suchst eine Seite speziell für dein Gewerk? Den Überblick findest du unter{" "}
             <Link href="/handwerker" className="font-semibold text-ink underline underline-offset-4 hover:text-accent">
               Webdesign für Handwerker
             </Link>
@@ -249,7 +233,7 @@ export default function SachsenPage() {
       {/* Ablauf */}
       <Section aria-label="Ablauf" className="border-t border-ink/10">
         <Container>
-          <SectionHeading title="So entsteht Ihr regionaler Auftritt." />
+          <SectionHeading title="So entsteht dein regionaler Auftritt." />
           <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.no}>
@@ -279,8 +263,8 @@ export default function SachsenPage() {
       </Section>
 
       <CtaBand
-        title="Regional sichtbar werden in Ihrer Stadt?"
-        subtitle="Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr Anfragen aus Ihrer Region bringen kann."
+        title="Regional sichtbar werden in deiner Stadt?"
+        subtitle="Im kostenlosen Erstgespräch schaue ich auf deine aktuelle Sichtbarkeit und kläre, wie eine klare Website mehr Anfragen aus deiner Region bringen kann."
       />
     </>
   );

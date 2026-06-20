@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "AGB",
   description: "Allgemeine Geschäftsbedingungen von Schurz Marketing.",
   alternates: { canonical: "/agb" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 };
 
 type AgbBlock = {

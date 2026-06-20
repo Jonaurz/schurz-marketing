@@ -10,38 +10,34 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { FaqJsonLd } from "@/components/seo/faq-jsonld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ProofSection } from "@/components/sections/references-section";
 import { ArrowRight, Check } from "@/components/ui/icons";
+import { createPageMetadata } from "@/lib/seo";
+import { site } from "@/lib/site";
 
 /* Inhalte (Referenzen/Kundenstimmen) liegen im data-Volume und werden
    zur Laufzeit gelesen; bis zu 60 s zwischengespeichert. */
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: "Webdesign",
+export const metadata: Metadata = createPageMetadata({
+  title: "Webdesign für Unternehmen & Handwerker",
   description:
-    "Webdesign aus Neustadt in Sachsen für Unternehmen, Dienstleister und Handwerk. Moderne, klare Websites und persönliche Zusammenarbeit deutschlandweit.",
-  alternates: { canonical: "/webdesign" },
-  openGraph: {
-    title: "Webdesign · Schurz Marketing",
-    description:
-      "Websites, die Ihre Leistungen klar zeigen und Anfragen bringen. DSGVO-konform und barrierefrei.",
-    url: "/webdesign",
-    images: [
-      {
-        url: "/images/schurz-marketing-webdesign.png",
-        width: 1448,
-        height: 1086,
-        alt: "Beispiel einer von Schurz Marketing gestalteten Website",
-      },
-    ],
+    "Schurz Marketing erstellt klare Webseiten für Unternehmen, Dienstleister und Handwerksbetriebe. Mit verständlichen Inhalten und einfacher Kontaktaufnahme.",
+  path: "/webdesign",
+  image: {
+    url: "/images/schurz-marketing-webdesign.png",
+    width: 1448,
+    height: 1086,
+    alt: "Beispiel einer von Schurz Marketing gestalteten Website",
   },
-};
+});
 
 const features = [
   {
     title: "Design mit Substanz",
-    text: "Eine hochwertige Optik, die zu Ihrer Marke passt und Besucher gezielt führt. Jedes Element hat eine Aufgabe.",
+    text: "Eine hochwertige Optik, die zu deiner Marke passt und Besucher gezielt führt. Jedes Element hat eine Aufgabe.",
   },
   {
     title: "Technik, die trägt",
@@ -49,7 +45,7 @@ const features = [
   },
   {
     title: "Gefunden werden",
-    text: "Klar strukturiert für Suchmaschinen, damit passende Kunden Sie finden und nicht die Konkurrenz.",
+    text: "Klar strukturiert für Suchmaschinen, damit passende Kunden dich finden und nicht die Konkurrenz.",
   },
   {
     title: "DSGVO-konform",
@@ -61,17 +57,17 @@ const features = [
   },
   {
     title: "Pflegbar und erweiterbar",
-    text: "Inhalte lassen sich anpassen, der Auftritt wächst mit Ihrem Unternehmen mit.",
+    text: "Inhalte lassen sich anpassen, der Auftritt wächst mit deinem Unternehmen mit.",
   },
 ];
 
 const handwerkLeistungen = [
   "WordPress-Webseiten zum selbst pflegen",
-  "Lokale SEO für Ihre Region",
+  "Lokale SEO für deine Region",
   "Google-Unternehmensprofil einrichten",
   "Website-Wartung und technische Pflege",
   "Landingpages für einzelne Angebote",
-  "Verständliche Texte für Ihre Leistungen",
+  "Verständliche Texte für deine Leistungen",
 ];
 
 const industryLinks = [
@@ -98,7 +94,7 @@ const industryLinks = [
 ];
 
 const looksGood = [
-  "Design, das zu Ihrem Qualitätsanspruch passt",
+  "Design, das zu deinem Qualitätsanspruch passt",
   "Klare Struktur statt Effekt-Überladung",
   "Konsistent auf Smartphone, Tablet und Desktop",
   "Typografie und Bildsprache mit Wertigkeit",
@@ -115,17 +111,17 @@ const steps = [
   {
     no: "1",
     title: "Erstgespräch und Ziele",
-    text: "Ich kläre mit Ihnen, was Ihre Website leisten soll. Ohne Fachjargon und ohne Verpflichtung.",
+    text: "Ich kläre mit dir, was deine Website leisten soll. Ohne Fachjargon und ohne Verpflichtung.",
   },
   {
     no: "2",
     title: "Konzept und Struktur",
-    text: "Aufbau, Inhalte und Look werden geplant, bevor gebaut wird. Sie sehen vorab, wie Besucher zur Anfrage geführt werden.",
+    text: "Aufbau, Inhalte und Look werden geplant, bevor gebaut wird. Du siehst vorab, wie Besucher zur Anfrage geführt werden.",
   },
   {
     no: "3",
     title: "Design und Umsetzung",
-    text: "Design und Technik entstehen aus einer Hand, mit Zwischenständen, die Sie jederzeit kommentieren können.",
+    text: "Design und Technik entstehen aus einer Hand, mit Zwischenständen, die du jederzeit kommentieren kannst.",
   },
   {
     no: "4",
@@ -137,7 +133,7 @@ const steps = [
 const faqs = [
   {
     q: "Kann ich die Website später selbst pflegen?",
-    a: "Ja. Ihr Auftritt wird auf Wunsch so eingerichtet, dass Inhalte selbst angepasst werden können. Eine kurze Einweisung zeigt die wichtigsten Handgriffe. Alternativ bleibt die Pflege dauerhaft betreut.",
+    a: "Ja. Dein Auftritt wird auf Wunsch so eingerichtet, dass Inhalte selbst angepasst werden können. Eine kurze Einweisung zeigt die wichtigsten Handgriffe. Alternativ bleibt die Pflege dauerhaft betreut.",
   },
   {
     q: "Was kostet eine professionelle Website?",
@@ -145,29 +141,49 @@ const faqs = [
   },
   {
     q: "Bekomme ich auch Hilfe bei Texten und Inhalten?",
-    a: "Ja. Struktur und Texte werden gemeinsam erarbeitet, damit Ihre Leistung verständlich und überzeugend rüberkommt. Sie müssen nicht vor einem leeren Blatt sitzen.",
+    a: "Ja. Struktur und Texte werden gemeinsam erarbeitet, damit deine Leistung verständlich und überzeugend rüberkommt. Du musst nicht vor einem leeren Blatt sitzen.",
   },
   {
     q: "Sind die Websites wirklich DSGVO-konform und barrierefrei?",
-    a: "Ja, beides ist fester Bestandteil und wird von Anfang an eingeplant. Welche Detailpflichten für Ihr Unternehmen gelten, prüfe ich im Projekt.",
+    a: "Ja, beides ist fester Bestandteil und wird von Anfang an eingeplant. Welche Detailpflichten für dein Unternehmen gelten, prüfe ich im Projekt.",
   },
   {
-    q: "Können Sie meine bestehende Website überarbeiten?",
+    q: "Kannst du meine bestehende Website überarbeiten?",
     a: "In vielen Fällen ja. Ich prüfe, was sich lohnt: ein gezielter Relaunch oder ein Neuaufbau.",
   },
   {
     q: "Wie lange dauert ein Projekt?",
-    a: "Je nach Umfang meist einige Wochen. Nach dem Erstgespräch erhalten Sie einen realistischen Zeitplan mit klaren Schritten.",
+    a: "Je nach Umfang meist einige Wochen. Nach dem Erstgespräch erhältst du einen realistischen Zeitplan mit klaren Schritten.",
   },
 ];
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.url}/webdesign#service`,
+  name: "Webdesign für Unternehmen, Dienstleister und Handwerker",
+  serviceType: "Webdesign und Website-Erstellung",
+  provider: { "@id": `${site.url}/#organization` },
+  areaServed: { "@type": "Country", name: site.location.country },
+  url: `${site.url}/webdesign`,
+  description:
+    "Klare Webseiten für Unternehmen, Dienstleister, Selbstständige und Handwerksbetriebe mit verständlichen Inhalten, sauberer Technik und einfachen Kontaktwegen.",
+};
 
 export default function WebdesignPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Start", path: "/" },
+          { name: "Webdesign", path: "/webdesign" },
+        ]}
+      />
       <FaqJsonLd items={faqs} />
+      <JsonLd data={serviceJsonLd} />
       <PageHero
-        title="Websites, die Ihre Leistung zeigen. Und Anfragen bringen."
-        subtitle="Ihr Auftritt zeigt die Qualität Ihrer Arbeit und arbeitet zuverlässig: schnell, auffindbar, DSGVO-konform und barrierefrei. Persönlich aus Neustadt in Sachsen, deutschlandweit umgesetzt."
+        title="Webdesign für Unternehmen, Dienstleister und Handwerker."
+        subtitle="Dein Auftritt zeigt die Qualität deiner Arbeit und arbeitet zuverlässig: schnell, auffindbar, DSGVO-konform und barrierefrei. Persönlich aus Neustadt in Sachsen, deutschlandweit umgesetzt."
       >
         <Button href="/kontakt" size="lg" withArrow>
           Erstgespräch anfragen
@@ -198,12 +214,12 @@ export default function WebdesignPage() {
         <Container>
           <div className="max-w-3xl">
             <SectionHeading
-              title="Ihre Website ist der erste Eindruck. Oft lange, bevor jemand anruft."
+              title="Deine Website ist der erste Eindruck. Oft lange, bevor jemand anruft."
             />
             <div className="mt-8 space-y-5 leading-relaxed text-ink/75">
               <p className="text-pretty text-lg text-ink/90">
                 Wer heute eine Dienstleistung oder ein Produkt sucht, schaut zuerst
-                online. Innerhalb weniger Sekunden entscheidet sich, ob Ihr Unternehmen
+                online. Innerhalb weniger Sekunden entscheidet sich, ob dein Unternehmen
                 seriös und kompetent wirkt, oder ob der nächste Anbieter interessanter
                 erscheint.
               </p>
@@ -214,8 +230,8 @@ export default function WebdesignPage() {
                 kosten Vertrauen, Anfragen und am Ende Umsatz.
               </p>
               <p className="text-pretty">
-                Eine professionelle Website dreht das um. Sie macht Ihre Qualität
-                sichtbar, beantwortet die wichtigsten Fragen Ihrer Kunden und führt sie
+                Eine professionelle Website dreht das um. Sie macht deine Qualität
+                sichtbar, beantwortet die wichtigsten Fragen deiner Kunden und führt sie
                 ruhig zum nächsten Schritt: der Anfrage.
               </p>
             </div>
@@ -223,7 +239,7 @@ export default function WebdesignPage() {
         </Container>
       </Section>
 
-      {/* Was Sie bekommen */}
+      {/* Leistungsumfang */}
       <Section aria-label="Leistungsumfang Webdesign" className="border-t border-ink/10">
         <Container>
           <SectionHeading
@@ -277,7 +293,7 @@ export default function WebdesignPage() {
         <Container>
           <SectionHeading
             title="Webdesign für verschiedene Branchen."
-            intro="Die technische Grundlage ist ähnlich. Inhalte, Belege und Kontaktwege werden jedoch auf die Fragen Ihrer Kunden und die Abläufe Ihrer Branche zugeschnitten."
+            intro="Die technische Grundlage ist ähnlich. Inhalte, Belege und Kontaktwege werden jedoch auf die Fragen deiner Kunden und die Abläufe deiner Branche zugeschnitten."
           />
           <div className="mt-12 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2">
             {industryLinks.map((item) => (
@@ -369,7 +385,7 @@ export default function WebdesignPage() {
             <div className="lg:col-span-4">
               <SectionHeading
                 size="compact"
-                title="Antworten rund um Ihre Website."
+                title="Antworten rund um deine Website."
               />
             </div>
             <div className="lg:col-span-8">
@@ -380,8 +396,8 @@ export default function WebdesignPage() {
       </Section>
 
       <CtaBand
-        title="Zeigen Sie online, was Sie wirklich können."
-        subtitle="Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Situation und kläre, wie Ihre Website zum Aushängeschild wird."
+        title="Zeige online, was du wirklich kannst."
+        subtitle="Im kostenlosen Erstgespräch schaue ich auf deine aktuelle Situation und kläre, wie deine Website zum Aushängeschild wird."
       />
     </>
   );

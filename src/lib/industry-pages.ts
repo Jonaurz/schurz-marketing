@@ -39,7 +39,7 @@ export const industryPages: IndustryPage[] = [
       "Webdesign für Dienstleister: klare Positionierung, verständliche Angebote und einfache Kontaktwege. Persönlich aus Neustadt, deutschlandweit.",
     h1: "Webdesign für Dienstleister mit klarer Positionierung.",
     hero:
-      "Beratung, Expertise und individuelle Leistungen lassen sich nicht in einem Produktfoto erklären. Eine gute Website bringt Ihr Angebot auf den Punkt, zeigt den passenden nächsten Schritt und schafft Vertrauen, bevor das erste Gespräch beginnt. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit.",
+      "Beratung, Expertise und unterschiedliche Leistungen lassen sich nicht in einem Produktfoto erklären. Eine gute Website bringt dein Angebot auf den Punkt, zeigt den passenden nächsten Schritt und schafft Vertrauen, bevor das erste Gespräch beginnt. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit.",
     problemTitle: "Gute Leistung überzeugt erst, wenn Interessenten sie verstehen.",
     problems: [
       {
@@ -57,11 +57,11 @@ export const industryPages: IndustryPage[] = [
     ],
     solutionTitle: "Ein Auftritt, der Positionierung und Anfrageweg zusammenführt.",
     solutionIntro:
-      "Bei Dienstleistungen entsteht Vertrauen über Klarheit. Deshalb beginnt das Projekt nicht mit Farben, sondern mit Zielgruppe, Angebot und dem Grund, warum ein Interessent gerade Sie ansprechen sollte.",
+      "Bei Dienstleistungen entsteht Vertrauen über Klarheit. Deshalb beginnt das Projekt nicht mit Farben, sondern mit Zielgruppe, Angebot und dem Grund, warum ein Interessent gerade dich ansprechen sollte.",
     features: [
       {
         title: "Positionierung und Seitenstruktur",
-        text: "Zielgruppen, Leistungen und Nutzen werden geordnet, damit Besucher schnell verstehen, was Sie besonders gut können.",
+        text: "Zielgruppen, Leistungen und Nutzen werden geordnet, damit Besucher schnell verstehen, was du besonders gut kannst.",
       },
       {
         title: "Professionelles Webdesign",
@@ -86,7 +86,7 @@ export const industryPages: IndustryPage[] = [
     ],
     contentTitle: "Typische Inhalte einer Website für Dienstleister.",
     contentIntro:
-      "Die Website führt vom Problem des Interessenten über Ihre Arbeitsweise zum passenden Gespräch. Leistungen werden nicht nur aufgezählt, sondern verständlich eingeordnet.",
+      "Die Website führt vom Problem des Interessenten über deine Arbeitsweise zum passenden Gespräch. Leistungen werden nicht nur aufgezählt, sondern verständlich eingeordnet.",
     websiteContents: [
       "Klare Positionierung und Nutzenversprechen",
       "Leistungsseiten für einzelne Angebote",
@@ -104,7 +104,7 @@ export const industryPages: IndustryPage[] = [
       {
         no: "1",
         title: "Positionierung schärfen",
-        text: "Im Erstgespräch kläre ich, welche Kunden Sie erreichen möchten, welches Problem Sie lösen und wodurch sich Ihre Arbeitsweise unterscheidet.",
+        text: "Im Erstgespräch kläre ich, welche Kunden du erreichen möchtest, welches Problem du löst und wodurch sich deine Arbeitsweise unterscheidet.",
       },
       {
         no: "2",
@@ -145,11 +145,11 @@ export const industryPages: IndustryPage[] = [
       "Lokale Serviceunternehmen",
     ],
     personalText:
-      "Abstimmungen funktionieren per Telefon, E-Mail und Video-Call. Sie sprechen direkt mit Jonas Schurz und haben einen festen Ansprechpartner für Struktur, Texte, Design und Umsetzung. Der Standort in Neustadt in Sachsen bleibt dabei der bodenständige Ausgangspunkt, die Zusammenarbeit ist in ganz Deutschland möglich.",
+      "Abstimmungen funktionieren per Telefon, E-Mail und Video-Call. Du sprichst direkt mit Jonas Schurz und haben einen festen Ansprechpartner für Struktur, Texte, Design und Umsetzung. Der Standort in Neustadt in Sachsen bleibt dabei der bodenständige Ausgangspunkt, die Zusammenarbeit ist in ganz Deutschland möglich.",
     faq: [
       {
         q: "Was kostet eine Website für Dienstleister?",
-        a: "Das hängt von Seitenumfang, Funktionen und dem vorhandenen Material ab. Ein professioneller Auftritt ist meist ab dem mittleren vierstelligen Bereich sinnvoll. Nach dem Erstgespräch erhalten Sie einen transparenten Rahmen.",
+        a: "Das hängt von Seitenumfang, Funktionen und dem vorhandenen Material ab. Ein professioneller Auftritt ist meist ab dem mittleren vierstelligen Bereich sinnvoll. Nach dem Erstgespräch erhältst du einen transparenten Rahmen.",
       },
       {
         q: "Wie lange dauert die Umsetzung?",
@@ -157,7 +157,7 @@ export const industryPages: IndustryPage[] = [
       },
       {
         q: "Muss ich die Texte selbst schreiben?",
-        a: "Nein. Positionierung, Struktur und Texte werden gemeinsam erarbeitet. Ihr fachlicher Input wird in verständliche und seriöse Inhalte übersetzt.",
+        a: "Nein. Positionierung, Struktur und Texte werden gemeinsam erarbeitet. Dein fachlicher Input wird in verständliche und seriöse Inhalte übersetzt.",
       },
       {
         q: "Kann meine bestehende Website überarbeitet werden?",
@@ -169,10 +169,10 @@ export const industryPages: IndustryPage[] = [
       },
       {
         q: "Kann ich Inhalte später selbst pflegen?",
-        a: "Ja. Auf Wunsch erhalten Sie eine pflegbare Lösung und eine Einweisung. Alternativ kann Schurz Marketing Änderungen und Wartung übernehmen.",
+        a: "Ja. Auf Wunsch erhältst du eine pflegbare Lösung und eine Einweisung. Alternativ kann Schurz Marketing Änderungen und Wartung übernehmen.",
       },
       {
-        q: "Arbeiten Sie auch außerhalb von Sachsen?",
+        q: "Arbeitest du auch außerhalb von Sachsen?",
         a: "Ja. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet per Telefon, E-Mail, Video-Call und digitaler Abstimmung deutschlandweit.",
       },
     ],
@@ -196,9 +196,9 @@ export const industryPages: IndustryPage[] = [
         text: "Klare Leistungen, Projektbilder und schnelle Kontaktwege für Betriebe.",
       },
     ],
-    ctaTitle: "Über Ihre neue Dienstleister-Website sprechen?",
+    ctaTitle: "Über deine neue Dienstleister-Website sprechen?",
     ctaSubtitle:
-      "Im unverbindlichen Erstgespräch kläre ich Positionierung, Inhalte und den sinnvollen Umfang für Ihren neuen Auftritt.",
+      "Im unverbindlichen Erstgespräch kläre ich Positionierung, Inhalte und den sinnvollen Umfang für deinen neuen Auftritt.",
   },
   {
     slug: "webdesign-reinigungsfirmen",
@@ -209,7 +209,7 @@ export const industryPages: IndustryPage[] = [
       "Webdesign für Reinigungsfirmen: Leistungen, Einsatzgebiete und Angebotsanfragen klar darstellen. Aus Neustadt, deutschlandweit persönlich.",
     h1: "Webdesign für Reinigungsfirmen.",
     hero:
-      "Privatkunden, Hausverwaltungen und Unternehmen möchten schnell wissen, welche Reinigungsleistungen Sie anbieten, wo Sie arbeiten und wie sie ein Angebot erhalten. Eine klare Website bündelt genau diese Informationen und vermittelt Zuverlässigkeit. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit.",
+      "Privatkunden, Hausverwaltungen und Unternehmen möchten schnell wissen, welche Reinigungsleistungen du anbietest, wo du arbeitest und wie sie ein Angebot erhalten. Eine klare Website bündelt genau diese Informationen und vermittelt Zuverlässigkeit. Schurz Marketing sitzt in Neustadt in Sachsen und arbeitet deutschlandweit.",
     problemTitle: "Bei Reinigungsleistungen entscheiden Klarheit und Vertrauen.",
     problems: [
       {
@@ -269,7 +269,7 @@ export const industryPages: IndustryPage[] = [
     ],
     processTitle: "Von Leistungen und Kapazitäten zur brauchbaren Angebotsanfrage.",
     processIntro:
-      "Die Website soll im Alltag Zeit sparen. Deshalb orientiert sich der Aufbau an den Angaben, die Sie für eine erste Einschätzung wirklich benötigen.",
+      "Die Website soll im Alltag Zeit sparen. Deshalb orientiert sich der Aufbau an den Angaben, die du für eine erste Einschätzung wirklich benötigen.",
     process: [
       {
         no: "1",
@@ -315,11 +315,11 @@ export const industryPages: IndustryPage[] = [
       "Kleine regionale Reinigungsteams",
     ],
     personalText:
-      "Die Zusammenarbeit läuft unkompliziert per Telefon, E-Mail und Video-Call. Sie haben mit Jonas Schurz einen festen Ansprechpartner, der Inhalte, Seitenstruktur und Umsetzung zusammenhält. Der Sitz in Neustadt in Sachsen steht für kurze, persönliche Wege, auch wenn Ihr Reinigungsunternehmen an einem anderen Ort in Deutschland arbeitet.",
+      "Die Zusammenarbeit läuft unkompliziert per Telefon, E-Mail und Video-Call. Du hast mit Jonas Schurz einen festen Ansprechpartner, der Inhalte, Seitenstruktur und Umsetzung zusammenhält. Der Sitz in Neustadt in Sachsen steht für kurze, persönliche Wege, auch wenn dein Reinigungsunternehmen an einem anderen Ort in Deutschland arbeitet.",
     faq: [
       {
         q: "Was kostet eine Website für eine Reinigungsfirma?",
-        a: "Der Preis richtet sich nach Leistungsumfang, Einsatzgebieten, Formularen und vorhandenen Inhalten. Nach einem unverbindlichen Erstgespräch erhalten Sie einen klaren Projektumfang.",
+        a: "Der Preis richtet sich nach Leistungsumfang, Einsatzgebieten, Formularen und vorhandenen Inhalten. Nach einem unverbindlichen Erstgespräch erhältst du einen klaren Projektumfang.",
       },
       {
         q: "Wie schnell kann die Website online sein?",
@@ -327,11 +327,11 @@ export const industryPages: IndustryPage[] = [
       },
       {
         q: "Welche Informationen braucht das Anfrageformular?",
-        a: "Sinnvoll sind Objektart, Ort, ungefähre Fläche, gewünschte Leistung und Reinigungsrhythmus. Die genaue Auswahl wird an Ihren Betrieb angepasst.",
+        a: "Sinnvoll sind Objektart, Ort, ungefähre Fläche, gewünschte Leistung und Reinigungsrhythmus. Die genaue Auswahl wird an deinen Betrieb angepasst.",
       },
       {
         q: "Hilft die Website bei lokalen Suchanfragen?",
-        a: "Klare Leistungsseiten, Einsatzgebiete, Metadaten und saubere Technik schaffen eine gute Grundlage, damit Suchmaschinen Ihr Angebot regional einordnen können.",
+        a: "Klare Leistungsseiten, Einsatzgebiete, Metadaten und saubere Technik schaffen eine gute Grundlage, damit Suchmaschinen dein Angebot regional einordnen können.",
       },
       {
         q: "Kann eine vorhandene Website modernisiert werden?",
@@ -366,9 +366,9 @@ export const industryPages: IndustryPage[] = [
         text: "Einblicke, Team und Leistungen regelmäßig sichtbar machen.",
       },
     ],
-    ctaTitle: "Website-Projekt für Ihre Reinigungsfirma anfragen?",
+    ctaTitle: "Website-Projekt für deine Reinigungsfirma anfragen?",
     ctaSubtitle:
-      "Im Erstgespräch kläre ich, welche Leistungen, Einsatzgebiete und Anfragefelder Ihr neuer Auftritt wirklich braucht.",
+      "Im Erstgespräch kläre ich, welche Leistungen, Einsatzgebiete und Anfragefelder dein neuer Auftritt wirklich braucht.",
   },
 ];
 

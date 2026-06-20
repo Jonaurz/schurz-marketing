@@ -105,24 +105,24 @@ export async function sendContactConfirmationEmail(submission: ContactSubmission
   await transporter.sendMail({
     from,
     to: submission.email,
-    subject: "Bitte bestätigen Sie Ihre Anfrage an Schurz Marketing",
+    subject: "Bitte bestätige deine Anfrage an Schurz Marketing",
     text: [
       `Hallo ${submission.name},`,
       "",
-      "bitte bestätigen Sie Ihre Anfrage über den folgenden Link:",
+      "bitte bestätige deine Anfrage über den folgenden Link:",
       confirmUrl,
       "",
-      "Erst nach der Bestätigung wird Ihre Anfrage an Schurz Marketing weitergeleitet.",
+      "Erst nach der Bestätigung wird deine Anfrage an Schurz Marketing weitergeleitet.",
       "Der Link ist 24 Stunden gültig.",
       "",
-      "Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese E-Mail ignorieren.",
+      "Wenn du diese Anfrage nicht gestellt hast, kannst du diese E-Mail ignorieren.",
     ].join("\n"),
     html: `
       <p>Hallo ${escapeHtml(submission.name)},</p>
-      <p>bitte bestätigen Sie Ihre Anfrage über den folgenden Link:</p>
+      <p>bitte bestätige deine Anfrage über den folgenden Link:</p>
       <p><a href="${escapeHtml(confirmUrl)}">${escapeHtml(confirmUrl)}</a></p>
-      <p>Erst nach der Bestätigung wird Ihre Anfrage an Schurz Marketing weitergeleitet. Der Link ist 24 Stunden gültig.</p>
-      <p>Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese E-Mail ignorieren.</p>
+      <p>Erst nach der Bestätigung wird deine Anfrage an Schurz Marketing weitergeleitet. Der Link ist 24 Stunden gültig.</p>
+      <p>Wenn du diese Anfrage nicht gestellt hast, kannst du diese E-Mail ignorieren.</p>
     `,
   });
 }

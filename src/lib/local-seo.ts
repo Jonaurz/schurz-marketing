@@ -94,6 +94,18 @@ export const localCities: LocalCity[] = [
         q: "Lohnt sich eine Website auch in einer kleineren Stadt wie Neustadt?",
         a: "Gerade dort. Weil viele Betriebe in der Region online kaum auftauchen, fällt ein klarer Auftritt schnell auf und bringt Anfragen aus Neustadt und den Nachbarorten.",
       },
+      {
+        q: "Sitzt Schurz Marketing direkt in Neustadt in Sachsen?",
+        a: "Ja. Neustadt in Sachsen ist der Standort und Ausgangspunkt der Zusammenarbeit. Termine und Abstimmungen sind vor Ort oder digital möglich.",
+      },
+      {
+        q: "Kann die Website auch auf Sebnitz, Stolpen und Pirna ausgerichtet werden?",
+        a: "Ja, wenn diese Orte wirklich zu deinem Einsatzgebiet gehören. Leistungen und Regionen werden sinnvoll miteinander verbunden, ohne Ortsnamen künstlich zu wiederholen.",
+      },
+      {
+        q: "Für welche Betriebe rund um Neustadt ist Webdesign sinnvoll?",
+        a: "Vor allem für Handwerksbetriebe, regionale Dienstleister, kleine Unternehmen, Praxen und Betriebe, die von Kunden aus der Sächsischen Schweiz und dem Umland leben.",
+      },
     ],
   },
   {
@@ -124,8 +136,24 @@ export const localCities: LocalCity[] = [
     ],
     localFaq: [
       {
-        q: "Arbeiten Sie für Betriebe in den Dresdner Stadtteilen?",
-        a: "Ja. Ob Neustadt, Striesen, Blasewitz oder das Umland wie Radebeul und Freital, die Seite wird so aufgebaut, dass Kunden aus Ihrem Stadtteil und der Region Sie finden.",
+        q: "Was kostet eine Website für ein Unternehmen in Dresden?",
+        a: "Der Preis hängt von Seitenumfang, Funktionen und vorhandenen Inhalten ab. Nach einem unverbindlichen Erstgespräch bekommst du einen klar abgegrenzten Projektumfang.",
+      },
+      {
+        q: "Ist Schurz Marketing direkt in Dresden?",
+        a: "Der Sitz ist in Neustadt in Sachsen. Dresden wird regelmäßig betreut und ist digital sowie bei passenden Terminen vor Ort gut erreichbar.",
+      },
+      {
+        q: "Kann die Zusammenarbeit mit einem Dresdner Betrieb komplett digital ablaufen?",
+        a: "Ja. Inhalte, Korrekturen und Freigaben lassen sich per Telefon, E-Mail und Video-Call abstimmen. Du hast dabei einen festen Ansprechpartner.",
+      },
+      {
+        q: "Für welche Branchen in Dresden werden Webseiten erstellt?",
+        a: "Zum Beispiel für Handwerker, Bauunternehmen, Dienstleister, Praxen, Beratungen, Reinigungsfirmen und kleine Unternehmen in Dresden und Umgebung.",
+      },
+      {
+        q: "Werden auch Dresdner Stadtteile gezielt berücksichtigt?",
+        a: "Ja, wenn sie zum tatsächlichen Einzugsgebiet passen. Dazu können Neustadt, Striesen, Blasewitz, Pieschen, Loschwitz, Klotzsche und Plauen gehören.",
       },
     ],
   },
@@ -158,7 +186,15 @@ export const localCities: LocalCity[] = [
     localFaq: [
       {
         q: "Passt mein Auftritt zum eher sachlichen Chemnitzer Markt?",
-        a: "Genau darauf wird geachtet: Ihre Kompetenz wird klar und ohne übertriebene Werbung gezeigt, damit Kunden aus Chemnitz und Mittelsachsen schnell Vertrauen fassen.",
+        a: "Genau darauf wird geachtet: Deine Kompetenz wird klar und ohne übertriebene Werbung gezeigt, damit Kunden aus Chemnitz und Mittelsachsen schnell Vertrauen fassen.",
+      },
+      {
+        q: "Für welche Chemnitzer Unternehmen eignet sich die Zusammenarbeit?",
+        a: "Für Handwerk, technische Dienstleister, Ingenieurbüros, Zulieferer und mittelständische Unternehmen, die ihre Leistungen sachlich und verständlich darstellen möchten.",
+      },
+      {
+        q: "Kann die Website auch Mittelsachsen und Zwickau abdecken?",
+        a: "Ja, wenn diese Regionen zum echten Einzugsgebiet gehören. Die regionale Struktur wird anhand deiner Leistungen und tatsächlichen Zielorte geplant.",
       },
     ],
   },
@@ -171,7 +207,7 @@ export const localCities: LocalCity[] = [
     localContext:
       "Pirna gilt als Tor zur Sächsischen Schweiz. Die malerische Altstadt, der Tourismus und die Nähe zu Dresden prägen die Stadt und damit auch das Suchverhalten der Kunden.",
     localNeed:
-      "Zwischen Einheimischen, Pendlern und Gästen entscheidet ein klarer Auftritt, ob Sie als ortsansässiger Anbieter wahrgenommen werden.",
+      "Zwischen Einheimischen, Pendlern und Gästen entscheidet ein klarer Auftritt, ob du als ortsansässiger Anbieter wahrgenommen wirst.",
     scene:
       "Pirna lebt von Tourismus rund um die Altstadt mit dem berühmten Canaletto-Blick, vom Handwerk und von Pendlern nach Dresden. Viele Betriebe bedienen sowohl Stammkunden vor Ort als auch Gäste der Sächsischen Schweiz.",
     highlights: [
@@ -191,7 +227,15 @@ export const localCities: LocalCity[] = [
     localFaq: [
       {
         q: "Erreiche ich mit der Website auch Gäste der Sächsischen Schweiz?",
-        a: "Ja. Die Seite kann so aufgebaut werden, dass neben Stammkunden aus Pirna auch Besucher der Region sehen, was Sie anbieten und wie sie Sie erreichen.",
+        a: "Ja. Die Seite kann so aufgebaut werden, dass neben Stammkunden aus Pirna auch Besucher der Region sehen, was du anbietest und wie sie dich erreichen.",
+      },
+      {
+        q: "Ist ein Termin in Pirna möglich?",
+        a: "Je nach Projekt ist ein Termin vor Ort möglich. Viele Abstimmungen lassen sich schneller per Telefon, E-Mail oder Video-Call erledigen.",
+      },
+      {
+        q: "Welche Betriebe aus Pirna profitieren von einer lokalen Website?",
+        a: "Zum Beispiel Handwerker, Dienstleister, Praxen, Gastgeber und Unternehmen, die Kunden aus Pirna, Heidenau oder der Sächsischen Schweiz erreichen möchten.",
       },
     ],
   },
@@ -226,6 +270,14 @@ export const localCities: LocalCity[] = [
         q: "Ist der Markt in Sebnitz nicht zu klein für eine eigene Website?",
         a: "Eine gute Seite erreicht nicht nur Sebnitz, sondern die ganze Sächsische Schweiz und Tagesgäste der Region. Gerade weil viele Betriebe online wenig zeigen, lohnt sich ein klarer Auftritt.",
       },
+      {
+        q: "Kann die Seite auch Neustadt, Bad Schandau und Hohnstein einbeziehen?",
+        a: "Ja, wenn diese Orte zum tatsächlichen Einsatzgebiet gehören. Regionale Inhalte werden nur dort ergänzt, wo sie fachlich und geografisch passen.",
+      },
+      {
+        q: "Eignet sich Webdesign in Sebnitz auch für touristische Angebote?",
+        a: "Ja. Für Gastgeber und touristische Dienstleister sind eine schnelle mobile Darstellung, klare Angebote und einfache Kontakt- oder Buchungswege besonders wichtig.",
+      },
     ],
   },
   {
@@ -259,6 +311,14 @@ export const localCities: LocalCity[] = [
         q: "Deckt die Website auch die weitere Oberlausitz ab?",
         a: "Ja. Die Seite wird so aufgebaut, dass neben Bautzen auch Orte wie Bischofswerda, Kamenz, Hoyerswerda und Görlitz als Einsatzgebiet sichtbar werden.",
       },
+      {
+        q: "Ist eine Zusammenarbeit ohne regelmäßige Termine in Bautzen möglich?",
+        a: "Ja. Die meisten Inhalte, Korrekturen und Freigaben lassen sich digital abstimmen. Bei Bedarf können passende Vor-Ort-Termine geplant werden.",
+      },
+      {
+        q: "Für welche Branchen in Bautzen ist eine neue Website sinnvoll?",
+        a: "Für Handwerk, regionale Dienstleister, Praxen, mittelständische Betriebe und Unternehmen mit einem größeren Einzugsgebiet in der Oberlausitz.",
+      },
     ],
   },
   {
@@ -290,7 +350,15 @@ export const localCities: LocalCity[] = [
     localFaq: [
       {
         q: "Wie hebe ich mich im umkämpften Leipziger Markt ab?",
-        a: "Mit einer klaren Positionierung statt Bauchladen. Die Seite zeigt fokussiert, was Sie am besten können und für wen, damit passende Kunden in Leipzig schneller bei Ihnen landen.",
+        a: "Mit einer klaren Positionierung statt Bauchladen. Die Seite zeigt fokussiert, was du am besten kannst und für wen, damit passende Kunden in Leipzig schneller bei dir landen.",
+      },
+      {
+        q: "Arbeitet Schurz Marketing auch mit Leipziger Unternehmen komplett digital?",
+        a: "Ja. Strategie, Inhalte, Korrekturen und Freigaben funktionieren per Telefon, E-Mail und Video-Call mit einem festen Ansprechpartner.",
+      },
+      {
+        q: "Welche Leipziger Zielgruppen passen besonders gut?",
+        a: "Unter anderem Dienstleister, Handwerksbetriebe, Beratungen, Kreative und kleine Unternehmen, die in einem starken Wettbewerb klarer auftreten möchten.",
       },
     ],
   },
@@ -323,7 +391,15 @@ export const localCities: LocalCity[] = [
     localFaq: [
       {
         q: "Passt ein moderner Auftritt zum traditionsreichen Meißen?",
-        a: "Gerade die Verbindung aus Tradition und einem klaren, modernen Auftritt wirkt stark. Die Seite zeigt Ihr Können seriös und macht es Kunden aus Meißen und dem Elbland leicht, Sie zu finden.",
+        a: "Gerade die Verbindung aus Tradition und einem klaren, modernen Auftritt wirkt stark. Die Seite zeigt dein Können seriös und macht es Kunden aus Meißen und dem Elbland leicht, dich zu finden.",
+      },
+      {
+        q: "Kann die Website auch Radebeul, Coswig und das Elbland ansprechen?",
+        a: "Ja, wenn diese Orte zu deinem Einzugsgebiet gehören. Die regionale Ausrichtung wird mit deinen Leistungen und echten Zielorten verbunden.",
+      },
+      {
+        q: "Für welche Betriebe in Meißen eignet sich eine neue Website?",
+        a: "Für Handwerk, Weinbau, Gastronomie, touristische Angebote, regionale Dienstleister und kleine Unternehmen mit Kunden aus Meißen und dem Elbland.",
       },
     ],
   },
@@ -346,23 +422,23 @@ export const localServices: LocalService[] = [
     metaPromise:
       "Moderne Websites für klare Leistungen, lokale Sichtbarkeit und einfache Anfragen. Persönlich und direkt.",
     intro:
-      "Eine gute Website ist mehr als eine digitale Visitenkarte. Sie erklärt Ihr Angebot, nimmt Einwände vorweg und führt Besucher Schritt für Schritt zur Kontaktaufnahme.",
+      "Eine gute Website ist mehr als eine digitale Visitenkarte. Sie erklärt dein Angebot, nimmt Einwände vorweg und führt Besucher Schritt für Schritt zur Kontaktaufnahme.",
     pain:
       "Viele Unternehmen leisten starke Arbeit, wirken online aber kleiner, unklarer oder austauschbarer als sie wirklich sind. Das kostet Sichtbarkeit, Vertrauen und Anfragen.",
     localBenefit:
-      "Mit lokal ausgerichteter Struktur, klaren Inhalten und sauberer Technik entsteht ein Auftritt, den Google bei Suchanfragen in Ihrer Region besser einordnen kann.",
+      "Mit lokal ausgerichteter Struktur, klaren Inhalten und sauberer Technik entsteht ein Auftritt, den Google bei Suchanfragen in deiner Region besser einordnen kann.",
     features: [
       {
         title: "Klarer Aufbau",
-        text: "Struktur, Navigation und Inhalte werden auf Ihre Zielgruppe ausgerichtet, damit Besucher schnell verstehen, warum Sie die richtige Wahl sind.",
+        text: "Struktur, Navigation und Inhalte werden auf deine Zielgruppe ausgerichtet, damit Besucher schnell verstehen, warum du die richtige Wahl bist.",
       },
       {
         title: "Hochwertiges Design",
-        text: "Ein ruhiger, professioneller Look, der zu Ihrem Anspruch passt und auf Smartphone, Tablet und Desktop sauber funktioniert.",
+        text: "Ein ruhiger, professioneller Look, der zu deinem Anspruch passt und auf Smartphone, Tablet und Desktop sauber funktioniert.",
       },
       {
         title: "Lokale SEO-Grundlage",
-        text: "Seitentitel, Meta-Daten, interne Verlinkung und Inhalte werden so aufgebaut, dass Google Ihre regionale Relevanz besser versteht.",
+        text: "Seitentitel, Meta-Daten, interne Verlinkung und Inhalte werden so aufgebaut, dass Google deine regionale Relevanz besser versteht.",
       },
       {
         title: "DSGVO und Barrierefreiheit",
@@ -371,7 +447,7 @@ export const localServices: LocalService[] = [
     ],
     deliverables: [
       "Konzept, Struktur und Nutzerführung",
-      "Responsives Webdesign und Umsetzung",
+      "Webdesign für Smartphone und Desktop",
       "SEO-Grundlage für relevante Suchbegriffe",
       "Kontaktwege, Formulare und klare Handlungsaufforderungen",
       "Launch-Begleitung und auf Wunsch laufende Pflege",
@@ -380,12 +456,12 @@ export const localServices: LocalService[] = [
       {
         no: "1",
         title: "Ziele klären",
-        text: "Ich spreche mit Ihnen über Angebot, Zielgruppe, Region und die Anfragen, die Ihre Website bringen soll.",
+        text: "Ich spreche mit dir über Angebot, Zielgruppe, Region und die Anfragen, die deine Website bringen soll.",
       },
       {
         no: "2",
         title: "Struktur planen",
-        text: "Aus Ihren Leistungen entsteht eine klare Seitenstruktur mit Suchbegriffen, Prioritäten und Kontaktwegen.",
+        text: "Aus deinen Leistungen entsteht eine klare Seitenstruktur mit Suchbegriffen, Prioritäten und Kontaktwegen.",
       },
       {
         no: "3",
@@ -405,16 +481,16 @@ export const localServices: LocalService[] = [
       },
       {
         q: "Muss ich die Texte selbst schreiben?",
-        a: "Nein. Die Inhalte werden gemeinsam entwickelt, damit Ihr Angebot fachlich richtig und für Kunden verständlich beschrieben wird.",
+        a: "Nein. Die Inhalte werden gemeinsam entwickelt, damit dein Angebot fachlich richtig und für Kunden verständlich beschrieben wird.",
       },
       {
         q: "Wird die Website auch mobil optimiert?",
         a: "Ja. Mobile Darstellung, Ladezeit und Bedienbarkeit sind fester Bestandteil der Umsetzung.",
       },
     ],
-    ctaTitle: "Ihre Website soll regional mehr leisten?",
+    ctaTitle: "Deine Website soll regional mehr leisten?",
     ctaSubtitle:
-      "Im kostenlosen Erstgespräch schaue ich auf Ihre aktuelle Sichtbarkeit und kläre, wie eine professionelle Website mehr passende Anfragen bringen kann.",
+      "Im kostenlosen Erstgespräch schaue ich auf deine aktuelle Sichtbarkeit und kläre, wie eine professionelle Website mehr passende Anfragen bringen kann.",
   },
   {
     id: "social-media",
@@ -428,7 +504,7 @@ export const localServices: LocalService[] = [
       alt: "Beispiel für einen von Schurz Marketing betreuten Social-Media-Auftritt",
     },
     promise:
-      "Strategie, Content, Videos und laufende Betreuung, damit Ihre Marke in der Region sichtbar bleibt, ohne Ihren Arbeitsalltag zu blockieren.",
+      "Strategie, Content, Videos und laufende Betreuung, damit deine Marke in der Region sichtbar bleibt, ohne deinen Arbeitsalltag zu blockieren.",
     metaPromise:
       "Strategie, Content, Videos und laufende Betreuung für regionale Sichtbarkeit und planbare Beiträge.",
     intro:
@@ -436,19 +512,19 @@ export const localServices: LocalService[] = [
     pain:
       "Oft gibt es genug Material aus Projekten, Team, Alltag und Ergebnissen, aber keinen Plan und keine Zeit für konsequente Umsetzung.",
     localBenefit:
-      "Mit regional relevanten Themen, einheitlicher Gestaltung und planbarem Posting entsteht Sichtbarkeit bei Menschen, die Ihr Unternehmen in der Nähe wahrnehmen sollen.",
+      "Mit regional relevanten Themen, einheitlicher Gestaltung und planbarem Posting entsteht Sichtbarkeit bei Menschen, die dein Unternehmen in der Nähe wahrnehmen sollen.",
     features: [
       {
         title: "Strategie und Themen",
-        text: "Ich kläre mit Ihnen Kanäle, Zielgruppen und Themen, damit Inhalte nicht zufällig entstehen, sondern auf Ihre Ziele einzahlen.",
+        text: "Ich kläre mit dir Kanäle, Zielgruppen und Themen, damit Inhalte nicht zufällig entstehen, sondern auf deine Ziele einzahlen.",
       },
       {
         title: "Reels, Videos und Posts",
-        text: "Aus Ihrem Alltag entstehen professionelle Inhalte, die nahbar wirken und trotzdem hochwertig umgesetzt sind.",
+        text: "Aus deinem Alltag entstehen professionelle Inhalte, die nahbar wirken und trotzdem hochwertig umgesetzt sind.",
       },
       {
         title: "Redaktionsplanung",
-        text: "Sie wissen, was wann erscheint. Freigaben bleiben einfach, der laufende Aufwand bleibt überschaubar.",
+        text: "Du weißt, was wann erscheint. Freigaben bleiben einfach, der laufende Aufwand bleibt überschaubar.",
       },
       {
         title: "Laufende Betreuung",
@@ -491,16 +567,16 @@ export const localServices: LocalService[] = [
       },
       {
         q: "Wie viel Zeit brauche ich selbst?",
-        a: "So wenig wie möglich. Von Ihnen kommen Input, Einblicke und Freigaben. Strategie, Produktion und Betreuung werden übernommen.",
+        a: "So wenig wie möglich. Von dir kommen Input, Einblicke und Freigaben. Strategie, Produktion und Betreuung werden übernommen.",
       },
       {
         q: "Kann Social Media auch lokal Kunden bringen?",
-        a: "Ja. Gerade regionale Einblicke, Projekte und Empfehlungen können Vertrauen aufbauen und dafür sorgen, dass Ihr Unternehmen in der Umgebung präsent bleibt.",
+        a: "Ja. Gerade regionale Einblicke, Projekte und Empfehlungen können Vertrauen aufbauen und dafür sorgen, dass dein Unternehmen in der Umgebung präsent bleibt.",
       },
     ],
-    ctaTitle: "Ihr Social Media soll regelmäßig sichtbar werden?",
+    ctaTitle: "Dein Social Media soll regelmäßig sichtbar werden?",
     ctaSubtitle:
-      "Im kostenlosen Erstgespräch kläre ich, welche Kanäle, Inhalte und Abläufe für Ihr Unternehmen sinnvoll sind.",
+      "Im kostenlosen Erstgespräch kläre ich, welche Kanäle, Inhalte und Abläufe für dein Unternehmen sinnvoll sind.",
   },
 ];
 
@@ -533,7 +609,7 @@ export function getLocalSeoPage(serviceId: LocalServiceId, citySlug: string): Lo
     h1:
       service.id === "webdesign"
         ? `Webdesign in ${city.name}, das Vertrauen schafft und Anfragen bringt.`
-        : `Social Media in ${city.name}, das sichtbar macht, was Sie leisten.`,
+        : `Social Media in ${city.name}, das sichtbar macht, was du leistest.`,
     relatedHref: relatedService ? `${relatedService.basePath}/${city.slug}` : service.overviewHref,
     relatedLabel: relatedService ? `${relatedService.shortLabel} in ${city.name}` : "Weitere Leistung",
   };

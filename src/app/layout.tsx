@@ -6,11 +6,12 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CookieBanner } from "@/components/cookie-banner";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { serializeJsonLd } from "@/lib/json-ld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { site } from "@/lib/site";
 
 const logoSvgUrl = `${site.url}/logo.svg`;
 const logoPngUrl = `${site.url}/images/schurz-marketing-logo.png`;
+const sameAs = Object.values(site.social).filter(Boolean);
 
 const metaDescription =
   "Webdesign und Social Media aus Neustadt in Sachsen für Unternehmen, Dienstleister und Handwerk. Persönliche Zusammenarbeit in ganz Deutschland.";
@@ -18,7 +19,7 @@ const metaDescription =
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Schurz Marketing | Webdesign & Social Media",
+    default: "Schurz Marketing | Webdesign & Social Media aus Sachsen",
     template: `%s | ${site.name}`,
   },
   description: metaDescription,
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: site.url,
     siteName: site.name,
-    title: "Schurz Marketing | Webdesign & Social Media",
+    title: "Schurz Marketing | Webdesign & Social Media aus Sachsen",
     description: metaDescription,
     images: [
       {
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Schurz Marketing | Webdesign & Social Media",
+    title: "Schurz Marketing | Webdesign & Social Media aus Sachsen",
     description: metaDescription,
     images: ["/images/schurz-marketing-webdesign.png"],
   },
@@ -81,7 +82,6 @@ const jsonLd = {
   "@type": "ProfessionalService",
   "@id": `${site.url}/#organization`,
   name: site.name,
-  legalName: site.name,
   url: site.url,
   logo: {
     "@type": "ImageObject",
@@ -93,7 +93,7 @@ const jsonLd = {
   },
   image: [logoPngUrl, logoSvgUrl, `${site.url}/images/schurz-marketing-webdesign.png`],
   description:
-    "Webdesign und Social-Media-Betreuung für Unternehmen, Dienstleister und lokale Betriebe. Klar, DSGVO-konform und barrierefrei.",
+    "Webdesign, Social Media und digitale Sichtbarkeit für Unternehmen, Dienstleister, Selbstständige und Handwerksbetriebe aus Sachsen und ganz Deutschland.",
   slogan: site.tagline,
   founder: { "@type": "Person", "@id": `${site.url}/#founder`, name: site.founder },
   email: site.contact.email,
@@ -104,7 +104,44 @@ const jsonLd = {
     addressRegion: site.location.region,
     addressCountry: site.location.countryCode,
   },
-  areaServed: { "@type": "Country", name: "Deutschland" },
+  areaServed: [
+    { "@type": "Country", name: site.location.country },
+    ...site.serviceArea.map((area) => ({
+      "@type": "AdministrativeArea",
+      name: area,
+    })),
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Anfragen zu Webdesign und Social Media",
+    email: site.contact.email,
+    telephone: site.contact.phone,
+    availableLanguage: ["de"],
+    areaServed: site.location.countryCode,
+  },
+  sameAs: sameAs.length ? sameAs : undefined,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Leistungen von Schurz Marketing",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Webdesign",
+          url: `${site.url}/webdesign`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Social-Media-Betreuung",
+          url: `${site.url}/social-media`,
+        },
+      },
+    ],
+  },
   knowsAbout: [
     "Webdesign",
     "Webentwicklung",
@@ -182,18 +219,9 @@ export default function RootLayout({
         className="flex min-h-full flex-col bg-paper text-ink"
       >
         <script dangerouslySetInnerHTML={{ __html: animationPolyfill }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(webSiteJsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
+        <JsonLd data={personJsonLd} />
+        <JsonLd data={webSiteJsonLd} />
         {/* Inhalte nie per JS verstecken: ohne JS sind Reveal-Elemente sichtbar. */}
         <noscript>
           <style>{`.reveal-js{opacity:1 !important;transform:none !important;}`}</style>

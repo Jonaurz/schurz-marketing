@@ -58,7 +58,7 @@ export async function submitContactAction(
     return {
       status: "error",
       message:
-        "Die Anfrage konnte aus Sicherheitsgründen nicht verarbeitet werden. Bitte laden Sie die Seite neu und senden Sie das Formular erneut.",
+        "Die Anfrage konnte aus Sicherheitsgründen nicht verarbeitet werden. Bitte lade die Seite neu und sende das Formular erneut.",
     };
   }
 
@@ -66,15 +66,15 @@ export async function submitContactAction(
     return {
       status: "error",
       message:
-        "Bitte füllen Sie Name, E-Mail, Telefonnummer aus, wählen Sie mindestens eine Dienstleistung und stimmen Sie der Verarbeitung Ihrer Angaben zu.",
+        "Bitte fülle Name, E-Mail und Telefonnummer aus, wähle mindestens eine Dienstleistung und stimme der Verarbeitung deiner Angaben zu.",
       fieldErrors: {
-        ...(name ? {} : { name: "Bitte geben Sie Ihren Namen ein." }),
-        ...(email ? {} : { email: "Bitte geben Sie Ihre E-Mail-Adresse ein." }),
-        ...(phone ? {} : { phone: "Bitte geben Sie Ihre Telefonnummer ein." }),
+        ...(name ? {} : { name: "Bitte gib deinen Namen ein." }),
+        ...(email ? {} : { email: "Bitte gib deine E-Mail-Adresse ein." }),
+        ...(phone ? {} : { phone: "Bitte gib deine Telefonnummer ein." }),
         ...(services.length > 0
           ? {}
-          : { services: "Bitte wählen Sie mindestens eine Dienstleistung aus." }),
-        ...(consent ? {} : { consent: "Bitte stimmen Sie der Verarbeitung Ihrer Angaben zu." }),
+          : { services: "Bitte wähle mindestens eine Dienstleistung aus." }),
+        ...(consent ? {} : { consent: "Bitte stimme der Verarbeitung deiner Angaben zu." }),
       },
     };
   }
@@ -82,16 +82,16 @@ export async function submitContactAction(
   if (!isValidEmail(email)) {
     return {
       status: "error",
-      message: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-      fieldErrors: { email: "Bitte geben Sie eine gültige E-Mail-Adresse ein." },
+      message: "Bitte gib eine gültige E-Mail-Adresse ein.",
+      fieldErrors: { email: "Bitte gib eine gültige E-Mail-Adresse ein." },
     };
   }
 
   if (!consent) {
     return {
       status: "error",
-      message: "Bitte stimmen Sie der Verarbeitung Ihrer Angaben zu.",
-      fieldErrors: { consent: "Bitte stimmen Sie der Verarbeitung Ihrer Angaben zu." },
+      message: "Bitte stimme der Verarbeitung deiner Angaben zu.",
+      fieldErrors: { consent: "Bitte stimme der Verarbeitung deiner Angaben zu." },
     };
   }
 
@@ -120,13 +120,13 @@ export async function submitContactAction(
     return {
       status: "error",
       message:
-        "Die Anfrage konnte noch nicht verschickt werden. Bitte prüfen Sie im Adminbereich die E-Mail-Einstellungen.",
+        "Die Anfrage konnte noch nicht verschickt werden. Bitte prüfe im Adminbereich die E-Mail-Einstellungen.",
     };
   }
 
   return {
     status: "success",
     message:
-      "Bitte bestätigen Sie Ihre Anfrage über den Link, den ich Ihnen gerade per E-Mail gesendet habe. Erst danach wird die Anfrage an mich weitergeleitet.",
+      "Bitte bestätige deine Anfrage über den Link, den ich dir gerade per E-Mail gesendet habe. Erst danach wird die Anfrage an mich weitergeleitet.",
   };
 }

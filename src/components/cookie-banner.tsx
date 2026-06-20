@@ -244,7 +244,7 @@ export function CookieBanner() {
 
         <p className="mt-5 text-sm leading-relaxed text-platinum/75">
           Diese Website nutzt notwendige Speicherungen für den Betrieb. Statistik über Google
-          Analytics wird nur geladen, wenn Sie aktiv zustimmen. Sie können Ihre Auswahl nach Zweck
+          Analytics wird nur geladen, wenn du aktiv zustimmst. Du kannst deine Auswahl nach Zweck
           getrennt festlegen und später im Footer wieder ändern.
         </p>
 

@@ -7,27 +7,21 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Check } from "@/components/ui/icons";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Über mich",
+export const metadata: Metadata = createPageMetadata({
+  title: "Jonas Schurz",
   description:
-    "Jonas Schurz. Persönlicher Ansprechpartner für Webdesign und Social Media mit 10 Jahren Erfahrung.",
-  alternates: { canonical: "/ueber-mich" },
-  openGraph: {
-    title: "Über mich · Schurz Marketing",
-    description:
-      "Jonas Schurz mit 10 Jahren Erfahrung im Online-Marketing und in digitalen Auftritten.",
-    url: "/ueber-mich",
-    images: [
-      {
-        url: "/images/portrae.png",
-        width: 1086,
-        height: 1448,
-        alt: "Porträt von Jonas Schurz, Gründer von Schurz Marketing",
-      },
-    ],
+    "Jonas Schurz ist dein persönlicher Ansprechpartner für Webdesign, Social Media und digitale Sichtbarkeit aus Neustadt in Sachsen.",
+  path: "/ueber-mich",
+  image: {
+    url: "/images/portrae.png",
+    width: 1086,
+    height: 1448,
+    alt: "Porträt von Jonas Schurz, Gründer von Schurz Marketing",
   },
-};
+});
 
 const proof = [
   "10 Jahre Erfahrung im Online-Marketing und in digitalen Auftritten",
@@ -38,11 +32,11 @@ const proof = [
 const principles = [
   {
     label: "Ehrliche Einordnung",
-    text: "Sie hören, was wirklich sinnvoll ist. Auch dann, wenn weniger Maßnahmen die bessere Entscheidung sind.",
+    text: "Du hörst, was wirklich sinnvoll ist. Auch dann, wenn weniger Maßnahmen die bessere Entscheidung sind.",
   },
   {
     label: "Qualität mit Bodenhaftung",
-    text: "Der Auftritt soll hochwertig wirken und gleichzeitig zu Ihrem Unternehmen und echten Entscheidern passen.",
+    text: "Der Auftritt soll hochwertig wirken und gleichzeitig zu deinem Unternehmen und echten Entscheidern passen.",
   },
   {
     label: "Direkte Zusammenarbeit",
@@ -53,8 +47,14 @@ const principles = [
 export default function UeberMichPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Start", path: "/" },
+          { name: "Über mich", path: "/ueber-mich" },
+        ]}
+      />
       <PageHero
-        title="Jonas Schurz. Ihr Ansprechpartner für digitale Auftritte."
+        title="Jonas Schurz. Dein Ansprechpartner für digitale Auftritte."
         subtitle="Seit 10 Jahren beschäftige ich mich damit, wie Unternehmen online wahrgenommen werden. Daraus entstehen Websites und Social-Media-Auftritte, die hochwertig wirken und verständlich verkaufen."
       >
         <Button href="/kontakt" size="lg" withArrow>
@@ -79,7 +79,7 @@ export default function UeberMichPage() {
             <div className="lg:col-span-7">
               <SectionHeading
                 title="Direkt. Strategisch. Aus einer Hand."
-                intro="Keine anonyme Agenturabwicklung. Sie arbeiten direkt mit dem Menschen, der Strategie, Struktur, Design und Social Media zusammen denkt."
+                intro="Keine anonyme Agenturabwicklung. Du arbeitest direkt mit dem Menschen, der Strategie, Struktur, Design und Social Media zusammen denkt."
               />
               <ul className="mt-8 space-y-4">
                 {proof.map((item) => (
@@ -109,7 +109,7 @@ export default function UeberMichPage() {
               Erfahrung ist erst dann wertvoll, wenn sie Entscheidungen leichter macht.
             </h2>
             <p className="mt-5 max-w-[60ch] text-pretty text-lg leading-relaxed text-ink/70">
-              Sie bekommen keine Show um der Show willen, sondern einen Auftritt, der
+              Du bekommst keine Show um der Show willen, sondern einen Auftritt, der
               erklärt, überzeugt und zum nächsten Schritt führt.
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function UeberMichPage() {
       </Section>
 
       <CtaBand
-        title="Passt die Richtung zu Ihrem Unternehmen?"
+        title="Passt die Richtung zu deinem Unternehmen?"
         subtitle="Ein erstes Gespräch zeigt schnell, wo der digitale Auftritt bremst und welcher nächste Schritt sinnvoll ist."
       />
     </>

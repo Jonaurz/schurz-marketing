@@ -137,12 +137,18 @@ export async function saveReferenceAction(formData: FormData) {
   const nextReference = {
     id,
     sector: asText(formData, "sector"),
+    region: asText(formData, "region"),
     title: asText(formData, "title"),
     problem: asText(formData, "problem"),
+    goal: asText(formData, "goal"),
     consequence: asText(formData, "consequence"),
     solution: asText(formData, "solution"),
+    result: asText(formData, "result"),
+    services: asText(formData, "services"),
     imageUrl: uploadedImageUrl || asText(formData, "existingImageUrl") || previousReference?.imageUrl || "",
     imageAlt: asText(formData, "imageAlt"),
+    mobileImageUrl: asText(formData, "mobileImageUrl"),
+    mobileImageAlt: asText(formData, "mobileImageAlt"),
     sortOrder: asNumber(formData, "sortOrder"),
     published: formData.get("published") === "on",
   };

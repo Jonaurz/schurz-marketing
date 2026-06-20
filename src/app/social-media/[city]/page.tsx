@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LocalServicePage } from "@/components/sections/local-service-page";
 import { getLocalSeoPage, localCities } from "@/lib/local-seo";
+import { createPageMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ city: string }>;
@@ -23,24 +24,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  return {
+  return createPageMetadata({
     title: page.title,
     description: page.description,
-    alternates: { canonical: page.href },
-    openGraph: {
-      title: `${page.title} · Schurz Marketing`,
-      description: page.description,
-      url: page.href,
-      images: [
-        {
-          url: page.service.image.src,
-          width: 1448,
-          height: 1086,
-          alt: page.service.image.alt,
-        },
-      ],
+    path: page.href,
+    image: {
+      url: page.service.image.src,
+      width: 1448,
+      height: 1086,
+      alt: page.service.image.alt,
     },
-  };
+  });
 }
 
 export default async function SocialMediaCityPage({ params }: PageProps) {
