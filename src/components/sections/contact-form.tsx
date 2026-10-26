@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Check } from "../ui/icons";
@@ -11,13 +11,6 @@ const inputClass =
 const labelClass = "mb-2 block text-sm font-medium text-ink";
 const blockClass = "mt-8 border-t border-ink/10 pt-6";
 const initialState: ContactFormState = { status: "idle", message: "" };
-
-// Beantwortetes tritt zurueck, damit die naechste Frage vorn steht. Es bleibt
-// stehen und kommt bei Mausberuehrung oder Tastaturfokus sofort zurueck.
-const stufe = (erledigt: boolean) =>
-  `transition-opacity duration-300 ${
-    erledigt ? "opacity-60 hover:opacity-100 focus-within:opacity-100" : ""
-  }`;
 
 function Pflicht() {
   return <span className="text-accent">*</span>;
@@ -33,15 +26,55 @@ function Fehler({ id, text }: { id: string; text?: string }) {
   );
 }
 
+// Ein beantworteter Schritt tritt zurueck und klappt seine Antwort ein, damit
+// die naechste Frage vorn steht. Maus oder Tastatur holen ihn wieder hervor.
+function Schritt({
+  erledigt,
+  className,
+  children,
+}: {
+  erledigt: boolean;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={`group/schritt transition-opacity duration-300 ${
+        erledigt ? "opacity-60 hover:opacity-100 focus-within:opacity-100" : ""
+      } ${className ?? ""}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+// Eingeklappt ueber die Zeilenhoehe statt ueber display, damit die Felder im
+// Tabulator erreichbar bleiben und der Fokus sie wieder aufklappt.
+function Antwort({ erledigt, children }: { erledigt: boolean; children: ReactNode }) {
+  return (
+    <div
+      className={`grid transition-all duration-300 ${
+        erledigt
+          ? "grid-rows-[0fr] opacity-0 group-hover/schritt:grid-rows-[1fr] group-hover/schritt:opacity-100 group-focus-within/schritt:grid-rows-[1fr] group-focus-within/schritt:opacity-100"
+          : "grid-rows-[1fr] opacity-100"
+      }`}
+    >
+      <div className="overflow-hidden">{children}</div>
+    </div>
+  );
+}
+
 function JaNein({
   name,
   legende,
   wert,
+  erledigt,
   onChange,
 }: {
   name: string;
   legende: string;
   wert: string;
+  erledigt: boolean;
   onChange: (wert: string) => void;
 }) {
   return (
@@ -49,29 +82,31 @@ function JaNein({
       <legend className={labelClass}>
         {legende} <Pflicht />
       </legend>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {[
-          { value: "ja", label: "Ja" },
-          { value: "nein", label: "Nein" },
-        ].map((option) => (
-          <label
-            key={option.value}
-            htmlFor={`${name}-${option.value}`}
-            className="service-choice flex min-h-14 cursor-pointer items-center gap-3 border border-ink/20 bg-white px-4 py-3 text-sm font-medium text-ink/70 transition-colors hover:border-ink"
-          >
-            <input
-              id={`${name}-${option.value}`}
-              name={name}
-              type="radio"
-              value={option.value}
-              checked={wert === option.value}
-              onChange={() => onChange(option.value)}
-              className="h-4 w-4 shrink-0 accent-accent"
-            />
-            {option.label}
-          </label>
-        ))}
-      </div>
+      <Antwort erledigt={erledigt}>
+        <div className="grid gap-3 pb-1 sm:grid-cols-2">
+          {[
+            { value: "ja", label: "Ja" },
+            { value: "nein", label: "Nein" },
+          ].map((option) => (
+            <label
+              key={option.value}
+              htmlFor={`${name}-${option.value}`}
+              className="service-choice flex min-h-14 cursor-pointer items-center gap-3 border border-ink/20 bg-white px-4 py-3 text-sm font-medium text-ink/70 transition-colors hover:border-ink"
+            >
+              <input
+                id={`${name}-${option.value}`}
+                name={name}
+                type="radio"
+                value={option.value}
+                checked={wert === option.value}
+                onChange={() => onChange(option.value)}
+                className="h-4 w-4 shrink-0 accent-accent"
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+      </Antwort>
     </fieldset>
   );
 }
@@ -149,196 +184,229 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
         <input id="firmenname" name="firmenname" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <fieldset
-        className={stufe(leistungGewaehlt)}
-        aria-invalid={fieldErrors.services ? "true" : undefined}
-        aria-describedby={fieldErrors.services ? "services-error" : undefined}
-      >
-        <legend className={labelClass}>
-          Womit kann ich dir helfen? <Pflicht />
-        </legend>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {[
-            { value: "webseite", label: "Webseite", an: webseite, setzen: setWebseite },
-            { value: "social-media", label: "Social Media", an: social, setzen: setSocial },
-          ].map((service) => (
-            <label
-              key={service.value}
-              htmlFor={`service-${service.value}`}
-              className="service-choice flex min-h-14 cursor-pointer items-center gap-3 border border-ink/20 bg-white px-4 py-3 text-sm font-medium text-ink/70 transition-colors hover:border-ink"
-            >
-              <input
-                id={`service-${service.value}`}
-                name="services"
-                type="checkbox"
-                value={service.value}
-                checked={service.an}
-                onChange={(event) => service.setzen(event.target.checked)}
-                className="h-4 w-4 shrink-0 accent-accent"
-              />
-              {service.label}
-            </label>
-          ))}
-        </div>
-        <Fehler id="services-error" text={fieldErrors.services} />
-      </fieldset>
+      <Schritt erledigt={leistungGewaehlt}>
+        <fieldset
+          aria-invalid={fieldErrors.services ? "true" : undefined}
+          aria-describedby={fieldErrors.services ? "services-error" : undefined}
+        >
+          <legend className={labelClass}>
+            Womit kann ich dir helfen? <Pflicht />
+          </legend>
+          <Antwort erledigt={leistungGewaehlt}>
+            <div className="grid gap-3 pb-1 sm:grid-cols-2">
+              {[
+                { value: "webseite", label: "Webseite", an: webseite, setzen: setWebseite },
+                { value: "social-media", label: "Social Media", an: social, setzen: setSocial },
+              ].map((service) => (
+                <label
+                  key={service.value}
+                  htmlFor={`service-${service.value}`}
+                  className="service-choice flex min-h-14 cursor-pointer items-center gap-3 border border-ink/20 bg-white px-4 py-3 text-sm font-medium text-ink/70 transition-colors hover:border-ink"
+                >
+                  <input
+                    id={`service-${service.value}`}
+                    name="services"
+                    type="checkbox"
+                    value={service.value}
+                    checked={service.an}
+                    onChange={(event) => service.setzen(event.target.checked)}
+                    className="h-4 w-4 shrink-0 accent-accent"
+                  />
+                  {service.label}
+                </label>
+              ))}
+            </div>
+          </Antwort>
+          <Fehler id="services-error" text={fieldErrors.services} />
+        </fieldset>
+      </Schritt>
 
       {webseite ? (
         <div className={blockClass}>
-          <div className={stufe(gefuellt(hatWebsite))}>
+          <Schritt erledigt={gefuellt(hatWebsite)}>
             <JaNein
               name="hatWebsite"
               legende="Hast du schon eine Website?"
               wert={hatWebsite}
+              erledigt={gefuellt(hatWebsite)}
               onChange={setHatWebsite}
             />
-          </div>
+          </Schritt>
 
           {hatWebsite === "ja" ? (
-            <div className={`mt-5 ${stufe(gefuellt(websiteAdresse))}`}>
+            <Schritt erledigt={gefuellt(websiteAdresse)} className="mt-5">
               <label htmlFor="websiteAdresse" className={labelClass}>
                 Wie lautet die Adresse? <Pflicht />
               </label>
-              <input
-                id="websiteAdresse"
-                name="websiteAdresse"
-                type="url"
-                autoComplete="url"
-                value={websiteAdresse}
-                onChange={(event) => setWebsiteAdresse(event.target.value)}
-                className={inputClass}
-                placeholder="https://www.deine-domain.de"
-              />
-            </div>
+              <Antwort erledigt={gefuellt(websiteAdresse)}>
+                <div className="pb-1">
+                  <input
+                    id="websiteAdresse"
+                    name="websiteAdresse"
+                    type="url"
+                    autoComplete="url"
+                    value={websiteAdresse}
+                    onChange={(event) => setWebsiteAdresse(event.target.value)}
+                    className={inputClass}
+                    placeholder="https://www.deine-domain.de"
+                  />
+                </div>
+              </Antwort>
+            </Schritt>
           ) : null}
 
           {gefuellt(hatWebsite) && (hatWebsite === "nein" || gefuellt(websiteAdresse)) ? (
-            <div className={`mt-5 ${stufe(gefuellt(websiteWunsch))}`}>
+            <Schritt erledigt={gefuellt(websiteWunsch)} className="mt-5">
               <label htmlFor="websiteWunsch" className={labelClass}>
                 Was möchtest du mit der Website genau erreichen? <Pflicht />
               </label>
-              <textarea
-                id="websiteWunsch"
-                name="websiteWunsch"
-                rows={4}
-                value={websiteWunsch}
-                onChange={(event) => setWebsiteWunsch(event.target.value)}
-                className={`${inputClass} resize-y`}
-                placeholder="z. B. mehr Anfragen, bei Google gefunden werden, endlich auf dem Handy gut aussehen"
-              />
-            </div>
+              <Antwort erledigt={gefuellt(websiteWunsch)}>
+                <div className="pb-1">
+                  <textarea
+                    id="websiteWunsch"
+                    name="websiteWunsch"
+                    rows={4}
+                    value={websiteWunsch}
+                    onChange={(event) => setWebsiteWunsch(event.target.value)}
+                    className={`${inputClass} resize-y`}
+                    placeholder="z. B. mehr Anfragen, bei Google gefunden werden, endlich auf dem Handy gut aussehen"
+                  />
+                </div>
+              </Antwort>
+            </Schritt>
           ) : null}
         </div>
       ) : null}
 
       {social ? (
         <div className={blockClass}>
-          <div className={stufe(gefuellt(socialZiel))}>
+          <Schritt erledigt={gefuellt(socialZiel)}>
             <label htmlFor="socialZiel" className={labelClass}>
               Was willst du mit Social Media erreichen? <Pflicht />
             </label>
-            <textarea
-              id="socialZiel"
-              name="socialZiel"
-              rows={4}
-              value={socialZiel}
-              onChange={(event) => setSocialZiel(event.target.value)}
-              className={`${inputClass} resize-y`}
-              placeholder="z. B. bekannter werden in der Region, Mitarbeiter finden, regelmäßig sichtbar sein"
-            />
-          </div>
+            <Antwort erledigt={gefuellt(socialZiel)}>
+              <div className="pb-1">
+                <textarea
+                  id="socialZiel"
+                  name="socialZiel"
+                  rows={4}
+                  value={socialZiel}
+                  onChange={(event) => setSocialZiel(event.target.value)}
+                  className={`${inputClass} resize-y`}
+                  placeholder="z. B. bekannter werden in der Region, Mitarbeiter finden, regelmäßig sichtbar sein"
+                />
+              </div>
+            </Antwort>
+          </Schritt>
 
           {gefuellt(socialZiel) ? (
-            <div className={`mt-5 ${stufe(gefuellt(hatKanaele))}`}>
+            <Schritt erledigt={gefuellt(hatKanaele)} className="mt-5">
               <JaNein
                 name="hatKanaele"
                 legende="Hast du schon Kanäle?"
                 wert={hatKanaele}
+                erledigt={gefuellt(hatKanaele)}
                 onChange={setHatKanaele}
               />
-            </div>
+            </Schritt>
           ) : null}
 
           {hatKanaele === "ja" ? (
-            <div className={`mt-5 ${stufe(gefuellt(socialKanaele))}`}>
+            <Schritt erledigt={gefuellt(socialKanaele)} className="mt-5">
               <label htmlFor="socialKanaele" className={labelClass}>
                 Welche? <Pflicht />
               </label>
-              <input
-                id="socialKanaele"
-                name="socialKanaele"
-                type="text"
-                value={socialKanaele}
-                onChange={(event) => setSocialKanaele(event.target.value)}
-                className={inputClass}
-                placeholder="Instagram, Facebook, LinkedIn, TikTok"
-              />
-            </div>
+              <Antwort erledigt={gefuellt(socialKanaele)}>
+                <div className="pb-1">
+                  <input
+                    id="socialKanaele"
+                    name="socialKanaele"
+                    type="text"
+                    value={socialKanaele}
+                    onChange={(event) => setSocialKanaele(event.target.value)}
+                    className={inputClass}
+                    placeholder="Instagram, Facebook, LinkedIn, TikTok"
+                  />
+                </div>
+              </Antwort>
+            </Schritt>
           ) : null}
         </div>
       ) : null}
 
       {rueckfragenFertig ? (
         <div className={blockClass}>
-          <div className={stufe(zeigeEmail)}>
+          <Schritt erledigt={zeigeEmail}>
             <label htmlFor="name" className={labelClass}>
               Dein Name <Pflicht />
             </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              aria-invalid={fieldErrors.name ? "true" : undefined}
-              aria-describedby={fieldErrors.name ? "name-error" : undefined}
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              className={inputClass}
-              placeholder="Vor- und Nachname"
-            />
-            <Fehler id="name-error" text={fieldErrors.name} />
-          </div>
+            <Antwort erledigt={zeigeEmail}>
+              <div className="pb-1">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  aria-invalid={fieldErrors.name ? "true" : undefined}
+                  aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  className={inputClass}
+                  placeholder="Vor- und Nachname"
+                />
+                <Fehler id="name-error" text={fieldErrors.name} />
+              </div>
+            </Antwort>
+          </Schritt>
 
           {zeigeEmail ? (
-            <div className={`mt-5 ${stufe(zeigeTelefon)}`}>
+            <Schritt erledigt={zeigeTelefon} className="mt-5">
               <label htmlFor="email" className={labelClass}>
                 E-Mail-Adresse <Pflicht />
               </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                aria-invalid={fieldErrors.email ? "true" : undefined}
-                aria-describedby={fieldErrors.email ? "email-error" : undefined}
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                className={inputClass}
-                placeholder="name@firma.de"
-              />
-              <Fehler id="email-error" text={fieldErrors.email} />
-            </div>
+              <Antwort erledigt={zeigeTelefon}>
+                <div className="pb-1">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    aria-invalid={fieldErrors.email ? "true" : undefined}
+                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    className={inputClass}
+                    placeholder="name@firma.de"
+                  />
+                  <Fehler id="email-error" text={fieldErrors.email} />
+                </div>
+              </Antwort>
+            </Schritt>
           ) : null}
 
           {zeigeTelefon ? (
-            <div className={`mt-5 ${stufe(zeigeAbschluss)}`}>
+            <Schritt erledigt={zeigeAbschluss} className="mt-5">
               <label htmlFor="phone" className={labelClass}>
                 Telefonnummer <Pflicht />
               </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                aria-invalid={fieldErrors.phone ? "true" : undefined}
-                aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-                value={telefon}
-                onChange={(event) => setTelefon(event.target.value)}
-                className={inputClass}
-                placeholder="+49 ..."
-              />
-              <Fehler id="phone-error" text={fieldErrors.phone} />
-            </div>
+              <Antwort erledigt={zeigeAbschluss}>
+                <div className="pb-1">
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    aria-invalid={fieldErrors.phone ? "true" : undefined}
+                    aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+                    value={telefon}
+                    onChange={(event) => setTelefon(event.target.value)}
+                    className={inputClass}
+                    placeholder="+49 ..."
+                  />
+                  <Fehler id="phone-error" text={fieldErrors.phone} />
+                </div>
+              </Antwort>
+            </Schritt>
           ) : null}
         </div>
       ) : null}
