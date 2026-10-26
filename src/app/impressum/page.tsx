@@ -21,13 +21,13 @@ export default function ImpressumPage() {
         <Container>
           <div className="legal mx-auto max-w-3xl">
             <p>
-              Enrico Sturm
+              Jonas Schurz Marketing
               <br />
-              Finanz- und Wirtschaftsberatung
+              Jonas Schurz
               <br />
-              Wilhelm-Kaulisch-Straße 25
+              Goldgruben 6
               <br />
-              01844 Neustadt in Sachsen
+              01855 Sebnitz
             </p>
 
             <h2>Kontakt</h2>

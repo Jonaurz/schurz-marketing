@@ -18,7 +18,7 @@ type AgbBlock = {
 const agbBlocks: AgbBlock[] = [
   {
     "type": "intro",
-    "text": "Allgemeine Geschäftsbedingungen von Finanz- und Wirtschaftsberatung Enrico Sturm Wilhelm-Kaulisch-Straße 25 01844 Neustadt in Sachsen im Folgenden: Auftragnehmer -"
+    "text": "Allgemeine Geschäftsbedingungen von Jonas Schurz Marketing, Jonas Schurz, Goldgruben 6, 01855 Sebnitz, im Folgenden: Auftragnehmer -"
   },
   {
     "type": "part",
