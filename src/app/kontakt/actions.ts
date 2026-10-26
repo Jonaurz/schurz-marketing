@@ -1,10 +1,13 @@
 "use server";
 
-import { headers } from "next/headers";
-import { createPendingSubmission, deleteSubmission } from "@/lib/contact-submissions";
-import { verifyCsrfToken } from "@/lib/csrf";
-import { readEmailSettings } from "@/lib/email-settings";
-import { sendContactConfirmationEmail } from "@/lib/mailer";
+import {
+  ermittleClientIp,
+  honeypotGefuellt,
+  rateLimitUeberschritten,
+  zuSchnellAbgeschickt,
+} from "@/lib/bot-schutz";
+import { csrfTokenAlterMs, verifyCsrfToken } from "@/lib/csrf";
+import { sendKontaktanfrageEmail } from "@/lib/mailer";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -13,8 +16,24 @@ export type ContactFormState = {
 };
 
 const serviceValues = new Set(["webseite", "social-media"]);
+const serviceLabels: Record<string, string> = {
+  webseite: "Webseite",
+  "social-media": "Social Media",
+};
 const consentText =
   "Die Angaben dürfen zur Bearbeitung der Anfrage verwendet werden. Hinweise dazu stehen unter Datenschutz.";
+
+// Wird Bots gezeigt, damit sie nicht merken, woran sie gescheitert sind.
+const stillerErfolg: ContactFormState = {
+  status: "success",
+  message: "Danke für deine Anfrage. Ich melde mich zeitnah bei dir.",
+};
+
+const unvollstaendig: ContactFormState = {
+  status: "error",
+  message:
+    "Es fehlen noch Angaben. Bitte geh das Formular von oben nach unten durch und beantworte alle Fragen.",
+};
 
 function asText(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
@@ -24,34 +43,10 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-async function getRequestOrigin() {
-  const headerStore = await headers();
-  const forwardedProto = headerStore.get("x-forwarded-proto");
-  const forwardedHost = headerStore.get("x-forwarded-host");
-  const host = forwardedHost || headerStore.get("host");
-
-  if (!host) return "https://schurz-marketing.de";
-
-  return `${forwardedProto || "http"}://${host}`;
-}
-
 export async function submitContactAction(
   _: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
-  const name = asText(formData, "name");
-  const email = asText(formData, "email");
-  const phone = asText(formData, "phone");
-  const services = formData
-    .getAll("services")
-    .map((value) => String(value))
-    .filter((value) => serviceValues.has(value));
-  const currentWebsite = asText(formData, "currentWebsite");
-  const socialChannels = asText(formData, "socialChannels");
-  const branche = asText(formData, "branche");
-  const location = asText(formData, "location");
-  const googleProfile = asText(formData, "googleProfile");
-  const consent = formData.get("consent");
   const csrfToken = asText(formData, "_csrf");
 
   if (!verifyCsrfToken(csrfToken, "contact")) {
@@ -62,18 +57,62 @@ export async function submitContactAction(
     };
   }
 
-  if (!name || !email || !phone || services.length === 0 || !consent) {
+  // Botschutz: versteckte Felder, Tempo und Menge. Alle drei antworten
+  // nach außen wie ein Erfolg, damit Skripte nicht nachjustieren koennen.
+  if (honeypotGefuellt(formData)) return stillerErfolg;
+  if (zuSchnellAbgeschickt(csrfTokenAlterMs(csrfToken))) return stillerErfolg;
+  if (rateLimitUeberschritten(await ermittleClientIp())) return stillerErfolg;
+
+  const services = formData
+    .getAll("services")
+    .map((value) => String(value))
+    .filter((value) => serviceValues.has(value));
+  const webseite = services.includes("webseite");
+  const social = services.includes("social-media");
+
+  const hatWebsite = asText(formData, "hatWebsite");
+  const websiteAdresse = asText(formData, "websiteAdresse");
+  const websiteWunsch = asText(formData, "websiteWunsch");
+  const socialZiel = asText(formData, "socialZiel");
+  const hatKanaele = asText(formData, "hatKanaele");
+  const socialKanaele = asText(formData, "socialKanaele");
+
+  const name = asText(formData, "name");
+  const email = asText(formData, "email");
+  const phone = asText(formData, "phone");
+  const consent = formData.get("consent");
+
+  if (services.length === 0) {
+    return {
+      status: "error",
+      message: "Bitte wähle aus, womit ich dir helfen kann.",
+      fieldErrors: { services: "Bitte wähle mindestens eine Leistung aus." },
+    };
+  }
+
+  // Rueckfragen des jeweils gewaehlten Zweigs. Im Formular sind sie nicht zu
+  // uebergehen, hier stehen sie als Absicherung.
+  if (webseite) {
+    if (hatWebsite !== "ja" && hatWebsite !== "nein") return unvollstaendig;
+    if (hatWebsite === "ja" && !websiteAdresse) return unvollstaendig;
+    if (!websiteWunsch) return unvollstaendig;
+  }
+
+  if (social) {
+    if (!socialZiel) return unvollstaendig;
+    if (hatKanaele !== "ja" && hatKanaele !== "nein") return unvollstaendig;
+    if (hatKanaele === "ja" && !socialKanaele) return unvollstaendig;
+  }
+
+  if (!name || !email || !phone || !consent) {
     return {
       status: "error",
       message:
-        "Bitte fülle Name, E-Mail und Telefonnummer aus, wähle mindestens eine Dienstleistung und stimme der Verarbeitung deiner Angaben zu.",
+        "Bitte gib Name, E-Mail und Telefonnummer an und stimme der Verarbeitung deiner Angaben zu.",
       fieldErrors: {
         ...(name ? {} : { name: "Bitte gib deinen Namen ein." }),
         ...(email ? {} : { email: "Bitte gib deine E-Mail-Adresse ein." }),
         ...(phone ? {} : { phone: "Bitte gib deine Telefonnummer ein." }),
-        ...(services.length > 0
-          ? {}
-          : { services: "Bitte wähle mindestens eine Dienstleistung aus." }),
         ...(consent ? {} : { consent: "Bitte stimme der Verarbeitung deiner Angaben zu." }),
       },
     };
@@ -87,46 +126,49 @@ export async function submitContactAction(
     };
   }
 
-  if (!consent) {
-    return {
-      status: "error",
-      message: "Bitte stimme der Verarbeitung deiner Angaben zu.",
-      fieldErrors: { consent: "Bitte stimme der Verarbeitung deiner Angaben zu." },
-    };
+  const betreff = services.map((service) => serviceLabels[service] ?? service).join(" und ");
+
+  const angaben: { label: string; value: string }[] = [];
+
+  if (webseite) {
+    angaben.push({
+      label: "Website vorhanden",
+      value: hatWebsite === "ja" ? `Ja – ${websiteAdresse}` : "Nein",
+    });
+    angaben.push({ label: "Ziel mit der Website", value: websiteWunsch });
   }
 
-  const { token, submission } = await createPendingSubmission({
-    name,
-    email,
-    phone,
-    services,
-    currentWebsite,
-    socialChannels,
-    branche,
-    location,
-    googleProfile,
-    consentText,
-  });
+  if (social) {
+    angaben.push({ label: "Ziel mit Social Media", value: socialZiel });
+    angaben.push({
+      label: "Kanäle vorhanden",
+      value: hatKanaele === "ja" ? `Ja – ${socialKanaele}` : "Nein",
+    });
+  }
 
   try {
-    const settings = await readEmailSettings();
-    const origin = (settings.baseUrl || (await getRequestOrigin())).replace(/\/+$/, "");
-    const confirmUrl = `${origin}/kontakt/bestaetigen?token=${encodeURIComponent(token)}`;
-    await sendContactConfirmationEmail(submission, confirmUrl);
+    await sendKontaktanfrageEmail({
+      betreff,
+      name,
+      email,
+      telefon: phone,
+      angaben,
+      consentText,
+      eingegangenAm: new Date().toLocaleString("de-DE", {
+        dateStyle: "long",
+        timeStyle: "short",
+        timeZone: "Europe/Berlin",
+      }),
+    });
   } catch (error) {
-    await deleteSubmission(submission.id);
     console.error(error);
 
     return {
       status: "error",
       message:
-        "Die Anfrage konnte noch nicht verschickt werden. Bitte prüfe im Adminbereich die E-Mail-Einstellungen.",
+        "Die Anfrage konnte gerade nicht verschickt werden. Bitte versuche es später noch einmal oder ruf direkt an: 0152 0426 3490.",
     };
   }
 
-  return {
-    status: "success",
-    message:
-      "Bitte bestätige deine Anfrage über den Link, den ich dir gerade per E-Mail gesendet habe. Erst danach wird die Anfrage an mich weitergeleitet.",
-  };
+  return stillerErfolg;
 }

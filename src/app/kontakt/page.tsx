@@ -32,7 +32,7 @@ export default function KontaktPage() {
       />
       <PageHero
         title="Erzähl mir von deinem Projekt."
-        subtitle="Ob Webdesign, Social Media oder beides: Die Anfrage fragt nur ab, was für den nächsten Schritt nötig ist. Nach dem Absenden bestätigst du deine E-Mail-Adresse per Link."
+        subtitle="Ob Webdesign, Social Media oder beides: Die Anfrage fragt nur ab, was für den nächsten Schritt nötig ist. Ein paar Angaben, abschicken, fertig."
       />
 
       <Section spacing="tight" aria-label="Kontaktformular">

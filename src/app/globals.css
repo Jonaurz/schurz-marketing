@@ -142,15 +142,6 @@
     @apply font-semibold text-ink;
   }
 
-  .contact-form .service-field {
-    display: none;
-  }
-
-  .contact-form:has(#service-webseite:checked) .service-field-web,
-  .contact-form:has(#service-social-media:checked) .service-field-social {
-    display: block;
-  }
-
   .contact-form .service-choice:has(input:checked) {
     border-color: var(--sm-ink);
     background: rgba(28, 25, 23, 0.04);

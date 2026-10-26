@@ -1,31 +1,112 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Check } from "../ui/icons";
 import { submitContactAction, type ContactFormState } from "@/app/kontakt/actions";
 
-const services = [
-  { value: "webseite", label: "Webseite" },
-  { value: "social-media", label: "Social Media Betreuung" },
-] as const;
-
 const inputClass =
   "w-full border border-ink/20 bg-white px-4 py-3 text-ink placeholder:text-ink/40 outline-none transition-colors focus:border-ink focus:ring-1 focus:ring-ink";
 const labelClass = "mb-2 block text-sm font-medium text-ink";
+const blockClass = "mt-8 border-t border-ink/10 pt-6";
 const initialState: ContactFormState = { status: "idle", message: "" };
+
+function Pflicht() {
+  return <span className="text-accent">*</span>;
+}
+
+function Fehler({ id, text }: { id: string; text?: string }) {
+  if (!text) return null;
+
+  return (
+    <p id={id} className="mt-2 text-sm text-red-700">
+      {text}
+    </p>
+  );
+}
+
+function JaNein({
+  name,
+  legende,
+  wert,
+  onChange,
+}: {
+  name: string;
+  legende: string;
+  wert: string;
+  onChange: (wert: string) => void;
+}) {
+  return (
+    <fieldset>
+      <legend className={labelClass}>
+        {legende} <Pflicht />
+      </legend>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {[
+          { value: "ja", label: "Ja" },
+          { value: "nein", label: "Nein" },
+        ].map((option) => (
+          <label
+            key={option.value}
+            htmlFor={`${name}-${option.value}`}
+            className="service-choice flex min-h-14 cursor-pointer items-center gap-3 border border-ink/20 bg-white px-4 py-3 text-sm font-medium text-ink/70 transition-colors hover:border-ink"
+          >
+            <input
+              id={`${name}-${option.value}`}
+              name={name}
+              type="radio"
+              value={option.value}
+              checked={wert === option.value}
+              onChange={() => onChange(option.value)}
+              className="h-4 w-4 shrink-0 accent-accent"
+            />
+            {option.label}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
 
 export function ContactForm({ csrfToken }: { csrfToken: string }) {
   const [state, formAction, isPending] = useActionState(submitContactAction, initialState);
   const fieldErrors = state.fieldErrors ?? {};
 
+  const [webseite, setWebseite] = useState(false);
+  const [social, setSocial] = useState(false);
+  const [hatWebsite, setHatWebsite] = useState("");
+  const [websiteAdresse, setWebsiteAdresse] = useState("");
+  const [websiteWunsch, setWebsiteWunsch] = useState("");
+  const [socialZiel, setSocialZiel] = useState("");
+  const [hatKanaele, setHatKanaele] = useState("");
+  const [socialKanaele, setSocialKanaele] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefon, setTelefon] = useState("");
+
+  const gefuellt = (wert: string) => wert.trim() !== "";
+
+  const webseiteFertig =
+    gefuellt(hatWebsite) &&
+    (hatWebsite === "nein" || gefuellt(websiteAdresse)) &&
+    gefuellt(websiteWunsch);
+  const socialFertig =
+    gefuellt(socialZiel) && gefuellt(hatKanaele) && (hatKanaele === "nein" || gefuellt(socialKanaele));
+
+  const leistungGewaehlt = webseite || social;
+  const rueckfragenFertig =
+    leistungGewaehlt && (!webseite || webseiteFertig) && (!social || socialFertig);
+
+  // Die Kontaktfelder erscheinen nacheinander, sobald das vorherige steht.
+  const zeigeEmail = rueckfragenFertig && gefuellt(name);
+  const zeigeTelefon = zeigeEmail && gefuellt(email);
+  const zeigeAbschluss = zeigeTelefon && gefuellt(telefon);
+
   useEffect(() => {
     if (state.status !== "error") return;
 
-    const firstInvalid = document.querySelector<HTMLElement>(
-      '.contact-form [aria-invalid="true"]',
-    );
+    const firstInvalid = document.querySelector<HTMLElement>('.contact-form [aria-invalid="true"]');
     firstInvalid?.focus({ preventScroll: false });
   }, [state]);
 
@@ -38,10 +119,8 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
         <span className="flex h-14 w-14 items-center justify-center bg-ink text-paper">
           <Check className="h-7 w-7" />
         </span>
-        <h3 className="mt-6 text-xl font-bold text-ink">Bitte E-Mail bestätigen</h3>
-        <p className="mt-3 max-w-sm text-pretty leading-relaxed text-ink/70">
-          {state.message}
-        </p>
+        <h3 className="mt-6 text-xl font-bold text-ink">Anfrage ist angekommen</h3>
+        <p className="mt-3 max-w-sm text-pretty leading-relaxed text-ink/70">{state.message}</p>
       </div>
     );
   }
@@ -54,88 +133,27 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
       className="contact-form mx-auto max-w-4xl border border-ink/10 bg-white p-6 sm:p-8"
     >
       <input type="hidden" name="_csrf" value={csrfToken} />
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="name" className={labelClass}>
-            Name <span className="text-accent">*</span>
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            aria-required="true"
-            aria-invalid={fieldErrors.name ? "true" : undefined}
-            aria-describedby={fieldErrors.name ? "name-error" : undefined}
-            autoComplete="name"
-            className={inputClass}
-            placeholder="Dein Name"
-          />
-          {fieldErrors.name ? (
-            <p id="name-error" className="mt-2 text-sm text-red-700">
-              {fieldErrors.name}
-            </p>
-          ) : null}
-        </div>
-        <div>
-          <label htmlFor="email" className={labelClass}>
-            E-Mail-Adresse <span className="text-accent">*</span>
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            aria-required="true"
-            aria-invalid={fieldErrors.email ? "true" : undefined}
-            aria-describedby={fieldErrors.email ? "email-error" : undefined}
-            autoComplete="email"
-            className={inputClass}
-            placeholder="name@firma.de"
-          />
-          {fieldErrors.email ? (
-            <p id="email-error" className="mt-2 text-sm text-red-700">
-              {fieldErrors.email}
-            </p>
-          ) : null}
-        </div>
-        <div className="sm:col-span-2">
-          <label htmlFor="phone" className={labelClass}>
-            Telefonnummer <span className="text-accent">*</span>
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            aria-required="true"
-            aria-invalid={fieldErrors.phone ? "true" : undefined}
-            aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-            autoComplete="tel"
-            className={inputClass}
-            placeholder="+49 ..."
-          />
-          {fieldErrors.phone ? (
-            <p id="phone-error" className="mt-2 text-sm text-red-700">
-              {fieldErrors.phone}
-            </p>
-          ) : null}
-        </div>
+
+      {/* Botfalle: fuer Menschen unsichtbar und nicht erreichbar. Wer hier etwas eintraegt, ist keiner. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="website_url">Dieses Feld bitte leer lassen</label>
+        <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="firmenname">Dieses Feld bitte leer lassen</label>
+        <input id="firmenname" name="firmenname" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <fieldset
-        className="mt-5"
         aria-invalid={fieldErrors.services ? "true" : undefined}
-        aria-describedby={fieldErrors.services ? "services-help services-error" : "services-help"}
+        aria-describedby={fieldErrors.services ? "services-error" : undefined}
       >
         <legend className={labelClass}>
-          Welche Dienstleistung wird gebraucht? <span className="text-accent">*</span>
+          Womit kann ich dir helfen? <Pflicht />
         </legend>
-        <p id="services-help" className="mb-3 text-sm leading-relaxed text-ink/75">
-          Eine oder beide Leistungen auswählen. Die passenden Zusatzfelder erscheinen automatisch.
-        </p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {services.map((service) => (
+          {[
+            { value: "webseite", label: "Webseite", an: webseite, setzen: setWebseite },
+            { value: "social-media", label: "Social Media", an: social, setzen: setSocial },
+          ].map((service) => (
             <label
               key={service.value}
               htmlFor={`service-${service.value}`}
@@ -146,120 +164,204 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
                 name="services"
                 type="checkbox"
                 value={service.value}
+                checked={service.an}
+                onChange={(event) => service.setzen(event.target.checked)}
                 className="h-4 w-4 shrink-0 accent-accent"
               />
               {service.label}
             </label>
           ))}
         </div>
-        {fieldErrors.services ? (
-          <p id="services-error" className="mt-2 text-sm text-red-700">
-            {fieldErrors.services}
-          </p>
-        ) : null}
+        <Fehler id="services-error" text={fieldErrors.services} />
       </fieldset>
 
-      <div className="conditional-fields">
-        <div className="service-field service-field-web mt-5">
-          <label htmlFor="currentWebsite" className={labelClass}>
-            Aktuelle Website, falls vorhanden
-          </label>
-          <input
-            id="currentWebsite"
-            name="currentWebsite"
-            type="url"
-            autoComplete="url"
-            className={inputClass}
-            placeholder="https://www.deine-domain.de"
+      {webseite ? (
+        <div className={blockClass}>
+          <JaNein
+            name="hatWebsite"
+            legende="Hast du schon eine Website?"
+            wert={hatWebsite}
+            onChange={setHatWebsite}
           />
-        </div>
 
-        <div className="service-field service-field-social mt-5">
-          <label htmlFor="socialChannels" className={labelClass}>
-            Social-Media-Kanäle, falls vorhanden
+          {hatWebsite === "ja" ? (
+            <div className="mt-5">
+              <label htmlFor="websiteAdresse" className={labelClass}>
+                Wie lautet die Adresse? <Pflicht />
+              </label>
+              <input
+                id="websiteAdresse"
+                name="websiteAdresse"
+                type="url"
+                autoComplete="url"
+                value={websiteAdresse}
+                onChange={(event) => setWebsiteAdresse(event.target.value)}
+                className={inputClass}
+                placeholder="https://www.deine-domain.de"
+              />
+            </div>
+          ) : null}
+
+          {gefuellt(hatWebsite) && (hatWebsite === "nein" || gefuellt(websiteAdresse)) ? (
+            <div className="mt-5">
+              <label htmlFor="websiteWunsch" className={labelClass}>
+                Was möchtest du mit der Website genau erreichen? <Pflicht />
+              </label>
+              <textarea
+                id="websiteWunsch"
+                name="websiteWunsch"
+                rows={4}
+                value={websiteWunsch}
+                onChange={(event) => setWebsiteWunsch(event.target.value)}
+                className={`${inputClass} resize-y`}
+                placeholder="z. B. mehr Anfragen, bei Google gefunden werden, endlich auf dem Handy gut aussehen"
+              />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {social ? (
+        <div className={blockClass}>
+          <label htmlFor="socialZiel" className={labelClass}>
+            Was willst du mit Social Media erreichen? <Pflicht />
           </label>
           <textarea
-            id="socialChannels"
-            name="socialChannels"
+            id="socialZiel"
+            name="socialZiel"
             rows={4}
+            value={socialZiel}
+            onChange={(event) => setSocialZiel(event.target.value)}
             className={`${inputClass} resize-y`}
-            placeholder="Instagram, Facebook, LinkedIn, TikTok oder andere Kanäle"
+            placeholder="z. B. bekannter werden in der Region, Mitarbeiter finden, regelmäßig sichtbar sein"
           />
-        </div>
-      </div>
 
-      <fieldset className="mt-8 border-t border-ink/10 pt-6">
-        <legend className="mb-1 text-sm font-semibold text-ink">
-          Zu deinem Unternehmen <span className="font-normal text-ink/60">(optional)</span>
-        </legend>
-        <p className="mb-4 text-sm leading-relaxed text-ink/75">
-          Hilft, die Anfrage besser einzuschätzen. Alle Felder sind freiwillig.
-        </p>
-        <div className="grid gap-5 sm:grid-cols-2">
+          {gefuellt(socialZiel) ? (
+            <div className="mt-5">
+              <JaNein
+                name="hatKanaele"
+                legende="Hast du schon Kanäle?"
+                wert={hatKanaele}
+                onChange={setHatKanaele}
+              />
+            </div>
+          ) : null}
+
+          {hatKanaele === "ja" ? (
+            <div className="mt-5">
+              <label htmlFor="socialKanaele" className={labelClass}>
+                Welche? <Pflicht />
+              </label>
+              <input
+                id="socialKanaele"
+                name="socialKanaele"
+                type="text"
+                value={socialKanaele}
+                onChange={(event) => setSocialKanaele(event.target.value)}
+                className={inputClass}
+                placeholder="Instagram, Facebook, LinkedIn, TikTok"
+              />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {rueckfragenFertig ? (
+        <div className={blockClass}>
           <div>
-            <label htmlFor="branche" className={labelClass}>
-              Branche oder Gewerk
+            <label htmlFor="name" className={labelClass}>
+              Dein Name <Pflicht />
             </label>
             <input
-              id="branche"
-              name="branche"
+              id="name"
+              name="name"
               type="text"
-              autoComplete="organization-title"
+              autoComplete="name"
+              aria-invalid={fieldErrors.name ? "true" : undefined}
+              aria-describedby={fieldErrors.name ? "name-error" : undefined}
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               className={inputClass}
-              placeholder="z. B. Dachdecker, Garten- und Landschaftsbau, Kanzlei"
+              placeholder="Vor- und Nachname"
             />
+            <Fehler id="name-error" text={fieldErrors.name} />
           </div>
-          <div>
-            <label htmlFor="location" className={labelClass}>
-              Ort oder Region
-            </label>
-            <input
-              id="location"
-              name="location"
-              type="text"
-              autoComplete="address-level2"
-              className={inputClass}
-              placeholder="z. B. Pirna, Dresden, Sächsische Schweiz"
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="googleProfile" className={labelClass}>
-              Google-Unternehmensprofil vorhanden?
-            </label>
-            <select id="googleProfile" name="googleProfile" className={inputClass} defaultValue="">
-              <option value="">Keine Angabe</option>
-              <option value="ja">Ja</option>
-              <option value="nein">Nein</option>
-              <option value="weiss-nicht">Weiß nicht</option>
-            </select>
-          </div>
-        </div>
-      </fieldset>
 
-      <div className="mt-6 flex items-start gap-3">
-        <input
-          id="consent"
-          name="consent"
-          type="checkbox"
-          required
-          aria-required="true"
-          aria-invalid={fieldErrors.consent ? "true" : undefined}
-          aria-describedby={fieldErrors.consent ? "consent-error" : undefined}
-          className="mt-1 h-4 w-4 shrink-0 accent-accent"
-        />
-        <label htmlFor="consent" className="text-sm leading-relaxed text-ink/70">
-          Die Angaben dürfen zur Bearbeitung der Anfrage verwendet werden. Hinweise dazu
-          stehen unter{" "}
-          <Link href="/datenschutz" className="text-accent underline underline-offset-4 hover:text-ink">
-            Datenschutz
-          </Link>
-          . <span className="text-accent">*</span>
-        </label>
-      </div>
-      {fieldErrors.consent ? (
-        <p id="consent-error" className="mt-2 text-sm text-red-700">
-          {fieldErrors.consent}
-        </p>
+          {zeigeEmail ? (
+            <div className="mt-5">
+              <label htmlFor="email" className={labelClass}>
+                E-Mail-Adresse <Pflicht />
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                aria-invalid={fieldErrors.email ? "true" : undefined}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                className={inputClass}
+                placeholder="name@firma.de"
+              />
+              <Fehler id="email-error" text={fieldErrors.email} />
+            </div>
+          ) : null}
+
+          {zeigeTelefon ? (
+            <div className="mt-5">
+              <label htmlFor="phone" className={labelClass}>
+                Telefonnummer <Pflicht />
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                aria-invalid={fieldErrors.phone ? "true" : undefined}
+                aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+                value={telefon}
+                onChange={(event) => setTelefon(event.target.value)}
+                className={inputClass}
+                placeholder="+49 ..."
+              />
+              <Fehler id="phone-error" text={fieldErrors.phone} />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {zeigeAbschluss ? (
+        <>
+          <div className="mt-6 flex items-start gap-3">
+            <input
+              id="consent"
+              name="consent"
+              type="checkbox"
+              aria-invalid={fieldErrors.consent ? "true" : undefined}
+              aria-describedby={fieldErrors.consent ? "consent-error" : undefined}
+              className="mt-1 h-4 w-4 shrink-0 accent-accent"
+            />
+            <label htmlFor="consent" className="text-sm leading-relaxed text-ink/70">
+              Die Angaben dürfen zur Bearbeitung der Anfrage verwendet werden. Hinweise dazu stehen
+              unter{" "}
+              <Link
+                href="/datenschutz"
+                className="text-accent underline underline-offset-4 hover:text-ink"
+              >
+                Datenschutz
+              </Link>
+              . <Pflicht />
+            </label>
+          </div>
+          <Fehler id="consent-error" text={fieldErrors.consent} />
+
+          <div className="mt-4">
+            <Button type="submit" size="lg" withArrow className="w-full sm:w-auto" disabled={isPending}>
+              {isPending ? "Wird gesendet..." : "Anfrage senden"}
+            </Button>
+          </div>
+        </>
       ) : null}
 
       <div aria-live="polite" className="mt-4 min-h-[1.25rem]">
@@ -268,12 +370,6 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
             {state.message}
           </p>
         ) : null}
-      </div>
-
-      <div className="mt-4">
-        <Button type="submit" size="lg" withArrow className="w-full sm:w-auto" disabled={isPending}>
-          {isPending ? "Wird vorbereitet..." : "Anfrage bestätigen lassen"}
-        </Button>
       </div>
     </form>
   );

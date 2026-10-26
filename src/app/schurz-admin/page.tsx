@@ -19,7 +19,7 @@ import {
   saveEmailSettingsAction,
   saveReferenceAction,
   saveTestimonialAction,
-  sendDoubleOptInTestAction,
+  sendKontaktTestAction,
   testEmailConnectionAction,
 } from "./actions";
 
@@ -227,7 +227,7 @@ function EmailSettingsForm({
       <form action={saveEmailSettingsAction} className="grid gap-5">
         <label className="flex items-center gap-3 text-sm text-platinum/85">
           <input name="enabled" type="checkbox" defaultChecked={settings.enabled} className="h-4 w-4 accent-gold" />
-          E-Mail-Versand und Double-Opt-In aktivieren
+          E-Mail-Versand aktivieren
         </label>
         <p className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-xs leading-relaxed text-platinum/60">
           Wenn der E-Mail-Versand aktiviert ist, werden Host, Port, TLS, Benutzer und Passwort
@@ -260,12 +260,7 @@ function EmailSettingsForm({
           <Field label="Absender-E-Mail" name="fromEmail" value={settings.fromEmail} />
           <Field label="Absender-Name" name="fromName" value={settings.fromName} />
         </div>
-        <Field label="Empfänger-E-Mail für bestätigte Anfragen" name="recipientEmail" value={settings.recipientEmail} />
-        <Field label="Live-Domain für Bestätigungslinks" name="baseUrl" value={settings.baseUrl} />
-        <p className="text-xs leading-relaxed text-platinum/55">
-          Lokal wird automatisch die aktuelle Adresse genutzt. Für die Live-Seite sollte hier
-          https://schurz-marketing.de stehen.
-        </p>
+        <Field label="Empfänger-E-Mail für Anfragen" name="recipientEmail" value={settings.recipientEmail} />
         <div className="flex justify-end">
           <Button type="submit" withArrow>
             E-Mail-Einstellungen speichern
@@ -276,9 +271,9 @@ function EmailSettingsForm({
       <div className="mt-6 border-t border-white/10 pt-5">
         <h3 className="text-lg font-bold text-platinum">E-Mail-System testen</h3>
         <p className="mt-2 text-sm leading-relaxed text-platinum/65">
-          Die Testmail prüft SMTP-Verbindung, Login und Versand. Der Double-Opt-In-Test sendet
-          eine Bestätigungsmail an die gespeicherte Empfänger-Adresse. Nach Klick auf den Link
-          wird die bestätigte Anfrage erneut über das System weitergeleitet.
+          Die Testmail prüft SMTP-Verbindung, Login und Versand. Die Testanfrage geht denselben
+          Weg wie eine echte Anfrage aus dem Kontaktformular und landet in der gespeicherten
+          Empfänger-Adresse.
         </p>
         {!canTest ? (
           <p className="mt-3 rounded-xl border border-white/10 bg-white/[0.03] p-3 text-xs leading-relaxed text-platinum/60">
@@ -292,9 +287,9 @@ function EmailSettingsForm({
               SMTP-Testmail senden
             </Button>
           </form>
-          <form action={sendDoubleOptInTestAction}>
+          <form action={sendKontaktTestAction}>
             <Button type="submit" disabled={!canTest}>
-              Double-Opt-In-Test senden
+              Testanfrage senden
             </Button>
           </form>
         </div>
@@ -409,7 +404,7 @@ export default async function AdminPage({
           <div className="grid gap-8 lg:grid-cols-[0.35fr_0.65fr]">
             <div>
               <p className="text-xs font-medium uppercase tracking-label text-gold">
-                E-Mail & Double-Opt-In
+                E-Mail-Versand
               </p>
               <h2 className="mt-3 text-3xl font-bold text-platinum">Kontaktformular versenden</h2>
               <p className="mt-4 text-sm leading-relaxed text-platinum/70">

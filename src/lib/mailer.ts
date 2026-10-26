@@ -7,11 +7,15 @@ import {
   readEmailSettings,
   type EmailSettings,
 } from "./email-settings";
-import type { ContactSubmission } from "./contact-submissions";
-
-const serviceLabels: Record<string, string> = {
-  webseite: "Webseite",
-  "social-media": "Social Media Betreuung",
+export type Kontaktanfrage = {
+  betreff: string;
+  name: string;
+  email: string;
+  telefon: string;
+  // Weitere Angaben aus dem Formular, bereits beschriftet und in Reihenfolge.
+  angaben: { label: string; value: string }[];
+  consentText: string;
+  eingegangenAm: string;
 };
 
 function escapeHtml(value: string) {
@@ -21,10 +25,6 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-}
-
-function formatServices(services: string[]) {
-  return services.map((service) => serviceLabels[service] ?? service).join(", ");
 }
 
 function formatFrom(settings: { fromName: string; fromEmail: string }) {
@@ -98,102 +98,39 @@ export async function sendEmailSettingsTestEmail() {
   });
 }
 
-export async function sendContactConfirmationEmail(submission: ContactSubmission, confirmUrl: string) {
+export async function sendKontaktanfrageEmail(anfrage: Kontaktanfrage) {
   const { settings, transporter } = await createTransporter();
   const from = formatFrom(settings);
 
-  await transporter.sendMail({
-    from,
-    to: submission.email,
-    subject: "Bitte bestätige deine Anfrage an Schurz Marketing",
-    text: [
-      `Hallo ${submission.name},`,
-      "",
-      "bitte bestätige deine Anfrage über den folgenden Link:",
-      confirmUrl,
-      "",
-      "Erst nach der Bestätigung wird deine Anfrage an Schurz Marketing weitergeleitet.",
-      "Der Link ist 24 Stunden gültig.",
-      "",
-      "Wenn du diese Anfrage nicht gestellt hast, kannst du diese E-Mail ignorieren.",
-    ].join("\n"),
-    html: `
-      <p>Hallo ${escapeHtml(submission.name)},</p>
-      <p>bitte bestätige deine Anfrage über den folgenden Link:</p>
-      <p><a href="${escapeHtml(confirmUrl)}">${escapeHtml(confirmUrl)}</a></p>
-      <p>Erst nach der Bestätigung wird deine Anfrage an Schurz Marketing weitergeleitet. Der Link ist 24 Stunden gültig.</p>
-      <p>Wenn du diese Anfrage nicht gestellt hast, kannst du diese E-Mail ignorieren.</p>
-    `,
-  });
-}
-
-export async function sendConfirmedContactEmail(submission: ContactSubmission) {
-  const { settings, transporter } = await createTransporter();
-  const from = formatFrom(settings);
-  const services = formatServices(submission.services);
+  const zeilen = [
+    { label: "Name", value: anfrage.name },
+    { label: "E-Mail", value: anfrage.email },
+    { label: "Telefon", value: anfrage.telefon },
+    ...anfrage.angaben,
+  ].filter((zeile) => zeile.value.trim() !== "");
 
   await transporter.sendMail({
     from,
     to: settings.recipientEmail,
-    replyTo: submission.email,
-    subject: `Bestätigte Anfrage über schurz-marketing.de: ${services}`,
+    replyTo: anfrage.email,
+    subject: `Neue Anfrage über schurz-marketing.de: ${anfrage.betreff}`,
     text: [
-      "Neue bestätigte Anfrage über das Kontaktformular.",
+      "Neue Anfrage über das Kontaktformular.",
       "",
-      `Name: ${submission.name}`,
-      `E-Mail: ${submission.email}`,
-      `Telefon: ${submission.phone}`,
-      `Dienstleistung: ${services}`,
-      submission.branche ? `Branche/Gewerk: ${submission.branche}` : "",
-      submission.location ? `Ort/Region: ${submission.location}` : "",
-      submission.currentWebsite ? `Aktuelle Website: ${submission.currentWebsite}` : "",
-      submission.googleProfile ? `Google-Unternehmensprofil: ${submission.googleProfile}` : "",
-      submission.socialChannels ? `Social-Media-Kanäle: ${submission.socialChannels}` : "",
+      ...zeilen.map((zeile) => `${zeile.label}: ${zeile.value}`),
       "",
-      `Eingegangen: ${submission.createdAt}`,
-      `Bestätigt: ${submission.confirmedAt || new Date().toISOString()}`,
-      `Einwilligung: ${submission.consentText}`,
-    ]
-      .filter(Boolean)
-      .join("\n"),
-    html: `
-      <h2>Neue bestätigte Anfrage</h2>
-      <p><strong>Name:</strong> ${escapeHtml(submission.name)}</p>
-      <p><strong>E-Mail:</strong> ${escapeHtml(submission.email)}</p>
-      <p><strong>Telefon:</strong> ${escapeHtml(submission.phone)}</p>
-      <p><strong>Dienstleistung:</strong> ${escapeHtml(services)}</p>
-      ${
-        submission.branche
-          ? `<p><strong>Branche/Gewerk:</strong> ${escapeHtml(submission.branche)}</p>`
-          : ""
-      }
-      ${
-        submission.location
-          ? `<p><strong>Ort/Region:</strong> ${escapeHtml(submission.location)}</p>`
-          : ""
-      }
-      ${
-        submission.currentWebsite
-          ? `<p><strong>Aktuelle Website:</strong> ${escapeHtml(submission.currentWebsite)}</p>`
-          : ""
-      }
-      ${
-        submission.googleProfile
-          ? `<p><strong>Google-Unternehmensprofil:</strong> ${escapeHtml(submission.googleProfile)}</p>`
-          : ""
-      }
-      ${
-        submission.socialChannels
-          ? `<p><strong>Social-Media-Kanäle:</strong><br>${escapeHtml(submission.socialChannels).replaceAll(
-              "\n",
-              "<br>",
-            )}</p>`
-          : ""
-      }
-      <hr>
-      <p><strong>Eingegangen:</strong> ${escapeHtml(submission.createdAt)}</p>
-      <p><strong>Bestätigt:</strong> ${escapeHtml(submission.confirmedAt || new Date().toISOString())}</p>
-      <p><strong>Einwilligung:</strong> ${escapeHtml(submission.consentText)}</p>
-    `,
+      `Eingegangen: ${anfrage.eingegangenAm}`,
+      `Einwilligung: ${anfrage.consentText}`,
+    ].join("\n"),
+    html: [
+      "<h2>Neue Anfrage</h2>",
+      ...zeilen.map(
+        (zeile) =>
+          `<p><strong>${escapeHtml(zeile.label)}:</strong><br>${escapeHtml(zeile.value).replaceAll("\n", "<br>")}</p>`,
+      ),
+      "<hr>",
+      `<p><strong>Eingegangen:</strong> ${escapeHtml(anfrage.eingegangenAm)}</p>`,
+      `<p><strong>Einwilligung:</strong> ${escapeHtml(anfrage.consentText)}</p>`,
+    ].join("\n"),
   });
 }

@@ -34,6 +34,18 @@ export function createCsrfToken(purpose: string) {
   return `${payload}.${signature}`;
 }
 
+// Zeit zwischen Ausgabe des Tokens (Seitenaufbau) und jetzt. Dient dazu,
+// sofort abgeschickte Formulare als automatisiert zu erkennen.
+export function csrfTokenAlterMs(token: string) {
+  const timestamp = token.split(".")[0];
+  if (!timestamp) return null;
+
+  const createdAt = Number.parseInt(timestamp, 36);
+  if (!Number.isFinite(createdAt)) return null;
+
+  return Date.now() - createdAt;
+}
+
 export function verifyCsrfToken(token: string, purpose: string) {
   const parts = token.split(".");
   if (parts.length !== 3) return false;

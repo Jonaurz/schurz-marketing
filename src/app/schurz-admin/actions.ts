@@ -12,12 +12,11 @@ import {
   isAdminConfigured,
   verifyPassword,
 } from "@/lib/admin-auth";
-import { createPendingSubmission, deleteSubmission } from "@/lib/contact-submissions";
 import { makeContentId, readContent, writeContent } from "@/lib/content";
 import { encryptSecret, readEmailSettings, writeEmailSettings } from "@/lib/email-settings";
 import {
-  sendContactConfirmationEmail,
   sendEmailSettingsTestEmail,
+  sendKontaktanfrageEmail,
   verifyEmailSettings,
 } from "@/lib/mailer";
 
@@ -240,7 +239,7 @@ export async function saveEmailSettingsAction(formData: FormData) {
     fromEmail: asText(formData, "fromEmail"),
     fromName: asText(formData, "fromName"),
     recipientEmail: asText(formData, "recipientEmail"),
-    baseUrl: asText(formData, "baseUrl"),
+    baseUrl: previousSettings.baseUrl,
     savedAt: new Date().toISOString(),
   };
 
@@ -308,10 +307,8 @@ export async function testEmailConnectionAction() {
   );
 }
 
-export async function sendDoubleOptInTestAction() {
+export async function sendKontaktTestAction() {
   await requireAdminForAction();
-
-  let pendingSubmissionId = "";
 
   try {
     const settings = await readEmailSettings();
@@ -319,34 +316,24 @@ export async function sendDoubleOptInTestAction() {
       throw new Error("Es ist keine Empfänger-E-Mail gespeichert.");
     }
 
-    const { token, submission } = await createPendingSubmission({
-      name: "Double-Opt-In Test",
+    await sendKontaktanfrageEmail({
+      betreff: "Test aus dem Adminbereich",
+      name: "Testanfrage",
       email: settings.recipientEmail,
-      phone: "Test aus dem Adminbereich",
-      services: ["webseite"],
-      currentWebsite: settings.baseUrl || "https://schurz-marketing.de",
-      socialChannels: "",
-      consentText: "Technischer Double-Opt-In-Test aus dem Adminbereich.",
+      telefon: "Test aus dem Adminbereich",
+      angaben: [{ label: "Hinweis", value: "Diese Anfrage wurde im Adminbereich ausgelöst." }],
+      consentText: "Technischer Test aus dem Adminbereich.",
+      eingegangenAm: new Date().toISOString(),
     });
-    pendingSubmissionId = submission.id;
-
-    const origin = (settings.baseUrl || "https://schurz-marketing.de").replace(/\/+$/, "");
-    const confirmUrl = `${origin}/kontakt/bestaetigen?token=${encodeURIComponent(token)}`;
-
-    await sendContactConfirmationEmail(submission, confirmUrl);
   } catch (error) {
-    if (pendingSubmissionId) {
-      await deleteSubmission(pendingSubmissionId).catch((cleanupError) => console.error(cleanupError));
-    }
-
     redirectWithEmailStatus(
       "error",
-      `Der Double-Opt-In-Test konnte nicht gestartet werden: ${emailSetupErrorMessage(error)}`,
+      `Die Testanfrage konnte nicht versendet werden: ${emailSetupErrorMessage(error)}`,
     );
   }
 
   redirectWithEmailStatus(
     "success",
-    "Double-Opt-In-Test gestartet. Eine Bestätigungsmail wurde an die gespeicherte Empfänger-E-Mail gesendet. Bitte den Link in dieser Mail anklicken, um die Weiterleitung zu testen.",
+    "Testanfrage versendet. Sie sollte gleich im Postfach der gespeicherten Empfänger-E-Mail liegen.",
   );
 }

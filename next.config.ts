@@ -91,10 +91,6 @@ const nextConfig: NextConfig = {
         source: "/schurz-admin/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
-      {
-        source: "/kontakt/bestaetigen",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
-      },
       ...noIndexLegalRoutes.map((source) => ({
         source,
         headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }],
