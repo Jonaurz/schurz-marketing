@@ -12,6 +12,13 @@ const labelClass = "mb-2 block text-sm font-medium text-ink";
 const blockClass = "mt-8 border-t border-ink/10 pt-6";
 const initialState: ContactFormState = { status: "idle", message: "" };
 
+// Beantwortetes tritt zurueck, damit die naechste Frage vorn steht. Es bleibt
+// stehen und kommt bei Mausberuehrung oder Tastaturfokus sofort zurueck.
+const stufe = (erledigt: boolean) =>
+  `transition-opacity duration-300 ${
+    erledigt ? "opacity-60 hover:opacity-100 focus-within:opacity-100" : ""
+  }`;
+
 function Pflicht() {
   return <span className="text-accent">*</span>;
 }
@@ -114,7 +121,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
     return (
       <div
         role="status"
-        className="flex flex-col items-center border border-ink/15 bg-white p-10 text-center"
+        className="flex max-w-4xl flex-col items-center border border-ink/15 bg-white p-10 text-center"
       >
         <span className="flex h-14 w-14 items-center justify-center bg-ink text-paper">
           <Check className="h-7 w-7" />
@@ -130,7 +137,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
       action={formAction}
       noValidate
       aria-describedby={state.status === "error" ? "contact-form-error" : undefined}
-      className="contact-form mx-auto max-w-4xl border border-ink/10 bg-white p-6 sm:p-8"
+      className="contact-form max-w-4xl border border-ink/10 bg-white p-6 sm:p-8"
     >
       <input type="hidden" name="_csrf" value={csrfToken} />
 
@@ -143,6 +150,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
       </div>
 
       <fieldset
+        className={stufe(leistungGewaehlt)}
         aria-invalid={fieldErrors.services ? "true" : undefined}
         aria-describedby={fieldErrors.services ? "services-error" : undefined}
       >
@@ -177,15 +185,17 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
 
       {webseite ? (
         <div className={blockClass}>
-          <JaNein
-            name="hatWebsite"
-            legende="Hast du schon eine Website?"
-            wert={hatWebsite}
-            onChange={setHatWebsite}
-          />
+          <div className={stufe(gefuellt(hatWebsite))}>
+            <JaNein
+              name="hatWebsite"
+              legende="Hast du schon eine Website?"
+              wert={hatWebsite}
+              onChange={setHatWebsite}
+            />
+          </div>
 
           {hatWebsite === "ja" ? (
-            <div className="mt-5">
+            <div className={`mt-5 ${stufe(gefuellt(websiteAdresse))}`}>
               <label htmlFor="websiteAdresse" className={labelClass}>
                 Wie lautet die Adresse? <Pflicht />
               </label>
@@ -203,7 +213,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
           ) : null}
 
           {gefuellt(hatWebsite) && (hatWebsite === "nein" || gefuellt(websiteAdresse)) ? (
-            <div className="mt-5">
+            <div className={`mt-5 ${stufe(gefuellt(websiteWunsch))}`}>
               <label htmlFor="websiteWunsch" className={labelClass}>
                 Was möchtest du mit der Website genau erreichen? <Pflicht />
               </label>
@@ -223,21 +233,23 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
 
       {social ? (
         <div className={blockClass}>
-          <label htmlFor="socialZiel" className={labelClass}>
-            Was willst du mit Social Media erreichen? <Pflicht />
-          </label>
-          <textarea
-            id="socialZiel"
-            name="socialZiel"
-            rows={4}
-            value={socialZiel}
-            onChange={(event) => setSocialZiel(event.target.value)}
-            className={`${inputClass} resize-y`}
-            placeholder="z. B. bekannter werden in der Region, Mitarbeiter finden, regelmäßig sichtbar sein"
-          />
+          <div className={stufe(gefuellt(socialZiel))}>
+            <label htmlFor="socialZiel" className={labelClass}>
+              Was willst du mit Social Media erreichen? <Pflicht />
+            </label>
+            <textarea
+              id="socialZiel"
+              name="socialZiel"
+              rows={4}
+              value={socialZiel}
+              onChange={(event) => setSocialZiel(event.target.value)}
+              className={`${inputClass} resize-y`}
+              placeholder="z. B. bekannter werden in der Region, Mitarbeiter finden, regelmäßig sichtbar sein"
+            />
+          </div>
 
           {gefuellt(socialZiel) ? (
-            <div className="mt-5">
+            <div className={`mt-5 ${stufe(gefuellt(hatKanaele))}`}>
               <JaNein
                 name="hatKanaele"
                 legende="Hast du schon Kanäle?"
@@ -248,7 +260,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
           ) : null}
 
           {hatKanaele === "ja" ? (
-            <div className="mt-5">
+            <div className={`mt-5 ${stufe(gefuellt(socialKanaele))}`}>
               <label htmlFor="socialKanaele" className={labelClass}>
                 Welche? <Pflicht />
               </label>
@@ -268,7 +280,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
 
       {rueckfragenFertig ? (
         <div className={blockClass}>
-          <div>
+          <div className={stufe(zeigeEmail)}>
             <label htmlFor="name" className={labelClass}>
               Dein Name <Pflicht />
             </label>
@@ -288,7 +300,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
           </div>
 
           {zeigeEmail ? (
-            <div className="mt-5">
+            <div className={`mt-5 ${stufe(zeigeTelefon)}`}>
               <label htmlFor="email" className={labelClass}>
                 E-Mail-Adresse <Pflicht />
               </label>
@@ -309,7 +321,7 @@ export function ContactForm({ csrfToken }: { csrfToken: string }) {
           ) : null}
 
           {zeigeTelefon ? (
-            <div className="mt-5">
+            <div className={`mt-5 ${stufe(zeigeAbschluss)}`}>
               <label htmlFor="phone" className={labelClass}>
                 Telefonnummer <Pflicht />
               </label>
